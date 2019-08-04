@@ -1,90 +1,312 @@
 <!DOCTYPE html>
-<html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.9.0">
-  <meta charset="utf-8">
-  
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Mengcheng">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mengcheng&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
+<meta property="og:site_name" content="Mengcheng&#39;s Blog">
+<meta property="og:description" content="Mengcheng">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-</html>
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Storage assignment and order batching problem in Kiva mobile fulfilment system" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" class="article-date">
-  <time datetime="2018-03-03T06:23:01.000Z" itemprop="datePublished">2018-03-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/">Storage assignment and order batching problem in Kiva mobile fulfulment system</a>
-    </h1>
+<meta name="twitter:title" content="Mengcheng&#39;s Blog">
+<meta name="twitter:description" content="Mengcheng">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/page/2/">
+
+
+
+
+
+  <title>Mengcheng's Blog</title>
   
 
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <a href="https://github.com/guanmengcheng"><img width="149" height="149" src="https://github.blog/wp-content/uploads/2008/12/forkme_right_darkblue_121621.png?resize=149%2C149" class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mengcheng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">HUST</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" itemprop="url">Storage assignment and order batching problem in Kiva mobile fulfulment system</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-03T14:23:01+08:00">
+                2018-03-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>作者: 项溪，柳长春，缪立新-清华大学工业工程系<a href="清华大学工业工程系管理科学与工程专业运筹与物流管理方向博导，清华-伯克利深圳学院智能交通与物流系统专业博导，">^1</a></p>
+      
+
+      
+        
+          
+            <p>作者: 项溪，柳长春，缪立新-清华大学工业工程系<a href="清华大学工业工程系管理科学与工程专业运筹与物流管理方向博导，清华-伯克利深圳学院智能交通与物流系统专业博导，">^1</a></p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。</p>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>介绍了Kiva系统</p>
 <p>Kiva系统中一个重要的决策问题就是需要决定哪些商品应该放在哪些货架上才能使得AGV的运行距离最短。由于货架的存储位置是自适应的，决定于货架上商品的种类以及顾客的订单，所以AGV的运行距离很难估计。然而，如果很多顾客同时订购的某些商品放置在同一货架上，那么需要搬运的货架数量会大大降低，也就降低了AGV的运行距离。因此，本文对商品进行分配，使得每个货架上的商品是经常被订购的。混合整数线性规划模型用来解决该问题。因为这是一个策略层面的问题，计算时间不是很重要，因此该模型采用CPLEX求解。为了降低命中货架个数，工人们可以同时拣选多个订单，也就是订单可以被组合成不同的批次，进而工人们按批次订单进行拣选。订单分批问题对时间要求很高，因此提出一个启发式算法进行求解。</p>
@@ -157,44 +379,125 @@
 </ul>
 <p>1.模型及算法是关键部分，需要学习CPLEX等求解器的运用。<br>2.算例可随机生成，英文期刊注重对算例的分析及模型的敏感性分析，注重对比分析，需要大量的实验数据支撑，可学习本文使用小算例。</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" data-id="cjyx01twn0018jov68ujga17l" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-Modelling and performance evaluation of explosive storage policies in internet" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" class="article-date">
-  <time datetime="2017-12-21T13:02:09.000Z" itemprop="datePublished">2017-12-21</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/">Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" itemprop="url">Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-21T21:02:09+08:00">
+                2017-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
+      
+
+      
+        
+          
+            <h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
 <h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
@@ -206,44 +509,125 @@
 <h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
 <h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" data-id="cjyx01tv10001jov6myh0nx2o" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-无人仓研究想法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/21/无人仓研究想法/" class="article-date">
-  <time datetime="2017-12-21T02:34:07.000Z" itemprop="datePublished">2017-12-21</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/无人仓研究想法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/21/无人仓研究想法/">无人仓研究想法</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/21/无人仓研究想法/" itemprop="url">无人仓研究想法</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-21T10:34:07+08:00">
+                2017-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <a id="more"></a>
+      
+
+      
+        
+          
+            <a id="more"></a>
 <ul>
 <li>运用voronoi分图优化货架选择机器人，每个机器人或每个被命中货架看成一个中心点。</li>
 <li>论文robotized warehouse systems developments and research oppotunities中</li>
@@ -261,44 +645,125 @@
 <li></li>
 </ul>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/21/无人仓研究想法/" data-id="cjyx01tw8000tjov6sjf12r2d" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无人仓/">无人仓</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-Stowage Decisions in Multi-Zone Storage Systems" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" class="article-date">
-  <time datetime="2017-12-19T02:20:49.000Z" itemprop="datePublished">2017-12-19</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/">Stowage Decisions in Multi-Zone Storage Systems</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" itemprop="url">Stowage Decisions in Multi-Zone Storage Systems</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-19T10:20:49+08:00">
+                2017-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>#多分区货到人智能仓库储位分配<br>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
+      
+
+      
+        
+          
+            <p>#多分区货到人智能仓库储位分配<br>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了两个分区储位分配策略，能有效平衡各分区的工作量。第一个分区储位分配策略采用chaining-inspired分配，通过分散各个物品的库存数量到两个分区。第二个区域存储策略明确地跟踪/更新每个存储分区的预期工作量（称为分区的周转率），然后将到达的物品存储到具有最小周转率的存储分区。</p>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>在多分区的仓库中，库存区域被物理地分隔成不同的平行分区，每个分区拥有自己的库存区域和工作设备。</p>
 <blockquote>
@@ -379,44 +844,125 @@
 </li>
 </ul>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" data-id="cjyx01two0019jov6n3nwkm63" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-Python读取JSON" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/15/Python读取JSON/" class="article-date">
-  <time datetime="2017-12-15T02:15:00.000Z" itemprop="datePublished">2017-12-15</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/15/Python读取JSON/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/15/Python读取JSON/">Python读取JSON</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/15/Python读取JSON/" itemprop="url">Python读取JSON</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-15T10:15:00+08:00">
+                2017-12-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>参考博客:<a href="https://zhuanlan.zhihu.com/p/27917664" target="_blank" rel="noopener">python 读写json文件</a>   <a href="http://blog.csdn.net/heatdeath/article/details/72833459" target="_blank" rel="noopener">使用python读取json文件 </a><br><a href="http://www.cnblogs.com/lhj588/archive/2012/05/24/2516046.html" target="_blank" rel="noopener">Python多维/嵌套字典数据无限遍历</a><br><a href="http://www.cnblogs.com/HZQHZA/p/7301362.html" target="_blank" rel="noopener">python json文件遍历所有key、value 及替换key对于的value</a><br>$\times$<br>json数据部分展示:</p>
+      
+
+      
+        
+          
+            <p>参考博客:<a href="https://zhuanlan.zhihu.com/p/27917664" target="_blank" rel="noopener">python 读写json文件</a>   <a href="http://blog.csdn.net/heatdeath/article/details/72833459" target="_blank" rel="noopener">使用python读取json文件 </a><br><a href="http://www.cnblogs.com/lhj588/archive/2012/05/24/2516046.html" target="_blank" rel="noopener">Python多维/嵌套字典数据无限遍历</a><br><a href="http://www.cnblogs.com/HZQHZA/p/7301362.html" target="_blank" rel="noopener">python json文件遍历所有key、value 及替换key对于的value</a><br>$\times$<br>json数据部分展示:</p>
 <ul>
 <li><p>读取多个JSON数据，提取不同已知属性的值:<br>代码:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">start=time.time()</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'C:/Users/Administrator/Desktop/extract.json'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tdid=[]</span><br><span class="line">    androidId=[]</span><br><span class="line">    imei=[]</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        <span class="comment">#print(line)</span></span><br><span class="line">        <span class="comment">#line=f.readline()</span></span><br><span class="line">        d = json.loads(line)</span><br><span class="line">        tdid.append(d[<span class="string">'tdid'</span>])</span><br><span class="line">        androidId.append(d[<span class="string">'id'</span>][<span class="string">'androidId'</span>])</span><br><span class="line">        <span class="comment">#imei.append(d['id']['sim'][1]['imei'])</span></span><br><span class="line">timeUsed=time.time()-start<span class="comment">#计时</span></span><br><span class="line">print(tdid,androidId)</span><br></pre></td></tr></table></figure>
@@ -428,84 +974,246 @@
 </ul>
 <p>输出结果:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;317ee02415b4af4311787abf4382eb075&apos;, 1513069978654, &apos;ta&apos;, 2, None, &apos;9ee0e03e4f552ac5&apos;, None, None, None, None, &apos;AC:C1:EE:33:D9:D8&apos;, &apos;fb088626&apos;, &apos;869718024877240&apos;, &apos;460008382291304&apos;, &apos;89860084191445414192&apos;, &apos;460&apos;, &apos;00&apos;, &apos;1&apos;, &apos;869718024877240&apos;, &apos;460008382291304&apos;, &apos;89860084191445414192&apos;, &apos;460&apos;, &apos;00&apos;, &apos;1&apos;, &apos;69264580E09186B40701BB968CE87FFC&apos;, &apos;Soul&apos;, &apos;2.8.6&apos;, &apos;cn.soulapp.android&apos;, 1507785806909, 0, &apos;Android+TalkingData+V4.0.12&apos;, &apos;Android+6.0.1&apos;, &apos;23&apos;, &apos;zh&apos;, &apos;zh_CN&apos;, 8.0, 23.008712, 113.748479, 0.0, 1513069558940, 29.0, 0.0, 0.0, 0.0, &apos;network&apos;, &apos;cellular&apos;, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;223.104.1.147&apos;, &apos;Xiaomi&apos;, &apos;MI 5s&apos;, &apos;1080*1920*480&apos;, &apos;Qualcomm Technologies, Inc MSM8996pro&apos;, 2, 1996800.0, 2779932, 112738896, 0, 0, 2, 1511918381515, None, None]</span><br></pre></td></tr></table></figure>
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/15/Python读取JSON/" data-id="cjyx01tvx000ejov63r8p6kq9" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-jupyter theme" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/14/jupyter theme/" class="article-date">
-  <time datetime="2017-12-14T02:50:00.000Z" itemprop="datePublished">2017-12-14</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/14/jupyter theme/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/14/jupyter theme/">Jupyter 修改主题、字体、宽度、字号</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/14/jupyter theme/" itemprop="url">Jupyter 修改主题、字体、宽度、字号</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-14T10:50:00+08:00">
+                2017-12-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798" target="_blank" rel="noopener">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt></p>
+      
+
+      
+        
+          
+            <p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798" target="_blank" rel="noopener">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt></p>
 <p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt><br>更多设置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;jt -t</span><br><span class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</span><br><span class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-dfs DFFONTSIZE]</span><br><span class="line">          [-ofs OUTFONTSIZE] [-mathfs MATHFONTSIZE] [-m MARGINS]</span><br><span class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</span><br><span class="line">          [-lineh LINEHEIGHT] [-altp] [-altmd] [-altout] [-P] [-T] [-N] [-vim]</span><br><span class="line">          [-r] [-dfonts]</span><br></pre></td></tr></table></figure>
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/14/jupyter theme/" data-id="cjyx01tw4000mjov6d2etaws5" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技巧/">实用技巧</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-Velocity-based storage and stowage decisions in a semi-automated fulfillment system" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/" class="article-date">
-  <time datetime="2017-12-12T11:30:23.000Z" itemprop="datePublished">2017-12-12</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/">Velocity-based storage and stowage decisions in a semi-automated fulfillment system</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/" itemprop="url">Velocity-based storage and stowage decisions in a semi-automated fulfillment system</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-12T19:30:23+08:00">
+                2017-12-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
+      
+
+      
+        
+          
+            <h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
 <p>we consider three types of storage olicies in this paper:</p>
 <ul>
 <li>random storage policy:随机存储策略</li>
@@ -576,221 +1284,577 @@
 <p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:<br>$$Pr[D_i&gt; x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i$$<br>$$Pr[D_i &gt; x]=0,for\quad x\geq Q_i$$<br>则其期望与方差$E[D_i],Var(D_i)$:<br>$$E[D_i]=V_i(1-\alpha)$$<br>$$Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)$$<br>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:<br>$$E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C$$<br>$$Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C$$<br>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
 <p>$$L=4$$<br>$$l \in \{1,2,…,L\}$$</p>
 
+          
+        
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/" data-id="cjyx01tw7000rjov6m3uo4qo7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-在WORD中插入LATEX伪代码" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/08/在WORD中插入LATEX伪代码/" class="article-date">
-  <time datetime="2017-12-08T09:50:23.000Z" itemprop="datePublished">2017-12-08</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/08/在WORD中插入LATEX伪代码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/08/在WORD中插入LATEX伪代码/">在WORD中插入LATEX伪代码</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/08/在WORD中插入LATEX伪代码/" itemprop="url">在WORD中插入LATEX伪代码</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-08T17:50:23+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="在WORD中插入LATEX伪代码"><a href="#在WORD中插入LATEX伪代码" class="headerlink" title="在WORD中插入LATEX伪代码"></a>在WORD中插入LATEX伪代码</h1>
+      
+
+      
         
-          <p class="article-more-link">
-            <a href="/2017/12/08/在WORD中插入LATEX伪代码/#more">Read More</a>
-          </p>
+          <h1 id="在WORD中插入LATEX伪代码"><a href="#在WORD中插入LATEX伪代码" class="headerlink" title="在WORD中插入LATEX伪代码"></a>在WORD中插入LATEX伪代码</h1>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/08/在WORD中插入LATEX伪代码/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/在WORD中插入LATEX伪代码/" data-id="cjyx01tw9000vjov6z70k3frq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技巧/">实用技巧</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+      
 
   
-    <article id="post-NB-classfy" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/12/08/NB-classfy/" class="article-date">
-  <time datetime="2017-12-08T09:50:23.000Z" itemprop="datePublished">2017-12-08</time>
-</a>
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/08/NB-classfy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+      <header class="post-header">
+
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/08/NB-classfy/">Naive Bayes 在机型转换分类中的实现</a>
-    </h1>
-  
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/08/NB-classfy/" itemprop="url">Naive Bayes 在机型转换分类中的实现</a></h1>
+        
 
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-08T17:50:23+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
       </header>
     
-    <div class="article-entry" itemprop="articleBody">
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
-        <h1 id="Naive-Bayes-在机型转换分类中的实现"><a href="#Naive-Bayes-在机型转换分类中的实现" class="headerlink" title="Naive Bayes 在机型转换分类中的实现"></a>Naive Bayes 在机型转换分类中的实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br></pre></td></tr></table></figure>
+      
+
+      
         
-          <p class="article-more-link">
-            <a href="/2017/12/08/NB-classfy/#more">Read More</a>
-          </p>
+          <h1 id="Naive-Bayes-在机型转换分类中的实现"><a href="#Naive-Bayes-在机型转换分类中的实现" class="headerlink" title="Naive Bayes 在机型转换分类中的实现"></a>Naive Bayes 在机型转换分类中的实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/08/NB-classfy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/08/NB-classfy/" data-id="cjyx01tun0000jov630pp2gkm" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
     </footer>
   </div>
   
-</article>
+  
+  
+  </article>
 
+
+    
+  </section>
 
   
-
-
-  <nav id="page-nav">
-    
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
-</section>
+
+
+          </div>
+          
+
+
+          
+
+        </div>
         
-          <aside id="sidebar">
+          
   
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
   </div>
 
-
-  
+  <aside id="sidebar" class="sidebar">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Guan Mengcheng</p>
+              <p class="site-description motion-element" itemprop="description">Mengcheng</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
     </div>
-  </div>
+  </aside>
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
-          </li>
-        
-          <li>
-            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
-          </li>
-        
-          <li>
-            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
         
       </div>
-      <footer id="footer">
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guan Mengcheng</span>
+
   
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
+    
 
   </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
 </body>
 </html>
