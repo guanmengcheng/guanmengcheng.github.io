@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="default">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Storage assignment and order batching problem in Kiva mobile fulfilment system" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" class="article-date">
+  <time datetime="2018-03-03T06:23:01.000Z" itemprop="datePublished">2018-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/">Storage assignment and order batching problem in Kiva mobile fulfulment system</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者: 项溪，柳长春，缪立新-清华大学工业工程系<a href="清华大学工业工程系管理科学与工程专业运筹与物流管理方向博导，清华-伯克利深圳学院智能交通与物流系统专业博导，">^1</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>介绍了Kiva系统</p>
+<p>Kiva系统中一个重要的决策问题就是需要决定哪些商品应该放在哪些货架上才能使得AGV的运行距离最短。由于货架的存储位置是自适应的，决定于货架上商品的种类以及顾客的订单，所以AGV的运行距离很难估计。然而，如果很多顾客同时订购的某些商品放置在同一货架上，那么需要搬运的货架数量会大大降低，也就降低了AGV的运行距离。因此，本文对商品进行分配，使得每个货架上的商品是经常被订购的。混合整数线性规划模型用来解决该问题。因为这是一个策略层面的问题，计算时间不是很重要，因此该模型采用CPLEX求解。为了降低命中货架个数，工人们可以同时拣选多个订单，也就是订单可以被组合成不同的批次，进而工人们按批次订单进行拣选。订单分批问题对时间要求很高，因此提出一个启发式算法进行求解。</p>
+<h2 id="2-Related-work"><a href="#2-Related-work" class="headerlink" title="2.Related work"></a>2.Related work</h2><blockquote>
+<p>For a comprehensive overview of the order batching problem, please refer to the review given by Ma and Zhao (2014).Ma and Zhao (2014) analyzed and summarized the range and idea of order batching by giving a review of the different solution approaches that have been suggested in the literature, and indicating the tendency of future research in order batching.<br>Ma, T., and P. Zhao. 2014. “A Review of Algorithms for Order Batching Problem in Distribution Center.” In International Conference on Logistics Engineering, Management and Computer Science, 172–175. Atlantis Press. doi:10.2991/lemcs-14.2014.40.</p>
+</blockquote>
+<h2 id="3-Problem-description"><a href="#3-Problem-description" class="headerlink" title="3.Problem description"></a>3.Problem description</h2><p>储位分配问题和订单分批问题分解成两个阶段如图所示:</p>
+<p>第一阶段是策略层面的储位分配问题，第二阶段是运作层面的订单分批问题。<br>假设如下:</p>
+<ul>
+<li>假设一开始货架均为空且商品不会发生缺货。</li>
+<li>假设顾客订单所需的商品数量远小于一个货架上能放置该商品的数量。即一个货架能满足一个订单中一个商品的需求。</li>
+<li>货架一次只能去一个工作站</li>
+<li>一个货架上能放置的商品种类是有限制的，因为将不同种类的商品在补货时放置在同一货架上是比较困难的。</li>
+<li>一个商品能被存储到不止一个货架上。</li>
+<li>一个货架有6层，每层只能存放一种商品。</li>
+<li>每个商品需要的存储空间已给出，可通过层数估计<a href="属于人为添加条件。">^2</a>。<br>图解如下:</li>
+</ul>
+<p>一共有4个货架，6种商品，每种商品所需的存储空间分别为6,8,1,4,3,2.</p>
+<h2 id="4-Storage-assignment-probelm-for-Stage-Ⅰ"><a href="#4-Storage-assignment-probelm-for-Stage-Ⅰ" class="headerlink" title="4.Storage assignment probelm for Stage Ⅰ"></a>4.Storage assignment probelm for Stage Ⅰ</h2><p>索引:<br>$i,j$:商品种类编号，$i,j=1,\cdots,P$<br>$n$:订单编号，$n=1,\cdots,N$<br>$m$:货架编号，$m=1,\cdots,M$<br>参数:<br>$$\Sigma=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}*(x^{(i)})^T$$<br>$P$:商品种类总数<br>$N$:订单总数<br>$M$:货架总数<br>$L$:一个货架的层数，本文中$L=6$<br>$B$:一个货架能够存放商品种类的最大数量<br>$s_{ij}$:商品$i$ 与商品$j$ 的相似度值，取值范围0-1<br>$S$:商品相似度矩阵<br>$D_i$:商品$i$ 需要被分配的层数，$\sum_{i=1}^PD_i=LM$ <a href="极为不合理，仓库中物品不一定正好全部用完所有货架的所有存储空间。">^3</a><br>$s_{ii}$:设为常数1，$i\neq j$ 时:<br>$$s_{ij}=\frac{\qquad \text{同时包含}i,j\text{的订单个数}}{N}$$<br>商品相似度矩阵$S$定义为:</p>
+<p>$$<br>\begin{bmatrix}<br>s_{11}&amp;s_{12}&amp;\cdots&amp;s_{1p}\<br>s_{21}&amp;s_{22}&amp;\cdots&amp;s_{2p}\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>s_{p1}&amp;s_{p2}&amp;\cdots&amp;s_{pp}<br>\end{bmatrix}<br>$$</p>
+<p>$s_{ij}$和$S$能从历史订单数据中得到。<br>决策变量:</p>
+<p>$$<br>x_{im} =<br>\begin{cases}<br>1,   \text{如果商品$i$在货架$m$上} \<br>0,  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$y_{im}$:整数变量，商品$i$分配到的在货架$m$上的层数。<br>目标函数为最大化所有货架上所有商品的相似性:<br>$$max \sum_i\sum_{j&gt;i}\sum_m\frac{s_{ij}x_{im}x_{jm}}{M} \tag{1}$$</p>
+<p>约束为:<br>$$\sum_i y_{im}=L,\quad \forall m\tag{2}$$</p>
+<p>$$\sum_m y_{im}=D_i,\quad \forall i\tag{3}$$</p>
+<p>$$y_{im}\leq Lx_{im},\quad \forall i,m\tag{4}$$</p>
+<p>$$y_{im}\ge x_{im},\quad \forall i,m\tag{5}$$</p>
+<p>$$\sum_i x_{im}\leq B,\quad \forall m\tag{6}$$</p>
+<p>$$x_{im}\in \{0,1\},y_{im}\ge0,\quad \forall i,m\tag{7}$$</p>
+<blockquote>
+<p>Equation (2) stipulates that L layers in each pod are to be assigned. Equation (3) ensures that the total demand number of layers for product type i is satisfied. Constraint (4) requires that the number of layers that product i occupies in the mth pod is no more than the maximum number of layers in the pod. Constraint (5) indicates that pod m can serve product i only if it is selected to store product i. Constraint (6) states that the number of product types stored in a pod is restricted to no more than B types. Constraint (7) is a basic constraint.</p>
+</blockquote>
+<p>因为目标函数中$x_{im}x_{jm}$是非线性的，需要被线性化改写。令$X_{ijm}=x_{im}x_{jm}\in\{0,1\}$，改写如下:<br>$$max\sum_i\sum_{j&gt;i}\sum_m\frac{s_{ij}X_{ijm}}{M}$$<br>$$X_{ijm}\leq x_{im},\quad \forall i,j,m$$<br>$$X_{ijm}\leq x_{jm},\quad \forall i,j,m$$<br>$$X_{ijm}\ge x_{im}+x_{jm}-1,\quad \forall i,j,m$$</p>
+<h2 id="5-Order-batching-problem-for-Stage-Ⅱ"><a href="#5-Order-batching-problem-for-Stage-Ⅱ" class="headerlink" title="5.Order batching problem for Stage Ⅱ"></a>5.Order batching problem for Stage Ⅱ</h2><p>索引:<br>$k$:批次序号，$k=1,\cdots,K$<br>参数:<br>$K$:批次总数<br>$E$:一个批次中最多包含的订单个数</p>
+<p>$$<br>a_{in}=<br>\begin{cases}<br>1,&amp;\text{如果订单$n$包含商品$i$} \<br>0,&amp;\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>x_{im}^*=<br>\begin{cases}<br>1, \text{如果货架$m$包含商品$i$} \<br>0, \text{否则}\<br>\end{cases}<br>$$</p>
+<p>$x_{im}^*$是StageⅠ的输出<br>决策变量:</p>
+<p>$$<br>z_{nk}=<br>\begin{cases}<br>1,\text{如果订单$n$被分配到批次$k$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>w_{km}=<br>\begin{cases}<br>1,\text{如果货架$m$需要搬运至批次$k$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>u_{ik}=<br>\begin{cases}<br>1,\text{如果批次$k$包含商品$i$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>目标函数是最小化需要搬运货架个数:<br>$$max \sum_k\sum_mw_{km} \tag{8}$$<br>约束条件为:<br>$$\sum_k z_{nk}=1,\quad \forall n\tag{9}$$<br>$$\sum_n z_{nk}\leq E,\quad \forall k\tag{10}$$<br>$$\sum_n a_{in}z_{nk}\leq N<em>u_{ik},\quad \forall i,k\tag{11}$$<br>$$\sum_m x_{im}^</em>w_{km}\ge u_{ik},\quad \forall i,k\tag{12}$$<br>$$z_{nk},w_{km},u_{ik}\in \{0,1\},\quad \forall i,m,n,k\tag{13}$$</p>
+<blockquote>
+<p>Equation (9) ensures that an order must be assigned to one batch. Constraint (10) states that the number of orders assigned to a batch is restricted to a maximum of E orders. Constraint (11)determines which batch contains which product. Constraint (12) indicates that the pods carried to the work station must cover all the products in a batch. Constraint (13) is a basic constraint.</p>
+</blockquote>
+<p>(9)式确保每个订单都会被分配到一个批次。(10)式保证一个批次中订单数量不超过规定的最大数量。<strong>(11)式确定哪些批次应该包含哪些商品</strong>。(12)式表示搬运至工作站的货架必须能够满足该工作站对应批次的所有商品。(13)式为取值约束。<br>订单分批问题是运作层面的问题，并已被证明为NP难问题，因此本文提出启发式算法进行求解。</p>
+<h2 id="6-Solution-approach-for-StageⅡ"><a href="#6-Solution-approach-for-StageⅡ" class="headerlink" title="6.Solution approach for StageⅡ"></a>6.Solution approach for StageⅡ</h2><p>订单分批问题要两个部分，第一部分是生成批次，第二部分是确定需要的货架。Section6.1使用启发式方法生成批次，Section6.2提出算法通过分配正确的货架至每个批次使得所需要的货架最少。</p>
+<h3 id="6-1-Generate-a-batch-schedule"><a href="#6-1-Generate-a-batch-schedule" class="headerlink" title="6.1.Generate a batch schedule"></a>6.1.Generate a batch schedule</h3><p>该章节旨在生成批次，首先使用Algorithm 1,通过最大化订单关联性或稀疏性来得到初始的分批批次，然后采用Algorithm3 的VNS变领域搜索算法来提升。</p>
+<h4 id="6-1-1-Obtain-an-initial-batch-schedule"><a href="#6-1-1-Obtain-an-initial-batch-schedule" class="headerlink" title="6.1.1.Obtain an initial batch schedule"></a>6.1.1.Obtain an initial batch schedule</h4><p><strong>Definition 1(Product correlation matrix($PCM_{p\times p}$))商品关联矩阵</strong><br>如果商品$i$ 与商品$j$ 存储在同一货架上，则称他们是相关的。<br>如果商品$i$ 与商品$j$ 相关，则$PCM_{ij}=1$，否则为0。<br><strong>Definition 2(Order association matrix($AS_{N\times N}$)订单关联矩阵</strong><br>订单$n$ 与$n’$ 的关联系数由这两个订单中共同存放在同一个货架上的商品对的数量决定。关联系数由两部分组成:1.内部关联系数。2.订单间关联系数<br><strong>Definition 3(Order alienation matrix($AL_{N\times N}$)订单疏离矩阵</strong><br>订单$n$ 与$n’$ 的疏离系数由这两个订单中不存放在同一个货架上的商品对的数量决定。疏离系数由两部分组成:1.内部疏离系数。2.订单间疏离系数。</p>
+<h4 id="6-1-2-Improve-the-solution"><a href="#6-1-2-Improve-the-solution" class="headerlink" title="6.1.2.Improve the solution"></a>6.1.2.Improve the solution</h4><p>采用VNS变邻域域搜索算法。<br><strong>Definiton4 (SwapOrder)交换订单邻域算子</strong><br>随机选取两个批次，并分别从两个批次中各选一个订单进行交换。如图:</p>
+<p>伪代码如图:</p>
+<p>局部搜索方法(local search,LS)被重复地用来搜索得到邻域中的局部最优解。而邻域算子则是LS方法的基础。邻域算子可以延伸为本地搜索:SwapOrder-LS,重复执行本地搜索的同时解空间也发生了变化。</p>
+<h4 id="6-2-Assigning-pods-to-a-batch"><a href="#6-2-Assigning-pods-to-a-batch" class="headerlink" title="6.2.Assigning pods to a batch"></a>6.2.Assigning pods to a batch</h4><p>确定批次之后需要确定哪些货架需要搬运，这个问题类似于集合覆盖问题</p>
+<blockquote>
+<p>This problemis similar to the set cover problem of Cardinal and Dumeunier (2008).</p>
+</blockquote>
+<p>贪心策略是最简单有效的启发式算法之一，可以用于解决众多组合优化问题。本文设计了一个贪心策略来确定每个批次的初始所需货架然后通过局部搜索来优化。算法如下图:</p>
+<p>首先定义两个邻域算子:交换货架及删除货架。<br><strong>Definition 5(SwapPod)交换货架</strong><br>交换货架邻域算子:从当前批次对应的初始货架池中任取两个货架，从货架池外的其他货架中任取一个货架进行交换。<br><strong>Definition 6(DeletePod)删除货架</strong><br>删除货架邻域算子:从当前批次对应的初始货架池中随机挑选一个货架并移出。<br>两个算子示意图如下:</p>
+<h4 id="6-3-Complexity-analysis"><a href="#6-3-Complexity-analysis" class="headerlink" title="6.3.Complexity analysis"></a>6.3.Complexity analysis</h4><h2 id="7-Computational-experiments"><a href="#7-Computational-experiments" class="headerlink" title="7.Computational experiments"></a>7.Computational experiments</h2><h3 id="7-1-Generate-problem-examples"><a href="#7-1-Generate-problem-examples" class="headerlink" title="7.1.Generate problem examples"></a>7.1.Generate problem examples</h3><p>由于缺少合适的算例，本文算例采取随机生成的方法。320组数据，由32种x每种10组数据组成。生成规则如下:商品种类($P$),货架数量($M$),订单数量($N$)被设置为:<br>$P/M/N \in \{8/5/50,8/5/100,10/6/100\}$以及<br>$P/M/N \in \{40/20/50,40/20/100\}$<br>从中等规模到大规模问题。</p>
+<p><strong>40种商品，20个货架，100个订单就能叫大规模？？？</strong><br>货架层数$L$设置为6层，一个货架能最多存放商品的种类设置为$B \in \{3,4\}$，一个批次中允许包含的最大订单数量设置为$E \in \{2,5\}$。生成20000个历史订单来计算StageⅠ的矩阵$S$。<br>商品$i$ 所需的层数生成方式:$D_i=K<em>L</em>(p_i/\sum_ip_i),p_i \sim U(30,80)$<br>订单$n$ 中商品种类生成方式:</p>
+<p>$$<br>a_{in}=<br>\begin{cases}<br>1,&amp; \text{if rand}(0,1)\leq 5\times \frac{p_i}{\sum_ip_i} \<br>0,&amp; \text{otherwise}<br>\end{cases}<br>$$</p>
+<p>数值实验流程示意图:</p>
+<h3 id="7-2-Performance-analysis-on-the-proposed-algorithm"><a href="#7-2-Performance-analysis-on-the-proposed-algorithm" class="headerlink" title="7.2.Performance analysis on the proposed algorithm"></a>7.2.Performance analysis on the proposed algorithm</h3><p>略</p>
+<h2 id="8-文章不足分析"><a href="#8-文章不足分析" class="headerlink" title="8.文章不足分析"></a>8.文章不足分析</h2><ul>
+<li>储位分配模型中该文章认为所有商品能占满所有货架的所有空间是极为不合理的，是对问题的简化。</li>
+<li>储位分配模型未考虑同一种商品放在同一货架上的情况。</li>
+<li>商品跟自身的相似度设为1是否合理。</li>
+<li>文章假设一个货架能够满足货架中商品被一次订购是对货架选择问题的简化。</li>
+<li>储位分配模型通过CPLEX求解只能解决小规模问题，大规模问题不适用。</li>
+<li>文章算例设计不具有参考性，相关指标太小，不具有实际意义。<br>改进思路：<pre><code>设计求解大规模储位分配问题的算法，并需要考虑不同商品所需储位的优化，更改储位分配模型目标为所用货架最少且商品相似度最大。</code></pre>感想：</li>
+</ul>
+<p>1.模型及算法是关键部分，需要学习CPLEX等求解器的运用。<br>2.算例可随机生成，英文期刊注重对算例的分析及模型的敏感性分析，注重对比分析，需要大量的实验数据支撑，可学习本文使用小算例。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" data-id="cjyx01twn0018jov68ujga17l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Modelling and performance evaluation of explosive storage policies in internet" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" class="article-date">
+  <time datetime="2017-12-21T13:02:09.000Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/">Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
+<h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
+<h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
+<h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
+<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:<br>$$\Psi_i=\frac{L_i}{V_i}$$<br>整个仓库的Explosion Ratio:<br>$$\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}$$<br>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
+<h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
+<h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
+<h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
+<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" data-id="cjyx01tv10001jov6myh0nx2o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-无人仓研究想法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/21/无人仓研究想法/" class="article-date">
+  <time datetime="2017-12-21T02:34:07.000Z" itemprop="datePublished">2017-12-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/21/无人仓研究想法/">无人仓研究想法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<ul>
+<li>运用voronoi分图优化货架选择机器人，每个机器人或每个被命中货架看成一个中心点。</li>
+<li>论文robotized warehouse systems developments and research oppotunities中</li>
+</ul>
+<p>1.GridFlow or Grid system可以用来解决密集存储的货架移动问题<br>2.Gridsort就是分拣系统。</p>
+<blockquote>
+<p>GridSort: The GridSort system is based on the GridFlow system discussed in Section5.2. It uses modular four-directional conveyors, called FlexConveyor (Furmans et al. 2010), or AGVs to transport and sort the loads. Recently, Libiao Robotics has developed a different type of ‘GridSort’ system, used by several parcel carriers that use a fleet of hundreds of AGVs on a grid to sort parcels by destination. GridStore is fundamentally different from conventional conveyor-based sorters. New models are required to evaluate its performance.</p>
+</blockquote>
+<ul>
+<li>结合Rong Yuan 关于分区的论文，考虑物品之间关联规则，建立储位分配模型。</li>
+</ul>
+<p>3.记录</p>
+<ul>
+<li>每个SKU定一个基本单元，体积大的就占用一个单元，体积小的多个SKU占用一个单元</li>
+<li></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/21/无人仓研究想法/" data-id="cjyx01tw8000tjov6sjf12r2d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/无人仓/">无人仓</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Stowage Decisions in Multi-Zone Storage Systems" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" class="article-date">
+  <time datetime="2017-12-19T02:20:49.000Z" itemprop="datePublished">2017-12-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/">Stowage Decisions in Multi-Zone Storage Systems</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#多分区货到人智能仓库储位分配<br>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了两个分区储位分配策略，能有效平衡各分区的工作量。第一个分区储位分配策略采用chaining-inspired分配，通过分散各个物品的库存数量到两个分区。第二个区域存储策略明确地跟踪/更新每个存储分区的预期工作量（称为分区的周转率），然后将到达的物品存储到具有最小周转率的存储分区。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>在多分区的仓库中，库存区域被物理地分隔成不同的平行分区，每个分区拥有自己的库存区域和工作设备。</p>
+<blockquote>
+<p>See D’Andrea and Wurman (2008), Enright and Wurman (2011), Lamballais et al. (2017), Zou et al. (2017) and Yuan (2017) for details on these semi-automated storage systems.<br>将物品分散到各个分区存储能够提高系统的灵活性，同时也有一些附带的成本产生，比如工人拆箱。</p>
+</blockquote>
+<p>[<img src="http://p0voo3j3n.bkt.clouddn.com/blog/171218/dJIH4AKB9C.png?imageslim" alt="mark">]</p>
+<h2 id="2-Literature-Review"><a href="#2-Literature-Review" class="headerlink" title="2.Literature Review"></a>2.Literature Review</h2><p>仓库运筹优化的文献主要分为两类:库存决策及订单拣选决策。</p>
+<blockquote>
+<p>The storage decisions determine where and how to store the inventory in the warehouse; the order-picking decisions determine how to efficiently pick items from the storage system to fulfill a set of customer orders. The major research topics related to the storage decision are the <strong>forward-reserve allocation problem, the zoning problem, and the storage location assignment problem</strong>. The forward-reserve problem considers how to allocate items between the reserve area and the picking area within a warehouse; the zoning problem studies how to create multiple zones for picking and how to spread the inventory for each item over the multiple zones; the storage location assignment problem decides where to store the inventory within a storage zone.</p>
+</blockquote>
+<blockquote>
+<p>The major research topics related to the order picking decisions comprise<strong>batching, routing, and sorting problems.</strong> The batching problem studies how to group the orders together for a single picking tour; the routing problem considers how to sequence the tasks in a picking tour to construct the most efficient picking route; the sorting problem determines how to efficiently sort and assemble the picked items into customer orders.<br>We refer the reader to the review papers** De Koster et al. (2007), Gu et al. (2007) and Staudt et al. (2015)** for more extensive discussions of the overall literature on warehouse operational decisions.<br><strong>Jane and Laih (2005) propose a heuristic algorithm for a multi-zone system that assigns each item to a single zone accounting for item affinity, namely the likelihood that two items will appear in the same order.</strong><br><strong>Onal et al. (2017) recently discuss an explosive storage policy by which the items are stored at many storage locations in large online retailing fulfillment centers</strong></p>
+</blockquote>
+<p>分区储位分配问题的主要决策是对于每个物品，存储多少数量到各个分区。目标函数是平衡各个分区之间的工作量。主要目的是保证拣选的灵活性/柔性。</p>
+<h2 id="3-Evaluation-Model-for-Comparing-Stowage-Policies"><a href="#3-Evaluation-Model-for-Comparing-Stowage-Policies" class="headerlink" title="3. Evaluation Model for Comparing Stowage Policies"></a>3. Evaluation Model for Comparing Stowage Policies</h2><p>为了评估不同储位分配策略的有效性，我们采用了单周期(single-period)、理想化的模型。模型的输入是随机的物品需求、每个分区固定的容量以及待存储的库存。<br>In particular,<strong>假设开始该多分区仓库是空的</strong>，利用我们的储位分配策略进行储位分配。<br>single-period:</p>
+<blockquote>
+<p>We also think a single-period model is sufficient for our purposes where the length of the period would depend on how stowage and resource planning are done.</p>
+</blockquote>
+<p>周期长度决定于补货及资源配置何时结束</p>
+<blockquote>
+<p>If stowage occurs primarily, say, during the night or early morning hours, then the period might be one day, reflecting the fact that you can only make adjustments once a day to the inventory profiles.</p>
+</blockquote>
+<p>也就是周期时间内不会发生补货及资源配置的操作。<br>Model:<br>$I$:仓库中物品的数量；<br>$J$:仓库中分区的数量<br>$a_{ij}$:表示物品$i$ 存储在分区$j$ 中的数量；<br>$d_i$:物品$i$ 的总库存；<br>$c_j$:单个周期内 $j$ 存储分区的拣选容量，假设各个分区的拣选容量均固定；<br>决策变量:<br>$x_{ij}$:表示存储分区$j$ 用来满足物品$i$ 的需求的数量</p>
+<p>$$max\sum_{i=1}^I \sum_{j=1}^J x_{ij}$$  $$s.t.\qquad \sum_{j=1}^J x_{ij} \leq d_i \qquad \forall i$$  $$\sum_{i=1}^I x_{ij} \leq c_j \qquad \forall j$$   $$0 \leq x_{ij}\leq a_{ij} \qquad \forall i,j$$<br>目标函数是在单个周期内尽可能拣选更多数量的商品，满足尽可能多的需求。</p>
+<h2 id="4-Model-Assumptions"><a href="#4-Model-Assumptions" class="headerlink" title="4.Model Assumptions"></a>4.Model Assumptions</h2><ul>
+<li><p>A1.假设有6个存储分区</p>
+</li>
+<li><p>A2.假设仓库中总共有100种($I=100$)物品，物品在单个周期内的需求率满足指数函数$\mu_i=\beta e^{is}$，$i=0,1,\cdots,99$，$s$ 和 $\beta$ are the shape and scale parameters respectively。考虑Bender(1981)提出的Pareto law,对于这个指数函数，前20%的物品的需求仅取决于参数 $s$，本文通过调整参数$s$ 使得前20%的物品拥有80%，70%，60%，50%的需求占比，称这4中需求模式分别为Ultra-high Skewness,High Skewness,Medium Skewness,Low Skewness。而且，相应地设置4种情况下的参数$\beta$，使得4种情况下在单个周期的总需求均为2000units。</p>
+</li>
+</ul>
+<ul>
+<li><p>A3.假设每个物品的需求符合泊松分布，参数为$\mu_i$</p>
+</li>
+<li><p>A4.假设每个物品的库存数量为其需求平均数量的4倍，因此缺货率为:$$Pr(d_i&gt; [4\mu_i])=1-Pr(d_i\leq[4\mu_i])=1-e^{-\mu_i}\sum_{t=0}^{[4\mu_i]}\frac{\mu_i^t}{t!}$$  缺货率很低很低</p>
+<h2 id="5-Stowage-Policies"><a href="#5-Stowage-Policies" class="headerlink" title="5.Stowage Policies"></a>5.Stowage Policies</h2><p>以固定存储策略(dedicated stowage)作为基准策略，并基于chaining strategy构造了另外几种存储策略(Policy 2-5)，每种策略都将每个物品的库存分到多个存储分区。Policy 6-7为混合存储策略，部分为固定存储，部分为chaining stategy。Policy 8将固定存储进行改进，试图平衡各个分区的工作量，将物品分配至周转率最低的存储分区。</p>
+</li>
+<li><p>Policy 1(no chain)<br>随机固定存储</p>
+</li>
+<li><p>Policy 2(3 short chains)<br>每个物品有1/3的概率存放在Zone1&amp;2，1/3的概率存放在Zone3&amp;4，1/3的概率存放在Zone5&amp;6，每个物品被均分为两部分存放在两个分区。即每两个Zone为一个chain。</p>
+</li>
+<li><p>Policy 3(2 short chains)<br>每个物品有1/2的概率存放在Zone1&amp;2&amp;3，1/2的概率存放在Zone4&amp;5&amp;6，每个物品被均分为两部分存放在两个分区。即每三个Zone为一个chain。</p>
+</li>
+<li><p>Policy 4(full chains)<br>每个物品有1/6的概率存放在Zone1&amp;2，Zone2&amp;3，Zone3&amp;4，Zone4&amp;5，Zone5&amp;6，Zone1&amp;6，，每个物品被均分为两部分存放在两个分区。</p>
+</li>
+<li><p>Policy 5(random pairs)<br>每个物品随机选择两个分区存放，每两个分区被选择的概率相等</p>
+</li>
+<li><p>Policy 6(mixed)<br>仓库中的物品被分为两个大类，第一类拥有80%的物品，他们根据Policy 1来存储。第二类拥有20%的物品，他们根据Policy 5来存储。</p>
+</li>
+<li><p>Policy 7(mixed smart)<br>首先对仓库中的物品根据其需求率进行排序，然后需求率排前20%的物品按照Policy 5来存储，后80%的物品根据Policy 1来存储。</p>
+</li>
+<li><p>Policy 8(dynamic balance)<br>首先对仓库中的物品进行随机排序，然后根据这个顺序进行存储。对于每个物品，我们选择目前物品累计需求率/周转率最小的分区来存储其全部库存。每个分区的周转率计算公式为$\sum_{i\in A_j}\mu_i$，$A_j$为目前该分区存储的所有物品集合。</p>
+<h2 id="6-Numerical-Results"><a href="#6-Numerical-Results" class="headerlink" title="6.Numerical Results"></a>6.Numerical Results</h2><h2 id="Comparision-of-Different-Stowage-Policies"><a href="#Comparision-of-Different-Stowage-Policies" class="headerlink" title="Comparision of Different Stowage Policies"></a>Comparision of Different Stowage Policies</h2><p>每个库存策略生成100种inventory profiles，每个库存布局对应会生成100种需求情况来进行仿真，即每个策略会有10000次仿真。<br>使用$A_k^p$ 表示策略$p$ 的第$k$ 种库存布局。$D_l$ 表示第$l$ 个物品的需求。<br>解本文的Model得到单个周期的未满足需求$U_{kl}^{p}$，通过调整该指标可以衡量系统里由不平衡的库存带来的未满足需求。调整方法如下$$U_{kl}^p\leftarrow U_{kl}^p\leftarrow \sum_i max(0,d_{l,i}-a_{k,i}^p)$$<br>对于各个存储策略，平均未满足需求为:$$\mu^p = \frac{\sum_k\sum_l U_{kl}^p}{nm}$$<br>同时也记录了第$k$ 种库存布局的未满足需求标准差:$$\sigma=\sqrt{\frac{\sum_l (U_{kl}^p-\frac{\sum_l U_{kl}^p}{m})^2}{m}}$$<br>则每个库存策略$p$ 的平均标准差为:$$v^p=\frac{\sum_k \sigma_k^p}{n}$$</p>
+</li>
+</ul>
+<p>通过仿真分析我们发现:</p>
+<ul>
+<li><p>Policy 1的表现是最差的</p>
+</li>
+<li><p>create chains以及Policy 8能显著提升表现。</p>
+</li>
+<li><p>the chain is longer,the better，提升系统的柔性。</p>
+</li>
+<li><p>random  pairs比full chain稍微好一点。</p>
+</li>
+<li><p>如果我们要在每个区域存放1/6的库存而忽略完整性要求，我们从表2可以看出，full chain和random pairs策略有效地实现了将每个物品的库存均匀分布在存储区域的全柔性系统的性能。 这表明将物品的库存拆分为两个以上的存储区域可能没有什么价值。 </p>
+</li>
+<li><p>从mixed和mixed smart的策略中，我们看到，我们可能只需要分散存储一小部分（20％）的物品，以获得chain的好处。 特别是mixed smart表明，只有高周转率的物品需要拆分。 从实际的角度来看，这一点非常重要，因为如前所述，存在拆分库存的运营成本。 对mixed smart的评估显示，只有将高周转率的物品分解，才能达到最佳存储策略的效果，即full chain和random pairs的效果。</p>
+</li>
+<li><p>动态平衡策略也可能相当有效，尽管相对于full chain，random pairs和mixed smart来说，这种策略是滞后的。 如果在仓库中拆分物品的库存是不可能的或者成本过高，那么动态平衡策略看起来是最合理的，因为它可以确保库存在存储区域内“均匀”分布。 但是，这个策略需要知道所有物品的需求率。 相比之下，除mixed smart外，其他策略不需要知道物品需求率; 而对于mixed smart策略，我们只需要将物品分为高与低的需求。</p>
+<h2 id="7-Sensitivity-Analysis"><a href="#7-Sensitivity-Analysis" class="headerlink" title="7.Sensitivity Analysis"></a>7.Sensitivity Analysis</h2><p>我们对资源利用率，需求偏度和库存水平进行敏感性分析。目的是更深入地了解上一节中的不同分区存储策略的相对表现。</p>
+</li>
+<li><p>Sensitivity Analysis towards Resource Utilization Level<br>在这个测试中，我们分析了四种资源利用水平下的分区存储策略。我们观察到，当资源利用率提高时，系统的性能会变差，但是即使在容量很紧的情况下，chain和random pairs的策略仍然变现不错。事实上，随着利用率的提高，full chain或random pairs的相对改善也随之增加。 </p>
+</li>
+<li><p>Sensitivity Analysis towards Demand Skewness<br>在这个测试中，我们分析了低，中，高和超高需求偏度下的分区存储策略。假设在这个测试中资源利用率为90％。我们观察到当需求偏多时，系统的性能会变差。值得注意的是，mixed smart即使对于偏高需求模式也非常有效，因为高周转率的物品总是分成两个存储区。</p>
+</li>
+<li><p>Sensitivity Analysis towards Inventory Level<br>在这个测试中，我们放宽在A4种设定每个物品的库存水平的假设。 我们假设需求为中等偏度，平均资源利用率为90％。我们观察到，除动态平衡策略外，每个分区存储策略对库存水平的变化不敏感; 这表明，当库存的相对数量在各个物品之间变化时，根据总需求率存储物品可能不太有效。</p>
+<h2 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8.Conclusion"></a>8.Conclusion</h2><p>在这项研究中，我们通过模拟研究来分析分区存储策略。我们确定了两个非常有效的存储策略，通过保持库存分配的平衡可以提高拣选效率。<br>第一个策略将每个物品的到达库存分成两半，并将每一半装入不同的存储区域。另一方面，我们发现按照full chain来存放库存几乎同样有效。此外，我们发现即使在高资源利用率和高需求变化的情况下，有效策略也只需要将random pairs策略应用于高周转率物品。<br>第二个策略是动态平衡策略，但是要实施这个策略，需要知道存储在存储区中的物品的总周转率。</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" data-id="cjyx01two0019jov6n3nwkm63" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Python读取JSON" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/15/Python读取JSON/" class="article-date">
+  <time datetime="2017-12-15T02:15:00.000Z" itemprop="datePublished">2017-12-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/15/Python读取JSON/">Python读取JSON</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考博客:<a href="https://zhuanlan.zhihu.com/p/27917664" target="_blank" rel="noopener">python 读写json文件</a>   <a href="http://blog.csdn.net/heatdeath/article/details/72833459" target="_blank" rel="noopener">使用python读取json文件 </a><br><a href="http://www.cnblogs.com/lhj588/archive/2012/05/24/2516046.html" target="_blank" rel="noopener">Python多维/嵌套字典数据无限遍历</a><br><a href="http://www.cnblogs.com/HZQHZA/p/7301362.html" target="_blank" rel="noopener">python json文件遍历所有key、value 及替换key对于的value</a><br>$\times$<br>json数据部分展示:</p>
+<ul>
+<li><p>读取多个JSON数据，提取不同已知属性的值:<br>代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line">start=time.time()</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'C:/Users/Administrator/Desktop/extract.json'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tdid=[]</span><br><span class="line">    androidId=[]</span><br><span class="line">    imei=[]</span><br><span class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> f.readlines():</span><br><span class="line">        <span class="comment">#print(line)</span></span><br><span class="line">        <span class="comment">#line=f.readline()</span></span><br><span class="line">        d = json.loads(line)</span><br><span class="line">        tdid.append(d[<span class="string">'tdid'</span>])</span><br><span class="line">        androidId.append(d[<span class="string">'id'</span>][<span class="string">'androidId'</span>])</span><br><span class="line">        <span class="comment">#imei.append(d['id']['sim'][1]['imei'])</span></span><br><span class="line">timeUsed=time.time()-start<span class="comment">#计时</span></span><br><span class="line">print(tdid,androidId)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取单个JSON数据，提取该JSON所有值(函数自我调用)<br>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'C:/Users/Administrator/Desktop/XS/new.json'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    jsonValue=[]</span><br><span class="line">    <span class="comment">#for line in f.readlines():</span></span><br><span class="line">    <span class="comment">#print(line)</span></span><br><span class="line">    line=f.readline()</span><br><span class="line">    d = json.loads(line)<span class="comment">#转换为字典</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">jsonAll</span><span class="params">(d)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> isinstance(d,dict) <span class="keyword">or</span> isinstance(d,list):<span class="comment">#判断是否为字典或列表</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> d:</span><br><span class="line">            <span class="comment">#print(key)</span></span><br><span class="line">            <span class="keyword">if</span> isinstance(d,dict):</span><br><span class="line">                tempValue = d[key]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                tempValue = d[<span class="number">0</span>]</span><br><span class="line">            <span class="keyword">if</span> isinstance(tempValue,dict) <span class="keyword">or</span><span class="comment">#判断是否为字典或列表 isinstance(tempValue,list):</span></span><br><span class="line">                <span class="comment">#print(tempValue)</span></span><br><span class="line">                <span class="comment">#if isinstance(tempValue,dict):</span></span><br><span class="line">                jsonAll(tempValue)<span class="comment">#自我调用</span></span><br><span class="line">            <span class="comment">#print("%s :%s" %(key,tempValue))</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                jsonValue.append(tempValue)</span><br><span class="line">                <span class="comment">#print(tempValue)</span></span><br><span class="line">                <span class="comment">#jsonValue += tempValue</span></span><br><span class="line">    <span class="keyword">return</span> jsonValue</span><br><span class="line">jsonValue=jsonAll(d)</span><br><span class="line">print(jsonValue)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>输出结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&apos;317ee02415b4af4311787abf4382eb075&apos;, 1513069978654, &apos;ta&apos;, 2, None, &apos;9ee0e03e4f552ac5&apos;, None, None, None, None, &apos;AC:C1:EE:33:D9:D8&apos;, &apos;fb088626&apos;, &apos;869718024877240&apos;, &apos;460008382291304&apos;, &apos;89860084191445414192&apos;, &apos;460&apos;, &apos;00&apos;, &apos;1&apos;, &apos;869718024877240&apos;, &apos;460008382291304&apos;, &apos;89860084191445414192&apos;, &apos;460&apos;, &apos;00&apos;, &apos;1&apos;, &apos;69264580E09186B40701BB968CE87FFC&apos;, &apos;Soul&apos;, &apos;2.8.6&apos;, &apos;cn.soulapp.android&apos;, 1507785806909, 0, &apos;Android+TalkingData+V4.0.12&apos;, &apos;Android+6.0.1&apos;, &apos;23&apos;, &apos;zh&apos;, &apos;zh_CN&apos;, 8.0, 23.008712, 113.748479, 0.0, 1513069558940, 29.0, 0.0, 0.0, 0.0, &apos;network&apos;, &apos;cellular&apos;, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;LTE&apos;, None, &apos;2147483647&apos;, &apos;2147483647&apos;, 2147483647, 2147483647, 23, False, &apos;223.104.1.147&apos;, &apos;Xiaomi&apos;, &apos;MI 5s&apos;, &apos;1080*1920*480&apos;, &apos;Qualcomm Technologies, Inc MSM8996pro&apos;, 2, 1996800.0, 2779932, 112738896, 0, 0, 2, 1511918381515, None, None]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/15/Python读取JSON/" data-id="cjyx01tvx000ejov63r8p6kq9" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-jupyter theme" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/14/jupyter theme/" class="article-date">
+  <time datetime="2017-12-14T02:50:00.000Z" itemprop="datePublished">2017-12-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/14/jupyter theme/">Jupyter 修改主题、字体、宽度、字号</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798" target="_blank" rel="noopener">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98" target="_blank" rel="noopener">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt></p>
+<p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt><br>更多设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\Administrator&gt;jt -t</span><br><span class="line">usage: jt [-h] [-l] [-t THEME] [-f MONOFONT] [-fs MONOSIZE] [-nf NBFONT]</span><br><span class="line">          [-nfs NBFONTSIZE] [-tf TCFONT] [-tfs TCFONTSIZE] [-dfs DFFONTSIZE]</span><br><span class="line">          [-ofs OUTFONTSIZE] [-mathfs MATHFONTSIZE] [-m MARGINS]</span><br><span class="line">          [-cursw CURSORWIDTH] [-cursc CURSORCOLOR] [-cellw CELLWIDTH]</span><br><span class="line">          [-lineh LINEHEIGHT] [-altp] [-altmd] [-altout] [-P] [-T] [-N] [-vim]</span><br><span class="line">          [-r] [-dfonts]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/14/jupyter theme/" data-id="cjyx01tw4000mjov6d2etaws5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技巧/">实用技巧</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Velocity-based storage and stowage decisions in a semi-automated fulfillment system" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/" class="article-date">
+  <time datetime="2017-12-12T11:30:23.000Z" itemprop="datePublished">2017-12-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/">Velocity-based storage and stowage decisions in a semi-automated fulfillment system</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
+<p>we consider three types of storage olicies in this paper:</p>
+<ul>
+<li>random storage policy:随机存储策略</li>
+<li>full-velocity storage policy:基于周转率的存储策略，货架的周转率等于其上物品的需求率之和</li>
+<li>class-based storage policy:分级存储，将存储区域分区，将物品分级，对应存放</li>
+</ul>
+</blockquote>
+<h2 id="2-1-literature-Review"><a href="#2-1-literature-Review" class="headerlink" title="2.1 literature Review"></a>2.1 literature Review</h2><p>疑问：</p>
+<blockquote>
+<p>they set expected duration of stay of the $i^{th}$ storage unit of an item to be i/V for i = 1,2,. . . ,Q, where V is the demand rate of the item and Q is the number of storage units of the item in the system. With the duration of stay policy, the storage units across all the different items can be ordered according to this measure and then assigned in order to the closest locations. <strong>Hence, the storage units of a single item may not be stored together in the warehouse.</strong></p>
+</blockquote>
+<h2 id="2-2-Model-Assumptions"><a href="#2-2-Model-Assumptions" class="headerlink" title="2.2 Model Assumptions"></a>2.2 Model Assumptions</h2><blockquote>
+<p>We establish a <strong>fluid</strong> model that evaluates the expected travel distance of the pods for their pick tours.</p>
+</blockquote>
+<p>对于某个可移动货架而言，其预计行驶距离=其存储位置到工作站的距离乘以其周转率</p>
+<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
+<li>A1: Fluidity of inventory items<br>对物品进行连续性处理<br>fluidity:流动性，流畅<blockquote>
+<p><strong>we index the items (i.e., the stock keeping units) on the continuum from 0 to 1</strong>.We assume that the items are indexed in descending order of <em>demand</em>.</p>
+</blockquote>
+</li>
+</ul>
+<p>按照物品的需求量对仓库内的物品在0到1内进行降序排列。<br>(Q:是否是需求量占比？)</p>
+<ul>
+<li>A2: Fluidity of inventory units, exponential demand for each item<br>假设物品的需求量符合指数分布<blockquote>
+<p>We model the demand of each item as being the number of units required for picking in a specified period of time,e.g.,the next twelve hours.For each item we model the demand as a continuous random variable with an exponential distribution.</p>
+</blockquote>
+</li>
+</ul>
+<p>定义每个物品的需求量为未来一段时间内该物品的单位拣选量。假设每个物品的需求是服从指数分布的连续型随机变量。指数分布能够反映需求的长尾效应和需求的多变性。</p>
+<blockquote>
+<p>we model the inventory as being continuous, as like a fluid.</p>
+<ul>
+<li>A3: Ranked inventory<br>对每个物品库存数量进行排序<br>Thus, if the demand for item  i  equals  x   units, then the x -highest ranked units of inventory will be picked to meet the demand.</li>
+</ul>
+</blockquote>
+<p>由于物品分散存储，不同的储位存放的数量可能不一样，对同一商品的不同货位进行排序，当订单到达时，选取库存数量最多的储位满足订单。</p>
+<ul>
+<li><p>A4： Universal stock out rate for all items<br>所有物品在下一段时间的缺货率相等均为$\alpha$   </p>
+</li>
+<li><p>A5: Same unit size for all items, fixed pod size<br>假设每个货架的储位数量相等，每个物品大小尺寸相等</p>
+</li>
+<li><p>A6: Number of picks independent of the pod’s velocity measure<br>货架在工作站拣选的物品数量不依赖其周转率，主要关注货架到达工作站的频次</p>
+</li>
+<li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
+</li>
+<li><p>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</p>
+</li>
+<li><p>A9: Ignore stow operations<br>忽略上货操作</p>
+</li>
+<li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
+<h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
+<li><p>$$v_i(x)=e^{-x/V_i}$$<br>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：<br>$$\int_o^1V_idi=1$$”CDF”（Cumulative Distribution Function）：分布函数<br>指数分布概率密度函数:<br>$$<br>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \<br>&amp; 0,  x\lt 0 \<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
+</li>
+<li><p>定义物品$i$的库存数量为$Q_i$<br>$$Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha$$</p>
+</li>
+</ul>
+<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：<br>$$Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha$$</p>
+<p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:<br>$$DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha$$<br>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
+<ul>
+<li>$C$表示货架的货位数，$J$表示货架的数量<br>$$J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}$$<center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center>
+[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]
+## 2.4Evaluation of Storage Policies under Random Stowage
+随机存储策略下的货架布局策略评估
+> Our objective is to evaluate the expected total travel distance under the different storage policies
+
+</li>
+</ul>
+<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:<br>$$Pr[D_i&gt; x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i$$<br>$$Pr[D_i &gt; x]=0,for\quad x\geq Q_i$$<br>则其期望与方差$E[D_i],Var(D_i)$:<br>$$E[D_i]=V_i(1-\alpha)$$<br>$$Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)$$<br>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:<br>$$E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C$$<br>$$Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C$$<br>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
+<p>$$L=4$$<br>$$l \in \{1,2,…,L\}$$</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/12/Velocity-based storage and stowage decisions in a semi-automated fulfillment system/" data-id="cjyx01tw7000rjov6m3uo4qo7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-在WORD中插入LATEX伪代码" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/08/在WORD中插入LATEX伪代码/" class="article-date">
+  <time datetime="2017-12-08T09:50:23.000Z" itemprop="datePublished">2017-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/08/在WORD中插入LATEX伪代码/">在WORD中插入LATEX伪代码</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="在WORD中插入LATEX伪代码"><a href="#在WORD中插入LATEX伪代码" class="headerlink" title="在WORD中插入LATEX伪代码"></a>在WORD中插入LATEX伪代码</h1>
+        
+          <p class="article-more-link">
+            <a href="/2017/12/08/在WORD中插入LATEX伪代码/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/08/在WORD中插入LATEX伪代码/" data-id="cjyx01tw9000vjov6z70k3frq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/实用技巧/">实用技巧</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-NB-classfy" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/12/08/NB-classfy/" class="article-date">
+  <time datetime="2017-12-08T09:50:23.000Z" itemprop="datePublished">2017-12-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/12/08/NB-classfy/">Naive Bayes 在机型转换分类中的实现</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Naive-Bayes-在机型转换分类中的实现"><a href="#Naive-Bayes-在机型转换分类中的实现" class="headerlink" title="Naive Bayes 在机型转换分类中的实现"></a>Naive Bayes 在机型转换分类中的实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2017/12/08/NB-classfy/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2017/12/08/NB-classfy/" data-id="cjyx01tun0000jov630pp2gkm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

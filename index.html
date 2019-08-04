@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-test-my-site" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Matlab函数记录" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/04/test-my-site/" class="article-date">
-  <time datetime="2019-08-04T12:54:23.000Z" itemprop="datePublished">2019-08-04</time>
+    <a href="/2019/02/18/Matlab函数记录/" class="article-date">
+  <time datetime="2019-02-18T13:03:50.000Z" itemprop="datePublished">2019-02-18</time>
 </a>
     
   </div>
@@ -76,7 +76,116 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/04/test-my-site/">test_my_site</a>
+      <a class="article-title" href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
+<p>randsample的命令格式：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y = randsample(n,k)</span><br><span class="line">y = randsample(population,k)</span><br><span class="line">y = randsample(n,k,replacement)</span><br><span class="line">y = randsample(population,k,replacement)</span><br><span class="line">y = randsample(n,k,<span class="built_in">true</span>,w)</span><br><span class="line">y = randsample(population,k,<span class="built_in">true</span>,w)</span><br><span class="line">y = randsample(s,...)</span><br></pre></td></tr></table></figure>
+
+<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
+<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
+<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/18/Matlab函数记录/" data-id="cjyx01tv60003jov68l41uhv7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matlab/">Matlab</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-我的电脑软件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/18/我的电脑软件/" class="article-date">
+  <time datetime="2019-01-18T09:02:37.000Z" itemprop="datePublished">2019-01-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/软件/">软件</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录下使用电脑过程中的优秀软件：</p>
+<h3 id="1-Bandzip"><a href="#1-Bandzip" class="headerlink" title="1 Bandzip"></a>1 Bandzip</h3><p>解压缩软件，<a href="http://www.bandisoft.com/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="2-QuickLook"><a href="#2-QuickLook" class="headerlink" title="2  QuickLook"></a>2  QuickLook</h3><p>快速预览文件，<a href="https://github.com/QL-Win/QuickLook" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="3-Office-Tab"><a href="#3-Office-Tab" class="headerlink" title="3  Office Tab"></a>3  Office Tab</h3><p>实现MS office的多标签功能，<a href="https://pan.baidu.com/s/1WkwqgqByxhTqs9XCVrwYfQ" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="4-Clover"><a href="#4-Clover" class="headerlink" title="4  Clover"></a>4  Clover</h3><p>实现电脑资源管理器多标签功能，<a href="http://cn.ejie.me/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="5-Snipaste"><a href="#5-Snipaste" class="headerlink" title="5  Snipaste"></a>5  Snipaste</h3><p>截图软件，带贴图功能，<a href="https://www.snipaste.com/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="6-KeePass"><a href="#6-KeePass" class="headerlink" title="6  KeePass"></a>6  KeePass</h3><p>密码管理软件，电脑端手机端多平台使用，<a href="https://keepass.info/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="7-Onequick"><a href="#7-Onequick" class="headerlink" title="7  Onequick"></a>7  Onequick</h3><p>热键快捷工具，屏幕边缘操作（调节音量，换歌等），<a href="https://onequick.org/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="8-Picgo"><a href="#8-Picgo" class="headerlink" title="8 Picgo"></a>8 Picgo</h3><p>开源工具，图片上传至图床，支持多家图床，<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="9-Listary"><a href="#9-Listary" class="headerlink" title="9  Listary"></a>9  Listary</h3><p>快速文件检索工具，<a href="https://www.listary.com/download" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="10-小黄条"><a href="#10-小黄条" class="headerlink" title="10  小黄条"></a>10  小黄条</h3><p>多平台同步To do List，<a href="http://www.6fcsj.com/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="11-f-lux"><a href="#11-f-lux" class="headerlink" title="11  f.lux"></a>11  f.lux</h3><p>护眼软件，<a href="https://justgetflux.com/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="12-licecap"><a href="#12-licecap" class="headerlink" title="12  licecap"></a>12  licecap</h3><p>gif图截图软件，<a href="https://www.cockos.com/licecap/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="13-spacesniffer"><a href="#13-spacesniffer" class="headerlink" title="13  spacesniffer"></a>13  spacesniffer</h3><p>磁盘分析工具，分析哪些文件占的空间大，<a href="http://www.uderzo.it/main_products/space_sniffer/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="14-PanDownload"><a href="#14-PanDownload" class="headerlink" title="14  PanDownload"></a>14  PanDownload</h3><p>百度网盘不限速多线程下载，<a href="http://pandownload.com/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="15-Ditto"><a href="#15-Ditto" class="headerlink" title="15  Ditto"></a>15  Ditto</h3><p>剪贴板工具，连续复制不影响，<a href="https://ditto-cp.sourceforge.io/" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="16-Synergy"><a href="#16-Synergy" class="headerlink" title="16  Synergy"></a>16  Synergy</h3><p>完爆Logitech flow，一套键鼠控制多台设备，<a href="https://pan.baidu.com/s/1i_aZmJGCkn1YwU715IonUA" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="17-TrafficMonitor"><a href="#17-TrafficMonitor" class="headerlink" title="17 TrafficMonitor"></a>17 TrafficMonitor</h3><p>任务栏上随时监测网速，CPU使用率，内存使用率</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190224161509.png" alt></p>
+<p><a href="https://github.com/zhongyang219/TrafficMonitor/releases" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="18-QTranslate"><a href="#18-QTranslate" class="headerlink" title="18 QTranslate"></a>18 QTranslate</h3><p>翻译软件，一个<strong>完全免费</strong>，集合了巴比伦，百度，谷歌，微软，有道，DeepL，SDL等<strong>10个翻译引擎</strong>，支持<strong>71 种语言</strong>和<strong>OCR功能</strong>而<strong>体积不足1MB</strong>！这款软件在国外也算是老牌神器了。<a href="http://quest-app.appspot.com/download" target="_blank" rel="noopener">下载地址</a></p>
+<h3 id="19-Inpaint"><a href="#19-Inpaint" class="headerlink" title="19 Inpaint"></a>19 Inpaint</h3><p>去水印神器，<a href="https://pan.baidu.com/s/1Fumyt55aqtorm9OXKFoPzQ" target="_blank" rel="noopener">下载地址</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/18/我的电脑软件/" data-id="cjyx01twa000yjov6j3y22x85" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件/">软件</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SQL(MYSQL、ORACLE)日常" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/" class="article-date">
+  <time datetime="2019-01-11T05:55:22.000Z" itemprop="datePublished">2019-01-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
     </h1>
   
 
@@ -88,9 +197,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/04/test-my-site/" data-id="cjywziman0001fkv6htjb90tb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/01/11/SQL(MYSQL、ORACLE)日常/" data-id="cjyx01tvz000gjov6awporo8t" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/">SQL</a></li></ul>
+
     </footer>
   </div>
   
@@ -98,10 +209,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-Python数据分析日常" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2019/08/04/hello-world/" class="article-date">
-  <time datetime="2019-08-04T12:50:49.652Z" itemprop="datePublished">2019-08-04</time>
+    <a href="/2019/01/10/Python数据分析日常/" class="article-date">
+  <time datetime="2019-01-10T08:58:49.000Z" itemprop="datePublished">2019-01-10</time>
 </a>
     
   </div>
@@ -112,7 +223,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/04/hello-world/">Hello World</a>
+      <a class="article-title" href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
     </h1>
   
 
@@ -120,26 +231,382 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <p>总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。</p>
+<h4 id="1-Python连接MYSQL数据库"><a href="#1-Python连接MYSQL数据库" class="headerlink" title="1 Python连接MYSQL数据库"></a>1 Python连接MYSQL数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> MySQLdb.cursors</span><br><span class="line">mysql_cn= MySQLdb.connect(host=<span class="string">'数据库地址'</span>, port=<span class="string">'端口'</span>, user=<span class="string">'用户名'</span>, passwd=<span class="string">'密码'</span>, db=<span class="string">'数据库名'</span>,cursorclass = MySQLdb.cursors.SSCursor)</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h4 id="2-写入xlsx文件-多个sheet"><a href="#2-写入xlsx文件-多个sheet" class="headerlink" title="2 写入xlsx文件(多个sheet)"></a>2 写入xlsx文件(多个sheet)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">'出库统计.xlsx'</span>)</span><br><span class="line">df.to_excel(writer,sheet_name=<span class="string">'sheet_name'</span>)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<h4 id="3-DataFrame按某列排序"><a href="#3-DataFrame按某列排序" class="headerlink" title="3 DataFrame按某列排序"></a>3 DataFrame按某列排序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">'列名'</span>,ascending=<span class="literal">False</span>)<span class="comment">#ascending=False为降序</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<h4 id="4-取出DataFrame某列中非空的行"><a href="#4-取出DataFrame某列中非空的行" class="headerlink" title="4 取出DataFrame某列中非空的行"></a>4 取出DataFrame某列中非空的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'columns'</span>].isnull().values==<span class="literal">False</span>]</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h4 id="5-Pandas读取xlsx文件的sheetname"><a href="#5-Pandas读取xlsx文件的sheetname" class="headerlink" title="5 Pandas读取xlsx文件的sheetname"></a>5 Pandas读取xlsx文件的sheetname</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">wb = openpyxl.load_workbook(path)</span><br><span class="line">sheetnames = wb.sheetnames</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_expire</span><span class="params">(arr,x,y)</span>:</span></span><br><span class="line">    a=arr[x]</span><br><span class="line">    b=arr[y]</span><br><span class="line">    cur.execute(SQL)</span><br><span class="line">    <span class="keyword">return</span> cur.fetchall()[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'失效日期'</span>]=df.apply(get_expire,axis = <span class="number">1</span>, args = (<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在get_expire函数中，arr传入的为df，x,y传入分别为<code>&#39;product_id&#39;</code>,<code>&#39;wms_batch_code&#39;</code></p>
+<h4 id="7-按时间统计数据"><a href="#7-按时间统计数据" class="headerlink" title="7 按时间统计数据"></a>7 按时间统计数据</h4><p>首先需要将时间to_datetime，利用方法：</p>
+<p><code>df[&#39;cal_date&#39;]=pd.to_datetime(df[&#39;cal_date&#39;])</code></p>
+<p>然后设置时间列为索引：</p>
+<p><code>df=df.set_index(&#39;cal_date&#39;)</code></p>
+<p>然后就可以按周、月、季度、年进行统计</p>
+<p><code>df.resample(&#39;M&#39;)[&#39;col1&#39;].sum()</code></p>
+<p>聚合方式还有：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png" alt></p>
+<h4 id="8-获取DataFrame中某列包含特定字符的所有行"><a href="#8-获取DataFrame中某列包含特定字符的所有行" class="headerlink" title="8 获取DataFrame中某列包含特定字符的所有行"></a>8 获取DataFrame中某列包含特定字符的所有行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car = df[<span class="string">'单据号'</span>].str.contains(<span class="string">'CAR'</span>)</span><br><span class="line">df[car] <span class="comment">#表示在df的'单据号'列中包含字符'CAR'的所有行</span></span><br><span class="line">df[~car] <span class="comment">#表示去不包含字符'CAR'的所有行</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="9-取时间中的天数"><a href="#9-取时间中的天数" class="headerlink" title="9 取时间中的天数"></a>9 取时间中的天数</h4><p><code>batch[&#39;库存天数&#39;]=(batch[&#39;销完时间&#39;]-batch[&#39;上架时间&#39;]).dt.days</code></p>
+<h4 id="10-按特定的值取DataFrame中的行"><a href="#10-按特定的值取DataFrame中的行" class="headerlink" title="10 按特定的值取DataFrame中的行"></a>10 按特定的值取DataFrame中的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_zhout[df_zhout[<span class="string">'出库类型'</span>].isin([<span class="string">'销售订单'</span>,<span class="string">'电商订单'</span>])]</span><br></pre></td></tr></table></figure>
+
+<p>表示取出’出库类型’列中值为’销售订单’,’电商订单’的所有行</p>
+<h4 id="11-删除DataFrame中的重复值"><a href="#11-删除DataFrame中的重复值" class="headerlink" title="11 删除DataFrame中的重复值"></a>11 删除DataFrame中的重复值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch.drop_duplicates(subset=[<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>],keep=<span class="string">'first'</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>表示删除batch中’product_id’,’wms_batch_code’均重复的行，保留第一个重复的行，并替换掉原batch</p>
+<h4 id="12-合并DataFrame"><a href="#12-合并DataFrame" class="headerlink" title="12 合并DataFrame"></a>12 合并DataFrame</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=df.append(df1,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>df 与 df1的列相同，将其合并，并忽略各自的index</p>
+<h4 id="13-DataFrame的Merge方法"><a href="#13-DataFrame的Merge方法" class="headerlink" title="13 DataFrame的Merge方法"></a>13 DataFrame的Merge方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.merge(df_sample, df_stock, on=<span class="string">'cal_date'</span>,how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>how还可取<code>inner,outer,right</code></p>
+<h4 id="14-改变某列的数据类型"><a href="#14-改变某列的数据类型" class="headerlink" title="14 改变某列的数据类型"></a>14 改变某列的数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'sku_id'</span>]=df[<span class="string">'sku_id'</span>].astype(str)</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-选取以字母G开头的数据"><a href="#15-选取以字母G开头的数据" class="headerlink" title="15  选取以字母G开头的数据"></a>15  选取以字母G开头的数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df.col1.str.startswith(<span class="string">'G'</span>)]</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-Group-by方法"><a href="#16-Group-by方法" class="headerlink" title="16 Group by方法"></a>16 Group by方法</h4><p>对DataFrame进行分组，agg方法可实现对多个方法同时使用:</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104347.png" alt></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104421.png" alt></p>
+<h4 id="17-Concat合并"><a href="#17-Concat合并" class="headerlink" title="17 Concat合并"></a>17 Concat合并</h4><p>将两个DataFrame按照行的维度进行合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data = pd.concat([data1, data2])</span><br></pre></td></tr></table></figure>
+
+<p>按列的维度进行合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data_col = pd.concat([data1, data2], axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-删除有缺失值的行"><a href="#18-删除有缺失值的行" class="headerlink" title="18 删除有缺失值的行"></a>18 删除有缺失值的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(how=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/10/Python数据分析日常/" data-id="cjyx01tv80004jov69zvrzkwi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Inventory management based on target-oriented" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/09/Inventory management based on target-oriented/" class="article-date">
+  <time datetime="2018-06-09T14:45:52.000Z" itemprop="datePublished">2018-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Management Science</strong><br>Author: Yun Fong Lim, SMU; Chen Wang,SMU</p>
+<hr>
+<h4 id="Absract"><a href="#Absract" class="headerlink" title="Absract"></a>Absract</h4><p>我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总成本比预先设定的成本目标更低。我们证明了一个静态决策规则是最优的，降低了计算负担。通过调整成本目标，结果策略能在预期成本和相关成本之间取得一个平衡。数值实验表明，尽管只利用了有限的需求信息，提出的方法与基于动态规划的传统方法的性能相当。更重要的是，如果需求分布不明确，我们的方法要明显优于传统的方法。通过两个行业的案例研究验证了我们的方法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h4><p>本文研究了一个多商品、多周期，具有固定订货成本和订货提前期的库存管理问题。动态规划是这个领域所用的主要方法，动态规划的局限性是当变量数增多时，将导致维数灾难。另一个主要方法是随机规划，随机规划只能解决很短的计划问题。鲁棒优化的研究近年增长了非常多，鲁棒优化方法有两个优点：1.只需要使用一部分潜在的不确定参数。2.鲁棒优化可以保存优化问题的可追踪性。</p>
+<h4 id="2-Problem-description-and-notation"><a href="#2-Problem-description-and-notation" class="headerlink" title="2. Problem description and notation"></a>2. Problem description and notation</h4><p><strong>Notation</strong></p>
+<hr>
+<p>$P$：商品数量,$\mathcal P=\{1,2,3,…,P\}$<br>$T$：规划范围内的周期数，$\mathcal T=\{1,2,3,…,T\}$<br>$l(i)$：商品$i$的订货提前期(以周期为单位)，常量<br>$h_t^i$：每单位的商品$i$在$t$周期到$t+1$的库存持有成本<br>$b_t^i$：每单位的商品$i$在$t$周期到$t+1$的积压成本<br>$A_t^i$：商品$i$在$t$周期内的固定订购成本（每次订购）<br>$c_t^i$：商品$i$在$t$周期内的单位订购成本<br>$\widetilde{d}_t^i$：商品$i$在$t$周期内的需求support set $[\underline{d_t^i},\overline{d_t^i}]$<br>$d_t^i$：商品$i$在$t$周期内已实现的需求<br>$\mathbf{\widetilde{d}}_t^i$：商品$i$从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t^i:=\bigl(\widetilde{d}_1^i,…,\widetilde{d}_t^i\bigr)\in \mathbb{R^t}$<br>$\mathbf{\widetilde{d}}_t$：所有商品从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t:=\bigl(\widetilde{d}_t^1,…,\widetilde{d}_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$\mathbf{d}_t^i$：商品$i$从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t^i:=\bigl(d_1^i,…,d_t^i\bigr)\in \mathbb{R}^{t}$<br>$\mathbf{d_t}$：所有商品从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t:=\bigl(d_t^1,…,d_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$y_t^i$：$t$周期开始时商品$i$的现有库存水平<br>$x_t^i$：$t$周期开始时商品$i$的订购数量<br>$\mathbf{y}_t:=\bigl(y_t^1,…,y_t^P\bigr)\in \mathbb{R}^P$<br>$\mathbf{x}_t:=\bigl(x_t^1,…,x_t^P\bigr)\in \mathbb{R}^P$<br>$\overline{x}_t$：所有商品在$t$周期的最大订购数量<br>$\mathcal{N}_t$：$\mathbb{R}^{(t-1)\times P}$到$\mathbb R$的非预期映射函数</p>
+<hr>
+<p>假设仓库中有$P$种商品，计划周期共$T$个周期，在每个周期$t$内，以下的进程被重复执行：<br>1.$y_t^i$表示商品$i$在周期$t$的现有库存水平。基于这个库存水平，我们需要确定商品$i$在周期$t$开始时的订购批量（生产批量）$x_t^i$，这就会产生一个固定订购成本$A_t^i$和一个变动订购成本$c_t^ix_t^i$，$c_t^i$表示商品$i$的单位订购成本。在这个问题中，$x_t^i$是决策变量，$y_t^i$是因变量。<br>2.商品$i$的订货提前期设为$l(i)$。在$t-l(i)$时刻订购的商品将在$t$周期开始时到达。<br>3.每个商品$i$在周期$t$内都有随机需求$\widetilde{d}<em>t^i$，最终实现的需求为$d_t^i$。在$t$周期结束时库存水平变成$y_t^i+x</em>{t-l(i)}^i-d_t^i$。<br>4.如果$y_t^i+x_{t-l(i)}^i-d_t^i \geq 0$,剩余的库存将会转到下个周期$t+1$中，这将导致每单位$h_t^i$的持有成本(holding cost)。如果$y_t^i+x_{t-l(i)}^i-d_t^i &lt; 0$，未满足的需求将会积压到下个周期中，这将产生每单位$b_t^i$的积压成本(backlog cost)。（注意持有成本与积压成本的区别，积压成本是由未满足的需求造成的）</p>
+<blockquote>
+<p><strong>Inventory holding cost</strong>:Holding inventory causes two type of cost<br>1.Out-of-pocket  holding  cost represents  real  costs  of  holding  inventory  such  as  warehouse rental, handling, insurance and refrigeration costs.<br>2.Opportunity cost represents the opportunity cost of funds tied to inventory.  It is calculated by multiplying the value of inventory with an opportunity cost rate parameter r≥0.The value of inventory is assumed to be equal to the unit ordering cost c.<br><strong>Backlog cost</strong>:Backlogging means not meeting a certain demand immediately from stock. The customer is assumed to wait until the demand is eventually met after some delay.  To determine the level of this planned backlog, the firm needs to trade-off inventory holding and backlog costs.Figure 1 illustrates the evolution of inventory and backlog levels in a typical order cycle,also indicating the maximum inventory and backlog levels.<br>cited from: Frenk J B G, Kaya M, Pourghannad B. Generalizing the ordering cost and holding-backlog cost rate functions in EOQ-type inventory models[M]//Handbook of EOQ Inventory Problems. Springer, Boston, MA, 2014: 79-119.</p>
+</blockquote>
+<p>5.$t+1$周期开始时库存水平为$y_{t+1}^i=y_t^i+x_{t-l(i)}^i-d_t^i$。1-4重复操作。<br>值得注意的是，实际上补货决策$x_t^i$没有必要再计划期开始即第1个周期开始时就决定，为了达到更好的效果，这个决策可以延迟到$t$周期在确定$d_{t-1}$与$\mathbf{d}<em>{t-1}$的比例之后。因此，$x_t^i$是一个非预期函数(non-anticipative funtion)，由$x_t^i(\mathbf d</em>{t-1})$表示，只取决于到$t-1$周期为止的需求信息。<br>考虑到初始库存水平$y_1^i$，补货数量$x_{1-l(i)}^i,x_{2-l(i)}^i,…x_{t-l(i)}^i$，以及已实现需求$\mathbf d_t^i$，那么在$t+1$时期的库存水平函数为$y_{t+1}^i: \mathbb R \times \mathbb R^t \times \mathbb R^t \rightarrow \mathbb R$,<br>$$y_{t+1}^i=y_1^i+\sum_{k=1}^t x_{k-l(i)}^i -\sum_{k=1}^t d_k^i \tag{1}$$<br>对于任意的$y \in \mathbb R$，定义$(y)^+:=max\{0,y\},(y)^-:=max\{0,-y\}$。因此，$(y_{t+1}^i)^+$和$(y_{t+1}^i)^-$表示库存过剩和库存不足。考虑到补货数量$x_t^i$和库存水平$y_{t+1}^i$，商品$i$在周期$t$中产生的总成本为:$A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-$，当$x_t^i&gt;0$时$I(x_t^i)=1$,否则等于0.</p>
+<h4 id="3-A-stochastic-optimization-model"><a href="#3-A-stochastic-optimization-model" class="headerlink" title="3. A stochastic optimization model"></a>3. A stochastic optimization model</h4><p>考虑到随机需求$\widetilde {\mathbf d}<em>{t-1}$，我们的目标是确定订货策略$x_t^i \bigl(\widetilde {\mathbf d}</em>{t-1} \bigr),for\quad all \quad i\in P,t \in \mathcal T$，以最小化计划周期内的总成本。我们构建了一个多周期随机优化模型:<br>$$\text{min}\quad E\Biggl[\sum_{i\in \mathcal P}\sum_{t\in \mathcal T}A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-\Biggr]$$<br>$\text{s.t.}\quad \sum_{i\in \mathcal P}x_t^i \bigl(\widetilde{\mathbf d}<em>{t-1}\bigr)\leq \overline{x}_t, \qquad t\in \mathcal T;\tag{2a}$<br>$x_t^i\bigl(\widetilde{\mathbf d}</em>{t-1}\bigr) \geq 0, \qquad i \in \mathcal P,t\in \mathcal T;\tag{2b}$<br>$x_t^i \in \mathcal N_t,\qquad i \in \mathcal P,t\in \mathcal T;\tag{2c}$<br>$\mathcal N_t$是一个集合，包含了所有非预期的$\mathbb R^{(t-1)\times P}$到$\mathbb R$函数映射。约束(2a)表示订购总量限制。这个模型是一个比较难的优化模型，很难求解。<br>理论上，我们能用动态规划DP来解决这个模型。定义$\mathbb q_t^i:=(x_{t-l(i)},…,x_{t-1}^i)$为商品$i$在周期$t$中未完成的订购数量。当t=1时$\mathbb q_1^i:=(x_{1-l(i)},…,x_0^i)$，令$\mathbb q_t:=(\mathbb q_t^1,…,\mathbb q_t^P)$.记订购数量为$\mathbb x_t$,库存水平为$\mathbb y_t$，未完成订购数量为$\mathbb q_t$,已实现需求为$\mathbb d_{t-1}$,则t周期的期望成本为:<br>$$r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}<em>{\mathbb x_t \in \mathcal F_t}\biggl\{\sum</em>{i \in \mathcal P }(A_t^iI(x_t^i)+c_t^ix_t^i)+E_{\widetilde{d}<em>t}\Biggl[\sum</em>{i \in \mathcal P}(h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-)\Biggr|\mathbb{\widetilde d}<em>{t-1}= \mathbb d</em>{t-1}\Biggr] \biggr\}\tag{3}$$<br>令$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})$为从t周期开始一直到计划期结束的最优期望成本，则:<br>$$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}<em>{\mathbb x \in \mathcal F_t}\biggr\{r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d</em>{t-1})+E_{\mathbb {\widetilde d}<em>t}\biggr[J</em>{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})\biggr|\mathbb{\widetilde d}<em>{t-1}= \mathbb d</em>{t-1}\biggr]\biggr\}\tag{4}$$<br>这里的$\mathcal F_t=\{\mathbb x_t|x_t^i \geq 0, i \in \mathcal P,\sum_{i \in \mathcal P}x_t^i \leq \overline x_t\}$,边界条件是$J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})=0$,对于任意的$\mathbb y_{t+1},\mathbb q_{t+1},\mathbb d_{t}$。<br>特别的，当$l(i)=0$时，<br>$J_t(\mathbb y_t)=\text{min}<em>{\mathbb x \in \mathcal F_t}\{r_t(\mathbb x_t,\mathbb y_t)+E</em>{(\widetilde{d}<em>t^1,…,\widetilde{d}_t^P)}[J</em>{t+1}(\mathbb y_{t+1})]\}\tag{5}$<br>此时边界条件为$J_{T+1}(\mathbb y_{T+1})=0$，对任意的$\mathbb y_{T+1}$。<br>令$\mathbb x_t^<em>$表示问题(4)在t周期的最优决策，则整个计划过程的决策可表示为$\{\mathbb x_1^</em>,…,\mathbb x_T^*\}$，我们称这个为DP策略。然而问题(4)是很难解的，因为在实际中它有很多的状态空间。</p>
+<h4 id="4-A-target-oriented-robust-optimization-approach"><a href="#4-A-target-oriented-robust-optimization-approach" class="headerlink" title="4. A target-oriented robust optimization approach"></a>4. A target-oriented robust optimization approach</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/09/Inventory management based on target-oriented/" data-id="cjyx01tvw000cjov66t6jtxgp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Robust Storage Assignment" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/09/Robust Storage Assignment/" class="article-date">
+  <time datetime="2018-06-09T14:07:09.000Z" itemprop="datePublished">2018-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/09/Robust Storage Assignment/">Robust Storage Assignment in Unit-Load Warehouses</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[<a href="mailto:marcusang@smu.edu.sg" target="_blank" rel="noopener">marcusang@smu.edu.sg</a>, <a href="mailto:yflim@smu.edu.sg" target="_blank" rel="noopener">yflim@smu.edu.sg</a>]</p>
+<hr>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
+<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\{1,…,N\}$<br>$\mathcal N^-=\{1,…,N-1\}$<br>$\mathcal M=\{1,…,M\}$<br>$\mathcal T=\{1,…,T\}$<br>$\mathcal T^+=\{1,…,T+1\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
+<p>*<em>Assumption *</em></p>
+<ol>
+<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}; i\in \mathcal M,j\in \mathcal N$.</li>
+<li>假设仓库一开始库存为0.</li>
+<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<br>$$\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},; i \in \mathcal M,t \in \mathcal T$$</li>
+</ol>
+<p><strong>Model(1)</strong><br>$$Z_D=\text{min}; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}$$<br>$$\text{s.t.}; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}$$<br>$$\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}$$<br>$$\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}$$<br>$$x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}$$<br>$$\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}$$<br>$$x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}$$<br>$$v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}$$</p>
+<p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
+<blockquote>
+<p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
+</blockquote>
+<h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/04/hello-world/" data-id="cjywzimak0000fkv64pxp6l7w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/06/09/Robust Storage Assignment/" data-id="cjyx01tw3000kjov6n64s4jg7" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-order batching" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/30/order batching/" class="article-date">
+  <time datetime="2018-04-30T02:04:20.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/30/order batching/">Order batching</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&mid=2650459983&idx=1&sn=02d696afefef36f1699a55e7f0380c75&chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&scene=21#wechat_redirect" target="_blank" rel="noopener">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
+<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
+<blockquote>
+<p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
+</blockquote>
+<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Indices   |   </span><br><span class="line">$i$   |   商品索引，$i=1,...,N$</span><br><span class="line">$m$   |   货架索引，$m=1,...,M$</span><br><span class="line">$b$   |   批次索引，$b=1,...,B$</span><br><span class="line">**Parameters**   |   </span><br><span class="line">$M$   |   货架总数</span><br><span class="line">$N$   |   商品总数</span><br><span class="line">$B$   |   批次总数</span><br><span class="line">$L$   |   单个批次最大订单数限制</span><br><span class="line">$O$   |   订单总数</span><br><span class="line">$t_m$   |   货架$m$ 上的商品种类总数</span><br><span class="line">$d_&#123;io&#125;$   |   =1如果订单$o$ 包含商品$i$ ;否则为0</span><br><span class="line">$c_&#123;im&#125;$   |   =1如果货架$m$ 上有商品$i$ ;否则为0</span><br></pre></td></tr></table></figure>
+
+<p><strong>Decision variables</strong>  </p>
+<p>$$<br>x_{bm} =<br>\begin{cases}<br>1, &amp;  \text{如果拣选批次$b$ 需要搬运货架$m$} \<br>0, &amp; \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>h_{im} =<br>\begin{cases}<br>1, &amp;  \text{如果需要从货架$m$ 上拣选商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>y_{ob} =<br>\begin{cases}<br>1, &amp;  \text{如果订单 $o$被分配到批次$b$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>z_{ib} =<br>\begin{cases}<br>1,  &amp; \text{如果批次$b$ 中包含商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:<br>$$min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}$$<br>$$\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}$$<br>$$\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}$$<br>$$Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}$$<br>$$h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}$$<br>$$\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}$$<br>$$x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}$$<br>$$x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}$$<br>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
+<h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
+<h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
+<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
+<h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比</span><br><span class="line">无效移动次数   |   406   |   809   | 49.815%</span><br></pre></td></tr></table></figure>
+
+<p>目标函数迭代情况:</p>
+<h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/30/order batching/" data-id="cjyx01tw6000ojov6qqmz3mjg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-运筹学复习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/29/运筹学复习/" class="article-date">
+  <time datetime="2018-04-29T13:30:40.000Z" itemprop="datePublished">2018-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/29/运筹学复习/">运筹学复习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>复习书目:&lt;运筹学导论-初级篇&gt;-Hamdy A. Taha</p>
+<h2 id="1-什么是运筹学"><a href="#1-什么是运筹学" class="headerlink" title="1.什么是运筹学"></a>1.什么是运筹学</h2><h3 id="1-1-运筹学模型"><a href="#1-1-运筹学模型" class="headerlink" title="1.1 运筹学模型"></a>1.1 运筹学模型</h3><p>运筹学模型的3个主要构成部分:备选方案、目标评判标准和约束条件。<br>一般的运筹学模型可以组织成下面的通用格式:<br>$max\quad or\quad min\quad  Objective$<br>$s.t.\qquad  constraints$<br>一个模型的解如果满足所有的约束条件，则称它是<strong>可行的(feasible)</strong>，如果既是可行的，且又取得了目标函数的最佳(最大或最小)值，则称它是<strong>最优(optimal)</strong>的。一个模型的“最优”解只是对这个模型是最好的，只有当这个模型恰当地表达了实际问题时，它的解对于实际问题才是最优的。</p>
+<h3 id="1-2-运筹学模型的求解"><a href="#1-2-运筹学模型的求解" class="headerlink" title="1.2 运筹学模型的求解"></a>1.2 运筹学模型的求解</h3><p>数学模型类型的多样性和复杂程度的各异性决定了求解方法迥异的特性。<br>线性规划(Linear Programming)是最常用的OR技术，专门用于带有线性目标函数和约束函数的模型，其他方法还有整数规划(Integer Programming)、动态规划(Dynamic Programming)(初始模型可分解成多个较小的子问题)、网络规划(Network Programming)，以及非线性规划(Nonlinear Programming)等。<br>大多数运筹学技术的一个特性是，问题的解常常不是通过某种闭形式得到的，而是利用某些算法求出来的。</p>
+<h3 id="1-3-排队模型和模拟模型"><a href="#1-3-排队模型和模拟模型" class="headerlink" title="1.3 排队模型和模拟模型"></a>1.3 排队模型和模拟模型</h3><p>排队和模拟用于研究等待队列，它们不属于最优化技术，而是用来度量等待队列的性能。</p>
+<h3 id="1-4-建模的艺术"><a href="#1-4-建模的艺术" class="headerlink" title="1.4 建模的艺术"></a>1.4 建模的艺术</h3><p>本质上，从现实世界到假定现实世界的简化，是通过把多个现实世界变量“简化“成某个单一的假定现实世界变量来实现的。</p>
+<h3 id="1-5-仅有数学是不够的"><a href="#1-5-仅有数学是不够的" class="headerlink" title="1.5 仅有数学是不够的"></a>1.5 仅有数学是不够的</h3><p>由于大多数决策问题总是会受到人的因素的影响，对人类心理的研究可能就成为解决问题的关键。解决问题要考虑的关键是人而不是技术。</p>
+<h3 id="1-6-运用运筹学的几个步骤"><a href="#1-6-运用运筹学的几个步骤" class="headerlink" title="1.6 运用运筹学的几个步骤"></a>1.6 运用运筹学的几个步骤</h3><p>在实际中运用运筹学的主要步骤包括:<br>(1) 问题定义；<br>(2) 模型构造；<br>(3) 模型求解；<br>(4) 模型验证；<br>(5) 解决方案实施。</p>
+<h2 id="2-线性规划建模"><a href="#2-线性规划建模" class="headerlink" title="2. 线性规划建模"></a>2. 线性规划建模</h2><h3 id="2-1-二维变量的线性规划模型"><a href="#2-1-二维变量的线性规划模型" class="headerlink" title="2.1 二维变量的线性规划模型"></a>2.1 二维变量的线性规划模型</h3><p>LP必须满足3条基本性质:<br>(1) 比例性；<br>(2) 可加性；<br>(3) 确定性。</p>
+<h3 id="2-2-线性规划的图解法"><a href="#2-2-线性规划的图解法" class="headerlink" title="2.2 线性规划的图解法"></a>2.2 线性规划的图解法</h3><p>图解法的过程包括以下两步:<br>(1) 可行解空间的确定；<br>(2) 从可行解空间所有可行点中确定最优解。</p>
+<h2 id="3-单纯形方法和灵敏度分析"><a href="#3-单纯形方法和灵敏度分析" class="headerlink" title="3.单纯形方法和灵敏度分析"></a>3.单纯形方法和灵敏度分析</h2><h3 id="3-1-等式形式的线性规划模型"><a href="#3-1-等式形式的线性规划模型" class="headerlink" title="3.1 等式形式的线性规划模型"></a>3.1 等式形式的线性规划模型</h3><p>可以通过对问题约束施加下面两个要求来方便单纯形法的计算:<br>(1) 所有的约束都是等式(变量的非负限制除外)，并且具有非负的右端项。<br>(2) 所有变量是非负的。</p>
+<h4 id="3-1-1-将不等式转化为带有非负右端项的等式约束"><a href="#3-1-1-将不等式转化为带有非负右端项的等式约束" class="headerlink" title="3.1.1 将不等式转化为带有非负右端项的等式约束"></a>3.1.1 将不等式转化为带有非负右端项的等式约束</h4><ul>
+<li>($\leq$)约束:在约束的左端，增加非负的<strong>松弛变量</strong>(slack variable)。</li>
+<li>($\geq$)约束:在约束的左端减去非负的<strong>剩余变量</strong>(surplus variable)。<h3 id="3-2-从图形解到代数解的转换"><a href="#3-2-从图形解到代数解的转换" class="headerlink" title="3.2 从图形解到代数解的转换"></a>3.2 从图形解到代数解的转换</h3>在单纯形法中，解空间由$m$ 个同时成立的线性方程和$n$ 个非负变量表示。</li>
+</ul>
+<blockquote>
+<p><strong>角点的代数定义:</strong><br>在$m \times n(m&lt;n)$ 阶的方程组中，如果令$(n-m)$ 个变量等于0，然后求解其余的含$m$ 个变量的$m$ 个方程，如果有唯一解，则称相应的解为<strong>基本解</strong>(basic solution)，它是对应解空间的一个(可行或不可行)角点。这意味着角点的最大数目是$C_n^m$。</p>
+</blockquote>
+<p>为概括从图形解到代数解的转换，我们称$(n-m)$个零变量为<strong>非基变量</strong>(nonbasic variable)；称余下的$m$ 个变量为<strong>基变量</strong>(basic variable),它的解(由解$m$ 个方程得到)称为基本解。<br>单纯形法通过借助于考察解空间中所有可能的基本可行解(角点)的一小部分，极大地减轻了计算负担。本质上，单纯形法利用一个智能的搜索过程，用有效的方法查找最优角点的位置。</p>
+<h3 id="3-3-单纯形法"><a href="#3-3-单纯形法" class="headerlink" title="3.3 单纯形法"></a>3.3 单纯形法</h3><h4 id="3-3-1-单纯形法的迭代本质"><a href="#3-3-1-单纯形法的迭代本质" class="headerlink" title="3.3.1 单纯形法的迭代本质"></a>3.3.1 单纯形法的迭代本质</h4><p>正常情况下，单纯形法从原点开始，在这个初始点，目标函数值是零，因此合乎逻辑的问题是，能否在当前零值得基础上，通过增加非基变量的值来改进目标函数值。<br>单纯形法的设计要求每次增加一个变量，并且选择使目标函数值有最大改善率的那个变量。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/29/运筹学复习/" data-id="cjyx01twb0010jov6ml1qcpur" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OR/">OR</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-SCI常用句型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/12/SCI常用句型/" class="article-date">
+  <time datetime="2018-04-12T02:09:06.000Z" itemprop="datePublished">2018-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/04/12/SCI常用句型/">SCI常用句型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>1.在Introduction里面经常会使用到的一个句子：很多文献已经讨论过了<br>Solar energy conversion by photoelectrochemical cells <strong>has been intensively investigated</strong>.<br>2.值得注意的是…<br>It must also be mentioned that…<br>It is important to highlight that …<br>It is worthwhile mentioning that …<br>3.正如下文将提到的…<br>As will be described below（也可以是As we shall see below）,<br>…will be further discussed below.<br>The observation of nanocluster spheres at the ends of the nanowires is suggestive of a VLS growth process <strong>(see below)</strong><br>4.什么东西还尚未发现/系统研究<br>have not yet been realized.<br>There are relatively few studies devoted to…<br>5.考虑到…<br>Taking the above observations into account,<br> taking into account<br>6.本项研究的意义/亮点在于…<br>Our research extends the knowledge into…<br>This research extends our knowledge of…<br>7.重点在于<br>The key to …is…<br>The development of sustainable energy solutions represents one of the most important scientific and technical challenges of our time, and heterogeneous catalysis is <strong>at the  heart of the problem</strong>.<br>Particular emphasis is placed on …<br>8.一篇论文不可能把所有需要研究的内容都搞清楚，那么在文章中如何委婉地表述某些内容并不是本文的关注重点？<br><strong>Although a detailed investigation of</strong> these factors is *<em>beyond the scope of this work, we acknowledge that *</em>the V(motif) represents an upper bound of the equilibrium active site coverage for the specific materials we have considered.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/12/SCI常用句型/" data-id="cjyx01tw1000ijov6q2pz80iv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-On the Scattered Storage Assignment Problem" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/07/On the Scattered Storage Assignment Problem/" class="article-date">
+  <time datetime="2018-03-07T04:44:07.000Z" itemprop="datePublished">2018-03-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/07/On the Scattered Storage Assignment Problem/">On the Scattered Storage Assignment Problem</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Author: <a href="http://www.om.uni-jena.de/Lehrstuhlteam/Felix+Weidinger+M_+Sc_.html" target="_blank" rel="noopener">Felix Weidiner</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要:"></a>摘要:</h2><p>本文主要针对电商仓库的分散存储策略进行研究。基于文章:</p>
+<blockquote>
+<p>Scattered storage: how to distribute stock keeping units all around a mixed-shelves warehouse.Working Paper Friedrich-Schiller-University Jena, 2015 (下载不了)</p>
+</blockquote>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>电商仓库目前面临的4个挑战:</p>
+<ul>
+<li>订单包含商品种类少</li>
+<li>库存大，商品种类多</li>
+<li>灵活性</li>
+<li>时效要求高</li>
+</ul>
+<h2 id="2-The-Scattered-Storage-Strategy"><a href="#2-The-Scattered-Storage-Strategy" class="headerlink" title="2.The Scattered Storage Strategy"></a>2.The Scattered Storage Strategy</h2><p>分散存储策略是在货物到达时进行拆分，将其存储到不同的储位上。</p>
+<h3 id="2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse"><a href="#2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse" class="headerlink" title="2.1.The Picking Process in a Scattered Storage Warehouse"></a>2.1.The Picking Process in a Scattered Storage Warehouse</h3><h3 id="2-2-The-Scattered-Storage-Assignment-Problem"><a href="#2-2-The-Scattered-Storage-Assignment-Problem" class="headerlink" title="2.2.The Scattered Storage Assignment Problem"></a>2.2.The Scattered Storage Assignment Problem</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/07/On the Scattered Storage Assignment Problem/" data-id="cjyx01tvi000bjov6og7wld9z" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
     </footer>
   </div>
   
@@ -148,24 +615,50 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
           <aside id="sidebar">
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
   </div>
 
@@ -178,11 +671,23 @@
       <ul>
         
           <li>
-            <a href="/2019/08/04/test-my-site/">test_my_site</a>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
           </li>
         
           <li>
-            <a href="/2019/08/04/hello-world/">Hello World</a>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
           </li>
         
       </ul>

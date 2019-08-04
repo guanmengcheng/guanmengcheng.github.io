@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Python数据分析日常 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据分析日常">
+<meta property="og:url" content="http://yoursite.com/2019/01/10/Python数据分析日常/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104347.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104421.png">
+<meta property="og:updated_time" content="2019-08-04T12:25:28.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python数据分析日常">
+<meta name="twitter:description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
+<meta name="twitter:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Python数据分析日常" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/01/10/Python数据分析日常/" class="article-date">
+  <time datetime="2019-01-10T08:58:49.000Z" itemprop="datePublished">2019-01-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python数据分析日常
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。</p>
+<h4 id="1-Python连接MYSQL数据库"><a href="#1-Python连接MYSQL数据库" class="headerlink" title="1 Python连接MYSQL数据库"></a>1 Python连接MYSQL数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> MySQLdb.cursors</span><br><span class="line">mysql_cn= MySQLdb.connect(host=<span class="string">'数据库地址'</span>, port=<span class="string">'端口'</span>, user=<span class="string">'用户名'</span>, passwd=<span class="string">'密码'</span>, db=<span class="string">'数据库名'</span>,cursorclass = MySQLdb.cursors.SSCursor)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-写入xlsx文件-多个sheet"><a href="#2-写入xlsx文件-多个sheet" class="headerlink" title="2 写入xlsx文件(多个sheet)"></a>2 写入xlsx文件(多个sheet)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">'出库统计.xlsx'</span>)</span><br><span class="line">df.to_excel(writer,sheet_name=<span class="string">'sheet_name'</span>)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-DataFrame按某列排序"><a href="#3-DataFrame按某列排序" class="headerlink" title="3 DataFrame按某列排序"></a>3 DataFrame按某列排序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">'列名'</span>,ascending=<span class="literal">False</span>)<span class="comment">#ascending=False为降序</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-取出DataFrame某列中非空的行"><a href="#4-取出DataFrame某列中非空的行" class="headerlink" title="4 取出DataFrame某列中非空的行"></a>4 取出DataFrame某列中非空的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'columns'</span>].isnull().values==<span class="literal">False</span>]</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-Pandas读取xlsx文件的sheetname"><a href="#5-Pandas读取xlsx文件的sheetname" class="headerlink" title="5 Pandas读取xlsx文件的sheetname"></a>5 Pandas读取xlsx文件的sheetname</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">wb = openpyxl.load_workbook(path)</span><br><span class="line">sheetnames = wb.sheetnames</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_expire</span><span class="params">(arr,x,y)</span>:</span></span><br><span class="line">    a=arr[x]</span><br><span class="line">    b=arr[y]</span><br><span class="line">    cur.execute(SQL)</span><br><span class="line">    <span class="keyword">return</span> cur.fetchall()[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+
+<p>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'失效日期'</span>]=df.apply(get_expire,axis = <span class="number">1</span>, args = (<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在get_expire函数中，arr传入的为df，x,y传入分别为<code>&#39;product_id&#39;</code>,<code>&#39;wms_batch_code&#39;</code></p>
+<h4 id="7-按时间统计数据"><a href="#7-按时间统计数据" class="headerlink" title="7 按时间统计数据"></a>7 按时间统计数据</h4><p>首先需要将时间to_datetime，利用方法：</p>
+<p><code>df[&#39;cal_date&#39;]=pd.to_datetime(df[&#39;cal_date&#39;])</code></p>
+<p>然后设置时间列为索引：</p>
+<p><code>df=df.set_index(&#39;cal_date&#39;)</code></p>
+<p>然后就可以按周、月、季度、年进行统计</p>
+<p><code>df.resample(&#39;M&#39;)[&#39;col1&#39;].sum()</code></p>
+<p>聚合方式还有：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png" alt></p>
+<h4 id="8-获取DataFrame中某列包含特定字符的所有行"><a href="#8-获取DataFrame中某列包含特定字符的所有行" class="headerlink" title="8 获取DataFrame中某列包含特定字符的所有行"></a>8 获取DataFrame中某列包含特定字符的所有行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car = df[<span class="string">'单据号'</span>].str.contains(<span class="string">'CAR'</span>)</span><br><span class="line">df[car] <span class="comment">#表示在df的'单据号'列中包含字符'CAR'的所有行</span></span><br><span class="line">df[~car] <span class="comment">#表示去不包含字符'CAR'的所有行</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="9-取时间中的天数"><a href="#9-取时间中的天数" class="headerlink" title="9 取时间中的天数"></a>9 取时间中的天数</h4><p><code>batch[&#39;库存天数&#39;]=(batch[&#39;销完时间&#39;]-batch[&#39;上架时间&#39;]).dt.days</code></p>
+<h4 id="10-按特定的值取DataFrame中的行"><a href="#10-按特定的值取DataFrame中的行" class="headerlink" title="10 按特定的值取DataFrame中的行"></a>10 按特定的值取DataFrame中的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_zhout[df_zhout[<span class="string">'出库类型'</span>].isin([<span class="string">'销售订单'</span>,<span class="string">'电商订单'</span>])]</span><br></pre></td></tr></table></figure>
+
+<p>表示取出’出库类型’列中值为’销售订单’,’电商订单’的所有行</p>
+<h4 id="11-删除DataFrame中的重复值"><a href="#11-删除DataFrame中的重复值" class="headerlink" title="11 删除DataFrame中的重复值"></a>11 删除DataFrame中的重复值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch.drop_duplicates(subset=[<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>],keep=<span class="string">'first'</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>表示删除batch中’product_id’,’wms_batch_code’均重复的行，保留第一个重复的行，并替换掉原batch</p>
+<h4 id="12-合并DataFrame"><a href="#12-合并DataFrame" class="headerlink" title="12 合并DataFrame"></a>12 合并DataFrame</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=df.append(df1,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>df 与 df1的列相同，将其合并，并忽略各自的index</p>
+<h4 id="13-DataFrame的Merge方法"><a href="#13-DataFrame的Merge方法" class="headerlink" title="13 DataFrame的Merge方法"></a>13 DataFrame的Merge方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.merge(df_sample, df_stock, on=<span class="string">'cal_date'</span>,how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>how还可取<code>inner,outer,right</code></p>
+<h4 id="14-改变某列的数据类型"><a href="#14-改变某列的数据类型" class="headerlink" title="14 改变某列的数据类型"></a>14 改变某列的数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'sku_id'</span>]=df[<span class="string">'sku_id'</span>].astype(str)</span><br></pre></td></tr></table></figure>
+
+<h4 id="15-选取以字母G开头的数据"><a href="#15-选取以字母G开头的数据" class="headerlink" title="15  选取以字母G开头的数据"></a>15  选取以字母G开头的数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df.col1.str.startswith(<span class="string">'G'</span>)]</span><br></pre></td></tr></table></figure>
+
+<h4 id="16-Group-by方法"><a href="#16-Group-by方法" class="headerlink" title="16 Group by方法"></a>16 Group by方法</h4><p>对DataFrame进行分组，agg方法可实现对多个方法同时使用:</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104347.png" alt></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190118104421.png" alt></p>
+<h4 id="17-Concat合并"><a href="#17-Concat合并" class="headerlink" title="17 Concat合并"></a>17 Concat合并</h4><p>将两个DataFrame按照行的维度进行合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data = pd.concat([data1, data2])</span><br></pre></td></tr></table></figure>
+
+<p>按列的维度进行合并</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data_col = pd.concat([data1, data2], axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="18-删除有缺失值的行"><a href="#18-删除有缺失值的行" class="headerlink" title="18 删除有缺失值的行"></a>18 删除有缺失值的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(how=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/01/10/Python数据分析日常/" data-id="cjyx01tv80004jov69zvrzkwi" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          SQL(MYSQL、ORACLE)日常
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/09/Inventory management based on target-oriented/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inventory management based on target-oriented robust optimization</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

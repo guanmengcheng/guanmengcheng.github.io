@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Storage assignment and order batching problem in Kiva mobile fulfulment system | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作者: 项溪，柳长春，缪立新-清华大学工业工程系^1 摘要本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。 1.Introduction">
+<meta name="keywords" content="论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storage assignment and order batching problem in Kiva mobile fulfulment system">
+<meta property="og:url" content="http://yoursite.com/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="作者: 项溪，柳长春，缪立新-清华大学工业工程系^1 摘要本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。 1.Introduction">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-04T12:25:35.877Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storage assignment and order batching problem in Kiva mobile fulfulment system">
+<meta name="twitter:description" content="作者: 项溪，柳长春，缪立新-清华大学工业工程系^1 摘要本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。 1.Introduction">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Storage assignment and order batching problem in Kiva mobile fulfilment system" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" class="article-date">
+  <time datetime="2018-03-03T06:23:01.000Z" itemprop="datePublished">2018-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Storage assignment and order batching problem in Kiva mobile fulfulment system
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者: 项溪，柳长春，缪立新-清华大学工业工程系<a href="清华大学工业工程系管理科学与工程专业运筹与物流管理方向博导，清华-伯克利深圳学院智能交通与物流系统专业博导，">^1</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>本文研究了Kiva系统中的储位分配及订单分批问题。储位分配模型旨在决定哪些商品放在哪些货架上从而使得商品相似度最大，订单分批模型旨在最小化命中货架个数。为了解决订单分批问题，提出了一个启发式算法，分批策略以最大化订单相似性或最小化订单疏离性为目标，采用VNS(变领域搜索算法)。数值实验证明了算法及模型的有效性。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>介绍了Kiva系统</p>
+<p>Kiva系统中一个重要的决策问题就是需要决定哪些商品应该放在哪些货架上才能使得AGV的运行距离最短。由于货架的存储位置是自适应的，决定于货架上商品的种类以及顾客的订单，所以AGV的运行距离很难估计。然而，如果很多顾客同时订购的某些商品放置在同一货架上，那么需要搬运的货架数量会大大降低，也就降低了AGV的运行距离。因此，本文对商品进行分配，使得每个货架上的商品是经常被订购的。混合整数线性规划模型用来解决该问题。因为这是一个策略层面的问题，计算时间不是很重要，因此该模型采用CPLEX求解。为了降低命中货架个数，工人们可以同时拣选多个订单，也就是订单可以被组合成不同的批次，进而工人们按批次订单进行拣选。订单分批问题对时间要求很高，因此提出一个启发式算法进行求解。</p>
+<h2 id="2-Related-work"><a href="#2-Related-work" class="headerlink" title="2.Related work"></a>2.Related work</h2><blockquote>
+<p>For a comprehensive overview of the order batching problem, please refer to the review given by Ma and Zhao (2014).Ma and Zhao (2014) analyzed and summarized the range and idea of order batching by giving a review of the different solution approaches that have been suggested in the literature, and indicating the tendency of future research in order batching.<br>Ma, T., and P. Zhao. 2014. “A Review of Algorithms for Order Batching Problem in Distribution Center.” In International Conference on Logistics Engineering, Management and Computer Science, 172–175. Atlantis Press. doi:10.2991/lemcs-14.2014.40.</p>
+</blockquote>
+<h2 id="3-Problem-description"><a href="#3-Problem-description" class="headerlink" title="3.Problem description"></a>3.Problem description</h2><p>储位分配问题和订单分批问题分解成两个阶段如图所示:</p>
+<p>第一阶段是策略层面的储位分配问题，第二阶段是运作层面的订单分批问题。<br>假设如下:</p>
+<ul>
+<li>假设一开始货架均为空且商品不会发生缺货。</li>
+<li>假设顾客订单所需的商品数量远小于一个货架上能放置该商品的数量。即一个货架能满足一个订单中一个商品的需求。</li>
+<li>货架一次只能去一个工作站</li>
+<li>一个货架上能放置的商品种类是有限制的，因为将不同种类的商品在补货时放置在同一货架上是比较困难的。</li>
+<li>一个商品能被存储到不止一个货架上。</li>
+<li>一个货架有6层，每层只能存放一种商品。</li>
+<li>每个商品需要的存储空间已给出，可通过层数估计<a href="属于人为添加条件。">^2</a>。<br>图解如下:</li>
+</ul>
+<p>一共有4个货架，6种商品，每种商品所需的存储空间分别为6,8,1,4,3,2.</p>
+<h2 id="4-Storage-assignment-probelm-for-Stage-Ⅰ"><a href="#4-Storage-assignment-probelm-for-Stage-Ⅰ" class="headerlink" title="4.Storage assignment probelm for Stage Ⅰ"></a>4.Storage assignment probelm for Stage Ⅰ</h2><p>索引:<br>$i,j$:商品种类编号，$i,j=1,\cdots,P$<br>$n$:订单编号，$n=1,\cdots,N$<br>$m$:货架编号，$m=1,\cdots,M$<br>参数:<br>$$\Sigma=\frac{1}{m}\sum_{i=1}^{m}x^{(i)}*(x^{(i)})^T$$<br>$P$:商品种类总数<br>$N$:订单总数<br>$M$:货架总数<br>$L$:一个货架的层数，本文中$L=6$<br>$B$:一个货架能够存放商品种类的最大数量<br>$s_{ij}$:商品$i$ 与商品$j$ 的相似度值，取值范围0-1<br>$S$:商品相似度矩阵<br>$D_i$:商品$i$ 需要被分配的层数，$\sum_{i=1}^PD_i=LM$ <a href="极为不合理，仓库中物品不一定正好全部用完所有货架的所有存储空间。">^3</a><br>$s_{ii}$:设为常数1，$i\neq j$ 时:<br>$$s_{ij}=\frac{\qquad \text{同时包含}i,j\text{的订单个数}}{N}$$<br>商品相似度矩阵$S$定义为:</p>
+<p>$$<br>\begin{bmatrix}<br>s_{11}&amp;s_{12}&amp;\cdots&amp;s_{1p}\<br>s_{21}&amp;s_{22}&amp;\cdots&amp;s_{2p}\<br>\vdots&amp;\vdots&amp;\ddots&amp;\vdots\<br>s_{p1}&amp;s_{p2}&amp;\cdots&amp;s_{pp}<br>\end{bmatrix}<br>$$</p>
+<p>$s_{ij}$和$S$能从历史订单数据中得到。<br>决策变量:</p>
+<p>$$<br>x_{im} =<br>\begin{cases}<br>1,   \text{如果商品$i$在货架$m$上} \<br>0,  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$y_{im}$:整数变量，商品$i$分配到的在货架$m$上的层数。<br>目标函数为最大化所有货架上所有商品的相似性:<br>$$max \sum_i\sum_{j&gt;i}\sum_m\frac{s_{ij}x_{im}x_{jm}}{M} \tag{1}$$</p>
+<p>约束为:<br>$$\sum_i y_{im}=L,\quad \forall m\tag{2}$$</p>
+<p>$$\sum_m y_{im}=D_i,\quad \forall i\tag{3}$$</p>
+<p>$$y_{im}\leq Lx_{im},\quad \forall i,m\tag{4}$$</p>
+<p>$$y_{im}\ge x_{im},\quad \forall i,m\tag{5}$$</p>
+<p>$$\sum_i x_{im}\leq B,\quad \forall m\tag{6}$$</p>
+<p>$$x_{im}\in \{0,1\},y_{im}\ge0,\quad \forall i,m\tag{7}$$</p>
+<blockquote>
+<p>Equation (2) stipulates that L layers in each pod are to be assigned. Equation (3) ensures that the total demand number of layers for product type i is satisfied. Constraint (4) requires that the number of layers that product i occupies in the mth pod is no more than the maximum number of layers in the pod. Constraint (5) indicates that pod m can serve product i only if it is selected to store product i. Constraint (6) states that the number of product types stored in a pod is restricted to no more than B types. Constraint (7) is a basic constraint.</p>
+</blockquote>
+<p>因为目标函数中$x_{im}x_{jm}$是非线性的，需要被线性化改写。令$X_{ijm}=x_{im}x_{jm}\in\{0,1\}$，改写如下:<br>$$max\sum_i\sum_{j&gt;i}\sum_m\frac{s_{ij}X_{ijm}}{M}$$<br>$$X_{ijm}\leq x_{im},\quad \forall i,j,m$$<br>$$X_{ijm}\leq x_{jm},\quad \forall i,j,m$$<br>$$X_{ijm}\ge x_{im}+x_{jm}-1,\quad \forall i,j,m$$</p>
+<h2 id="5-Order-batching-problem-for-Stage-Ⅱ"><a href="#5-Order-batching-problem-for-Stage-Ⅱ" class="headerlink" title="5.Order batching problem for Stage Ⅱ"></a>5.Order batching problem for Stage Ⅱ</h2><p>索引:<br>$k$:批次序号，$k=1,\cdots,K$<br>参数:<br>$K$:批次总数<br>$E$:一个批次中最多包含的订单个数</p>
+<p>$$<br>a_{in}=<br>\begin{cases}<br>1,&amp;\text{如果订单$n$包含商品$i$} \<br>0,&amp;\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>x_{im}^*=<br>\begin{cases}<br>1, \text{如果货架$m$包含商品$i$} \<br>0, \text{否则}\<br>\end{cases}<br>$$</p>
+<p>$x_{im}^*$是StageⅠ的输出<br>决策变量:</p>
+<p>$$<br>z_{nk}=<br>\begin{cases}<br>1,\text{如果订单$n$被分配到批次$k$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>w_{km}=<br>\begin{cases}<br>1,\text{如果货架$m$需要搬运至批次$k$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>$$<br>u_{ik}=<br>\begin{cases}<br>1,\text{如果批次$k$包含商品$i$} \<br>0,\text{否则}\<br>\end{cases}<br>$$</p>
+<p>目标函数是最小化需要搬运货架个数:<br>$$max \sum_k\sum_mw_{km} \tag{8}$$<br>约束条件为:<br>$$\sum_k z_{nk}=1,\quad \forall n\tag{9}$$<br>$$\sum_n z_{nk}\leq E,\quad \forall k\tag{10}$$<br>$$\sum_n a_{in}z_{nk}\leq N<em>u_{ik},\quad \forall i,k\tag{11}$$<br>$$\sum_m x_{im}^</em>w_{km}\ge u_{ik},\quad \forall i,k\tag{12}$$<br>$$z_{nk},w_{km},u_{ik}\in \{0,1\},\quad \forall i,m,n,k\tag{13}$$</p>
+<blockquote>
+<p>Equation (9) ensures that an order must be assigned to one batch. Constraint (10) states that the number of orders assigned to a batch is restricted to a maximum of E orders. Constraint (11)determines which batch contains which product. Constraint (12) indicates that the pods carried to the work station must cover all the products in a batch. Constraint (13) is a basic constraint.</p>
+</blockquote>
+<p>(9)式确保每个订单都会被分配到一个批次。(10)式保证一个批次中订单数量不超过规定的最大数量。<strong>(11)式确定哪些批次应该包含哪些商品</strong>。(12)式表示搬运至工作站的货架必须能够满足该工作站对应批次的所有商品。(13)式为取值约束。<br>订单分批问题是运作层面的问题，并已被证明为NP难问题，因此本文提出启发式算法进行求解。</p>
+<h2 id="6-Solution-approach-for-StageⅡ"><a href="#6-Solution-approach-for-StageⅡ" class="headerlink" title="6.Solution approach for StageⅡ"></a>6.Solution approach for StageⅡ</h2><p>订单分批问题要两个部分，第一部分是生成批次，第二部分是确定需要的货架。Section6.1使用启发式方法生成批次，Section6.2提出算法通过分配正确的货架至每个批次使得所需要的货架最少。</p>
+<h3 id="6-1-Generate-a-batch-schedule"><a href="#6-1-Generate-a-batch-schedule" class="headerlink" title="6.1.Generate a batch schedule"></a>6.1.Generate a batch schedule</h3><p>该章节旨在生成批次，首先使用Algorithm 1,通过最大化订单关联性或稀疏性来得到初始的分批批次，然后采用Algorithm3 的VNS变领域搜索算法来提升。</p>
+<h4 id="6-1-1-Obtain-an-initial-batch-schedule"><a href="#6-1-1-Obtain-an-initial-batch-schedule" class="headerlink" title="6.1.1.Obtain an initial batch schedule"></a>6.1.1.Obtain an initial batch schedule</h4><p><strong>Definition 1(Product correlation matrix($PCM_{p\times p}$))商品关联矩阵</strong><br>如果商品$i$ 与商品$j$ 存储在同一货架上，则称他们是相关的。<br>如果商品$i$ 与商品$j$ 相关，则$PCM_{ij}=1$，否则为0。<br><strong>Definition 2(Order association matrix($AS_{N\times N}$)订单关联矩阵</strong><br>订单$n$ 与$n’$ 的关联系数由这两个订单中共同存放在同一个货架上的商品对的数量决定。关联系数由两部分组成:1.内部关联系数。2.订单间关联系数<br><strong>Definition 3(Order alienation matrix($AL_{N\times N}$)订单疏离矩阵</strong><br>订单$n$ 与$n’$ 的疏离系数由这两个订单中不存放在同一个货架上的商品对的数量决定。疏离系数由两部分组成:1.内部疏离系数。2.订单间疏离系数。</p>
+<h4 id="6-1-2-Improve-the-solution"><a href="#6-1-2-Improve-the-solution" class="headerlink" title="6.1.2.Improve the solution"></a>6.1.2.Improve the solution</h4><p>采用VNS变邻域域搜索算法。<br><strong>Definiton4 (SwapOrder)交换订单邻域算子</strong><br>随机选取两个批次，并分别从两个批次中各选一个订单进行交换。如图:</p>
+<p>伪代码如图:</p>
+<p>局部搜索方法(local search,LS)被重复地用来搜索得到邻域中的局部最优解。而邻域算子则是LS方法的基础。邻域算子可以延伸为本地搜索:SwapOrder-LS,重复执行本地搜索的同时解空间也发生了变化。</p>
+<h4 id="6-2-Assigning-pods-to-a-batch"><a href="#6-2-Assigning-pods-to-a-batch" class="headerlink" title="6.2.Assigning pods to a batch"></a>6.2.Assigning pods to a batch</h4><p>确定批次之后需要确定哪些货架需要搬运，这个问题类似于集合覆盖问题</p>
+<blockquote>
+<p>This problemis similar to the set cover problem of Cardinal and Dumeunier (2008).</p>
+</blockquote>
+<p>贪心策略是最简单有效的启发式算法之一，可以用于解决众多组合优化问题。本文设计了一个贪心策略来确定每个批次的初始所需货架然后通过局部搜索来优化。算法如下图:</p>
+<p>首先定义两个邻域算子:交换货架及删除货架。<br><strong>Definition 5(SwapPod)交换货架</strong><br>交换货架邻域算子:从当前批次对应的初始货架池中任取两个货架，从货架池外的其他货架中任取一个货架进行交换。<br><strong>Definition 6(DeletePod)删除货架</strong><br>删除货架邻域算子:从当前批次对应的初始货架池中随机挑选一个货架并移出。<br>两个算子示意图如下:</p>
+<h4 id="6-3-Complexity-analysis"><a href="#6-3-Complexity-analysis" class="headerlink" title="6.3.Complexity analysis"></a>6.3.Complexity analysis</h4><h2 id="7-Computational-experiments"><a href="#7-Computational-experiments" class="headerlink" title="7.Computational experiments"></a>7.Computational experiments</h2><h3 id="7-1-Generate-problem-examples"><a href="#7-1-Generate-problem-examples" class="headerlink" title="7.1.Generate problem examples"></a>7.1.Generate problem examples</h3><p>由于缺少合适的算例，本文算例采取随机生成的方法。320组数据，由32种x每种10组数据组成。生成规则如下:商品种类($P$),货架数量($M$),订单数量($N$)被设置为:<br>$P/M/N \in \{8/5/50,8/5/100,10/6/100\}$以及<br>$P/M/N \in \{40/20/50,40/20/100\}$<br>从中等规模到大规模问题。</p>
+<p><strong>40种商品，20个货架，100个订单就能叫大规模？？？</strong><br>货架层数$L$设置为6层，一个货架能最多存放商品的种类设置为$B \in \{3,4\}$，一个批次中允许包含的最大订单数量设置为$E \in \{2,5\}$。生成20000个历史订单来计算StageⅠ的矩阵$S$。<br>商品$i$ 所需的层数生成方式:$D_i=K<em>L</em>(p_i/\sum_ip_i),p_i \sim U(30,80)$<br>订单$n$ 中商品种类生成方式:</p>
+<p>$$<br>a_{in}=<br>\begin{cases}<br>1,&amp; \text{if rand}(0,1)\leq 5\times \frac{p_i}{\sum_ip_i} \<br>0,&amp; \text{otherwise}<br>\end{cases}<br>$$</p>
+<p>数值实验流程示意图:</p>
+<h3 id="7-2-Performance-analysis-on-the-proposed-algorithm"><a href="#7-2-Performance-analysis-on-the-proposed-algorithm" class="headerlink" title="7.2.Performance analysis on the proposed algorithm"></a>7.2.Performance analysis on the proposed algorithm</h3><p>略</p>
+<h2 id="8-文章不足分析"><a href="#8-文章不足分析" class="headerlink" title="8.文章不足分析"></a>8.文章不足分析</h2><ul>
+<li>储位分配模型中该文章认为所有商品能占满所有货架的所有空间是极为不合理的，是对问题的简化。</li>
+<li>储位分配模型未考虑同一种商品放在同一货架上的情况。</li>
+<li>商品跟自身的相似度设为1是否合理。</li>
+<li>文章假设一个货架能够满足货架中商品被一次订购是对货架选择问题的简化。</li>
+<li>储位分配模型通过CPLEX求解只能解决小规模问题，大规模问题不适用。</li>
+<li>文章算例设计不具有参考性，相关指标太小，不具有实际意义。<br>改进思路：<pre><code>设计求解大规模储位分配问题的算法，并需要考虑不同商品所需储位的优化，更改储位分配模型目标为所用货架最少且商品相似度最大。</code></pre>感想：</li>
+</ul>
+<p>1.模型及算法是关键部分，需要学习CPLEX等求解器的运用。<br>2.算例可随机生成，英文期刊注重对算例的分析及模型的敏感性分析，注重对比分析，需要大量的实验数据支撑，可学习本文使用小算例。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/03/03/Storage assignment and order batching problem in Kiva mobile fulfilment system/" data-id="cjyx01twn0018jov68ujga17l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/03/07/On the Scattered Storage Assignment Problem/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          On the Scattered Storage Assignment Problem
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

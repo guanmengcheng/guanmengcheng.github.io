@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Order batching | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
+<meta name="keywords" content="论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Order batching">
+<meta property="og:url" content="http://yoursite.com/2018/04/30/order batching/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-04T12:25:27.925Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Order batching">
+<meta name="twitter:description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-order batching" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/30/order batching/" class="article-date">
+  <time datetime="2018-04-30T02:04:20.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Order batching
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&mid=2650459983&idx=1&sn=02d696afefef36f1699a55e7f0380c75&chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&scene=21#wechat_redirect" target="_blank" rel="noopener">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
+<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
+<blockquote>
+<p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
+</blockquote>
+<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Indices   |   </span><br><span class="line">$i$   |   商品索引，$i=1,...,N$</span><br><span class="line">$m$   |   货架索引，$m=1,...,M$</span><br><span class="line">$b$   |   批次索引，$b=1,...,B$</span><br><span class="line">**Parameters**   |   </span><br><span class="line">$M$   |   货架总数</span><br><span class="line">$N$   |   商品总数</span><br><span class="line">$B$   |   批次总数</span><br><span class="line">$L$   |   单个批次最大订单数限制</span><br><span class="line">$O$   |   订单总数</span><br><span class="line">$t_m$   |   货架$m$ 上的商品种类总数</span><br><span class="line">$d_&#123;io&#125;$   |   =1如果订单$o$ 包含商品$i$ ;否则为0</span><br><span class="line">$c_&#123;im&#125;$   |   =1如果货架$m$ 上有商品$i$ ;否则为0</span><br></pre></td></tr></table></figure>
+
+<p><strong>Decision variables</strong>  </p>
+<p>$$<br>x_{bm} =<br>\begin{cases}<br>1, &amp;  \text{如果拣选批次$b$ 需要搬运货架$m$} \<br>0, &amp; \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>h_{im} =<br>\begin{cases}<br>1, &amp;  \text{如果需要从货架$m$ 上拣选商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>y_{ob} =<br>\begin{cases}<br>1, &amp;  \text{如果订单 $o$被分配到批次$b$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>$$<br>z_{ib} =<br>\begin{cases}<br>1,  &amp; \text{如果批次$b$ 中包含商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
+<p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:<br>$$min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}$$<br>$$\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}$$<br>$$\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}$$<br>$$Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}$$<br>$$h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}$$<br>$$\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}$$<br>$$x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}$$<br>$$x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}$$<br>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
+<h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
+<h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
+<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
+<h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比</span><br><span class="line">无效移动次数   |   406   |   809   | 49.815%</span><br></pre></td></tr></table></figure>
+
+<p>目标函数迭代情况:</p>
+<h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/04/30/order batching/" data-id="cjyx01tw6000ojov6qqmz3mjg" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/09/Robust Storage Assignment/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Robust Storage Assignment in Unit-Load Warehouses
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/04/29/运筹学复习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">运筹学复习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

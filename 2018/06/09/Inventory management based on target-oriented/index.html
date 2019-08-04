@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Inventory management based on target-oriented robust optimization | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Management ScienceAuthor: Yun Fong Lim, SMU; Chen Wang,SMU  Absract我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总">
+<meta name="keywords" content="论文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inventory management based on target-oriented robust optimization">
+<meta property="og:url" content="http://yoursite.com/2018/06/09/Inventory management based on target-oriented/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Management ScienceAuthor: Yun Fong Lim, SMU; Chen Wang,SMU  Absract我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-04T12:25:20.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Inventory management based on target-oriented robust optimization">
+<meta name="twitter:description" content="Management ScienceAuthor: Yun Fong Lim, SMU; Chen Wang,SMU  Absract我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Inventory management based on target-oriented" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/06/09/Inventory management based on target-oriented/" class="article-date">
+  <time datetime="2018-06-09T14:45:52.000Z" itemprop="datePublished">2018-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Inventory management based on target-oriented robust optimization
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>Management Science</strong><br>Author: Yun Fong Lim, SMU; Chen Wang,SMU</p>
+<hr>
+<h4 id="Absract"><a href="#Absract" class="headerlink" title="Absract"></a>Absract</h4><p>我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总成本比预先设定的成本目标更低。我们证明了一个静态决策规则是最优的，降低了计算负担。通过调整成本目标，结果策略能在预期成本和相关成本之间取得一个平衡。数值实验表明，尽管只利用了有限的需求信息，提出的方法与基于动态规划的传统方法的性能相当。更重要的是，如果需求分布不明确，我们的方法要明显优于传统的方法。通过两个行业的案例研究验证了我们的方法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h4><p>本文研究了一个多商品、多周期，具有固定订货成本和订货提前期的库存管理问题。动态规划是这个领域所用的主要方法，动态规划的局限性是当变量数增多时，将导致维数灾难。另一个主要方法是随机规划，随机规划只能解决很短的计划问题。鲁棒优化的研究近年增长了非常多，鲁棒优化方法有两个优点：1.只需要使用一部分潜在的不确定参数。2.鲁棒优化可以保存优化问题的可追踪性。</p>
+<h4 id="2-Problem-description-and-notation"><a href="#2-Problem-description-and-notation" class="headerlink" title="2. Problem description and notation"></a>2. Problem description and notation</h4><p><strong>Notation</strong></p>
+<hr>
+<p>$P$：商品数量,$\mathcal P=\{1,2,3,…,P\}$<br>$T$：规划范围内的周期数，$\mathcal T=\{1,2,3,…,T\}$<br>$l(i)$：商品$i$的订货提前期(以周期为单位)，常量<br>$h_t^i$：每单位的商品$i$在$t$周期到$t+1$的库存持有成本<br>$b_t^i$：每单位的商品$i$在$t$周期到$t+1$的积压成本<br>$A_t^i$：商品$i$在$t$周期内的固定订购成本（每次订购）<br>$c_t^i$：商品$i$在$t$周期内的单位订购成本<br>$\widetilde{d}_t^i$：商品$i$在$t$周期内的需求support set $[\underline{d_t^i},\overline{d_t^i}]$<br>$d_t^i$：商品$i$在$t$周期内已实现的需求<br>$\mathbf{\widetilde{d}}_t^i$：商品$i$从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t^i:=\bigl(\widetilde{d}_1^i,…,\widetilde{d}_t^i\bigr)\in \mathbb{R^t}$<br>$\mathbf{\widetilde{d}}_t$：所有商品从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t:=\bigl(\widetilde{d}_t^1,…,\widetilde{d}_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$\mathbf{d}_t^i$：商品$i$从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t^i:=\bigl(d_1^i,…,d_t^i\bigr)\in \mathbb{R}^{t}$<br>$\mathbf{d_t}$：所有商品从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t:=\bigl(d_t^1,…,d_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$y_t^i$：$t$周期开始时商品$i$的现有库存水平<br>$x_t^i$：$t$周期开始时商品$i$的订购数量<br>$\mathbf{y}_t:=\bigl(y_t^1,…,y_t^P\bigr)\in \mathbb{R}^P$<br>$\mathbf{x}_t:=\bigl(x_t^1,…,x_t^P\bigr)\in \mathbb{R}^P$<br>$\overline{x}_t$：所有商品在$t$周期的最大订购数量<br>$\mathcal{N}_t$：$\mathbb{R}^{(t-1)\times P}$到$\mathbb R$的非预期映射函数</p>
+<hr>
+<p>假设仓库中有$P$种商品，计划周期共$T$个周期，在每个周期$t$内，以下的进程被重复执行：<br>1.$y_t^i$表示商品$i$在周期$t$的现有库存水平。基于这个库存水平，我们需要确定商品$i$在周期$t$开始时的订购批量（生产批量）$x_t^i$，这就会产生一个固定订购成本$A_t^i$和一个变动订购成本$c_t^ix_t^i$，$c_t^i$表示商品$i$的单位订购成本。在这个问题中，$x_t^i$是决策变量，$y_t^i$是因变量。<br>2.商品$i$的订货提前期设为$l(i)$。在$t-l(i)$时刻订购的商品将在$t$周期开始时到达。<br>3.每个商品$i$在周期$t$内都有随机需求$\widetilde{d}<em>t^i$，最终实现的需求为$d_t^i$。在$t$周期结束时库存水平变成$y_t^i+x</em>{t-l(i)}^i-d_t^i$。<br>4.如果$y_t^i+x_{t-l(i)}^i-d_t^i \geq 0$,剩余的库存将会转到下个周期$t+1$中，这将导致每单位$h_t^i$的持有成本(holding cost)。如果$y_t^i+x_{t-l(i)}^i-d_t^i &lt; 0$，未满足的需求将会积压到下个周期中，这将产生每单位$b_t^i$的积压成本(backlog cost)。（注意持有成本与积压成本的区别，积压成本是由未满足的需求造成的）</p>
+<blockquote>
+<p><strong>Inventory holding cost</strong>:Holding inventory causes two type of cost<br>1.Out-of-pocket  holding  cost represents  real  costs  of  holding  inventory  such  as  warehouse rental, handling, insurance and refrigeration costs.<br>2.Opportunity cost represents the opportunity cost of funds tied to inventory.  It is calculated by multiplying the value of inventory with an opportunity cost rate parameter r≥0.The value of inventory is assumed to be equal to the unit ordering cost c.<br><strong>Backlog cost</strong>:Backlogging means not meeting a certain demand immediately from stock. The customer is assumed to wait until the demand is eventually met after some delay.  To determine the level of this planned backlog, the firm needs to trade-off inventory holding and backlog costs.Figure 1 illustrates the evolution of inventory and backlog levels in a typical order cycle,also indicating the maximum inventory and backlog levels.<br>cited from: Frenk J B G, Kaya M, Pourghannad B. Generalizing the ordering cost and holding-backlog cost rate functions in EOQ-type inventory models[M]//Handbook of EOQ Inventory Problems. Springer, Boston, MA, 2014: 79-119.</p>
+</blockquote>
+<p>5.$t+1$周期开始时库存水平为$y_{t+1}^i=y_t^i+x_{t-l(i)}^i-d_t^i$。1-4重复操作。<br>值得注意的是，实际上补货决策$x_t^i$没有必要再计划期开始即第1个周期开始时就决定，为了达到更好的效果，这个决策可以延迟到$t$周期在确定$d_{t-1}$与$\mathbf{d}<em>{t-1}$的比例之后。因此，$x_t^i$是一个非预期函数(non-anticipative funtion)，由$x_t^i(\mathbf d</em>{t-1})$表示，只取决于到$t-1$周期为止的需求信息。<br>考虑到初始库存水平$y_1^i$，补货数量$x_{1-l(i)}^i,x_{2-l(i)}^i,…x_{t-l(i)}^i$，以及已实现需求$\mathbf d_t^i$，那么在$t+1$时期的库存水平函数为$y_{t+1}^i: \mathbb R \times \mathbb R^t \times \mathbb R^t \rightarrow \mathbb R$,<br>$$y_{t+1}^i=y_1^i+\sum_{k=1}^t x_{k-l(i)}^i -\sum_{k=1}^t d_k^i \tag{1}$$<br>对于任意的$y \in \mathbb R$，定义$(y)^+:=max\{0,y\},(y)^-:=max\{0,-y\}$。因此，$(y_{t+1}^i)^+$和$(y_{t+1}^i)^-$表示库存过剩和库存不足。考虑到补货数量$x_t^i$和库存水平$y_{t+1}^i$，商品$i$在周期$t$中产生的总成本为:$A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-$，当$x_t^i&gt;0$时$I(x_t^i)=1$,否则等于0.</p>
+<h4 id="3-A-stochastic-optimization-model"><a href="#3-A-stochastic-optimization-model" class="headerlink" title="3. A stochastic optimization model"></a>3. A stochastic optimization model</h4><p>考虑到随机需求$\widetilde {\mathbf d}<em>{t-1}$，我们的目标是确定订货策略$x_t^i \bigl(\widetilde {\mathbf d}</em>{t-1} \bigr),for\quad all \quad i\in P,t \in \mathcal T$，以最小化计划周期内的总成本。我们构建了一个多周期随机优化模型:<br>$$\text{min}\quad E\Biggl[\sum_{i\in \mathcal P}\sum_{t\in \mathcal T}A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-\Biggr]$$<br>$\text{s.t.}\quad \sum_{i\in \mathcal P}x_t^i \bigl(\widetilde{\mathbf d}<em>{t-1}\bigr)\leq \overline{x}_t, \qquad t\in \mathcal T;\tag{2a}$<br>$x_t^i\bigl(\widetilde{\mathbf d}</em>{t-1}\bigr) \geq 0, \qquad i \in \mathcal P,t\in \mathcal T;\tag{2b}$<br>$x_t^i \in \mathcal N_t,\qquad i \in \mathcal P,t\in \mathcal T;\tag{2c}$<br>$\mathcal N_t$是一个集合，包含了所有非预期的$\mathbb R^{(t-1)\times P}$到$\mathbb R$函数映射。约束(2a)表示订购总量限制。这个模型是一个比较难的优化模型，很难求解。<br>理论上，我们能用动态规划DP来解决这个模型。定义$\mathbb q_t^i:=(x_{t-l(i)},…,x_{t-1}^i)$为商品$i$在周期$t$中未完成的订购数量。当t=1时$\mathbb q_1^i:=(x_{1-l(i)},…,x_0^i)$，令$\mathbb q_t:=(\mathbb q_t^1,…,\mathbb q_t^P)$.记订购数量为$\mathbb x_t$,库存水平为$\mathbb y_t$，未完成订购数量为$\mathbb q_t$,已实现需求为$\mathbb d_{t-1}$,则t周期的期望成本为:<br>$$r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}<em>{\mathbb x_t \in \mathcal F_t}\biggl\{\sum</em>{i \in \mathcal P }(A_t^iI(x_t^i)+c_t^ix_t^i)+E_{\widetilde{d}<em>t}\Biggl[\sum</em>{i \in \mathcal P}(h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-)\Biggr|\mathbb{\widetilde d}<em>{t-1}= \mathbb d</em>{t-1}\Biggr] \biggr\}\tag{3}$$<br>令$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})$为从t周期开始一直到计划期结束的最优期望成本，则:<br>$$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}<em>{\mathbb x \in \mathcal F_t}\biggr\{r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d</em>{t-1})+E_{\mathbb {\widetilde d}<em>t}\biggr[J</em>{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})\biggr|\mathbb{\widetilde d}<em>{t-1}= \mathbb d</em>{t-1}\biggr]\biggr\}\tag{4}$$<br>这里的$\mathcal F_t=\{\mathbb x_t|x_t^i \geq 0, i \in \mathcal P,\sum_{i \in \mathcal P}x_t^i \leq \overline x_t\}$,边界条件是$J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})=0$,对于任意的$\mathbb y_{t+1},\mathbb q_{t+1},\mathbb d_{t}$。<br>特别的，当$l(i)=0$时，<br>$J_t(\mathbb y_t)=\text{min}<em>{\mathbb x \in \mathcal F_t}\{r_t(\mathbb x_t,\mathbb y_t)+E</em>{(\widetilde{d}<em>t^1,…,\widetilde{d}_t^P)}[J</em>{t+1}(\mathbb y_{t+1})]\}\tag{5}$<br>此时边界条件为$J_{T+1}(\mathbb y_{T+1})=0$，对任意的$\mathbb y_{T+1}$。<br>令$\mathbb x_t^<em>$表示问题(4)在t周期的最优决策，则整个计划过程的决策可表示为$\{\mathbb x_1^</em>,…,\mathbb x_T^*\}$，我们称这个为DP策略。然而问题(4)是很难解的，因为在实际中它有很多的状态空间。</p>
+<h4 id="4-A-target-oriented-robust-optimization-approach"><a href="#4-A-target-oriented-robust-optimization-approach" class="headerlink" title="4. A target-oriented robust optimization approach"></a>4. A target-oriented robust optimization approach</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/06/09/Inventory management based on target-oriented/" data-id="cjyx01tvw000cjov66t6jtxgp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/论文/">论文</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/01/10/Python数据分析日常/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Python数据分析日常
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/06/09/Robust Storage Assignment/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Robust Storage Assignment in Unit-Load Warehouses</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Matlab/">Matlab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OR/">OR</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/实用技巧/">实用技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/无人仓/">无人仓</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/论文/">论文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/软件/">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Matlab/" style="font-size: 10px;">Matlab</a> <a href="/tags/OR/" style="font-size: 10px;">OR</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/python/" style="font-size: 16.67px;">python</a> <a href="/tags/实用技巧/" style="font-size: 13.33px;">实用技巧</a> <a href="/tags/无人仓/" style="font-size: 10px;">无人仓</a> <a href="/tags/论文/" style="font-size: 20px;">论文</a> <a href="/tags/软件/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">February 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
+          </li>
+        
+          <li>
+            <a href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

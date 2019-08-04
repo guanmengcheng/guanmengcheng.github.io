@@ -5,15 +5,20 @@
   
 
   
-  <title>Archives | Hexo</title>
+  <title>Matlab函数记录 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="randsamplerandsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多） randsample的命令格式： 1234567y = randsample(n,k)y = randsample(population,k)y = randsample(n,">
+<meta name="keywords" content="Matlab">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab函数记录">
+<meta property="og:url" content="http://yoursite.com/2019/02/18/Matlab函数记录/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="randsamplerandsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多） randsample的命令格式： 1234567y = randsample(n,k)y = randsample(population,k)y = randsample(n,">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-04T12:25:23.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Matlab函数记录">
+<meta name="twitter:description" content="randsamplerandsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多） randsample的命令格式： 1234567y = randsample(n,k)y = randsample(population,k)y = randsample(n,">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -60,226 +65,60 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/02/18/Matlab函数记录/" class="archive-article-date">
-  <time datetime="2019-02-18T13:03:50.000Z" itemprop="datePublished">Feb 18</time>
+        <section id="main"><article id="post-Matlab函数记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/02/18/Matlab函数记录/" class="article-date">
+  <time datetime="2019-02-18T13:03:50.000Z" itemprop="datePublished">2019-02-18</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/18/Matlab函数记录/">Matlab函数记录</a>
+    <h1 class="article-title" itemprop="name">
+      Matlab函数记录
     </h1>
   
 
-    </header>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
+<p>randsample的命令格式：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">y = randsample(n,k)</span><br><span class="line">y = randsample(population,k)</span><br><span class="line">y = randsample(n,k,replacement)</span><br><span class="line">y = randsample(population,k,replacement)</span><br><span class="line">y = randsample(n,k,<span class="built_in">true</span>,w)</span><br><span class="line">y = randsample(population,k,<span class="built_in">true</span>,w)</span><br><span class="line">y = randsample(s,...)</span><br></pre></td></tr></table></figure>
+
+<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
+<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
+<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/02/18/Matlab函数记录/" data-id="cjyx01tv60003jov68l41uhv7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Matlab/">Matlab</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/18/我的电脑软件/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">我的电脑软件</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/18/我的电脑软件/" class="archive-article-date">
-  <time datetime="2019-01-18T09:02:37.000Z" itemprop="datePublished">Jan 18</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/18/我的电脑软件/">我的电脑软件</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/" class="archive-article-date">
-  <time datetime="2019-01-11T05:55:22.000Z" itemprop="datePublished">Jan 11</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/11/SQL(MYSQL、ORACLE)日常/">SQL(MYSQL、ORACLE)日常</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2019/01/10/Python数据分析日常/" class="archive-article-date">
-  <time datetime="2019-01-10T08:58:49.000Z" itemprop="datePublished">Jan 10</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/10/Python数据分析日常/">Python数据分析日常</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/09/Inventory management based on target-oriented/" class="archive-article-date">
-  <time datetime="2018-06-09T14:45:52.000Z" itemprop="datePublished">Jun 9</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/09/Inventory management based on target-oriented/">Inventory management based on target-oriented robust optimization</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/06/09/Robust Storage Assignment/" class="archive-article-date">
-  <time datetime="2018-06-09T14:07:09.000Z" itemprop="datePublished">Jun 9</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/06/09/Robust Storage Assignment/">Robust Storage Assignment in Unit-Load Warehouses</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/30/order batching/" class="archive-article-date">
-  <time datetime="2018-04-30T02:04:20.000Z" itemprop="datePublished">Apr 30</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/30/order batching/">Order batching</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/29/运筹学复习/" class="archive-article-date">
-  <time datetime="2018-04-29T13:30:40.000Z" itemprop="datePublished">Apr 29</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/29/运筹学复习/">运筹学复习</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/04/12/SCI常用句型/" class="archive-article-date">
-  <time datetime="2018-04-12T02:09:06.000Z" itemprop="datePublished">Apr 12</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/12/SCI常用句型/">SCI常用句型</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2018/03/07/On the Scattered Storage Assignment Problem/" class="archive-article-date">
-  <time datetime="2018-03-07T04:44:07.000Z" itemprop="datePublished">Mar 7</time>
-</a>
-      
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/On the Scattered Storage Assignment Problem/">On the Scattered Storage Assignment Problem</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-
-  <nav id="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-  </nav>
 
 </section>
         
