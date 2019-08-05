@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[李宏毅机器学习笔记（二）]]></title>
+    <url>%2F2019%2F08%2F05%2F%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[课程信息：李宏毅Machine Learning 2017 fall B站链接，李宏毅老师课程主页 参考博客 笔记导航： Regression例子：预测pokemon的CP值 Step 1 : Model假设为Liner model: $y=b+w\cdot x_{cp}$($w_i$: weight, $b$: bias) Step 2: Goodness of Function首先准备好training data。 我们需要使用Loss Function衡量function的效果好坏。 Loss Function $L$: $$L(f) = \sum_{n=1}^{10}(\hat{y}^n-f(x_{cp}^n))^2$$ Input：a function，output：how bad it is Step 3：Best Function Gradient Descent Overfitting就是model在training data上表现很好，在testing data上表现不好。 应对Overfitting的方法： 收集更多的数据。 以前的模型有一些隐藏的因素没有考虑进去。所以我们需要重新设计一番。 Regularization 使用这个Loss Function找到的最好的function不止可以让$L$最小，同时还要是$w$很小的function。$w$很小的Function意味着Function是smooth（平滑）的。 我们相信在多数的状况下，smoother function更像是正确的function。 $\lambda$设置的大一些，找到的function就会越smooth。 从上图中可以发现，$\lambda$越大，Training Error越大。 我们希望选到smooth function，但是不要too smooth。 调整$\lambda$，获得最好的model 做Regularization 的时候不需要考虑bias，bias不影响function的平滑程度。]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[李宏毅机器学习笔记（一）]]></title>
+    <url>%2F2019%2F08%2F05%2F%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%2F</url>
+    <content type="text"><![CDATA[课程信息：李宏毅Machine Learning 2017 fall B站链接，李宏毅老师课程主页 参考博客 笔记导航： Introduction of this course What is Machine Learning? $\approx$ Looking for a Function From Data 机器学习三步骤：把大象塞进冰箱 Learning Map： Regression: The output of the target function $f$ is “scalar”.（e.g.预测PM2.5进行天气预报） Classification: Binary Classification 二元分类 （e.g.Spam filtering） Multi-class Classification 多分类 （e.g.Document Classification） Classification的Model分为Linear Model和Non-linear Model，Non-linear Model中最出名的就是Deep Learning。 以上均为Supervised Learning，均需要大量的Training Data，Training Data可以告诉我们要找的那个function的Input与Output之间有什么样的关系(Function的output又常叫label)。 Semi-supervised learning（半监督学习）可以减少Training Data的用量。Transfer Learning（迁移学习）也可以减少Training Data的用量，数据可以与考虑的任务无关（可以是标记的或未标记的）。 Unsupervised Learning就是想让机器学到无师自通。例1：让机器看大量的文章，看机器是否可以学会词汇的意思，比如用向量表示词汇。例2：让机器去动物园看一大堆，看机器是否能在看过动物后学会自己创造动物。例3：机器在看过大量图片后是否能学会自己生成图片。 Structured Learning是我们希望机器能输出有结构性的东西。 Reinforcement Learning（强化学习）是我们不告诉机器正确答案，只告诉机器我们对它输出的评价，机器唯一知道的的就是它做的好与不好。更加符合人类真实学习的情景。Alpha Go is supervised learning + reinforcement learning.]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[学习计划]]></title>
+    <url>%2F2019%2F08%2F05%2F%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92%2F</url>
+    <content type="text"><![CDATA[课程： 机器学习 吴恩达《机器学习》 林轩田《机器学习基石》、《机器学习技法》 李宏毅《机器学习2017 fall》、《机器学习2019》 书籍《统计学习方法2》 计量经济学 洪永淼《高级计量经济学》、《概率论与统计学》 陈强《计量经济学及 Stata 应用》 书籍《基本无害的基本经济学》 精确算法 墨尔本大学《Discrete Optimization》]]></content>
+      <categories>
+        <category>计划</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Matlab函数记录]]></title>
     <url>%2F2019%2F02%2F18%2FMatlab%E5%87%BD%E6%95%B0%E8%AE%B0%E5%BD%95%2F</url>
     <content type="text"><![CDATA[randsamplerandsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多） randsample的命令格式： 1234567y = randsample(n,k)y = randsample(population,k)y = randsample(n,k,replacement)y = randsample(population,k,replacement)y = randsample(n,k,true,w)y = randsample(population,k,true,w)y = randsample(s,...) 第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。 第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。 第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。]]></content>
