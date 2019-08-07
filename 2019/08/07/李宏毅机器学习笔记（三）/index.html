@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="论文,">
+  <meta name="keywords" content="机器学习,">
 
 
 
@@ -80,18 +80,22 @@
 
 
 
-<meta name="description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
-<meta name="keywords" content="论文">
+<meta name="description" content="课程信息：李宏毅Machine Learning 2017 fall B站链接，李宏毅老师课程主页 参考博客，参考笔记 笔记导航： Where does the error come from?bias、variance的区别：    准：bias描述的是根据样本拟合出的模型的输出预测结果的期望与样本真实结果的差距，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得">
+<meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Order batching">
-<meta property="og:url" content="http://yoursite.com/2018/04/30/order batching/index.html">
+<meta property="og:title" content="李宏毅机器学习笔记（三）">
+<meta property="og:url" content="http://yoursite.com/2019/08/07/李宏毅机器学习笔记（三）/index.html">
 <meta property="og:site_name" content="Mengcheng&#39;s Blog">
-<meta property="og:description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
+<meta property="og:description" content="课程信息：李宏毅Machine Learning 2017 fall B站链接，李宏毅老师课程主页 参考博客，参考笔记 笔记导航： Where does the error come from?bias、variance的区别：    准：bias描述的是根据样本拟合出的模型的输出预测结果的期望与样本真实结果的差距，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-04T12:25:27.925Z">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png">
+<meta property="og:updated_time" content="2019-08-07T12:54:38.182Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Order batching">
-<meta name="twitter:description" content="[考虑无效移动次数的订单分批问题研究]管梦城想法来源于之前看过的一篇文章面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）。 1.问题描述kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？  无效移动:搬运">
+<meta name="twitter:title" content="李宏毅机器学习笔记（三）">
+<meta name="twitter:description" content="课程信息：李宏毅Machine Learning 2017 fall B站链接，李宏毅老师课程主页 参考博客，参考笔记 笔记导航： Where does the error come from?bias、variance的区别：    准：bias描述的是根据样本拟合出的模型的输出预测结果的期望与样本真实结果的差距，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得">
+<meta name="twitter:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/30/order batching/">
+  <link rel="canonical" href="http://yoursite.com/2019/08/07/李宏毅机器学习笔记（三）/">
 
 
 
 
 
-  <title>Order batching | Mengcheng's Blog</title>
+  <title>李宏毅机器学习笔记（三） | Mengcheng's Blog</title>
   
 
 
@@ -299,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/30/order batching/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/07/李宏毅机器学习笔记（三）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Guan Mengcheng">
@@ -316,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Order batching</h1>
+          <h1 class="post-title" itemprop="name headline">李宏毅机器学习笔记（三）</h1>
         
 
         <div class="post-meta">
@@ -328,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-30T10:04:20+08:00">
-                2018-04-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-07T16:35:31+08:00">
+                2019-08-07
               </time>
             
 
@@ -338,6 +342,28 @@
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -365,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.1k
+                  286
                 </span>
               
 
@@ -381,7 +407,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  1
                 </span>
               
             </div>
@@ -402,27 +428,20 @@
       
 
       
-        <h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&mid=2650459983&idx=1&sn=02d696afefef36f1699a55e7f0380c75&chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&scene=21#wechat_redirect" target="_blank" rel="noopener">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
-<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
+        <p> 课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359" target="_blank" rel="noopener">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html" target="_blank" rel="noopener">李宏毅老师课程主页</a></p>
+<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/" target="_blank" rel="noopener">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/" target="_blank" rel="noopener">参考笔记</a></p>
+<p>笔记导航：</p>
+<h1 id="Where-does-the-error-come-from"><a href="#Where-does-the-error-come-from" class="headerlink" title="Where does the error come from?"></a>Where does the error come from?</h1><p>bias、variance的区别：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png" alt></p>
 <blockquote>
-<p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
+<ul>
+<li><strong>准：</strong>bias描述的是根据样本拟合出的模型的输出预测结果的期望<strong>与样本真实结果的差距</strong>，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得复杂化模型，增加模型的参数，但这样容易过拟合（overfitting），过拟合对应上图是high variance，点很分散。low bias对应就是点都打在靶心附近，所以瞄的是准的，但手不一定稳。</li>
+<li><strong>确：</strong>varience描述的是样本上训练出来的模型<strong>在测试集上的表现</strong>，要想在variance上表现好，low varience，就要简化模型，减少模型的参数，但这样容易欠拟合（unfitting），欠拟合对应上图是high bias，点偏离中心。low variance对应就是点都打的很集中，但不一定是靶心附近，手很稳，但是瞄的不准。</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/27068705" target="_blank" rel="noopener">参考知乎回答</a></p>
 </blockquote>
-<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Indices   |   </span><br><span class="line">$i$   |   商品索引，$i=1,...,N$</span><br><span class="line">$m$   |   货架索引，$m=1,...,M$</span><br><span class="line">$b$   |   批次索引，$b=1,...,B$</span><br><span class="line">**Parameters**   |   </span><br><span class="line">$M$   |   货架总数</span><br><span class="line">$N$   |   商品总数</span><br><span class="line">$B$   |   批次总数</span><br><span class="line">$L$   |   单个批次最大订单数限制</span><br><span class="line">$O$   |   订单总数</span><br><span class="line">$t_m$   |   货架$m$ 上的商品种类总数</span><br><span class="line">$d_&#123;io&#125;$   |   =1如果订单$o$ 包含商品$i$ ;否则为0</span><br><span class="line">$c_&#123;im&#125;$   |   =1如果货架$m$ 上有商品$i$ ;否则为0</span><br></pre></td></tr></table></figure>
-
-<p><strong>Decision variables</strong>  </p>
-<p>$$<br>x_{bm} =<br>\begin{cases}<br>1, &amp;  \text{如果拣选批次$b$ 需要搬运货架$m$} \<br>0, &amp; \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>h_{im} =<br>\begin{cases}<br>1, &amp;  \text{如果需要从货架$m$ 上拣选商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>y_{ob} =<br>\begin{cases}<br>1, &amp;  \text{如果订单 $o$被分配到批次$b$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>z_{ib} =<br>\begin{cases}<br>1,  &amp; \text{如果批次$b$ 中包含商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:<br>$$min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}$$<br>$$\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}$$<br>$$\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}$$<br>$$Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}$$<br>$$h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}$$<br>$$\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}$$<br>$$x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}$$<br>$$x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}$$<br>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
-<h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
-<h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
-<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
-<h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比</span><br><span class="line">无效移动次数   |   406   |   809   | 49.815%</span><br></pre></td></tr></table></figure>
-
-<p>目标函数迭代情况:</p>
-<h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png" alt></p>
+<h2 id="N-fold-Cross-Validation"><a href="#N-fold-Cross-Validation" class="headerlink" title="N-fold Cross Validation"></a>N-fold Cross Validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png" alt></p>
 
       
     </div>
@@ -449,7 +468,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/论文/" rel="tag"><i class="fa fa-tag"></i> 论文</a>
+            <a href="/tags/机器学习/" rel="tag"><i class="fa fa-tag"></i> 机器学习</a>
           
         </div>
       
@@ -462,8 +481,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/29/运筹学复习/" rel="next" title="运筹学复习">
-                <i class="fa fa-chevron-left"></i> 运筹学复习
+              <a href="/2019/08/05/高级计量经济学（二）/" rel="next" title="高级计量经济学（二）">
+                <i class="fa fa-chevron-left"></i> 高级计量经济学（二）
               </a>
             
           </div>
@@ -472,8 +491,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/06/09/Robust Storage Assignment/" rel="prev" title="Robust Storage Assignment in Unit-Load Warehouses">
-                Robust Storage Assignment in Unit-Load Warehouses <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/07/Untitled 1/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -624,7 +643,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑无效移动次数的订单分批问题研究"><span class="nav-number">1.</span> <span class="nav-text">[考虑无效移动次数的订单分批问题研究]</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-问题描述"><span class="nav-number">2.</span> <span class="nav-text">1.问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-模型"><span class="nav-number">3.</span> <span class="nav-text">2.模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-算法"><span class="nav-number">4.</span> <span class="nav-text">3.算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-生成初始解"><span class="nav-number">4.1.</span> <span class="nav-text">3.1.生成初始解:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-优化"><span class="nav-number">4.2.</span> <span class="nav-text">3.2.优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-数值实验"><span class="nav-number">4.3.</span> <span class="nav-text">3.3.数值实验</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-可以改进的地方"><span class="nav-number">5.</span> <span class="nav-text">4.可以改进的地方</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Where-does-the-error-come-from"><span class="nav-number">1.</span> <span class="nav-text">Where does the error come from?</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation"><span class="nav-number">1.1.</span> <span class="nav-text">Cross validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#N-fold-Cross-Validation"><span class="nav-number">1.2.</span> <span class="nav-text">N-fold Cross Validation</span></a></li></ol></li></ol></div>
             
 
           </div>
