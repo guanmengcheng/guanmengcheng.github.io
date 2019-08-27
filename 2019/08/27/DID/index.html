@@ -90,7 +90,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092342.png">
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092500.png">
-<meta property="og:updated_time" content="2019-08-27T11:46:31.818Z">
+<meta property="og:updated_time" content="2019-08-27T12:00:43.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DID">
 <meta name="twitter:description" content="双重差分法，英文名Differences-in-Differences，别名“倍差法”，小名“差中差”。作为政策效应评估方法中的一大利器，双重差分法受到越来越多人的青睐，概括起来有如下几个方面的原因：（1）可以很大程度上避免内生性问题的困扰：政策相对于微观经济主体而言一般是外生的，因而不存在逆向因果问题。此外，使用固定效应估计一定程度上也缓解了遗漏变量偏误问题。（2）传统方法下评估政策效应，主要">
@@ -449,7 +449,7 @@
 <p>若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期发生了较小的变化，则对上述问题的回答就是肯定的 。当然，在进行纵向比较时，我们必须施加共同趋势假定，即：如果杭嘉湖地区未实行改革试验，那么也会发生与非杭嘉湖地区相同的较小变化。可以认为， 浙江非杭嘉湖地区发生的较小变化是源于全国宏观经济形势与浙江整体经济形势的变化， 而杭嘉湖地区之所以有较大变化，是因为还存在额外的改革绩效。</p>
 <p>实行改革的杭嘉湖地区就是所谓的处理组，而实行的改革就是实施的处理。相应的， 未实行改革的非杭嘉湖地区就是对照组。在对处理组实施处理的前后，对照组亦会发生或大或小的变化。如果在评估改革绩效即评估处理效应时，没有将处理组与对照组的变化进行同期对照，那么我们所发现的处理效应很可能存在偏差。在本文的例子中，杭嘉湖地区改革前后的绩效变化具有三个来源：全国宏观经济形势变化、浙江整体经济形势变化、改革绩效。如果没有与非杭嘉湖地区的变化进行同期对照，那么我们评估的改革绩效就混杂了全国宏观经济形势与浙江整体经济形势变化的影响，因此很可能存在较大偏差。</p>
 <p>鉴于非杭嘉湖地区作为对照组，其绩效变化可以代表全国宏观经济形势与浙江整体经济形势变化的影响，一个简单有效的纠偏方法就是：通过对杭嘉湖地区的绩效变化与非杭嘉湖地区的绩效变化进行比较，将全国宏观经济形势与浙江整体经济形势变化的影响从杭嘉湖地区的绩效变化中一并剔除，进而获得净的处理效应，而这正是双重差分模型的基本逻辑。</p>
-<p>建立 DID 模型首先需设立两个虚拟变量：<br>$$<br>D_{1}=\left{\begin{array}{l}{1 \qquad 浙江杭嘉湖地区} \ {0\qquad 浙江非杭嘉湖地区}\end{array}\right.<br>\qquad D_{2}=\left{\begin{array}{l}{1 \qquad 改革后} \ {0\qquad 改革前}\end{array}\right.<br>$$<br>然后建立模型：<br>$$<br>\text {Score}<em>{i}=\alpha</em>{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}<br>$$<br>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
+<p>建立 DID 模型首先需设立两个虚拟变量：<br>$$<br>D_{1}=\left{\begin{array}{l}{1 \qquad \text{浙江杭嘉湖地区}} \ {0\qquad \text{浙江非杭嘉湖地区}}\end{array}\right.<br>\qquad D_{2}=\left{\begin{array}{l}{1 \qquad \text{改革后}} \ {0\qquad \text{改革前}}\end{array}\right.<br>$$<br>然后建立模型：<br>$$<br>Score_{i}=\alpha_{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}<br>$$<br>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
 <p>在所有参数中，a2 与 a3 是最为关键的。为了进一步理解这两个参数的含义，接下来我们对虚拟变量赋值，有：</p>
 <p>1） 对于浙江非杭嘉湖地区（D1=0）：</p>
 <p>改革后（D2=1）的期望绩效为：a0  +a2 ；</p>
@@ -509,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/08/27/双重差分法（DID）/" rel="prev" title>
-                 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +578,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
