@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  864
+                  863
                 </span>
               
 
@@ -404,21 +404,12 @@
       
         <p>总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。</p>
 <h4 id="1-Python连接MYSQL数据库"><a href="#1-Python连接MYSQL数据库" class="headerlink" title="1 Python连接MYSQL数据库"></a>1 Python连接MYSQL数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> MySQLdb.cursors</span><br><span class="line">mysql_cn= MySQLdb.connect(host=<span class="string">'数据库地址'</span>, port=<span class="string">'端口'</span>, user=<span class="string">'用户名'</span>, passwd=<span class="string">'密码'</span>, db=<span class="string">'数据库名'</span>,cursorclass = MySQLdb.cursors.SSCursor)</span><br></pre></td></tr></table></figure>
-
 <h4 id="2-写入xlsx文件-多个sheet"><a href="#2-写入xlsx文件-多个sheet" class="headerlink" title="2 写入xlsx文件(多个sheet)"></a>2 写入xlsx文件(多个sheet)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">'出库统计.xlsx'</span>)</span><br><span class="line">df.to_excel(writer,sheet_name=<span class="string">'sheet_name'</span>)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
-
 <h4 id="3-DataFrame按某列排序"><a href="#3-DataFrame按某列排序" class="headerlink" title="3 DataFrame按某列排序"></a>3 DataFrame按某列排序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">'列名'</span>,ascending=<span class="literal">False</span>)<span class="comment">#ascending=False为降序</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="4-取出DataFrame某列中非空的行"><a href="#4-取出DataFrame某列中非空的行" class="headerlink" title="4 取出DataFrame某列中非空的行"></a>4 取出DataFrame某列中非空的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'columns'</span>].isnull().values==<span class="literal">False</span>]</span><br></pre></td></tr></table></figure>
-
 <h4 id="5-Pandas读取xlsx文件的sheetname"><a href="#5-Pandas读取xlsx文件的sheetname" class="headerlink" title="5 Pandas读取xlsx文件的sheetname"></a>5 Pandas读取xlsx文件的sheetname</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">wb = openpyxl.load_workbook(path)</span><br><span class="line">sheetnames = wb.sheetnames</span><br></pre></td></tr></table></figure>
-
-<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_expire</span><span class="params">(arr,x,y)</span>:</span></span><br><span class="line">    a=arr[x]</span><br><span class="line">    b=arr[y]</span><br><span class="line">    cur.execute(SQL)</span><br><span class="line">    <span class="keyword">return</span> cur.fetchall()[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-
-<p>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" alt></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'失效日期'</span>]=df.apply(get_expire,axis = <span class="number">1</span>, args = (<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>)</span><br></pre></td></tr></table></figure>
-
+<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_expire</span><span class="params">(arr,x,y)</span>:</span></span><br><span class="line">    a=arr[x]</span><br><span class="line">    b=arr[y]</span><br><span class="line">    cur.execute(SQL)</span><br><span class="line">    <span class="keyword">return</span> cur.fetchall()[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
+<p>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" alt><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'失效日期'</span>]=df.apply(get_expire,axis = <span class="number">1</span>, args = (<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>在get_expire函数中，arr传入的为df，x,y传入分别为<code>&#39;product_id&#39;</code>,<code>&#39;wms_batch_code&#39;</code></p>
 <h4 id="7-按时间统计数据"><a href="#7-按时间统计数据" class="headerlink" title="7 按时间统计数据"></a>7 按时间统计数据</h4><p>首先需要将时间to_datetime，利用方法：</p>
 <p><code>df[&#39;cal_date&#39;]=pd.to_datetime(df[&#39;cal_date&#39;])</code></p>
@@ -429,48 +420,34 @@
 <p>聚合方式还有：</p>
 <p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png" alt></p>
 <h4 id="8-获取DataFrame中某列包含特定字符的所有行"><a href="#8-获取DataFrame中某列包含特定字符的所有行" class="headerlink" title="8 获取DataFrame中某列包含特定字符的所有行"></a>8 获取DataFrame中某列包含特定字符的所有行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car = df[<span class="string">'单据号'</span>].str.contains(<span class="string">'CAR'</span>)</span><br><span class="line">df[car] <span class="comment">#表示在df的'单据号'列中包含字符'CAR'的所有行</span></span><br><span class="line">df[~car] <span class="comment">#表示去不包含字符'CAR'的所有行</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="9-取时间中的天数"><a href="#9-取时间中的天数" class="headerlink" title="9 取时间中的天数"></a>9 取时间中的天数</h4><p><code>batch[&#39;库存天数&#39;]=(batch[&#39;销完时间&#39;]-batch[&#39;上架时间&#39;]).dt.days</code></p>
 <h4 id="10-按特定的值取DataFrame中的行"><a href="#10-按特定的值取DataFrame中的行" class="headerlink" title="10 按特定的值取DataFrame中的行"></a>10 按特定的值取DataFrame中的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_zhout[df_zhout[<span class="string">'出库类型'</span>].isin([<span class="string">'销售订单'</span>,<span class="string">'电商订单'</span>])]</span><br></pre></td></tr></table></figure>
-
 <p>表示取出’出库类型’列中值为’销售订单’,’电商订单’的所有行</p>
 <h4 id="11-删除DataFrame中的重复值"><a href="#11-删除DataFrame中的重复值" class="headerlink" title="11 删除DataFrame中的重复值"></a>11 删除DataFrame中的重复值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch.drop_duplicates(subset=[<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>],keep=<span class="string">'first'</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>表示删除batch中’product_id’,’wms_batch_code’均重复的行，保留第一个重复的行，并替换掉原batch</p>
 <h4 id="12-合并DataFrame"><a href="#12-合并DataFrame" class="headerlink" title="12 合并DataFrame"></a>12 合并DataFrame</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=df.append(df1,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
-
 <p>df 与 df1的列相同，将其合并，并忽略各自的index</p>
 <h4 id="13-DataFrame的Merge方法"><a href="#13-DataFrame的Merge方法" class="headerlink" title="13 DataFrame的Merge方法"></a>13 DataFrame的Merge方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.merge(df_sample, df_stock, on=<span class="string">'cal_date'</span>,how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
-
 <p>how还可取<code>inner,outer,right</code></p>
 <h4 id="14-改变某列的数据类型"><a href="#14-改变某列的数据类型" class="headerlink" title="14 改变某列的数据类型"></a>14 改变某列的数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'sku_id'</span>]=df[<span class="string">'sku_id'</span>].astype(str)</span><br></pre></td></tr></table></figure>
-
 <h4 id="15-选取以字母G开头的数据"><a href="#15-选取以字母G开头的数据" class="headerlink" title="15  选取以字母G开头的数据"></a>15  选取以字母G开头的数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df.col1.str.startswith(<span class="string">'G'</span>)]</span><br></pre></td></tr></table></figure>
-
 <h4 id="16-Group-by方法"><a href="#16-Group-by方法" class="headerlink" title="16 Group by方法"></a>16 Group by方法</h4><p>对DataFrame进行分组，agg方法可实现对多个方法同时使用:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.groupby([<span class="string">'gcode'</span>,<span class="string">'cbecomcode'</span>,<span class="string">'year-month'</span>]).agg(&#123;<span class="string">'upric'</span>:[<span class="string">'mean'</span>,<span class="string">'var'</span>],<span class="string">'qty'</span>:<span class="string">'sum'</span>&#125;)</span><br></pre></td></tr></table></figure>
-
 <p>agg方法可以实现对同一列实现不同方法<code>{&#39;upric&#39;:[&#39;mean&#39;,&#39;var&#39;]</code>，也可以对不同列使用不同的方法。</p>
 <h4 id="17-Concat合并"><a href="#17-Concat合并" class="headerlink" title="17 Concat合并"></a>17 Concat合并</h4><p>将两个DataFrame按照行的维度进行合并</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data = pd.concat([data1, data2])</span><br></pre></td></tr></table></figure>
-
 <p>按列的维度进行合并</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data_col = pd.concat([data1, data2], axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="18-删除有缺失值的行"><a href="#18-删除有缺失值的行" class="headerlink" title="18 删除有缺失值的行"></a>18 删除有缺失值的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(how=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="19-优秀的第三方库"><a href="#19-优秀的第三方库" class="headerlink" title="19 优秀的第三方库"></a>19 优秀的第三方库</h4><p><a href="https://github.com/statsmodels/statsmodels" target="_blank" rel="noopener">Statsmodels</a>：统计建模和计量经济学</p>
 <p><a href="https://github.com/pandas-profiling/pandas-profiling" target="_blank" rel="noopener">Pandas Profiling</a>：一键生成数据分析报告</p>
 <h4 id="20-多层索引处理"><a href="#20-多层索引处理" class="headerlink" title="20 多层索引处理"></a>20 多层索引处理</h4><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155558.png" alt></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gp1.columns = [<span class="string">"_"</span>.join(x) <span class="keyword">for</span> x <span class="keyword">in</span> gp1.columns.ravel()]</span><br></pre></td></tr></table></figure>
-
 <p>将第二层的索引合并到第一层，得到</p>
 <p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155657.png" alt></p>
 <h4 id="21-重命名列名"><a href="#21-重命名列名" class="headerlink" title="21 重命名列名"></a>21 重命名列名</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'gcode_'</span>:<span class="string">'product_id'</span>,<span class="string">'cbecomcode_'</span>:<span class="string">'platform'</span>,<span class="string">'year-month_'</span>:<span class="string">'year-month'</span>&#125;)</span><br></pre></td></tr></table></figure>
-
 <h4 id="22-唯一值ID替换"><a href="#22-唯一值ID替换" class="headerlink" title="22 唯一值ID替换"></a>22 唯一值ID替换</h4><p>将列中的相同唯一值替换为其他值，可用于脱敏处理,<a href="http://cn.voidcc.com/question/p-usjfgxvn-ho.html" target="_blank" rel="noopener">参考</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">141</span>]: x[<span class="string">'cat'</span>] = pd.Categorical((pd.factorize(x.name)[<span class="number">0</span>] + <span class="number">1</span>).astype(str)) </span><br><span class="line">In [<span class="number">142</span>]: x </span><br><span class="line">Out[<span class="number">142</span>]: </span><br><span class="line">    name v1 v2 v3 ID cat </span><br><span class="line"><span class="number">0</span> Aaron <span class="number">3</span> <span class="number">5</span> <span class="number">7</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">1</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">9</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">2</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">10</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">3</span> Brave <span class="number">4</span> <span class="number">6</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> </span><br><span class="line"><span class="number">4</span> Brave <span class="number">3</span> <span class="number">6</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -601,7 +578,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -623,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -721,7 +698,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

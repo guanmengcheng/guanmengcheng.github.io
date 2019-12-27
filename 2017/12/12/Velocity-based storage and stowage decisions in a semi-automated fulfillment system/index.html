@@ -443,31 +443,30 @@
 </li>
 <li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
 </li>
-<li><p>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</p>
-</li>
-<li><p>A9: Ignore stow operations<br>忽略上货操作</p>
-</li>
+<li>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</li>
+<li>A9: Ignore stow operations<br>忽略上货操作</li>
 <li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
 <h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
-<li><p>$$v_i(x)=e^{-x/V_i}$$<br>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：<br>$$\int_o^1V_idi=1$$”CDF”（Cumulative Distribution Function）：分布函数<br>指数分布概率密度函数:<br>$$<br>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \<br>&amp; 0,  x\lt 0 \<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
+<li><script type="math/tex; mode=display">v_i(x)=e^{-x/V_i}</script><p>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：</p>
+<script type="math/tex; mode=display">\int_o^1V_idi=1$$"CDF”（Cumulative Distribution Function）：分布函数
+指数分布概率密度函数:</script><p>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \\<br>&amp; 0,  x\lt 0 \\<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
 </li>
-<li><p>定义物品$i$的库存数量为$Q_i$<br>$$Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha$$</p>
-</li>
+<li>定义物品$i$的库存数量为$Q_i$<script type="math/tex; mode=display">Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha</script></li>
 </ul>
-<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：<br>$$Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha$$</p>
-<p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:<br>$$DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha$$<br>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
+<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：</p>
+<script type="math/tex; mode=display">Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha</script><p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:</p>
+<script type="math/tex; mode=display">DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha</script><p>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
 <ul>
-<li>$C$表示货架的货位数，$J$表示货架的数量<br>$$J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}$$<center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center>
-[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]
-## 2.4Evaluation of Storage Policies under Random Stowage
-随机存储策略下的货架布局策略评估
-> Our objective is to evaluate the expected total travel distance under the different storage policies
-
+<li>$C$表示货架的货位数，$J$表示货架的数量<script type="math/tex; mode=display">J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}</script><center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center><br>[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]<h2 id="2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><a href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage" class="headerlink" title="2.4Evaluation of Storage Policies under Random Stowage"></a>2.4Evaluation of Storage Policies under Random Stowage</h2>随机存储策略下的货架布局策略评估<blockquote>
+<p>Our objective is to evaluate the expected total travel distance under the different storage policies</p>
+</blockquote>
 </li>
 </ul>
-<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:<br>$$Pr[D_i&gt; x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i$$<br>$$Pr[D_i &gt; x]=0,for\quad x\geq Q_i$$<br>则其期望与方差$E[D_i],Var(D_i)$:<br>$$E[D_i]=V_i(1-\alpha)$$<br>$$Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)$$<br>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:<br>$$E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C$$<br>$$Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C$$<br>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
-<p>$$L=4$$<br>$$l \in \{1,2,…,L\}$$</p>
-
+<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:</p>
+<script type="math/tex; mode=display">Pr[D_i> x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i</script><script type="math/tex; mode=display">Pr[D_i > x]=0,for\quad x\geq Q_i</script><p>则其期望与方差$E[D_i],Var(D_i)$:</p>
+<script type="math/tex; mode=display">E[D_i]=V_i(1-\alpha)</script><script type="math/tex; mode=display">Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)</script><p>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:</p>
+<script type="math/tex; mode=display">E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C</script><script type="math/tex; mode=display">Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C</script><p>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
+<script type="math/tex; mode=display">L=4</script><script type="math/tex; mode=display">l \in \\{1,2,...,L\\}</script>
       
     </div>
     
@@ -597,7 +596,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -619,7 +618,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -668,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter2-Velocity-based-storage-decisions"><span class="nav-number">1.</span> <span class="nav-text">Chapter2 Velocity-based storage decisions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-literature-Review"><span class="nav-number">2.</span> <span class="nav-text">2.1 literature Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Model-Assumptions"><span class="nav-number">3.</span> <span class="nav-text">2.2 Model Assumptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Assumptions"><span class="nav-number">3.1.</span> <span class="nav-text">Assumptions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Model-Preliminaries"><span class="nav-number">4.</span> <span class="nav-text">2.3 Model Preliminaries</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter2-Velocity-based-storage-decisions"><span class="nav-number">1.</span> <span class="nav-text">Chapter2 Velocity-based storage decisions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-literature-Review"><span class="nav-number">2.</span> <span class="nav-text">2.1 literature Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Model-Assumptions"><span class="nav-number">3.</span> <span class="nav-text">2.2 Model Assumptions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Assumptions"><span class="nav-number">3.1.</span> <span class="nav-text">Assumptions</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Model-Preliminaries"><span class="nav-number">4.</span> <span class="nav-text">2.3 Model Preliminaries</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><span class="nav-number">5.</span> <span class="nav-text">2.4Evaluation of Storage Policies under Random Stowage</span></a></li></ol></div>
             
 
           </div>
@@ -717,7 +716,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

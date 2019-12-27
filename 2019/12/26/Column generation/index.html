@@ -80,18 +80,18 @@
 
 
 
-<meta name="description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：    原始模型 $i$ 的">
+<meta name="description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：     原始模型 $i$">
 <meta name="keywords" content="运筹学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Column Generation">
 <meta property="og:url" content="http://yoursite.com/2019/12/26/Column generation/index.html">
 <meta property="og:site_name" content="Mengcheng&#39;s Blog">
-<meta property="og:description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：    原始模型 $i$ 的">
+<meta property="og:description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：     原始模型 $i$">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-12-26T17:55:54.524Z">
+<meta property="og:updated_time" content="2019-12-27T01:38:30.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Column Generation">
-<meta name="twitter:description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：    原始模型 $i$ 的">
+<meta name="twitter:description" content="这篇博客主要介绍列生成的原理以及应用到VRPTW的实例 基础理论对偶理论 原理1 每个原始问题的主约束都对应一个对偶变量（dual variable）。该对偶变量的值对应这一主约束不等式右边系数（RHS系数）每增加一个单位，原始问题最优值的变化量。  通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。  原理2  在线性规划的第$i$个约束的对偶变量有以下类型：     原始模型 $i$">
 
 
 
@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  886
+                  931
                 </span>
               
 
@@ -426,6 +426,7 @@
 <p>通常将原始问题的第$i$个主约束的对偶变量记为$v_i$。</p>
 <blockquote>
 <p>原理2  在线性规划的第$i$个约束的对偶变量有以下类型：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -435,7 +436,8 @@
 <th>$i$ 的方向是=</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>最小化目标</td>
 <td>$v_i\leq0$</td>
 <td>$v_i\geq0$</td>
@@ -447,26 +449,29 @@
 <td>$v_i\leq 0$</td>
 <td>无约束</td>
 </tr>
-</tbody></table>
-</blockquote>
-<blockquote>
+</tbody>
+</table>
+</div>
 <p>原理3 对于最小化线性规划中每个非负变量$x_j$，存在一个相应的主对偶约束$\sum_i a_{i,j}v_i \leq c_j$，限制一个活动的净边际收益不超过既定的成本。在最大化问题中，在$x \geq 0$的情形下，主对偶约束$\sum_i a_{i,j}v_i \geq c_j$限定了梅总活动的净边际成本不少于既定利润。</p>
-</blockquote>
-<blockquote>
-<p>原理4 如果一个原始线性规划问题有最优解，那么它的最优值$\sum_{j}c_jx_j^<em>$与其对偶问题在最优情况下所隐含的所有约束资源的总值$\sum_i b_iv_i^</em>$相等</p>
-</blockquote>
-<blockquote>
+<p>原理4 如果一个原始线性规划问题有最优解，那么它的最优值与其对偶问题在最优情况下所隐含的所有约束资源的总值相等</p>
 <p>原理5 <strong>互补松弛定理</strong>：如果在原始最优解情况下，一个约束是非积极约束(如果一个不等式在给定解下，不等号左右两边值相等，那么这个不等式是<strong>积极约束</strong>，反之为<strong>非积极约束</strong>)，那么它对应的对偶变量$v_i=0$</p>
-</blockquote>
-<blockquote>
 <p>原理6 如果一个原始变量最优值不为0，那么对应的对偶价格必须使得对应的对偶约束是积极约束；如果对偶价格$v_i$使得对应的对偶约束是非积极约束，那么对应原始变量最优值为0（$x_i=0$）。</p>
+<p>原理7 当最小化原始LP问题的变量满足$\boldsymbol{x} \geq 0$条件时，以$\boldsymbol{v}$表示其变量的对偶问题如下： </p>
+<script type="math/tex; mode=display">min \quad \boldsymbol{c} \cdot { \boldsymbol{x}} \qquad \qquad  min\boldsymbol{b} \cdot \boldsymbol{v} \\
+s.t. \quad A\boldsymbol{x} = \left\{\begin{aligned} \leq \\
+ \geq    \\ = \end{aligned}\right\}b \quad s.t. \quad A^T\boldsymbol{v}\geq \boldsymbol{c} \\ \boldsymbol{x}\geq 0 \qquad \qquad \qquad\boldsymbol{v}  \left\{\begin{aligned} \leq 0\\
+ \geq  0  \\ \text{URS} \end{aligned}\right\}</script><p>其中，对偶变量的符号根据原始问题主约束形式确定</p>
 </blockquote>
-<blockquote>
-<p>原理7 当最小化原始LP问题的变量满足$\boldsymbol{x} \geq 0$条件时，以$\boldsymbol{v}$表示其变量的对偶问题如下：<br>$$min \quad \boldsymbol{c} \cdot { \boldsymbol{x}} \qquad \qquad  min\boldsymbol{b} \cdot \boldsymbol{v} \<br>s.t. \quad A\boldsymbol{x} = \left{\begin{aligned} \leq \<br> \geq    \<br> =<br>\end{aligned}\right}b<br>\quad A\boldsymbol{x}=b$$</p>
-</blockquote>
-<h1 id="Column-generation"><a href="#Column-generation" class="headerlink" title="Column generation"></a>Column generation</h1><p>Let us call the following liner program the <strong><em>master problem</em></strong> <strong>(MP)</strong>[^1].<br>$$<br>z^<em><em>{MP}=min \sum</em>{j \in J}c_j \lambda_j \<br>s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \<br>\lambda _j \geq 0 , \qquad j\in J<br>$$<br>当$j$增大的时候，主问题的求解难度呈指数增长，因此我们对于MP只考虑求解$J$的子集$J’\subseteq J$ — ***the restricted master problem</em>(RMP)<em>*，即限制主问题。令$\lambda$和$\pi$分别为RMP的主问题及其对偶问题<a href="对偶理论">(跳转对偶理论)</a>的最优解，当$a_j, j \in J$是集合$A$的一个元素，$c_j$可以根据$a_j$通过函数$c$计算得到的时候，则定价子问题（subproblem）为：<br>$$<br>\overline{c}^</em>:=min{c(a)-\pi^ta|a\in A}<br>$$<br>如果$\overline{c}^* \geq 0$，即对于任意$j\in J$，其$c_j$非负，则$\lambda$既是RMP的最优解，也是MP的最优解。否则，将求解子问题得到的最优解得到的列加入到RMP中再次进行求解。令$\overline{z}$表示RMP的最优解，当MP最优解的上界$k \geq \sum_{j \in J}\lambda_j$成立时，我们有：<br>$$<br>\overline{z}+k\overline{c}^* \leq z^*_{MP} \leq \overline{z}<br>$$</p>
-<p>dual problem   <a href="对偶理论">对偶理论</a></p>
-<h1 id="对偶理论-1"><a href="#对偶理论-1" class="headerlink" title="对偶理论"></a>对偶理论</h1><p>[^1]:Column generation[M]. Springer Science &amp; Business Media, 2006.</p>
+<h1 id="Column-generation"><a href="#Column-generation" class="headerlink" title="Column generation"></a>Column generation</h1><p>Let us call the following liner program the <strong><em>master problem</em></strong> <strong>(MP)</strong><sup><a href="#fn_1" id="reffn_1">1</a></sup>.</p>
+<script type="math/tex; mode=display">
+z^*_{MP}=min \sum_{j \in J}c_j \lambda_j \\
+s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
+\lambda _j \geq 0 , \qquad j\in J</script><p>当$j$增大的时候，主问题的求解难度呈指数增长，因此我们对于MP只考虑求解$J$的子集$J’\subseteq J$ —- <strong><em>the restricted master problem</em>(RMP)</strong>，即限制主问题。令$\lambda$和$\pi$分别为RMP的主问题及其对偶问题<a href="对偶理论">(跳转对偶理论)</a>的最优解，当$a_j, j \in J$是集合$A$的一个元素，$c_j$可以根据$a_j$通过函数$c$计算得到的时候，则定价子问题（subproblem）为：</p>
+<script type="math/tex; mode=display">
+\overline{c}^*:=min\{c(a)-\pi^ta|a\in A\}</script><p>如果$\overline{c}^* \geq 0$，即对于任意$j\in J$，其$c_j$非负，则$\lambda$既是RMP的最优解，也是MP的最优解。否则，将求解子问题得到的最优解得到的列加入到RMP中再次进行求解。令$\overline{z}$表示RMP的最优解，当MP最优解的上界$k \geq \sum_{j \in J}\lambda_j$成立时，我们有：</p>
+<script type="math/tex; mode=display">
+\overline{z}+k\overline{c}^* \leq z^*_{MP} \leq \overline{z}</script><p>dual problem   <a href="对偶理论">对偶理论</a></p>
+<h1 id="对偶理论-1"><a href="#对偶理论-1" class="headerlink" title="对偶理论"></a>对偶理论</h1><p><sup><a href="#fn_1" id="reffn_1">1</a></sup>:Column generation[M]. Springer Science &amp; Business Media, 2006.</p>
 
       
     </div>
@@ -593,7 +598,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -615,7 +620,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -713,7 +718,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

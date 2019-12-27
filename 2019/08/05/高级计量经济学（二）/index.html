@@ -382,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  464
+                  459
                 </span>
               
 
@@ -421,35 +421,38 @@
       
         <p>笔记导航：</p>
 <h1 id="CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析"><a href="#CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析" class="headerlink" title="CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析"></a>CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析</h1><h2 id="2-1-Conditional-Probability-Distribution"><a href="#2-1-Conditional-Probability-Distribution" class="headerlink" title="2.1 Conditional Probability Distribution"></a>2.1 Conditional Probability Distribution</h2><p>假设$Z=\left(Y, X^{\prime}\right)^{\prime}$是一个随机向量，$E\left(Y^{2}\right)&lt;\infty$, $Y$是一个标量，$X$是一个$(k+1)\times1$的向量。 $f(x,y)$为联合概率密度分布（probability density function, PDF）,则对于$X$的边缘概率分布为：</p>
-<p>$$<br>f_{X}(x)=\int_{-\infty}^{\infty} f(x, y) d y<br>$$</p>
-<p>给定$X$,对于$Y$的条件概率密度分布为：</p>
-<p>$$<br>f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)}<br>$$</p>
-<p>则条件概率分布能够完整表示出$Y$依赖$X$的程度。根据$f_{Y | X}(y | x)$可以计算以下：</p>
+<script type="math/tex; mode=display">
+f_{X}(x)=\int_{-\infty}^{\infty} f(x, y) d y</script><p>给定$X$,对于$Y$的条件概率密度分布为：</p>
+<script type="math/tex; mode=display">
+f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)}</script><p>则条件概率分布能够完整表示出$Y$依赖$X$的程度。根据$f_{Y | X}(y | x)$可以计算以下：</p>
 <ul>
 <li>The conditional mean</li>
 </ul>
-<p>$$<br>\begin{aligned} E(Y | x) &amp; \equiv E(Y | X=x) \ &amp;=\int_{-\infty}^{\infty} y f_{Y | X}(y | x) d y \end{aligned}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\begin{aligned} E(Y | x) & \equiv E(Y | X=x) \\ &=\int_{-\infty}^{\infty} y f_{Y | X}(y | x) d y \end{aligned}</script><ul>
 <li>the conditional variance </li>
 </ul>
-<p>$$<br>\begin{aligned} \operatorname{var}(Y | x) &amp; \equiv \operatorname{var}(Y | X=x) \ &amp;=\int_{-\infty}^{\infty}[y-E(Y | x)]^{2} f_{Y | X}(y | x) d y \ &amp;=E\left(Y^{2} | x\right)-[E(Y | x)]^{2} \end{aligned}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{var}(Y | x) & \equiv \operatorname{var}(Y | X=x) \\ &=\int_{-\infty}^{\infty}[y-E(Y | x)]^{2} f_{Y | X}(y | x) d y \\ &=E\left(Y^{2} | x\right)-[E(Y | x)]^{2} \end{aligned}</script><ul>
 <li>the conditional skewness （刻画Y分布是否对称）</li>
 </ul>
-<p>$$<br>S(Y | x)=\frac{E\left[(Y-E(Y | x))^{3} | x\right]}{[\operatorname{var}(Y | x)]^{3 / 2}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+S(Y | x)=\frac{E\left[(Y-E(Y | x))^{3} | x\right]}{[\operatorname{var}(Y | x)]^{3 / 2}}</script><ul>
 <li>the conditional kurtosis (刻画有没有heavy tail)</li>
 </ul>
-<p>$$<br>K(Y | x)=\frac{E\left[(Y-E(Y | x))^{4} | x\right]}{[\operatorname{var}(Y | x)]^{2}}<br>$$</p>
-<ul>
+<script type="math/tex; mode=display">
+K(Y | x)=\frac{E\left[(Y-E(Y | x))^{4} | x\right]}{[\operatorname{var}(Y | x)]^{2}}</script><ul>
 <li>the $\alpha$-conditional quantile $Q(x,\alpha)$ (分位数):</li>
 </ul>
-<p>$$<br>P[Y \leq Q(X, \alpha) | X=x]=\alpha \in(0,1)<br>$$</p>
-<p>Note that when $\alpha=0.5, Q(x, 0.5)$is the conditional median, which is the cutoff point or threshold that divides the population into two equal halves, conditional on $X = x$.</p>
+<script type="math/tex; mode=display">
+P[Y \leq Q(X, \alpha) | X=x]=\alpha \in(0,1)</script><p>Note that when $\alpha=0.5, Q(x, 0.5)$is the conditional median, which is the cutoff point or threshold that divides the population into two equal halves, conditional on $X = x$.</p>
 <p>A mathematical model (i.e., an assumed functional form with a finite number of unknown parameters) for a conditional moment is called an econometric model for that conditional moment.</p>
-<h2 id="2-2-Regression-Analysis"><a href="#2-2-Regression-Analysis" class="headerlink" title="2.2 Regression Analysis"></a>2.2 Regression Analysis</h2><p><strong>Deffnition 2.1 [Regression Function]:</strong> The conditional mean $E(Y|X)$ is called a regression function of $Y$ on $X$:<br>$$<br>E(y|X=x) = \int_{- \infty}^{\infty}yf_{Y|X}(y|x)dy = g(x)\text{(只是关于$x$的函数)}<br>$$<br><strong>Lemma 2.1</strong> :$E[E(Y|X)=E(Y)]$</p>
-<p><strong>Definition 2.2[MSE]:</strong> Suppose function $g(X)$ is used to predict $Y$. Then the mean squared error of function $g(X)$ is defined as:<br>$$<br>MSE(g)=E[Y-g(X)]^2<br>$$</p>
-
+<h2 id="2-2-Regression-Analysis"><a href="#2-2-Regression-Analysis" class="headerlink" title="2.2 Regression Analysis"></a>2.2 Regression Analysis</h2><p><strong>Deffnition 2.1 [Regression Function]:</strong> The conditional mean $E(Y|X)$ is called a regression function of $Y$ on $X$:</p>
+<script type="math/tex; mode=display">
+E(y|X=x) = \int_{- \infty}^{\infty}yf_{Y|X}(y|x)dy = g(x)\text{(只是关于$x$的函数)}</script><p><strong>Lemma 2.1</strong> :$E[E(Y|X)=E(Y)]$</p>
+<p><strong>Definition 2.2[MSE]:</strong> Suppose function $g(X)$ is used to predict $Y$. Then the mean squared error of function $g(X)$ is defined as:</p>
+<script type="math/tex; mode=display">
+MSE(g)=E[Y-g(X)]^2</script>
       
     </div>
     
@@ -579,7 +582,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -601,7 +604,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -699,7 +702,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

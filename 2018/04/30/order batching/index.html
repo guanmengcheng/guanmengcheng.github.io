@@ -397,25 +397,40 @@
       
 
       
-        <h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&mid=2650459983&idx=1&sn=02d696afefef36f1699a55e7f0380c75&chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&scene=21#wechat_redirect" target="_blank" rel="noopener">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
+        <h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&amp;mid=2650459983&amp;idx=1&amp;sn=02d696afefef36f1699a55e7f0380c75&amp;chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&amp;scene=21#wechat_redirect" target="_blank" rel="noopener">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
 <h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
 <blockquote>
 <p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
 </blockquote>
 <h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Indices   |   </span><br><span class="line">$i$   |   商品索引，$i=1,...,N$</span><br><span class="line">$m$   |   货架索引，$m=1,...,M$</span><br><span class="line">$b$   |   批次索引，$b=1,...,B$</span><br><span class="line">**Parameters**   |   </span><br><span class="line">$M$   |   货架总数</span><br><span class="line">$N$   |   商品总数</span><br><span class="line">$B$   |   批次总数</span><br><span class="line">$L$   |   单个批次最大订单数限制</span><br><span class="line">$O$   |   订单总数</span><br><span class="line">$t_m$   |   货架$m$ 上的商品种类总数</span><br><span class="line">$d_&#123;io&#125;$   |   =1如果订单$o$ 包含商品$i$ ;否则为0</span><br><span class="line">$c_&#123;im&#125;$   |   =1如果货架$m$ 上有商品$i$ ;否则为0</span><br></pre></td></tr></table></figure>
-
 <p><strong>Decision variables</strong>  </p>
-<p>$$<br>x_{bm} =<br>\begin{cases}<br>1, &amp;  \text{如果拣选批次$b$ 需要搬运货架$m$} \<br>0, &amp; \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>h_{im} =<br>\begin{cases}<br>1, &amp;  \text{如果需要从货架$m$ 上拣选商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>y_{ob} =<br>\begin{cases}<br>1, &amp;  \text{如果订单 $o$被分配到批次$b$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>$$<br>z_{ib} =<br>\begin{cases}<br>1,  &amp; \text{如果批次$b$ 中包含商品$i$} \<br>0,&amp;  \text{否则}<br>\end{cases}<br>$$</p>
-<p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:<br>$$min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}$$<br>$$\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}$$<br>$$\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}$$<br>$$Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}$$<br>$$h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}$$<br>$$\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}$$<br>$$x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}$$<br>$$x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}$$<br>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
+<script type="math/tex; mode=display">
+x_{bm} =
+\begin{cases}
+1, &  \text{如果拣选批次$b$ 需要搬运货架$m$} \\\
+0, & \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+h_{im} =
+\begin{cases}
+1, &  \text{如果需要从货架$m$ 上拣选商品$i$} \\\
+0,&  \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+y_{ob} =
+\begin{cases}
+1, &  \text{如果订单 $o$被分配到批次$b$} \\\
+0,&  \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+z_{ib} =
+\begin{cases}
+1,  & \text{如果批次$b$ 中包含商品$i$} \\\
+0,&  \text{否则}
+\end{cases}</script><p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:</p>
+<script type="math/tex; mode=display">min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}</script><script type="math/tex; mode=display">\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}</script><script type="math/tex; mode=display">\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}</script><script type="math/tex; mode=display">Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}</script><script type="math/tex; mode=display">h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}</script><script type="math/tex; mode=display">\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}</script><script type="math/tex; mode=display">x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}</script><script type="math/tex; mode=display">x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}</script><p>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
 <h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
 <h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
 <h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
 <h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比</span><br><span class="line">无效移动次数   |   406   |   809   | 49.815%</span><br></pre></td></tr></table></figure>
-
 <p>目标函数迭代情况:</p>
 <h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
 
@@ -548,7 +563,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -570,7 +585,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -668,7 +683,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

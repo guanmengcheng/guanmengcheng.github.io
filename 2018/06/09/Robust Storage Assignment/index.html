@@ -397,23 +397,23 @@
       
 
       
-        <p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[<a href="mailto:marcusang@smu.edu.sg" target="_blank" rel="noopener">marcusang@smu.edu.sg</a>, <a href="mailto:yflim@smu.edu.sg" target="_blank" rel="noopener">yflim@smu.edu.sg</a>]</p>
+        <p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[marcusang@smu.edu.sg, yflim@smu.edu.sg]</p>
 <hr>
 <h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
 <h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
-<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\{1,…,N\}$<br>$\mathcal N^-=\{1,…,N-1\}$<br>$\mathcal M=\{1,…,M\}$<br>$\mathcal T=\{1,…,T\}$<br>$\mathcal T^+=\{1,…,T+1\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
-<p>*<em>Assumption *</em></p>
+<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\\{1,…,N\\}$<br>$\mathcal N^-=\\{1,…,N-1\\}$<br>$\mathcal M=\\{1,…,M\\}$<br>$\mathcal T=\\{1,…,T\\}$<br>$\mathcal T^+=\\{1,…,T+1\\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
+<p><strong>Assumption </strong></p>
 <ol>
-<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}; i\in \mathcal M,j\in \mathcal N$.</li>
+<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}\; i\in \mathcal M,j\in \mathcal N$.</li>
 <li>假设仓库一开始库存为0.</li>
-<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<br>$$\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},; i \in \mathcal M,t \in \mathcal T$$</li>
+<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<script type="math/tex; mode=display">\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},\; i \in \mathcal M,t \in \mathcal T</script></li>
 </ol>
-<p><strong>Model(1)</strong><br>$$Z_D=\text{min}; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}$$<br>$$\text{s.t.}; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}$$<br>$$\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}$$<br>$$\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}$$<br>$$x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}$$<br>$$\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}$$<br>$$x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}$$<br>$$v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}$$</p>
-<p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
+<p><strong>Model(1)</strong></p>
+<script type="math/tex; mode=display">Z_D=\text{min}\; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}</script><script type="math/tex; mode=display">\text{s.t.}\; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}</script><script type="math/tex; mode=display">\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}</script><script type="math/tex; mode=display">\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}</script><script type="math/tex; mode=display">x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}</script><script type="math/tex; mode=display">\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}</script><script type="math/tex; mode=display">x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}</script><script type="math/tex; mode=display">v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}</script><p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
 <blockquote>
 <p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
-</blockquote>
 <h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
+</blockquote>
 
       
     </div>
@@ -544,7 +544,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -566,7 +566,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -664,7 +664,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

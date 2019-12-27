@@ -80,19 +80,19 @@
 
 
 
-<meta name="description" content="#多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义">
+<meta name="description" content="多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了">
 <meta name="keywords" content="论文">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stowage Decisions in Multi-Zone Storage Systems">
 <meta property="og:url" content="http://yoursite.com/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/index.html">
 <meta property="og:site_name" content="Mengcheng&#39;s Blog">
-<meta property="og:description" content="#多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义">
+<meta property="og:description" content="多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p0voo3j3n.bkt.clouddn.com/blog/171218/dJIH4AKB9C.png?imageslim">
 <meta property="og:updated_time" content="2019-08-04T12:25:36.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stowage Decisions in Multi-Zone Storage Systems">
-<meta name="twitter:description" content="#多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义">
+<meta name="twitter:description" content="多分区货到人智能仓库储位分配Author:Rong yuan(MIT)、Tolga Cezik(Amazon)[管梦城]] 摘要储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了">
 <meta name="twitter:image" content="http://p0voo3j3n.bkt.clouddn.com/blog/171218/dJIH4AKB9C.png?imageslim">
 
 
@@ -399,7 +399,7 @@
       
 
       
-        <p>#多分区货到人智能仓库储位分配<br>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
+        <h1 id="多分区货到人智能仓库储位分配"><a href="#多分区货到人智能仓库储位分配" class="headerlink" title="多分区货到人智能仓库储位分配"></a>多分区货到人智能仓库储位分配</h1><p>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
 <h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了两个分区储位分配策略，能有效平衡各分区的工作量。第一个分区储位分配策略采用chaining-inspired分配，通过分散各个物品的库存数量到两个分区。第二个区域存储策略明确地跟踪/更新每个存储分区的预期工作量（称为分区的周转率），然后将到达的物品存储到具有最小周转率的存储分区。</p>
 <h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>在多分区的仓库中，库存区域被物理地分隔成不同的平行分区，每个分区拥有自己的库存区域和工作设备。</p>
 <blockquote>
@@ -409,9 +409,7 @@
 <h2 id="2-Literature-Review"><a href="#2-Literature-Review" class="headerlink" title="2.Literature Review"></a>2.Literature Review</h2><p>仓库运筹优化的文献主要分为两类:库存决策及订单拣选决策。</p>
 <blockquote>
 <p>The storage decisions determine where and how to store the inventory in the warehouse; the order-picking decisions determine how to efficiently pick items from the storage system to fulfill a set of customer orders. The major research topics related to the storage decision are the <strong>forward-reserve allocation problem, the zoning problem, and the storage location assignment problem</strong>. The forward-reserve problem considers how to allocate items between the reserve area and the picking area within a warehouse; the zoning problem studies how to create multiple zones for picking and how to spread the inventory for each item over the multiple zones; the storage location assignment problem decides where to store the inventory within a storage zone.</p>
-</blockquote>
-<blockquote>
-<p>The major research topics related to the order picking decisions comprise<strong>batching, routing, and sorting problems.</strong> The batching problem studies how to group the orders together for a single picking tour; the routing problem considers how to sequence the tasks in a picking tour to construct the most efficient picking route; the sorting problem determines how to efficiently sort and assemble the picked items into customer orders.<br>We refer the reader to the review papers** De Koster et al. (2007), Gu et al. (2007) and Staudt et al. (2015)** for more extensive discussions of the overall literature on warehouse operational decisions.<br><strong>Jane and Laih (2005) propose a heuristic algorithm for a multi-zone system that assigns each item to a single zone accounting for item affinity, namely the likelihood that two items will appear in the same order.</strong><br><strong>Onal et al. (2017) recently discuss an explosive storage policy by which the items are stored at many storage locations in large online retailing fulfillment centers</strong></p>
+<p>The major research topics related to the order picking decisions comprise<strong>batching, routing, and sorting problems.</strong> The batching problem studies how to group the orders together for a single picking tour; the routing problem considers how to sequence the tasks in a picking tour to construct the most efficient picking route; the sorting problem determines how to efficiently sort and assemble the picked items into customer orders.<br>We refer the reader to the review papers<strong> De Koster et al. (2007), Gu et al. (2007) and Staudt et al. (2015)</strong> for more extensive discussions of the overall literature on warehouse operational decisions.<br><strong>Jane and Laih (2005) propose a heuristic algorithm for a multi-zone system that assigns each item to a single zone accounting for item affinity, namely the likelihood that two items will appear in the same order.</strong><br><strong>Onal et al. (2017) recently discuss an explosive storage policy by which the items are stored at many storage locations in large online retailing fulfillment centers</strong></p>
 </blockquote>
 <p>分区储位分配问题的主要决策是对于每个物品，存储多少数量到各个分区。目标函数是平衡各个分区之间的工作量。主要目的是保证拣选的灵活性/柔性。</p>
 <h2 id="3-Evaluation-Model-for-Comparing-Stowage-Policies"><a href="#3-Evaluation-Model-for-Comparing-Stowage-Policies" class="headerlink" title="3. Evaluation Model for Comparing Stowage Policies"></a>3. Evaluation Model for Comparing Stowage Policies</h2><p>为了评估不同储位分配策略的有效性，我们采用了单周期(single-period)、理想化的模型。模型的输入是随机的物品需求、每个分区固定的容量以及待存储的库存。<br>In particular,<strong>假设开始该多分区仓库是空的</strong>，利用我们的储位分配策略进行储位分配。<br>single-period:</p>
@@ -423,7 +421,7 @@
 <p>If stowage occurs primarily, say, during the night or early morning hours, then the period might be one day, reflecting the fact that you can only make adjustments once a day to the inventory profiles.</p>
 </blockquote>
 <p>也就是周期时间内不会发生补货及资源配置的操作。<br>Model:<br>$I$:仓库中物品的数量；<br>$J$:仓库中分区的数量<br>$a_{ij}$:表示物品$i$ 存储在分区$j$ 中的数量；<br>$d_i$:物品$i$ 的总库存；<br>$c_j$:单个周期内 $j$ 存储分区的拣选容量，假设各个分区的拣选容量均固定；<br>决策变量:<br>$x_{ij}$:表示存储分区$j$ 用来满足物品$i$ 的需求的数量</p>
-<p>$$max\sum_{i=1}^I \sum_{j=1}^J x_{ij}$$  $$s.t.\qquad \sum_{j=1}^J x_{ij} \leq d_i \qquad \forall i$$  $$\sum_{i=1}^I x_{ij} \leq c_j \qquad \forall j$$   $$0 \leq x_{ij}\leq a_{ij} \qquad \forall i,j$$<br>目标函数是在单个周期内尽可能拣选更多数量的商品，满足尽可能多的需求。</p>
+<script type="math/tex; mode=display">max\sum_{i=1}^I \sum_{j=1}^J x_{ij}$$  $$s.t.\qquad \sum_{j=1}^J x_{ij} \leq d_i \qquad \forall i$$  $$\sum_{i=1}^I x_{ij} \leq c_j \qquad \forall j$$   $$0 \leq x_{ij}\leq a_{ij} \qquad \forall i,j</script><p>目标函数是在单个周期内尽可能拣选更多数量的商品，满足尽可能多的需求。</p>
 <h2 id="4-Model-Assumptions"><a href="#4-Model-Assumptions" class="headerlink" title="4.Model Assumptions"></a>4.Model Assumptions</h2><ul>
 <li><p>A1.假设有6个存储分区</p>
 </li>
@@ -431,43 +429,27 @@
 </li>
 </ul>
 <ul>
-<li><p>A3.假设每个物品的需求符合泊松分布，参数为$\mu_i$</p>
-</li>
-<li><p>A4.假设每个物品的库存数量为其需求平均数量的4倍，因此缺货率为:$$Pr(d_i&gt; [4\mu_i])=1-Pr(d_i\leq[4\mu_i])=1-e^{-\mu_i}\sum_{t=0}^{[4\mu_i]}\frac{\mu_i^t}{t!}$$  缺货率很低很低</p>
-<h2 id="5-Stowage-Policies"><a href="#5-Stowage-Policies" class="headerlink" title="5.Stowage Policies"></a>5.Stowage Policies</h2><p>以固定存储策略(dedicated stowage)作为基准策略，并基于chaining strategy构造了另外几种存储策略(Policy 2-5)，每种策略都将每个物品的库存分到多个存储分区。Policy 6-7为混合存储策略，部分为固定存储，部分为chaining stategy。Policy 8将固定存储进行改进，试图平衡各个分区的工作量，将物品分配至周转率最低的存储分区。</p>
-</li>
-<li><p>Policy 1(no chain)<br>随机固定存储</p>
-</li>
-<li><p>Policy 2(3 short chains)<br>每个物品有1/3的概率存放在Zone1&amp;2，1/3的概率存放在Zone3&amp;4，1/3的概率存放在Zone5&amp;6，每个物品被均分为两部分存放在两个分区。即每两个Zone为一个chain。</p>
-</li>
-<li><p>Policy 3(2 short chains)<br>每个物品有1/2的概率存放在Zone1&amp;2&amp;3，1/2的概率存放在Zone4&amp;5&amp;6，每个物品被均分为两部分存放在两个分区。即每三个Zone为一个chain。</p>
-</li>
-<li><p>Policy 4(full chains)<br>每个物品有1/6的概率存放在Zone1&amp;2，Zone2&amp;3，Zone3&amp;4，Zone4&amp;5，Zone5&amp;6，Zone1&amp;6，，每个物品被均分为两部分存放在两个分区。</p>
-</li>
+<li>A3.假设每个物品的需求符合泊松分布，参数为$\mu_i$</li>
+<li>A4.假设每个物品的库存数量为其需求平均数量的4倍，因此缺货率为:<script type="math/tex">Pr(d_i> [4\mu_i])=1-Pr(d_i\leq[4\mu_i])=1-e^{-\mu_i}\sum_{t=0}^{[4\mu_i]}\frac{\mu_i^t}{t!}</script>  缺货率很低很低<h2 id="5-Stowage-Policies"><a href="#5-Stowage-Policies" class="headerlink" title="5.Stowage Policies"></a>5.Stowage Policies</h2>以固定存储策略(dedicated stowage)作为基准策略，并基于chaining strategy构造了另外几种存储策略(Policy 2-5)，每种策略都将每个物品的库存分到多个存储分区。Policy 6-7为混合存储策略，部分为固定存储，部分为chaining stategy。Policy 8将固定存储进行改进，试图平衡各个分区的工作量，将物品分配至周转率最低的存储分区。</li>
+<li>Policy 1(no chain)<br>随机固定存储</li>
+<li>Policy 2(3 short chains)<br>每个物品有1/3的概率存放在Zone1&amp;2，1/3的概率存放在Zone3&amp;4，1/3的概率存放在Zone5&amp;6，每个物品被均分为两部分存放在两个分区。即每两个Zone为一个chain。</li>
+<li>Policy 3(2 short chains)<br>每个物品有1/2的概率存放在Zone1&amp;2&amp;3，1/2的概率存放在Zone4&amp;5&amp;6，每个物品被均分为两部分存放在两个分区。即每三个Zone为一个chain。</li>
+<li>Policy 4(full chains)<br>每个物品有1/6的概率存放在Zone1&amp;2，Zone2&amp;3，Zone3&amp;4，Zone4&amp;5，Zone5&amp;6，Zone1&amp;6，，每个物品被均分为两部分存放在两个分区。</li>
 <li><p>Policy 5(random pairs)<br>每个物品随机选择两个分区存放，每两个分区被选择的概率相等</p>
 </li>
 <li><p>Policy 6(mixed)<br>仓库中的物品被分为两个大类，第一类拥有80%的物品，他们根据Policy 1来存储。第二类拥有20%的物品，他们根据Policy 5来存储。</p>
 </li>
-<li><p>Policy 7(mixed smart)<br>首先对仓库中的物品根据其需求率进行排序，然后需求率排前20%的物品按照Policy 5来存储，后80%的物品根据Policy 1来存储。</p>
-</li>
-<li><p>Policy 8(dynamic balance)<br>首先对仓库中的物品进行随机排序，然后根据这个顺序进行存储。对于每个物品，我们选择目前物品累计需求率/周转率最小的分区来存储其全部库存。每个分区的周转率计算公式为$\sum_{i\in A_j}\mu_i$，$A_j$为目前该分区存储的所有物品集合。</p>
-<h2 id="6-Numerical-Results"><a href="#6-Numerical-Results" class="headerlink" title="6.Numerical Results"></a>6.Numerical Results</h2><h2 id="Comparision-of-Different-Stowage-Policies"><a href="#Comparision-of-Different-Stowage-Policies" class="headerlink" title="Comparision of Different Stowage Policies"></a>Comparision of Different Stowage Policies</h2><p>每个库存策略生成100种inventory profiles，每个库存布局对应会生成100种需求情况来进行仿真，即每个策略会有10000次仿真。<br>使用$A_k^p$ 表示策略$p$ 的第$k$ 种库存布局。$D_l$ 表示第$l$ 个物品的需求。<br>解本文的Model得到单个周期的未满足需求$U_{kl}^{p}$，通过调整该指标可以衡量系统里由不平衡的库存带来的未满足需求。调整方法如下$$U_{kl}^p\leftarrow U_{kl}^p\leftarrow \sum_i max(0,d_{l,i}-a_{k,i}^p)$$<br>对于各个存储策略，平均未满足需求为:$$\mu^p = \frac{\sum_k\sum_l U_{kl}^p}{nm}$$<br>同时也记录了第$k$ 种库存布局的未满足需求标准差:$$\sigma=\sqrt{\frac{\sum_l (U_{kl}^p-\frac{\sum_l U_{kl}^p}{m})^2}{m}}$$<br>则每个库存策略$p$ 的平均标准差为:$$v^p=\frac{\sum_k \sigma_k^p}{n}$$</p>
-</li>
+<li>Policy 7(mixed smart)<br>首先对仓库中的物品根据其需求率进行排序，然后需求率排前20%的物品按照Policy 5来存储，后80%的物品根据Policy 1来存储。</li>
+<li>Policy 8(dynamic balance)<br>首先对仓库中的物品进行随机排序，然后根据这个顺序进行存储。对于每个物品，我们选择目前物品累计需求率/周转率最小的分区来存储其全部库存。每个分区的周转率计算公式为$\sum_{i\in A_j}\mu_i$，$A_j$为目前该分区存储的所有物品集合。<h2 id="6-Numerical-Results"><a href="#6-Numerical-Results" class="headerlink" title="6.Numerical Results"></a>6.Numerical Results</h2><h2 id="Comparision-of-Different-Stowage-Policies"><a href="#Comparision-of-Different-Stowage-Policies" class="headerlink" title="Comparision of Different Stowage Policies"></a>Comparision of Different Stowage Policies</h2>每个库存策略生成100种inventory profiles，每个库存布局对应会生成100种需求情况来进行仿真，即每个策略会有10000次仿真。<br>使用$A_k^p$ 表示策略$p$ 的第$k$ 种库存布局。$D_l$ 表示第$l$ 个物品的需求。<br>解本文的Model得到单个周期的未满足需求$U_{kl}^{p}$，通过调整该指标可以衡量系统里由不平衡的库存带来的未满足需求。调整方法如下<script type="math/tex">U_{kl}^p\leftarrow U_{kl}^p\leftarrow \sum_i max(0,d_{l,i}-a_{k,i}^p)</script><br>对于各个存储策略，平均未满足需求为:<script type="math/tex">\mu^p = \frac{\sum_k\sum_l U_{kl}^p}{nm}</script><br>同时也记录了第$k$ 种库存布局的未满足需求标准差:<script type="math/tex">\sigma=\sqrt{\frac{\sum_l (U_{kl}^p-\frac{\sum_l U_{kl}^p}{m})^2}{m}}</script><br>则每个库存策略$p$ 的平均标准差为:<script type="math/tex">v^p=\frac{\sum_k \sigma_k^p}{n}</script></li>
 </ul>
 <p>通过仿真分析我们发现:</p>
 <ul>
-<li><p>Policy 1的表现是最差的</p>
-</li>
-<li><p>create chains以及Policy 8能显著提升表现。</p>
-</li>
-<li><p>the chain is longer,the better，提升系统的柔性。</p>
-</li>
-<li><p>random  pairs比full chain稍微好一点。</p>
-</li>
-<li><p>如果我们要在每个区域存放1/6的库存而忽略完整性要求，我们从表2可以看出，full chain和random pairs策略有效地实现了将每个物品的库存均匀分布在存储区域的全柔性系统的性能。 这表明将物品的库存拆分为两个以上的存储区域可能没有什么价值。 </p>
-</li>
-<li><p>从mixed和mixed smart的策略中，我们看到，我们可能只需要分散存储一小部分（20％）的物品，以获得chain的好处。 特别是mixed smart表明，只有高周转率的物品需要拆分。 从实际的角度来看，这一点非常重要，因为如前所述，存在拆分库存的运营成本。 对mixed smart的评估显示，只有将高周转率的物品分解，才能达到最佳存储策略的效果，即full chain和random pairs的效果。</p>
-</li>
+<li>Policy 1的表现是最差的</li>
+<li>create chains以及Policy 8能显著提升表现。</li>
+<li>the chain is longer,the better，提升系统的柔性。</li>
+<li>random  pairs比full chain稍微好一点。</li>
+<li>如果我们要在每个区域存放1/6的库存而忽略完整性要求，我们从表2可以看出，full chain和random pairs策略有效地实现了将每个物品的库存均匀分布在存储区域的全柔性系统的性能。 这表明将物品的库存拆分为两个以上的存储区域可能没有什么价值。 </li>
+<li>从mixed和mixed smart的策略中，我们看到，我们可能只需要分散存储一小部分（20％）的物品，以获得chain的好处。 特别是mixed smart表明，只有高周转率的物品需要拆分。 从实际的角度来看，这一点非常重要，因为如前所述，存在拆分库存的运营成本。 对mixed smart的评估显示，只有将高周转率的物品分解，才能达到最佳存储策略的效果，即full chain和random pairs的效果。</li>
 <li><p>动态平衡策略也可能相当有效，尽管相对于full chain，random pairs和mixed smart来说，这种策略是滞后的。 如果在仓库中拆分物品的库存是不可能的或者成本过高，那么动态平衡策略看起来是最合理的，因为它可以确保库存在存储区域内“均匀”分布。 但是，这个策略需要知道所有物品的需求率。 相比之下，除mixed smart外，其他策略不需要知道物品需求率; 而对于mixed smart策略，我们只需要将物品分为高与低的需求。</p>
 <h2 id="7-Sensitivity-Analysis"><a href="#7-Sensitivity-Analysis" class="headerlink" title="7.Sensitivity Analysis"></a>7.Sensitivity Analysis</h2><p>我们对资源利用率，需求偏度和库存水平进行敏感性分析。目的是更深入地了解上一节中的不同分区存储策略的相对表现。</p>
 </li>
@@ -475,9 +457,7 @@
 </li>
 <li><p>Sensitivity Analysis towards Demand Skewness<br>在这个测试中，我们分析了低，中，高和超高需求偏度下的分区存储策略。假设在这个测试中资源利用率为90％。我们观察到当需求偏多时，系统的性能会变差。值得注意的是，mixed smart即使对于偏高需求模式也非常有效，因为高周转率的物品总是分成两个存储区。</p>
 </li>
-<li><p>Sensitivity Analysis towards Inventory Level<br>在这个测试中，我们放宽在A4种设定每个物品的库存水平的假设。 我们假设需求为中等偏度，平均资源利用率为90％。我们观察到，除动态平衡策略外，每个分区存储策略对库存水平的变化不敏感; 这表明，当库存的相对数量在各个物品之间变化时，根据总需求率存储物品可能不太有效。</p>
-<h2 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8.Conclusion"></a>8.Conclusion</h2><p>在这项研究中，我们通过模拟研究来分析分区存储策略。我们确定了两个非常有效的存储策略，通过保持库存分配的平衡可以提高拣选效率。<br>第一个策略将每个物品的到达库存分成两半，并将每一半装入不同的存储区域。另一方面，我们发现按照full chain来存放库存几乎同样有效。此外，我们发现即使在高资源利用率和高需求变化的情况下，有效策略也只需要将random pairs策略应用于高周转率物品。<br>第二个策略是动态平衡策略，但是要实施这个策略，需要知道存储在存储区中的物品的总周转率。</p>
-</li>
+<li>Sensitivity Analysis towards Inventory Level<br>在这个测试中，我们放宽在A4种设定每个物品的库存水平的假设。 我们假设需求为中等偏度，平均资源利用率为90％。我们观察到，除动态平衡策略外，每个分区存储策略对库存水平的变化不敏感; 这表明，当库存的相对数量在各个物品之间变化时，根据总需求率存储物品可能不太有效。<h2 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8.Conclusion"></a>8.Conclusion</h2>在这项研究中，我们通过模拟研究来分析分区存储策略。我们确定了两个非常有效的存储策略，通过保持库存分配的平衡可以提高拣选效率。<br>第一个策略将每个物品的到达库存分成两半，并将每一半装入不同的存储区域。另一方面，我们发现按照full chain来存放库存几乎同样有效。此外，我们发现即使在高资源利用率和高需求变化的情况下，有效策略也只需要将random pairs策略应用于高周转率物品。<br>第二个策略是动态平衡策略，但是要实施这个策略，需要知道存储在存储区中的物品的总周转率。</li>
 </ul>
 
       
@@ -528,8 +508,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/12/21/无人仓研究想法/" rel="prev" title="无人仓研究想法">
-                无人仓研究想法 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/12/21/Modelling and performance evaluation of explosive storage policies in internet/" rel="prev" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses">
+                Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -609,7 +589,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -631,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -680,7 +660,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">2.</span> <span class="nav-text">1.Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Literature-Review"><span class="nav-number">3.</span> <span class="nav-text">2.Literature Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Evaluation-Model-for-Comparing-Stowage-Policies"><span class="nav-number">4.</span> <span class="nav-text">3. Evaluation Model for Comparing Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Model-Assumptions"><span class="nav-number">5.</span> <span class="nav-text">4.Model Assumptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Stowage-Policies"><span class="nav-number">6.</span> <span class="nav-text">5.Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Numerical-Results"><span class="nav-number">7.</span> <span class="nav-text">6.Numerical Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparision-of-Different-Stowage-Policies"><span class="nav-number">8.</span> <span class="nav-text">Comparision of Different Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Sensitivity-Analysis"><span class="nav-number">9.</span> <span class="nav-text">7.Sensitivity Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Conclusion"><span class="nav-number">10.</span> <span class="nav-text">8.Conclusion</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多分区货到人智能仓库储位分配"><span class="nav-number">1.</span> <span class="nav-text">多分区货到人智能仓库储位分配</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#摘要"><span class="nav-number">1.1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Introduction"><span class="nav-number">1.2.</span> <span class="nav-text">1.Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Literature-Review"><span class="nav-number">1.3.</span> <span class="nav-text">2.Literature Review</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Evaluation-Model-for-Comparing-Stowage-Policies"><span class="nav-number">1.4.</span> <span class="nav-text">3. Evaluation Model for Comparing Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Model-Assumptions"><span class="nav-number">1.5.</span> <span class="nav-text">4.Model Assumptions</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Stowage-Policies"><span class="nav-number">1.6.</span> <span class="nav-text">5.Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Numerical-Results"><span class="nav-number">1.7.</span> <span class="nav-text">6.Numerical Results</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparision-of-Different-Stowage-Policies"><span class="nav-number">1.8.</span> <span class="nav-text">Comparision of Different Stowage Policies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Sensitivity-Analysis"><span class="nav-number">1.9.</span> <span class="nav-text">7.Sensitivity Analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Conclusion"><span class="nav-number">1.10.</span> <span class="nav-text">8.Conclusion</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -729,7 +709,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 

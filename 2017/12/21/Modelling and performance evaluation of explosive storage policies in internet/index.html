@@ -403,11 +403,13 @@
 <h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
 <h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
 <h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
-<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:<br>$$\Psi_i=\frac{L_i}{V_i}$$<br>整个仓库的Explosion Ratio:<br>$$\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}$$<br>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
+<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:</p>
+<script type="math/tex; mode=display">\Psi_i=\frac{L_i}{V_i}</script><p>整个仓库的Explosion Ratio:</p>
+<script type="math/tex; mode=display">\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}</script><p>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
 <h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
 <h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
 <h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
-<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
+<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
 
       
     </div>
@@ -447,8 +449,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/21/无人仓研究想法/" rel="next" title="无人仓研究想法">
-                <i class="fa fa-chevron-left"></i> 无人仓研究想法
+              <a href="/2017/12/19/Stowage Decisions in Multi-Zone Storage Systems/" rel="next" title="Stowage Decisions in Multi-Zone Storage Systems">
+                <i class="fa fa-chevron-left"></i> Stowage Decisions in Multi-Zone Storage Systems
               </a>
             
           </div>
@@ -538,7 +540,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -560,7 +562,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -658,7 +660,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共26k字</span>
+  <span class="post-count">博客全站共25.4k字</span>
 </div>
         
 
