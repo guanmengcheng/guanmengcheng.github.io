@@ -92,7 +92,10 @@
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png">
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155558.png">
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155657.png">
-<meta property="og:updated_time" content="2019-09-03T08:28:29.120Z">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134157.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134318.png">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134753.png">
+<meta property="og:updated_time" content="2020-08-08T12:56:47.130Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python数据分析日常">
 <meta name="twitter:description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
@@ -365,7 +368,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  863
+                  1.1k
                 </span>
               
 
@@ -381,7 +384,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -448,6 +451,20 @@
 <h4 id="21-重命名列名"><a href="#21-重命名列名" class="headerlink" title="21 重命名列名"></a>21 重命名列名</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'gcode_'</span>:<span class="string">'product_id'</span>,<span class="string">'cbecomcode_'</span>:<span class="string">'platform'</span>,<span class="string">'year-month_'</span>:<span class="string">'year-month'</span>&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="22-唯一值ID替换"><a href="#22-唯一值ID替换" class="headerlink" title="22 唯一值ID替换"></a>22 唯一值ID替换</h4><p>将列中的相同唯一值替换为其他值，可用于脱敏处理,<a href="http://cn.voidcc.com/question/p-usjfgxvn-ho.html" target="_blank" rel="noopener">参考</a></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">141</span>]: x[<span class="string">'cat'</span>] = pd.Categorical((pd.factorize(x.name)[<span class="number">0</span>] + <span class="number">1</span>).astype(str)) </span><br><span class="line">In [<span class="number">142</span>]: x </span><br><span class="line">Out[<span class="number">142</span>]: </span><br><span class="line">    name v1 v2 v3 ID cat </span><br><span class="line"><span class="number">0</span> Aaron <span class="number">3</span> <span class="number">5</span> <span class="number">7</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">1</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">9</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">2</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">10</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">3</span> Brave <span class="number">4</span> <span class="number">6</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> </span><br><span class="line"><span class="number">4</span> Brave <span class="number">3</span> <span class="number">6</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"><a href="#24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）" class="headerlink" title="24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"></a>24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）</h4><ol>
+<li><a href="https://cloud.tencent.com/developer/ask/193233" target="_blank" rel="noopener">参考博客</a></li>
+</ol>
+<p>分别有两个DataFrame，df1为：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134157.png" alt></p>
+<p>df2为：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134318.png" alt></p>
+<p>df1 中#SEQ编号为207931和207932的行的交付区域为空，我们想要根据df2中对应的交付区域更新df1中的交付区域</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先要设置两个df的索引均为#SEQ，即key列</span></span><br><span class="line">a = df1.set_index(<span class="string">'#SEQ'</span>)</span><br><span class="line">b = df2.set_index(<span class="string">'#SEQ'</span>)</span><br><span class="line"><span class="comment">#然后使用DataFrame.update方法更新</span></span><br><span class="line">a.update(b)</span><br><span class="line"><span class="comment">#最后赋值给df1</span></span><br><span class="line">df1[<span class="string">'交付区域'</span>] = a[<span class="string">'交付区域'</span>].values.astype(str)</span><br></pre></td></tr></table></figure>
+<p>即可得到最终的df1为：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134753.png" alt></p>
+<p>由于#SEQ作为索引时有重复索引值存在，因此换一种方法</p>
+<p>2.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mask = np.isin(df1[<span class="string">'#SEQ'</span>],df2[<span class="string">'#SEQ'</span>])</span><br><span class="line">df1[<span class="string">'交付区域'</span>][mask] = df2[<span class="string">'交付区域'</span>].values[np.searchsorted(df2[<span class="string">'#SEQ'</span>].values,df1[<span class="string">'#SEQ'</span>].values[mask])]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -649,7 +666,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Python连接MYSQL数据库"><span class="nav-number">1.</span> <span class="nav-text">1 Python连接MYSQL数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-写入xlsx文件-多个sheet"><span class="nav-number">2.</span> <span class="nav-text">2 写入xlsx文件(多个sheet)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DataFrame按某列排序"><span class="nav-number">3.</span> <span class="nav-text">3 DataFrame按某列排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-取出DataFrame某列中非空的行"><span class="nav-number">4.</span> <span class="nav-text">4 取出DataFrame某列中非空的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Pandas读取xlsx文件的sheetname"><span class="nav-number">5.</span> <span class="nav-text">5 Pandas读取xlsx文件的sheetname</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-DataFrame中的apply方法"><span class="nav-number">6.</span> <span class="nav-text">6 DataFrame中的apply方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-按时间统计数据"><span class="nav-number">7.</span> <span class="nav-text">7 按时间统计数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-获取DataFrame中某列包含特定字符的所有行"><span class="nav-number">8.</span> <span class="nav-text">8 获取DataFrame中某列包含特定字符的所有行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-取时间中的天数"><span class="nav-number">9.</span> <span class="nav-text">9 取时间中的天数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-按特定的值取DataFrame中的行"><span class="nav-number">10.</span> <span class="nav-text">10 按特定的值取DataFrame中的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-删除DataFrame中的重复值"><span class="nav-number">11.</span> <span class="nav-text">11 删除DataFrame中的重复值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-合并DataFrame"><span class="nav-number">12.</span> <span class="nav-text">12 合并DataFrame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-DataFrame的Merge方法"><span class="nav-number">13.</span> <span class="nav-text">13 DataFrame的Merge方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-改变某列的数据类型"><span class="nav-number">14.</span> <span class="nav-text">14 改变某列的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-选取以字母G开头的数据"><span class="nav-number">15.</span> <span class="nav-text">15  选取以字母G开头的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-Group-by方法"><span class="nav-number">16.</span> <span class="nav-text">16 Group by方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-Concat合并"><span class="nav-number">17.</span> <span class="nav-text">17 Concat合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-删除有缺失值的行"><span class="nav-number">18.</span> <span class="nav-text">18 删除有缺失值的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-优秀的第三方库"><span class="nav-number">19.</span> <span class="nav-text">19 优秀的第三方库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-多层索引处理"><span class="nav-number">20.</span> <span class="nav-text">20 多层索引处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-重命名列名"><span class="nav-number">21.</span> <span class="nav-text">21 重命名列名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-唯一值ID替换"><span class="nav-number">22.</span> <span class="nav-text">22 唯一值ID替换</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Python连接MYSQL数据库"><span class="nav-number">1.</span> <span class="nav-text">1 Python连接MYSQL数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-写入xlsx文件-多个sheet"><span class="nav-number">2.</span> <span class="nav-text">2 写入xlsx文件(多个sheet)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DataFrame按某列排序"><span class="nav-number">3.</span> <span class="nav-text">3 DataFrame按某列排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-取出DataFrame某列中非空的行"><span class="nav-number">4.</span> <span class="nav-text">4 取出DataFrame某列中非空的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Pandas读取xlsx文件的sheetname"><span class="nav-number">5.</span> <span class="nav-text">5 Pandas读取xlsx文件的sheetname</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-DataFrame中的apply方法"><span class="nav-number">6.</span> <span class="nav-text">6 DataFrame中的apply方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-按时间统计数据"><span class="nav-number">7.</span> <span class="nav-text">7 按时间统计数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-获取DataFrame中某列包含特定字符的所有行"><span class="nav-number">8.</span> <span class="nav-text">8 获取DataFrame中某列包含特定字符的所有行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-取时间中的天数"><span class="nav-number">9.</span> <span class="nav-text">9 取时间中的天数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-按特定的值取DataFrame中的行"><span class="nav-number">10.</span> <span class="nav-text">10 按特定的值取DataFrame中的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-删除DataFrame中的重复值"><span class="nav-number">11.</span> <span class="nav-text">11 删除DataFrame中的重复值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-合并DataFrame"><span class="nav-number">12.</span> <span class="nav-text">12 合并DataFrame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-DataFrame的Merge方法"><span class="nav-number">13.</span> <span class="nav-text">13 DataFrame的Merge方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-改变某列的数据类型"><span class="nav-number">14.</span> <span class="nav-text">14 改变某列的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-选取以字母G开头的数据"><span class="nav-number">15.</span> <span class="nav-text">15  选取以字母G开头的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-Group-by方法"><span class="nav-number">16.</span> <span class="nav-text">16 Group by方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-Concat合并"><span class="nav-number">17.</span> <span class="nav-text">17 Concat合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-删除有缺失值的行"><span class="nav-number">18.</span> <span class="nav-text">18 删除有缺失值的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-优秀的第三方库"><span class="nav-number">19.</span> <span class="nav-text">19 优秀的第三方库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-多层索引处理"><span class="nav-number">20.</span> <span class="nav-text">20 多层索引处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-重命名列名"><span class="nav-number">21.</span> <span class="nav-text">21 重命名列名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-唯一值ID替换"><span class="nav-number">22.</span> <span class="nav-text">22 唯一值ID替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"><span class="nav-number">23.</span> <span class="nav-text">24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）</span></a></li></ol></div>
             
 
           </div>
@@ -670,7 +687,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
@@ -698,7 +715,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共25.4k字</span>
+  <span class="post-count">博客全站共25.6k字</span>
 </div>
         
 
