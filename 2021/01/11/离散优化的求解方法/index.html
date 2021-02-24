@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="运筹学,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="离散优化的求解方法参考书目：《Optimization in Operations Research》 Chapter 12 12.1 全枚举法12.2 离散优化模型的松弛模型及其应用12.2.1 约束条件的松弛 定义12.4 如果($p$)的每一个可行解都是($\overline{p}$)的可行解，并且两个模型具有同样的目标函数，则我们称模型($\overline{p}$)是模型($p$)的约束">
+<meta name="keywords" content="运筹学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="精确算法">
+<meta property="og:url" content="http://yoursite.com/2021/01/11/离散优化的求解方法/index.html">
+<meta property="og:site_name" content="Mengcheng&#39;s Blog">
+<meta property="og:description" content="离散优化的求解方法参考书目：《Optimization in Operations Research》 Chapter 12 12.1 全枚举法12.2 离散优化模型的松弛模型及其应用12.2.1 约束条件的松弛 定义12.4 如果($p$)的每一个可行解都是($\overline{p}$)的可行解，并且两个模型具有同样的目标函数，则我们称模型($\overline{p}$)是模型($p$)的约束">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20191217131924.png">
+<meta property="og:updated_time" content="2021-01-15T06:56:50.232Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="精确算法">
+<meta name="twitter:description" content="离散优化的求解方法参考书目：《Optimization in Operations Research》 Chapter 12 12.1 全枚举法12.2 离散优化模型的松弛模型及其应用12.2.1 约束条件的松弛 定义12.4 如果($p$)的每一个可行解都是($\overline{p}$)的可行解，并且两个模型具有同样的目标函数，则我们称模型($\overline{p}$)是模型($p$)的约束">
+<meta name="twitter:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20191217131924.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/01/11/离散优化的求解方法/">
+
+
+
+
+
+  <title>精确算法 | Mengcheng's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/guanmengcheng" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+	
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mengcheng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">HUST</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/11/离散优化的求解方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Guan Mengcheng">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mengcheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">精确算法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-01-11T15:35:17+08:00">
+                2021-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/运筹学/" itemprop="url" rel="index">
+                    <span itemprop="name">运筹学</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.7k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="离散优化的求解方法"><a href="#离散优化的求解方法" class="headerlink" title="离散优化的求解方法"></a>离散优化的求解方法</h1><p>参考书目：《Optimization in Operations Research》 Chapter 12</p>
+<h2 id="12-1-全枚举法"><a href="#12-1-全枚举法" class="headerlink" title="12.1 全枚举法"></a>12.1 全枚举法</h2><h2 id="12-2-离散优化模型的松弛模型及其应用"><a href="#12-2-离散优化模型的松弛模型及其应用" class="headerlink" title="12.2 离散优化模型的松弛模型及其应用"></a>12.2 离散优化模型的松弛模型及其应用</h2><h3 id="12-2-1-约束条件的松弛"><a href="#12-2-1-约束条件的松弛" class="headerlink" title="12.2.1 约束条件的松弛"></a>12.2.1 约束条件的松弛</h3><blockquote>
+<p>定义12.4 如果($p$)的每一个可行解都是($\overline{p}$)的可行解，并且两个模型具有同样的目标函数，则我们称模型($\overline{p}$)是模型($p$)的<strong>约束条件松弛</strong>(constraint relaxation)。</p>
+</blockquote>
+<h3 id="12-2-2-线性规划松弛"><a href="#12-2-2-线性规划松弛" class="headerlink" title="12.2.2 线性规划松弛"></a>12.2.2 线性规划松弛</h3><blockquote>
+<p>定义12.6 连续松弛linear programming relaxation(如果给定模型是整数线性规划，则也称线性规划松弛)是一种约束条件的松弛：保留所有其他约束，但将任何离散变量都看成连续变量。</p>
+</blockquote>
+<h3 id="12-2-3-修改目标函数的松弛模型"><a href="#12-2-3-修改目标函数的松弛模型" class="headerlink" title="12.2.3 修改目标函数的松弛模型"></a>12.2.3 修改目标函数的松弛模型</h3><blockquote>
+<p>定义12.8 对于优化问题($P$)和优化问题($P$)，如果(i)每一个($P$)的可行解在($R$)中也都可行，并且(ii)($P$)中的每个可行解在($R$)中的目标值与其在($P$)中的目标相比都相等或更好，那么优化问题($R$)是优化问题($P$)的松弛。</p>
+</blockquote>
+<h3 id="12-2-4-用松弛模型证明不可行性"><a href="#12-2-4-用松弛模型证明不可行性" class="headerlink" title="12.2.4 用松弛模型证明不可行性"></a>12.2.4 用松弛模型证明不可行性</h3><p>松弛的一个作用就是用来证明原问题的不可行性。</p>
+<p>1.对于一个给定的整数规划问题，线性松弛是去掉模型中的整数约束，拉格朗日松弛是放松模型中的部分线性约束，保留整数约束和其他的线性约束。</p>
+<blockquote>
+<p>Theorem 1：如果一个模型的松弛模型是不可行的，那么它的原模型也是不可行的。（因为原模型中的每个解在松弛模型中均可行）（一个不可行的松弛确实可以得出原模型无解，但一个可行的松弛却并不意味着原模型是可行的。）</p>
+</blockquote>
+<h3 id="12-2-5-松弛给出最有目标值界限"><a href="#12-2-5-松弛给出最有目标值界限" class="headerlink" title="12.2.5 松弛给出最有目标值界限"></a>12.2.5 松弛给出最有目标值界限</h3><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20191217131924.png" alt></p>
+<blockquote>
+<p>Theorem 2 ：对于求<strong>最大值</strong>的模型，其任何松弛模型的最优值都是原模型的最优值<strong>上界</strong>；类似的对于求<strong>最小值</strong>的模型，其任何松弛模型的最优值都为原模型提供了最优值<strong>下界</strong>。</p>
+</blockquote>
+<h3 id="12-2-6-利用松弛模型得到最优解"><a href="#12-2-6-利用松弛模型得到最优解" class="headerlink" title="12.2.6 利用松弛模型得到最优解"></a>12.2.6 利用松弛模型得到最优解</h3><p>有时松弛模型不止能给出对应离散模型最优值的界限，甚至能给出最优解。</p>
+<blockquote>
+<p>Theorem 3 ：如果一个约束条件松弛模型的最优解在原模型中也可行，那么这个解就是原模型的最优解。（需保证松弛问题中的目标值与原问题的目标值相同，也就是没有对目标函数进行变动）</p>
+</blockquote>
+<h3 id="12-2-7-松弛模型的取整解"><a href="#12-2-7-松弛模型的取整解" class="headerlink" title="12.2.7 松弛模型的取整解"></a>12.2.7 松弛模型的取整解</h3><blockquote>
+<p>Theorem 12.13 许多松弛模型得到的最优解都可以通过简单的取整，成为完整模型很好的可行解。</p>
+<p>Theorem 12.14 一个<strong>最大化</strong>离散优化问题任一（整数）可行解的目标函数值，给出了整数最优值的<strong>下界</strong>。一个<strong>最小化</strong>离散优化问题任一（整数）可行解的目标函数值，给出了整数最优值的<strong>上界</strong>。</p>
+</blockquote>
+<h3 id="12-2-8-更强的线性规划松弛模型"><a href="#12-2-8-更强的线性规划松弛模型" class="headerlink" title="12.2.8 更强的线性规划松弛模型"></a>12.2.8 更强的线性规划松弛模型</h3><blockquote>
+<p>Theorem 12.15 同样是正确的整数线性规划建模，却可能带来完全不同的线性规划松弛最优解。</p>
+</blockquote>
+<h3 id="12-2-9-选择大M常量"><a href="#12-2-9-选择大M常量" class="headerlink" title="12.2.9 选择大M常量"></a>12.2.9 选择大M常量</h3><blockquote>
+<p>Theorem 12.16 当一个离散模型中需要足够大的大M时，最强的松弛模型中，常数取最小有效值。</p>
+</blockquote>
+<h2 id="12-3-分支定界搜索-branch-and-bound"><a href="#12-3-分支定界搜索-branch-and-bound" class="headerlink" title="12.3 分支定界搜索(branch and bound)"></a>12.3 分支定界搜索(branch and bound)</h2><h3 id="12-3-1-部分解"><a href="#12-3-1-部分解" class="headerlink" title="12.3.1 部分解"></a>12.3.1 部分解</h3><blockquote>
+<p>Theorem 12.17 一个部分解具有一些固定不变的决策变量，和其他的自由（free)或不确定的决策变量。我们使用#来表示部分解中那些自由变量。</p>
+</blockquote>
+<h3 id="12-3-2-部分解的完全形式"><a href="#12-3-2-部分解的完全形式" class="headerlink" title="12.3.2 部分解的完全形式"></a>12.3.2 部分解的完全形式</h3><blockquote>
+<p>Theorem 12.18 一个给定模型的部分解的完全形式，是符合部分解中全部固定分量要求的可能的完整解。</p>
+</blockquote>
+<h3 id="12-3-3-树搜索"><a href="#12-3-3-树搜索" class="headerlink" title="12.3.3  树搜索"></a>12.3.3  树搜索</h3><blockquote>
+<p>Theorem 12.19 分支定界搜索从初始的或称根本的（root）部分解$x=(#,…,#)$出发，其中所有分量都是自由变量。</p>
+<p>Theorem 12.20 当其要么找到一个最优的完全形式，要么证明出不包含任何比已知的最佳可行解对应目标函数值更好的可行解，我们称分支定界搜索终止。</p>
+<p>Theorem 12.21 在一个0-1离散优化模型的分支定界搜索中，当一个部分解不能被终止时，它需要被分支（branched），这通过固定之前一个自由二元变量产生两个子部分解来实现。这些部分解中的每个解都满足分出来的两个节点的约束，而不同的是，一部分符合选择固定的自由变量为1的情况，一部分符合选择固定的自由变量为0的情况。</p>
+<p>Theorem 12.22 分支定界搜索的停止条件是，对于树中的每个部分解，要么已经被分支郭，要么已经被终止。</p>
+</blockquote>
+<h3 id="12-3-5-候选问题"><a href="#12-3-5-候选问题" class="headerlink" title="12.3.5 候选问题"></a>12.3.5 候选问题</h3><blockquote>
+<p>定义12.26 在一个优化模型中，与任一部分解相关的候选问题（candidate problem），是部分解中某些变量固定时对应的受限模型。</p>
+<p>Theorem 12.27 任一部分解可行的完全形式，就是其相应的候选问题的可行解。因此，最优可行完全解的目标值，就是候选问题的最优目标值。</p>
+</blockquote>
+<h3 id="12-3-6-通过松弛模型终止部分解"><a href="#12-3-6-通过松弛模型终止部分解" class="headerlink" title="12.3.6 通过松弛模型终止部分解"></a>12.3.6 通过松弛模型终止部分解</h3><blockquote>
+<p>Theorem 12.28 如果一个候选问题的松弛模型被证明不可行，那么其相关的部分解就可以被终止了，因为它没有可行的完全形式。</p>
+<p>Theorem 12.29 如果候选问题的任何松弛模型有不优于当前最佳解值得最优目标值，则与其对应的部分解可以被终止，因为其没有可行的完全形式可以使最优解更优。</p>
+<p>Theorem 12.30 如果一个最优解对一个候选问题的任何约束条件的松弛模型都是可行的，那么这个最优的可行解就是相应部分解的最优完全形式。在检查是否还有新的最佳解被发现之后，我们便可以对这个部分解进行终止。</p>
+</blockquote>
+<h3 id="12-3-7-基于线性规划的分支定界法"><a href="#12-3-7-基于线性规划的分支定界法" class="headerlink" title="12.3.7  基于线性规划的分支定界法"></a>12.3.7  基于线性规划的分支定界法</h3><blockquote>
+<p>算法12A：基于线性规划的分支定界法（对于0-1整数规划）</p>
+<p><strong>步骤0：求初始解</strong>。让唯一的活跃部分解所有离散变量均自由，并初始化解索引$t\leftarrow$0。若模型的任一可行解巳知，同样选择最优的作为最佳解$\hat x$，并记录其目标值$\hat v$。否则，若是求最大化的模型，令$\hat v \leftarrow - \infty$；若是求最小化的模型，令$\hat v \leftarrow +\infty$。</p>
+<p><strong>步骤1：停止。</strong>如果活跃的部分解存在，选择一个作为$x^{(t)}$，并且执行步骤2.否则，停止。如果已经存在最佳解$\hat x$，则它是最优的，如果不存在最佳解，则模型是不可行的。</p>
+<p><strong>步骤2：松弛。</strong>尝试求解一个与$x^{(t)}$对应的候选问题的线性规划松弛模型。</p>
+<p><strong>步骤3：通过不可行终止。</strong>若线性规划松弛模型被证明不可行，部分解$x^{(t)}$没有任何行的完全形式。终止$x^{(t)}$，增加$t \leftarrow t+1$，然后回到步骤1。</p>
+<p><strong>步骤4：通过定界终止。</strong>当模型为最大化模型且线性规划松弛模型最优值$\widetilde{v}$满足$\widetilde{v} \leq \hat v$或模型为最小化模型且有$\widetilde{v} \geq \hat v$，部分解$x^{(t)}$最优可行的完全形式不能使最佳解更优。终止$x^{(t)}$，增加$t\leftarrow t+1$，然后回到步骤1。</p>
+<p><strong>步骤5</strong>：通过求解终止。当线性规划松驰模型的最优解$\widetilde x^{(t)}$满足模型中所有的二元约束，这个最优解就是部分解$x^{(t)}$的最优可行的完全形式。保存这个最佳解为最新的最佳解:</p>
+<script type="math/tex; mode=display">
+\hat x \leftarrow \widetilde x^{(t)}</script><script type="math/tex; mode=display">
+\hat v \leftarrow \widetilde v</script><p>之后，终止$x^{(t)}$，增加$t\leftarrow t+1$，然后回到步骤1。</p>
+<p><strong>步骤6：分支。</strong>选择线性规划松弛最优解中某些为分数的自由二元约束分量$x_p$，并且通过分支$x^{(t)}$的方法产生两个新的活跃解。一个是将$x_p$分量固定为0，其余分量均与$x^{(t)}$保持相同；另一个是将$x_p$分量固定为1，其余分量与$x^{(t)}$保持相同。之后，增加$t\leftarrow t+1$，然后回到步骤1。</p>
+</blockquote>
+<h3 id="12-3-8-基于线性规划的分支定界法的分支规则"><a href="#12-3-8-基于线性规划的分支定界法的分支规则" class="headerlink" title="12.3.8 基于线性规划的分支定界法的分支规则"></a>12.3.8 基于线性规划的分支定界法的分支规则</h3><blockquote>
+<p>Theorem 12.31 基于线性规划的分支定界算法总是通过对候选问题的松弛模型中非整数的分量施加一个整数约束来完成分支。</p>
+<p>Theorem 12.32 当松弛最优解中有不止一个整数变量取值为分数的时候，基于线性规划的分支定界算法通常通过固定一个最接近整数值的分量来进行分支。</p>
+</blockquote>
+<h2 id="12-4-分支定界法的改良"><a href="#12-4-分支定界法的改良" class="headerlink" title="12.4 分支定界法的改良"></a>12.4 分支定界法的改良</h2><h3 id="12-4-2-最佳解整数化"><a href="#12-4-2-最佳解整数化" class="headerlink" title="12.4.2  最佳解整数化"></a>12.4.2  最佳解整数化</h3><blockquote>
+<p>Theorem 12.33 如果方便取整，分支定界搜索中每个不能被终止的部分解的松弛最有解，通常在进行分支前取整，形成完整模型的可行解。如果这个可行解比其他已知解更好，那么它就提供了一个新的最佳解。</p>
+</blockquote>
+<h2 id="12-5-分支切割法-branch-and-cut"><a href="#12-5-分支切割法-branch-and-cut" class="headerlink" title="12.5 分支切割法(branch and cut)"></a>12.5 分支切割法(branch and cut)</h2><h3 id="12-5-1-有效不等式"><a href="#12-5-1-有效不等式" class="headerlink" title="12.5.1 有效不等式"></a>12.5.1 有效不等式</h3><blockquote>
+<p>定义12.41 如果一个线性不等式对于一个离散优化模型的所有（整数）可行解都成立，那么这个线性不等式就是这个给定离散优化模型的有效不等式。</p>
+<p>Theorem 12.42 为了加强一个松弛模型的有效性，一个有效不等式必须切割（使不可行）一些在现在松弛模型中可行，但是在完全整数规划模型中并不可行的解。</p>
+</blockquote>
+<h3 id="12-5-2-分支切割搜索"><a href="#12-5-2-分支切割搜索" class="headerlink" title="12.5.2 分支切割搜索"></a>12.5.2 分支切割搜索</h3><p>分支切割算法在枚举过程进行下去的时候，动态结合了有效不等式和分支定界搜索。</p>
+<blockquote>
+<p>定义12.43 分支切割算法通过在分支一个部分解之前， 尝试用新的有效不等式来加强松弛模型的有效性，进而加强了分支定界算法所代表的的基础分支定界策略。新增的约束应该切割掉最新得出的松弛模型的最优解。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+	<div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+    
+    </div>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/运筹学/" rel="tag"><i class="fa fa-tag"></i> 运筹学</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/01/09/vehicle routing读书笔记/" rel="next" title="vehicle routing读书笔记">
+                <i class="fa fa-chevron-left"></i> vehicle routing读书笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/13/R/" rel="prev" title="R">
+                R <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Guan Mengcheng">
+            
+              <p class="site-author-name" itemprop="name">Guan Mengcheng</p>
+              <p class="site-description motion-element" itemprop="description">Mengcheng</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/guanmengcheng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:gmengcheng@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#离散优化的求解方法"><span class="nav-number">1.</span> <span class="nav-text">离散优化的求解方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#12-1-全枚举法"><span class="nav-number">1.1.</span> <span class="nav-text">12.1 全枚举法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-2-离散优化模型的松弛模型及其应用"><span class="nav-number">1.2.</span> <span class="nav-text">12.2 离散优化模型的松弛模型及其应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-1-约束条件的松弛"><span class="nav-number">1.2.1.</span> <span class="nav-text">12.2.1 约束条件的松弛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-2-线性规划松弛"><span class="nav-number">1.2.2.</span> <span class="nav-text">12.2.2 线性规划松弛</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-3-修改目标函数的松弛模型"><span class="nav-number">1.2.3.</span> <span class="nav-text">12.2.3 修改目标函数的松弛模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-4-用松弛模型证明不可行性"><span class="nav-number">1.2.4.</span> <span class="nav-text">12.2.4 用松弛模型证明不可行性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-5-松弛给出最有目标值界限"><span class="nav-number">1.2.5.</span> <span class="nav-text">12.2.5 松弛给出最有目标值界限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-6-利用松弛模型得到最优解"><span class="nav-number">1.2.6.</span> <span class="nav-text">12.2.6 利用松弛模型得到最优解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-7-松弛模型的取整解"><span class="nav-number">1.2.7.</span> <span class="nav-text">12.2.7 松弛模型的取整解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-8-更强的线性规划松弛模型"><span class="nav-number">1.2.8.</span> <span class="nav-text">12.2.8 更强的线性规划松弛模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-2-9-选择大M常量"><span class="nav-number">1.2.9.</span> <span class="nav-text">12.2.9 选择大M常量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-3-分支定界搜索-branch-and-bound"><span class="nav-number">1.3.</span> <span class="nav-text">12.3 分支定界搜索(branch and bound)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-1-部分解"><span class="nav-number">1.3.1.</span> <span class="nav-text">12.3.1 部分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-2-部分解的完全形式"><span class="nav-number">1.3.2.</span> <span class="nav-text">12.3.2 部分解的完全形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-3-树搜索"><span class="nav-number">1.3.3.</span> <span class="nav-text">12.3.3  树搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-5-候选问题"><span class="nav-number">1.3.4.</span> <span class="nav-text">12.3.5 候选问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-6-通过松弛模型终止部分解"><span class="nav-number">1.3.5.</span> <span class="nav-text">12.3.6 通过松弛模型终止部分解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-7-基于线性规划的分支定界法"><span class="nav-number">1.3.6.</span> <span class="nav-text">12.3.7  基于线性规划的分支定界法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-3-8-基于线性规划的分支定界法的分支规则"><span class="nav-number">1.3.7.</span> <span class="nav-text">12.3.8 基于线性规划的分支定界法的分支规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-4-分支定界法的改良"><span class="nav-number">1.4.</span> <span class="nav-text">12.4 分支定界法的改良</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-4-2-最佳解整数化"><span class="nav-number">1.4.1.</span> <span class="nav-text">12.4.2  最佳解整数化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-5-分支切割法-branch-and-cut"><span class="nav-number">1.5.</span> <span class="nav-text">12.5 分支切割法(branch and cut)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#12-5-1-有效不等式"><span class="nav-number">1.5.1.</span> <span class="nav-text">12.5.1 有效不等式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-5-2-分支切割搜索"><span class="nav-number">1.5.2.</span> <span class="nav-text">12.5.2 分支切割搜索</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Guan Mengcheng</span>
+
+  
+</div>
+
+
+  <div class="powered-by">
+  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>人</span>
+  </div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共33k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <script async src="//code.tidio.co/f7dintesbvjb2dzhgosgkre2vmhl5kwx.js"></script>
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
