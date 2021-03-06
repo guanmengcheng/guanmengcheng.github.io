@@ -69,7 +69,7 @@
 
 
 
-  <meta name="keywords" content="R,">
+  <meta name="keywords" content="R, code,">
 
 
 
@@ -81,7 +81,7 @@
 
 
 <meta name="description" content="参考博客：知乎文章、知乎文章2、50题搞定data.table 1.修改Rstudio报错信息显示为英文1Sys.setenv(LANGUAGE = &quot;en&quot;） 这个设置是临时的，如果需要永久修改，需要修改文件。 2. 清除变量123rm(object) # 清除单个变量rm(list = ls()) # 清除所有变量gc() # 垃圾回收，清除内存占用 3. data.table包速查表   d">
-<meta name="keywords" content="R">
+<meta name="keywords" content="R, code">
 <meta property="og:type" content="article">
 <meta property="og:title" content="R">
 <meta property="og:url" content="http://yoursite.com/2021/01/13/R/index.html">
@@ -100,7 +100,7 @@
 <meta property="og:image" content="https://pic2.zhimg.com/v2-880dbdb50648c95e09af64879ad0b861_b.jpg">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-9af2862e6398bff227fd0ae294554e89_b.jpg">
 <meta property="og:image" content="https://pic1.zhimg.com/v2-788a3ddb8a1474ab2b36f574d1eb2950_b.jpg">
-<meta property="og:updated_time" content="2021-02-24T12:47:46.918Z">
+<meta property="og:updated_time" content="2021-03-06T08:59:04.342Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="R">
 <meta name="twitter:description" content="参考博客：知乎文章、知乎文章2、50题搞定data.table 1.修改Rstudio报错信息显示为英文1Sys.setenv(LANGUAGE = &quot;en&quot;） 这个设置是临时的，如果需要永久修改，需要修改文件。 2. 清除变量123rm(object) # 清除单个变量rm(list = ls()) # 清除所有变量gc() # 垃圾回收，清除内存占用 3. data.table包速查表   d">
@@ -352,6 +352,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/R/" itemprop="url" rel="index">
+                    <span itemprop="name">R</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -373,7 +395,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.4k
+                  2.8k
                 </span>
               
 
@@ -389,7 +411,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  12
                 </span>
               
             </div>
@@ -414,7 +436,7 @@
 <h2 id="1-修改Rstudio报错信息显示为英文"><a href="#1-修改Rstudio报错信息显示为英文" class="headerlink" title="1.修改Rstudio报错信息显示为英文"></a>1.修改Rstudio报错信息显示为英文</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Sys.setenv(LANGUAGE = <span class="string">"en"</span>）</span><br></pre></td></tr></table></figure>
 <p>这个设置是临时的，如果需要永久修改，需要修改文件。</p>
 <h2 id="2-清除变量"><a href="#2-清除变量" class="headerlink" title="2. 清除变量"></a>2. 清除变量</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rm(object) <span class="comment"># 清除单个变量</span></span><br><span class="line">rm(list = ls()) <span class="comment"># 清除所有变量</span></span><br><span class="line">gc() <span class="comment"># 垃圾回收，清除内存占用</span></span><br></pre></td></tr></table></figure>
-<h3 id="3-data-table包"><a href="#3-data-table包" class="headerlink" title="3. data.table包"></a>3. data.table包</h3><p>速查表</p>
+<h2 id="3-data-table包"><a href="#3-data-table包" class="headerlink" title="3. data.table包"></a>3. data.table包</h2><p>速查表</p>
 <p><img src="https://pic3.zhimg.com/v2-7d0d7f307b08d6298ff18fa46b294b12_r.jpg" alt="preview"></p>
 <p><img src="https://pic2.zhimg.com/v2-fb7c43dafdea5ef118d0d5bb992cb741_r.jpg" alt="preview"></p>
 <p>data.table 包是 data.frame 的高性能版本，不依赖其它包就能胜任各种数据操作，速度超快，让个人电脑都能轻松处理几 G 甚至几十 G 的数据。data.table 的高性能来源于内存管理（引用语法）、并行化和大量精细优化。</p>
@@ -550,6 +572,16 @@
 <p>data.table 也提供了辅助函数：<code>first(), last(), uniqueN()</code>. 比如提取每组的 first/nth 观测：</p>
 <figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DT[, first(.SD), by = class]</span><br><span class="line">DT[, .SD[<span class="number">3</span>], by = class]                        <span class="comment"># 每组第3 个观测</span></span><br><span class="line">DT[, tail(.SD, <span class="number">2</span>), by = class]                  <span class="comment"># 每组后2 个观测</span></span><br><span class="line"><span class="comment"># 选择每个班男生数学最高分的观测</span></span><br><span class="line">DT[sex == <span class="string">" 男"</span>, .SD[math == max(math)], by = class]</span><br></pre></td></tr></table></figure>
 <p><img src="https://pic1.zhimg.com/v2-788a3ddb8a1474ab2b36f574d1eb2950_b.jpg" alt="img"></p>
+<h2 id="4-使用多个条件筛选dataframe"><a href="#4-使用多个条件筛选dataframe" class="headerlink" title="4. 使用多个条件筛选dataframe"></a>4. 使用多个条件筛选dataframe</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(dplyr)</span><br><span class="line">sub_orders = orders%&gt;%filter(is.na(ordr_detl_id)==<span class="literal">FALSE</span>, pm_num&lt;<span class="number">0</span>) <span class="comment">#筛选ordr_detl_id非NA，且pm_num小于0的所有行</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-筛选某列有重复值的所有行"><a href="#5-筛选某列有重复值的所有行" class="headerlink" title="5. 筛选某列有重复值的所有行"></a>5. 筛选某列有重复值的所有行</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dup_or = dup_or[duplicated(dup_or$ordr_detl_id),] <span class="comment">#筛选出ordr_detl_id列所有重复值所在的行</span></span><br></pre></td></tr></table></figure>
+<h2 id="6-R-markdown美化"><a href="#6-R-markdown美化" class="headerlink" title="6.  R markdown美化"></a>6.  R markdown美化</h2><p>参考博客：<a href="https://divinerhjf.github.io/2018/07/09/r-markdown-shu-ju-bao-gao-sheng-cheng-li-qi/" target="_blank" rel="noopener">R markdown</a>、<a href="https://bookdown.org/yihui/rmarkdown/" target="_blank" rel="noopener">Yi hui R markdown cookbook</a>、<a href="https://www.htmlwidgets.org/showcase_dygraphs.html" target="_blank" rel="noopener">HTML工具</a></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">knitr::kable(ZZ,format = <span class="string">'markdown'</span>)</span><br></pre></td></tr></table></figure>
+<p>或使用DT包中的datatable()函数，能实现非常丰富的表格展示，包括筛选、搜索、对列排序、设置滚动条等等，详情见<a href="https://rstudio.github.io/DT/" target="_blank" rel="noopener">DT</a></p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">library</span>(DT)</span><br><span class="line">datatable(ZZ, filter = <span class="string">'top'</span>, options = list(pageLength = <span class="number">20</span>), caption = <span class="string">'Table 1: The summary of B2C orders.'</span>)</span><br></pre></td></tr></table></figure>
+<p>设置输出html文件的格式，增加宽度，修改字体，修改字体大小，只需在Rmd文件前加入富文本即可：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: &quot;B2C order exploration&quot;</span><br><span class="line">author: &quot;Mengcheng Guan&quot;</span><br><span class="line">date: &quot;2021/3/2&quot;</span><br><span class="line">output: </span><br><span class="line">  html_document:</span><br><span class="line">    toc: true</span><br><span class="line">    number_section: true</span><br><span class="line">    df_print: paged</span><br><span class="line">    theme: default</span><br><span class="line">    highlight: tango</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">&lt;style type=&quot;text/css&quot;&gt;</span><br><span class="line"></span><br><span class="line">body, td &#123;</span><br><span class="line">   font-family: Consolas;</span><br><span class="line">   font-size: 14px;</span><br><span class="line">&#125;</span><br><span class="line">code.r&#123;</span><br><span class="line">  font-family:  Consolas;</span><br><span class="line">  font-size: 16px;</span><br><span class="line">&#125;</span><br><span class="line">pre &#123;</span><br><span class="line">  font-size: 12px</span><br><span class="line">&#125;</span><br><span class="line">.main-container &#123;</span><br><span class="line">  max-width: 1600px; %页面宽度</span><br><span class="line">  margin-left: auto;</span><br><span class="line">  margin-right: auto;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line"></span><br><span class="line">​```&#123;r setup, include=FALSE&#125;</span><br><span class="line">knitr::opts_chunk$set(echo = TRUE)</span><br><span class="line">rm(list=ls())</span><br><span class="line">library(data.table)</span><br><span class="line">library(bit64)</span><br><span class="line">​</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 7. 取第一个非空值的值（与oracle nvl函数相同）</span><br><span class="line"></span><br><span class="line">使用包statnet.common</span><br><span class="line"></span><br><span class="line">```R</span><br><span class="line">library(statnet.common)</span><br><span class="line"># NOT RUN &#123;</span><br><span class="line">a &lt;- NULL</span><br><span class="line"></span><br><span class="line">print(a) # NULL</span><br><span class="line">print(NVL(a,0)) # 0</span><br><span class="line"></span><br><span class="line">b &lt;- 1</span><br><span class="line"></span><br><span class="line">print(b) # 1</span><br><span class="line">print(NVL(b,0)) # 1</span><br><span class="line"></span><br><span class="line"># Also,</span><br><span class="line">print(NVL(NULL,1,0)) # 1</span><br><span class="line">print(NVL(NULL,0,1)) # 0</span><br><span class="line">print(NVL(NULL,NULL,0)) # 0</span><br><span class="line">print(NVL(NULL,NULL,NULL)) # NULL</span><br><span class="line"></span><br><span class="line">NVL(a) &lt;- 2</span><br><span class="line">a # 2</span><br><span class="line">NVL(b) &lt;- 2</span><br><span class="line">b # still 1</span><br><span class="line"># &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="8-代码学习"><a href="#8-代码学习" class="headerlink" title="8. 代码学习"></a>8. 代码学习</h2><figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">gb_orders[, is_initiator := as.numeric(userid==initiator)] <span class="comment">#增加新列is_initiator，如果user_id与initialtor相同，则取1，否则取0</span></span><br><span class="line"></span><br><span class="line">&gt; child[, table(orders&gt;=offered_num)]</span><br><span class="line"></span><br><span class="line"><span class="literal">FALSE</span>  <span class="literal">TRUE</span> </span><br><span class="line"><span class="number">27809</span>  <span class="number">7143</span></span><br><span class="line"></span><br><span class="line">set.seed(<span class="number">9999</span>)</span><br><span class="line">control_userids = sample(non_groupbuy_userids, <span class="number">50000</span>) <span class="comment"># 随机取样</span></span><br><span class="line"></span><br><span class="line">cols = colnames(user_stats) <span class="comment">#获取列名</span></span><br><span class="line"></span><br><span class="line">sub_users[is.na(rcvg_prov_name), rcvg_prov_name := <span class="string">'unknown'</span>] <span class="comment"># rcvg_prov_name为空的直接赋值为'unknown'</span></span><br><span class="line"></span><br><span class="line">user_stats[, lapply(.SD, mean, na.rm=<span class="literal">T</span>), by=group, .SDcols = setdiff(colnames(user_stats), c(<span class="string">'user_id'</span>, <span class="string">'group'</span>, <span class="string">'user_type'</span>, <span class="string">'family_type'</span>, <span class="string">'gender'</span>, <span class="string">'reg_province'</span>))]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -576,7 +608,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/R/" rel="tag"><i class="fa fa-tag"></i> R</a>
+            <a href="/tags/R-code/" rel="tag"><i class="fa fa-tag"></i> R, code</a>
           
         </div>
       
@@ -680,7 +712,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -691,7 +723,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -702,7 +734,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -751,7 +783,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-修改Rstudio报错信息显示为英文"><span class="nav-number">1.</span> <span class="nav-text">1.修改Rstudio报错信息显示为英文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-清除变量"><span class="nav-number">2.</span> <span class="nav-text">2. 清除变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-data-table包"><span class="nav-number">2.1.</span> <span class="nav-text">3. data.table包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-特殊符号"><span class="nav-number">2.1.1.</span> <span class="nav-text">3.1 特殊符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-数据读写"><span class="nav-number">2.1.2.</span> <span class="nav-text">3.2 数据读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-数据连接"><span class="nav-number">2.1.3.</span> <span class="nav-text">3.3 数据连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-数据操作"><span class="nav-number">2.1.4.</span> <span class="nav-text">3.4 数据操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-分组汇总"><span class="nav-number">2.1.5.</span> <span class="nav-text">3.5 分组汇总</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-修改Rstudio报错信息显示为英文"><span class="nav-number">1.</span> <span class="nav-text">1.修改Rstudio报错信息显示为英文</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-清除变量"><span class="nav-number">2.</span> <span class="nav-text">2. 清除变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-data-table包"><span class="nav-number">3.</span> <span class="nav-text">3. data.table包</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-特殊符号"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 特殊符号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-数据读写"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 数据读写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-数据连接"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.3 数据连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-数据操作"><span class="nav-number">3.0.4.</span> <span class="nav-text">3.4 数据操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-分组汇总"><span class="nav-number">3.0.5.</span> <span class="nav-text">3.5 分组汇总</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#4-使用多个条件筛选dataframe"><span class="nav-number">4.</span> <span class="nav-text">4. 使用多个条件筛选dataframe</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-筛选某列有重复值的所有行"><span class="nav-number">5.</span> <span class="nav-text">5. 筛选某列有重复值的所有行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-R-markdown美化"><span class="nav-number">6.</span> <span class="nav-text">6.  R markdown美化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-代码学习"><span class="nav-number">7.</span> <span class="nav-text">8. 代码学习</span></a></li></div>
             
 
           </div>
@@ -800,7 +832,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33k字</span>
+  <span class="post-count">博客全站共34.1k字</span>
 </div>
         
 

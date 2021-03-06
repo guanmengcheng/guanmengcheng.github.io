@@ -80,19 +80,19 @@
 
 
 
-<meta name="description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem2.1 Introduction这一章主要介绍Capacitated Vehicle Routing Problem (CV">
+<meta name="description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 1: The Family of Vehicle Routing Problems1.2.2 Models在此章节，介绍CVRP4种重要的模型。 Basic Notation: $S \subseteq V$表示点集的任意子集。对于无向图，割集为$\delta(S)=">
 <meta name="keywords" content="运筹学">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vehicle routing读书笔记">
 <meta property="og:url" content="http://yoursite.com/2021/01/09/vehicle routing读书笔记/index.html">
 <meta property="og:site_name" content="Mengcheng&#39;s Blog">
-<meta property="og:description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem2.1 Introduction这一章主要介绍Capacitated Vehicle Routing Problem (CV">
+<meta property="og:description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 1: The Family of Vehicle Routing Problems1.2.2 Models在此章节，介绍CVRP4种重要的模型。 Basic Notation: $S \subseteq V$表示点集的任意子集。对于无向图，割集为$\delta(S)=">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210109163713.png">
-<meta property="og:updated_time" content="2021-01-11T07:36:00.842Z">
+<meta property="og:updated_time" content="2021-03-01T03:11:54.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vehicle routing读书笔记">
-<meta name="twitter:description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem2.1 Introduction这一章主要介绍Capacitated Vehicle Routing Problem (CV">
+<meta name="twitter:description" content="《Vehicle routing: problems, methods, and applications》读书笔记Chapter 1: The Family of Vehicle Routing Problems1.2.2 Models在此章节，介绍CVRP4种重要的模型。 Basic Notation: $S \subseteq V$表示点集的任意子集。对于无向图，割集为$\delta(S)=">
 <meta name="twitter:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210109163713.png">
 
 
@@ -384,7 +384,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  305
+                  416
                 </span>
               
 
@@ -421,7 +421,9 @@
       
 
       
-        <h1 id="《Vehicle-routing-problems-methods-and-applications》读书笔记"><a href="#《Vehicle-routing-problems-methods-and-applications》读书笔记" class="headerlink" title="《Vehicle routing: problems, methods, and applications》读书笔记"></a>《Vehicle routing: problems, methods, and applications》读书笔记</h1><h2 id="Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem"><a href="#Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem" class="headerlink" title="Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem"></a>Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem</h2><h3 id="2-1-Introduction"><a href="#2-1-Introduction" class="headerlink" title="2.1 Introduction"></a>2.1 Introduction</h3><p>这一章主要介绍Capacitated Vehicle Routing Problem (CVRP)问题的精确算法，主要包括Branch and Bound、column generation、branch and cut。</p>
+        <h1 id="《Vehicle-routing-problems-methods-and-applications》读书笔记"><a href="#《Vehicle-routing-problems-methods-and-applications》读书笔记" class="headerlink" title="《Vehicle routing: problems, methods, and applications》读书笔记"></a>《Vehicle routing: problems, methods, and applications》读书笔记</h1><h2 id="Chapter-1-The-Family-of-Vehicle-Routing-Problems"><a href="#Chapter-1-The-Family-of-Vehicle-Routing-Problems" class="headerlink" title="Chapter 1: The Family of Vehicle Routing Problems"></a>Chapter 1: The Family of Vehicle Routing Problems</h2><h3 id="1-2-2-Models"><a href="#1-2-2-Models" class="headerlink" title="1.2.2 Models"></a>1.2.2 Models</h3><p>在此章节，介绍CVRP4种重要的模型。</p>
+<p><strong>Basic Notation</strong>: $S \subseteq V$表示点集的任意子集。对于无向图，割集为$\delta(S)=\{\{i,j\}\in E:i\in S,j\notin S\}(set E(S)=\{\{i,j\}\in E: i,j\in S\})$。对于有向图$G=(V,A)$，$S$的in-arcs和out-arcs表示为$\delta^-(S)=\{(i,j)\in A: i\notin S,j \in S\}$和$\delta^+(S)=\{(i,j)\in A: i\in S,j \notin S\}$。</p>
+<h2 id="Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem"><a href="#Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem" class="headerlink" title="Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem"></a>Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem</h2><h3 id="2-1-Introduction"><a href="#2-1-Introduction" class="headerlink" title="2.1 Introduction"></a>2.1 Introduction</h3><p>这一章主要介绍Capacitated Vehicle Routing Problem (CVRP)问题的精确算法，主要包括Branch and Bound、column generation、branch and cut。</p>
 <h3 id="2-2-Branch-and-Bound-Algorithms"><a href="#2-2-Branch-and-Bound-Algorithms" class="headerlink" title="2.2 Branch and Bound Algorithms"></a>2.2 Branch and Bound Algorithms</h3><blockquote>
 <p>如果从任何点$i$到任何其他点$j$的距离或成本与从$j$到$i$的距离或成本相同，则称旅行商问题是对称(symmetric)的，否则，问题是不对称(asymmetric)的。</p>
 </blockquote>
@@ -558,7 +560,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">35</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -569,7 +571,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -580,7 +582,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -629,7 +631,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《Vehicle-routing-problems-methods-and-applications》读书笔记"><span class="nav-number">1.</span> <span class="nav-text">《Vehicle routing: problems, methods, and applications》读书笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Introduction"><span class="nav-number">1.1.1.</span> <span class="nav-text">2.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Branch-and-Bound-Algorithms"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.2 Branch and Bound Algorithms</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#《Vehicle-routing-problems-methods-and-applications》读书笔记"><span class="nav-number">1.</span> <span class="nav-text">《Vehicle routing: problems, methods, and applications》读书笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-1-The-Family-of-Vehicle-Routing-Problems"><span class="nav-number">1.1.</span> <span class="nav-text">Chapter 1: The Family of Vehicle Routing Problems</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-2-Models"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.2.2 Models</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chapter-2-Classical-Exact-Algorithm-for-the-Capacitated-Vehicle-Routing-Problem"><span class="nav-number">1.2.</span> <span class="nav-text">Chapter 2: Classical Exact Algorithm for the Capacitated Vehicle Routing Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Introduction"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Introduction</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Branch-and-Bound-Algorithms"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Branch and Bound Algorithms</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -678,7 +680,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共33k字</span>
+  <span class="post-count">博客全站共34.1k字</span>
 </div>
         
 
