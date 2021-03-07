@@ -32,7 +32,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/monokai.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
     
   
 
@@ -246,7 +246,7 @@
             <div class="markdown-body">
               <h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
 <p>randsample的命令格式：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></td></tr></table></figure>
 <p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
 <p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
 <p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>

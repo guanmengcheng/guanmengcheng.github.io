@@ -32,7 +32,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/monokai.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/github-gist.min.css" />
     
   
 
@@ -249,7 +249,7 @@
 <blockquote>
 <p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
 </blockquote>
-<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">Indices   |   <br>$i$   |   商品索引，$i&#x3D;1,...,N$<br>$m$   |   货架索引，$m&#x3D;1,...,M$<br>$b$   |   批次索引，$b&#x3D;1,...,B$<br>**Parameters**   |   <br>$M$   |   货架总数<br>$N$   |   商品总数<br>$B$   |   批次总数<br>$L$   |   单个批次最大订单数限制<br>$O$   |   订单总数<br>$t_m$   |   货架$m$ 上的商品种类总数<br>$d_&#123;io&#125;$   |   &#x3D;1如果订单$o$ 包含商品$i$ ;否则为0<br>$c_&#123;im&#125;$   |   &#x3D;1如果货架$m$ 上有商品$i$ ;否则为0<br></code></pre></div></td></tr></table></figure>
+<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs table">Indices   |   <br>$i$   |   商品索引，$i&#x3D;1,...,N$<br>$m$   |   货架索引，$m&#x3D;1,...,M$<br>$b$   |   批次索引，$b&#x3D;1,...,B$<br>**Parameters**   |   <br>$M$   |   货架总数<br>$N$   |   商品总数<br>$B$   |   批次总数<br>$L$   |   单个批次最大订单数限制<br>$O$   |   订单总数<br>$t_m$   |   货架$m$ 上的商品种类总数<br>$d_&#123;io&#125;$   |   &#x3D;1如果订单$o$ 包含商品$i$ ;否则为0<br>$c_&#123;im&#125;$   |   &#x3D;1如果货架$m$ 上有商品$i$ ;否则为0<br></code></pre></td></tr></table></figure>
 <p><strong>Decision variables</strong>  </p>
 <script type="math/tex; mode=display">
 x_{bm} =
@@ -277,7 +277,7 @@ z_{ib} =
 <h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
 <h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
 <h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
-<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比<br>无效移动次数   |   406   |   809   | 49.815%<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs table">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比<br>无效移动次数   |   406   |   809   | 49.815%<br></code></pre></td></tr></table></figure>
 <p>目标函数迭代情况:</p>
 <h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
 
