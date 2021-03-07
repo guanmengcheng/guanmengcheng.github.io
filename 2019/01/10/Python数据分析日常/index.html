@@ -1,419 +1,256 @@
+
+
 <!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
 
 
 
-  
-
-
-<html class="theme-next mist use-motion" lang="zh-Hans">
-<head><meta name="generator" content="Hexo 3.9.0">
+<head>
   <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="theme-color" content="#222">
-<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  
+    <meta name="description" content="Mengcheng">
+  
+  <meta name="author" content="Guan Mengcheng">
+  <meta name="keywords" content="">
+  
+  <title>Python数据分析日常 - Mengcheng&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
 
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
-
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="python,">
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
-<meta name="keywords" content="python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python数据分析日常">
-<meta property="og:url" content="http://yoursite.com/2019/01/10/Python数据分析日常/index.html">
-<meta property="og:site_name" content="Mengcheng&#39;s Blog">
-<meta property="og:description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155558.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155657.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134157.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134318.png">
-<meta property="og:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134753.png">
-<meta property="og:updated_time" content="2021-02-24T01:42:16.164Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python数据分析日常">
-<meta name="twitter:description" content="总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。 1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&apos;数据库地址&apos;, port=&apos;端口&apos;, user=&apos;">
-<meta name="twitter:image" content="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png">
-
-
-
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
-
-
-
-  <link rel="canonical" href="http://yoursite.com/2019/01/10/Python数据分析日常/">
-
-
-
-
-
-  <title>Python数据分析日常 | Mengcheng's Blog</title>
-  
-
-
-
-
-
-
-
-
-</head>
-
-
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
-
-  
-  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/monokai.min.css" />
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
-    <div class="headband"></div>
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
-    <a href="https://github.com/guanmengcheng" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
-	
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
 
-    <div class="custom-logo-site-title">
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Mengcheng's Blog</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle">HUST</p>
-      
-  </div>
 
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mengcheng</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
     </button>
-  </div>
-</div>
 
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
-            
-            标签
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
-            
-            归档
-          </a>
-        </li>
-      
-
-      
-        <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="popup-trigger">
           
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
-            
-            搜索
-          </a>
-        </li>
-      
-    </ul>
-  
-
-  
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  <div id="local-search-result"></div>
-</div>
-
-
-
-    </div>
-  
 </nav>
 
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wedding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Python数据分析日常">
+              
+            </span>
 
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
-    
-
-  
-
+              <div class="mt-3">
   
   
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/10/Python数据分析日常/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Guan Mengcheng">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.jpg">
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2019-01-10 16:58" pubdate>
+        2019年1月10日 下午
+      </time>
     </span>
+  
+</div>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Mengcheng's Blog">
-    </span>
-
+<div class="mt-1">
+  
     
-      <header class="post-header">
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">Python数据分析日常</h1>
-        
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18
+       分钟
+    </span>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-10T16:58:49+08:00">
-                2019-01-10
-              </time>
-            
-
-            
-
-            
-          </span>
+          </div>
 
           
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.2k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  5
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      </div>
+    </div>
+  </header>
 
+  <main>
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
-      
-        <p>总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。</p>
-<h4 id="1-Python连接MYSQL数据库"><a href="#1-Python连接MYSQL数据库" class="headerlink" title="1 Python连接MYSQL数据库"></a>1 Python连接MYSQL数据库</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pymysql</span><br><span class="line">pymysql.install_as_MySQLdb()</span><br><span class="line"><span class="keyword">import</span> MySQLdb</span><br><span class="line"><span class="keyword">import</span> MySQLdb.cursors</span><br><span class="line">mysql_cn= MySQLdb.connect(host=<span class="string">'数据库地址'</span>, port=<span class="string">'端口'</span>, user=<span class="string">'用户名'</span>, passwd=<span class="string">'密码'</span>, db=<span class="string">'数据库名'</span>,cursorclass = MySQLdb.cursors.SSCursor)</span><br></pre></td></tr></table></figure>
-<h4 id="2-写入xlsx文件-多个sheet"><a href="#2-写入xlsx文件-多个sheet" class="headerlink" title="2 写入xlsx文件(多个sheet)"></a>2 写入xlsx文件(多个sheet)</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">'出库统计.xlsx'</span>)</span><br><span class="line">df.to_excel(writer,sheet_name=<span class="string">'sheet_name'</span>)</span><br><span class="line">writer.save()</span><br></pre></td></tr></table></figure>
-<h4 id="3-DataFrame按某列排序"><a href="#3-DataFrame按某列排序" class="headerlink" title="3 DataFrame按某列排序"></a>3 DataFrame按某列排序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df.sort_values(by=<span class="string">'列名'</span>,ascending=<span class="literal">False</span>)<span class="comment">#ascending=False为降序</span></span><br></pre></td></tr></table></figure>
-<h4 id="4-取出DataFrame某列中非空的行"><a href="#4-取出DataFrame某列中非空的行" class="headerlink" title="4 取出DataFrame某列中非空的行"></a>4 取出DataFrame某列中非空的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[df[<span class="string">'columns'</span>].isnull().values==<span class="literal">False</span>]</span><br></pre></td></tr></table></figure>
-<h4 id="5-Pandas读取xlsx文件的sheetname"><a href="#5-Pandas读取xlsx文件的sheetname" class="headerlink" title="5 Pandas读取xlsx文件的sheetname"></a>5 Pandas读取xlsx文件的sheetname</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> openpyxl</span><br><span class="line">wb = openpyxl.load_workbook(path)</span><br><span class="line">sheetnames = wb.sheetnames</span><br></pre></td></tr></table></figure>
-<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_expire</span><span class="params">(arr,x,y)</span>:</span></span><br><span class="line">    a=arr[x]</span><br><span class="line">    b=arr[y]</span><br><span class="line">    cur.execute(SQL)</span><br><span class="line">    <span class="keyword">return</span> cur.fetchall()[<span class="number">0</span>][<span class="number">0</span>]</span><br></pre></td></tr></table></figure></p>
-<p>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" alt><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'失效日期'</span>]=df.apply(get_expire,axis = <span class="number">1</span>, args = (<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>在get_expire函数中，arr传入的为df，x,y传入分别为<code>&#39;product_id&#39;</code>,<code>&#39;wms_batch_code&#39;</code></p>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Python数据分析日常</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年3月7日 中午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <p>总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。</p>
+<h4 id="1-Python连接MYSQL数据库"><a href="#1-Python连接MYSQL数据库" class="headerlink" title="1 Python连接MYSQL数据库"></a>1 Python连接MYSQL数据库</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> pymysql<br>pymysql.install_as_MySQLdb()<br><span class="hljs-keyword">import</span> MySQLdb<br><span class="hljs-keyword">import</span> MySQLdb.cursors<br>mysql_cn= MySQLdb.connect(host=<span class="hljs-string">&#x27;数据库地址&#x27;</span>, port=<span class="hljs-string">&#x27;端口&#x27;</span>, user=<span class="hljs-string">&#x27;用户名&#x27;</span>, passwd=<span class="hljs-string">&#x27;密码&#x27;</span>, db=<span class="hljs-string">&#x27;数据库名&#x27;</span>,cursorclass = MySQLdb.cursors.SSCursor)<br></code></pre></div></td></tr></table></figure>
+<h4 id="2-写入xlsx文件-多个sheet"><a href="#2-写入xlsx文件-多个sheet" class="headerlink" title="2 写入xlsx文件(多个sheet)"></a>2 写入xlsx文件(多个sheet)</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">writer = pd.ExcelWriter(<span class="hljs-string">&#x27;出库统计.xlsx&#x27;</span>)<br>df.to_excel(writer,sheet_name=<span class="hljs-string">&#x27;sheet_name&#x27;</span>)<br>writer.save()<br></code></pre></div></td></tr></table></figure>
+<h4 id="3-DataFrame按某列排序"><a href="#3-DataFrame按某列排序" class="headerlink" title="3 DataFrame按某列排序"></a>3 DataFrame按某列排序</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df.sort_values(by=<span class="hljs-string">&#x27;列名&#x27;</span>,ascending=<span class="hljs-literal">False</span>)<span class="hljs-comment">#ascending=False为降序</span><br></code></pre></div></td></tr></table></figure>
+<h4 id="4-取出DataFrame某列中非空的行"><a href="#4-取出DataFrame某列中非空的行" class="headerlink" title="4 取出DataFrame某列中非空的行"></a>4 取出DataFrame某列中非空的行</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df[df[<span class="hljs-string">&#x27;columns&#x27;</span>].isnull().values==<span class="hljs-literal">False</span>]<br></code></pre></div></td></tr></table></figure>
+<h4 id="5-Pandas读取xlsx文件的sheetname"><a href="#5-Pandas读取xlsx文件的sheetname" class="headerlink" title="5 Pandas读取xlsx文件的sheetname"></a>5 Pandas读取xlsx文件的sheetname</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> openpyxl<br>wb = openpyxl.load_workbook(path)<br>sheetnames = wb.sheetnames<br></code></pre></div></td></tr></table></figure>
+<h4 id="6-DataFrame中的apply方法"><a href="#6-DataFrame中的apply方法" class="headerlink" title="6 DataFrame中的apply方法"></a>6 DataFrame中的apply方法</h4><p>可以自定义函数使用apply方法<br><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">get_expire</span>(<span class="hljs-params">arr,x,y</span>):</span><br>    a=arr[x]<br>    b=arr[y]<br>    cur.execute(SQL)<br>    <span class="hljs-keyword">return</span> cur.fetchall()[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>]<br></code></pre></div></td></tr></table></figure><br>df数据为:<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117165038.png" srcset="/img/loading.gif" alt=""><br><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;失效日期&#x27;</span>]=df.apply(get_expire,axis = <span class="hljs-number">1</span>, args = (<span class="hljs-string">&#x27;product_id&#x27;</span>,<span class="hljs-string">&#x27;wms_batch_code&#x27;</span>)<br></code></pre></div></td></tr></table></figure><br>在get_expire函数中，arr传入的为df，x,y传入分别为<code>&#39;product_id&#39;</code>,<code>&#39;wms_batch_code&#39;</code></p>
 <h4 id="7-按时间统计数据"><a href="#7-按时间统计数据" class="headerlink" title="7 按时间统计数据"></a>7 按时间统计数据</h4><p>首先需要将时间to_datetime，利用方法：</p>
 <p><code>df[&#39;cal_date&#39;]=pd.to_datetime(df[&#39;cal_date&#39;])</code></p>
 <p>然后设置时间列为索引：</p>
@@ -421,424 +258,224 @@
 <p>然后就可以按周、月、季度、年进行统计</p>
 <p><code>df.resample(&#39;M&#39;)[&#39;col1&#39;].sum()</code></p>
 <p>聚合方式还有：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png" alt></p>
-<h4 id="8-获取DataFrame中某列包含特定字符的所有行"><a href="#8-获取DataFrame中某列包含特定字符的所有行" class="headerlink" title="8 获取DataFrame中某列包含特定字符的所有行"></a>8 获取DataFrame中某列包含特定字符的所有行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">car = df[<span class="string">'单据号'</span>].str.contains(<span class="string">'CAR'</span>)</span><br><span class="line">df[car] <span class="comment">#表示在df的'单据号'列中包含字符'CAR'的所有行</span></span><br><span class="line">df[~car] <span class="comment">#表示去不包含字符'CAR'的所有行</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190117170706.png" srcset="/img/loading.gif" alt=""></p>
+<h4 id="8-获取DataFrame中某列包含特定字符的所有行"><a href="#8-获取DataFrame中某列包含特定字符的所有行" class="headerlink" title="8 获取DataFrame中某列包含特定字符的所有行"></a>8 获取DataFrame中某列包含特定字符的所有行</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">car = df[<span class="hljs-string">&#x27;单据号&#x27;</span>].<span class="hljs-built_in">str</span>.contains(<span class="hljs-string">&#x27;CAR&#x27;</span>)<br>df[car] <span class="hljs-comment">#表示在df的&#x27;单据号&#x27;列中包含字符&#x27;CAR&#x27;的所有行</span><br>df[~car] <span class="hljs-comment">#表示去不包含字符&#x27;CAR&#x27;的所有行</span><br></code></pre></div></td></tr></table></figure>
 <h4 id="9-取时间中的天数"><a href="#9-取时间中的天数" class="headerlink" title="9 取时间中的天数"></a>9 取时间中的天数</h4><p><code>batch[&#39;库存天数&#39;]=(batch[&#39;销完时间&#39;]-batch[&#39;上架时间&#39;]).dt.days</code></p>
-<h4 id="10-按特定的值取DataFrame中的行"><a href="#10-按特定的值取DataFrame中的行" class="headerlink" title="10 按特定的值取DataFrame中的行"></a>10 按特定的值取DataFrame中的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_zhout[df_zhout[<span class="string">'出库类型'</span>].isin([<span class="string">'销售订单'</span>,<span class="string">'电商订单'</span>])]</span><br></pre></td></tr></table></figure>
+<h4 id="10-按特定的值取DataFrame中的行"><a href="#10-按特定的值取DataFrame中的行" class="headerlink" title="10 按特定的值取DataFrame中的行"></a>10 按特定的值取DataFrame中的行</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df_zhout[df_zhout[<span class="hljs-string">&#x27;出库类型&#x27;</span>].isin([<span class="hljs-string">&#x27;销售订单&#x27;</span>,<span class="hljs-string">&#x27;电商订单&#x27;</span>])]<br></code></pre></div></td></tr></table></figure>
 <p>表示取出’出库类型’列中值为’销售订单’,’电商订单’的所有行</p>
-<h4 id="11-删除DataFrame中的重复值"><a href="#11-删除DataFrame中的重复值" class="headerlink" title="11 删除DataFrame中的重复值"></a>11 删除DataFrame中的重复值</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">batch.drop_duplicates(subset=[<span class="string">'product_id'</span>,<span class="string">'wms_batch_code'</span>],keep=<span class="string">'first'</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="11-删除DataFrame中的重复值"><a href="#11-删除DataFrame中的重复值" class="headerlink" title="11 删除DataFrame中的重复值"></a>11 删除DataFrame中的重复值</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">batch.drop_duplicates(subset=[<span class="hljs-string">&#x27;product_id&#x27;</span>,<span class="hljs-string">&#x27;wms_batch_code&#x27;</span>],keep=<span class="hljs-string">&#x27;first&#x27;</span>,inplace=<span class="hljs-literal">True</span>)<br></code></pre></div></td></tr></table></figure>
 <p>表示删除batch中’product_id’,’wms_batch_code’均重复的行，保留第一个重复的行，并替换掉原batch</p>
-<h4 id="12-合并DataFrame"><a href="#12-合并DataFrame" class="headerlink" title="12 合并DataFrame"></a>12 合并DataFrame</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=df.append(df1,ignore_index=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="12-合并DataFrame"><a href="#12-合并DataFrame" class="headerlink" title="12 合并DataFrame"></a>12 合并DataFrame</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df=df.append(df1,ignore_index=<span class="hljs-literal">True</span>)<br></code></pre></div></td></tr></table></figure>
 <p>df 与 df1的列相同，将其合并，并忽略各自的index</p>
-<h4 id="13-DataFrame的Merge方法"><a href="#13-DataFrame的Merge方法" class="headerlink" title="13 DataFrame的Merge方法"></a>13 DataFrame的Merge方法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df=pd.merge(df_sample, df_stock, on=<span class="string">'cal_date'</span>,how=<span class="string">'left'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="13-DataFrame的Merge方法"><a href="#13-DataFrame的Merge方法" class="headerlink" title="13 DataFrame的Merge方法"></a>13 DataFrame的Merge方法</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df=pd.merge(df_sample, df_stock, on=<span class="hljs-string">&#x27;cal_date&#x27;</span>,how=<span class="hljs-string">&#x27;left&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
 <p>how还可取<code>inner,outer,right</code></p>
-<h4 id="14-改变某列的数据类型"><a href="#14-改变某列的数据类型" class="headerlink" title="14 改变某列的数据类型"></a>14 改变某列的数据类型</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df[<span class="string">'sku_id'</span>]=df[<span class="string">'sku_id'</span>].astype(str)</span><br></pre></td></tr></table></figure>
-<h4 id="15-选取以字母G开头的数据"><a href="#15-选取以字母G开头的数据" class="headerlink" title="15  选取以字母G开头的数据"></a>15  选取以字母G开头的数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df[df.col1.str.startswith(<span class="string">'G'</span>)]</span><br><span class="line">df[df.col1.str.startswith((<span class="string">'G'</span>,<span class="string">'M'</span>))] <span class="comment">#匹配以G或者M开头的</span></span><br></pre></td></tr></table></figure>
+<h4 id="14-改变某列的数据类型"><a href="#14-改变某列的数据类型" class="headerlink" title="14 改变某列的数据类型"></a>14 改变某列的数据类型</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df[<span class="hljs-string">&#x27;sku_id&#x27;</span>]=df[<span class="hljs-string">&#x27;sku_id&#x27;</span>].astype(<span class="hljs-built_in">str</span>)<br></code></pre></div></td></tr></table></figure>
+<h4 id="15-选取以字母G开头的数据"><a href="#15-选取以字母G开头的数据" class="headerlink" title="15  选取以字母G开头的数据"></a>15  选取以字母G开头的数据</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df[df.col1.<span class="hljs-built_in">str</span>.startswith(<span class="hljs-string">&#x27;G&#x27;</span>)]<br>df[df.col1.<span class="hljs-built_in">str</span>.startswith((<span class="hljs-string">&#x27;G&#x27;</span>,<span class="hljs-string">&#x27;M&#x27;</span>))] <span class="hljs-comment">#匹配以G或者M开头的</span><br></code></pre></div></td></tr></table></figure>
 <h4 id="16-Group-by方法"><a href="#16-Group-by方法" class="headerlink" title="16 Group by方法"></a>16 Group by方法</h4><p>对DataFrame进行分组，agg方法可实现对多个方法同时使用:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.groupby([<span class="string">'gcode'</span>,<span class="string">'cbecomcode'</span>,<span class="string">'year-month'</span>]).agg(&#123;<span class="string">'upric'</span>:[<span class="string">'mean'</span>,<span class="string">'var'</span>],<span class="string">'qty'</span>:<span class="string">'sum'</span>&#125;)</span><br></pre></td></tr></table></figure>
-<p>agg方法可以实现对同一列实现不同方法<code>{&#39;upric&#39;:[&#39;mean&#39;,&#39;var&#39;]</code>，也可以对不同列使用不同的方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df = df.groupby([<span class="hljs-string">&#x27;gcode&#x27;</span>,<span class="hljs-string">&#x27;cbecomcode&#x27;</span>,<span class="hljs-string">&#x27;year-month&#x27;</span>]).agg(&#123;<span class="hljs-string">&#x27;upric&#x27;</span>:[<span class="hljs-string">&#x27;mean&#x27;</span>,<span class="hljs-string">&#x27;var&#x27;</span>],<span class="hljs-string">&#x27;qty&#x27;</span>:<span class="hljs-string">&#x27;sum&#x27;</span>&#125;)<br></code></pre></div></td></tr></table></figure>
+<p>agg方法可以实现对同一列实现不同方法<code>&#123;&#39;upric&#39;:[&#39;mean&#39;,&#39;var&#39;]</code>，也可以对不同列使用不同的方法。</p>
 <h4 id="17-Concat合并"><a href="#17-Concat合并" class="headerlink" title="17 Concat合并"></a>17 Concat合并</h4><p>将两个DataFrame按照行的维度进行合并</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data = pd.concat([data1, data2])</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">all_data = pd.concat([data1, data2])<br></code></pre></div></td></tr></table></figure>
 <p>按列的维度进行合并</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">all_data_col = pd.concat([data1, data2], axis = <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="18-删除有缺失值的行"><a href="#18-删除有缺失值的行" class="headerlink" title="18 删除有缺失值的行"></a>18 删除有缺失值的行</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.dropna(how=<span class="string">'any'</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="19-优秀的第三方库"><a href="#19-优秀的第三方库" class="headerlink" title="19 优秀的第三方库"></a>19 优秀的第三方库</h4><p><a href="https://github.com/statsmodels/statsmodels" target="_blank" rel="noopener">Statsmodels</a>：统计建模和计量经济学</p>
-<p><a href="https://github.com/pandas-profiling/pandas-profiling" target="_blank" rel="noopener">Pandas Profiling</a>：一键生成数据分析报告</p>
-<h4 id="20-多层索引处理"><a href="#20-多层索引处理" class="headerlink" title="20 多层索引处理"></a>20 多层索引处理</h4><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155558.png" alt></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gp1.columns = [<span class="string">"_"</span>.join(x) <span class="keyword">for</span> x <span class="keyword">in</span> gp1.columns.ravel()]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">all_data_col = pd.concat([data1, data2], axis = <span class="hljs-number">1</span>)<br></code></pre></div></td></tr></table></figure>
+<h4 id="18-删除有缺失值的行"><a href="#18-删除有缺失值的行" class="headerlink" title="18 删除有缺失值的行"></a>18 删除有缺失值的行</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df = df.dropna(how=<span class="hljs-string">&#x27;any&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+<h4 id="19-优秀的第三方库"><a href="#19-优秀的第三方库" class="headerlink" title="19 优秀的第三方库"></a>19 优秀的第三方库</h4><p><a target="_blank" rel="noopener" href="https://github.com/statsmodels/statsmodels">Statsmodels</a>：统计建模和计量经济学</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/pandas-profiling/pandas-profiling">Pandas Profiling</a>：一键生成数据分析报告</p>
+<h4 id="20-多层索引处理"><a href="#20-多层索引处理" class="headerlink" title="20 多层索引处理"></a>20 多层索引处理</h4><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155558.png" srcset="/img/loading.gif" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">gp1.columns = [<span class="hljs-string">&quot;_&quot;</span>.join(x) <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> gp1.columns.ravel()]<br></code></pre></div></td></tr></table></figure>
 <p>将第二层的索引合并到第一层，得到</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155657.png" alt></p>
-<h4 id="21-重命名列名"><a href="#21-重命名列名" class="headerlink" title="21 重命名列名"></a>21 重命名列名</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df = df.rename(columns=&#123;<span class="string">'gcode_'</span>:<span class="string">'product_id'</span>,<span class="string">'cbecomcode_'</span>:<span class="string">'platform'</span>,<span class="string">'year-month_'</span>:<span class="string">'year-month'</span>&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="22-唯一值ID替换"><a href="#22-唯一值ID替换" class="headerlink" title="22 唯一值ID替换"></a>22 唯一值ID替换</h4><p>将列中的相同唯一值替换为其他值，可用于脱敏处理,<a href="http://cn.voidcc.com/question/p-usjfgxvn-ho.html" target="_blank" rel="noopener">参考</a></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">141</span>]: x[<span class="string">'cat'</span>] = pd.Categorical((pd.factorize(x.name)[<span class="number">0</span>] + <span class="number">1</span>).astype(str)) </span><br><span class="line">In [<span class="number">142</span>]: x </span><br><span class="line">Out[<span class="number">142</span>]: </span><br><span class="line">    name v1 v2 v3 ID cat </span><br><span class="line"><span class="number">0</span> Aaron <span class="number">3</span> <span class="number">5</span> <span class="number">7</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">1</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">9</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">2</span> Aaron <span class="number">3</span> <span class="number">6</span> <span class="number">10</span> <span class="number">1</span> <span class="number">1</span> </span><br><span class="line"><span class="number">3</span> Brave <span class="number">4</span> <span class="number">6</span> <span class="number">0</span> <span class="number">2</span> <span class="number">2</span> </span><br><span class="line"><span class="number">4</span> Brave <span class="number">3</span> <span class="number">6</span> <span class="number">1</span> <span class="number">2</span> <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190812155657.png" srcset="/img/loading.gif" alt=""></p>
+<h4 id="21-重命名列名"><a href="#21-重命名列名" class="headerlink" title="21 重命名列名"></a>21 重命名列名</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df = df.rename(columns=&#123;<span class="hljs-string">&#x27;gcode_&#x27;</span>:<span class="hljs-string">&#x27;product_id&#x27;</span>,<span class="hljs-string">&#x27;cbecomcode_&#x27;</span>:<span class="hljs-string">&#x27;platform&#x27;</span>,<span class="hljs-string">&#x27;year-month_&#x27;</span>:<span class="hljs-string">&#x27;year-month&#x27;</span>&#125;)<br></code></pre></div></td></tr></table></figure>
+<h4 id="22-唯一值ID替换"><a href="#22-唯一值ID替换" class="headerlink" title="22 唯一值ID替换"></a>22 唯一值ID替换</h4><p>将列中的相同唯一值替换为其他值，可用于脱敏处理,<a target="_blank" rel="noopener" href="http://cn.voidcc.com/question/p-usjfgxvn-ho.html">参考</a></p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">In [<span class="hljs-number">141</span>]: x[<span class="hljs-string">&#x27;cat&#x27;</span>] = pd.Categorical((pd.factorize(x.name)[<span class="hljs-number">0</span>] + <span class="hljs-number">1</span>).astype(<span class="hljs-built_in">str</span>)) <br>In [<span class="hljs-number">142</span>]: x <br>Out[<span class="hljs-number">142</span>]: <br>    name v1 v2 v3 ID cat <br><span class="hljs-number">0</span> Aaron <span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">7</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <br><span class="hljs-number">1</span> Aaron <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">9</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <br><span class="hljs-number">2</span> Aaron <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">10</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <br><span class="hljs-number">3</span> Brave <span class="hljs-number">4</span> <span class="hljs-number">6</span> <span class="hljs-number">0</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span> <br><span class="hljs-number">4</span> Brave <span class="hljs-number">3</span> <span class="hljs-number">6</span> <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">2</span><br></code></pre></div></td></tr></table></figure>
 <h4 id="24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"><a href="#24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）" class="headerlink" title="24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"></a>24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）</h4><ol>
-<li><a href="https://cloud.tencent.com/developer/ask/193233" target="_blank" rel="noopener">参考博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/ask/193233">参考博客</a></li>
 </ol>
 <p>分别有两个DataFrame，df1为：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134157.png" alt></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134157.png" srcset="/img/loading.gif" alt=""></p>
 <p>df2为：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134318.png" alt></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134318.png" srcset="/img/loading.gif" alt=""></p>
 <p>df1 中#SEQ编号为207931和207932的行的交付区域为空，我们想要根据df2中对应的交付区域更新df1中的交付区域</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#首先要设置两个df的索引均为#SEQ，即key列</span></span><br><span class="line">a = df1.set_index(<span class="string">'#SEQ'</span>)</span><br><span class="line">b = df2.set_index(<span class="string">'#SEQ'</span>)</span><br><span class="line"><span class="comment">#然后使用DataFrame.update方法更新</span></span><br><span class="line">a.update(b)</span><br><span class="line"><span class="comment">#最后赋值给df1</span></span><br><span class="line">df1[<span class="string">'交付区域'</span>] = a[<span class="string">'交付区域'</span>].values.astype(str)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">#首先要设置两个df的索引均为#SEQ，即key列</span><br>a = df1.set_index(<span class="hljs-string">&#x27;#SEQ&#x27;</span>)<br>b = df2.set_index(<span class="hljs-string">&#x27;#SEQ&#x27;</span>)<br><span class="hljs-comment">#然后使用DataFrame.update方法更新</span><br>a.update(b)<br><span class="hljs-comment">#最后赋值给df1</span><br>df1[<span class="hljs-string">&#x27;交付区域&#x27;</span>] = a[<span class="hljs-string">&#x27;交付区域&#x27;</span>].values.astype(<span class="hljs-built_in">str</span>)<br></code></pre></div></td></tr></table></figure>
 <p>即可得到最终的df1为：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134753.png" alt></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20200808134753.png" srcset="/img/loading.gif" alt=""></p>
 <p>由于#SEQ作为索引时有重复索引值存在，因此换一种方法</p>
 <p>2.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mask = np.isin(df1[<span class="string">'#SEQ'</span>],df2[<span class="string">'#SEQ'</span>])</span><br><span class="line">df1[<span class="string">'交付区域'</span>][mask] = df2[<span class="string">'交付区域'</span>].values[np.searchsorted(df2[<span class="string">'#SEQ'</span>].values,df1[<span class="string">'#SEQ'</span>].values[mask])]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">mask = np.isin(df1[<span class="hljs-string">&#x27;#SEQ&#x27;</span>],df2[<span class="hljs-string">&#x27;#SEQ&#x27;</span>])<br>df1[<span class="hljs-string">&#x27;交付区域&#x27;</span>][mask] = df2[<span class="hljs-string">&#x27;交付区域&#x27;</span>].values[np.searchsorted(df2[<span class="hljs-string">&#x27;#SEQ&#x27;</span>].values,df1[<span class="hljs-string">&#x27;#SEQ&#x27;</span>].values[mask])]<br></code></pre></div></td></tr></table></figure>
 <h4 id="25-Dataframe-稀疏矩阵转换"><a href="#25-Dataframe-稀疏矩阵转换" class="headerlink" title="25  Dataframe 稀疏矩阵转换"></a>25  Dataframe 稀疏矩阵转换</h4><h4 id="26-One-hot编码转换"><a href="#26-One-hot编码转换" class="headerlink" title="26 One-hot编码转换"></a>26 One-hot编码转换</h4><p>pd.get_dummies()</p>
-<h4 id="27-读取HDF5文件，其路径不能有中文"><a href="#27-读取HDF5文件，其路径不能有中文" class="headerlink" title="27 读取HDF5文件，其路径不能有中文"></a>27 读取HDF5文件，其路径不能有中文</h4><h4 id="28-Dataframe输出是保留开头的0"><a href="#28-Dataframe输出是保留开头的0" class="headerlink" title="28 Dataframe输出是保留开头的0"></a>28 Dataframe输出是保留开头的0</h4><h4 id="29-Groupby后计算各行占比"><a href="#29-Groupby后计算各行占比" class="headerlink" title="29 Groupby后计算各行占比"></a>29 Groupby后计算各行占比</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_order_before.groupby([<span class="string">'编码'</span>,<span class="string">'区域'</span>])[<span class="string">'发料数'</span>].count().groupby(level=<span class="number">0</span>).apply(<span class="keyword">lambda</span> x: x/float(x.sum())).reset_index()</span><br></pre></td></tr></table></figure>
-<h4 id="30-比较两列是否相同，生成第三列"><a href="#30-比较两列是否相同，生成第三列" class="headerlink" title="30 比较两列是否相同，生成第三列"></a>30 比较两列是否相同，生成第三列</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df_user_no[<span class="string">'diff'</span>] = np.where(df_user_no[<span class="string">'new_user_id'</span>]==df_user_no[<span class="string">'user_id'</span>],<span class="string">'no changed'</span>,<span class="string">'changed'</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="27-读取HDF5文件，其路径不能有中文"><a href="#27-读取HDF5文件，其路径不能有中文" class="headerlink" title="27 读取HDF5文件，其路径不能有中文"></a>27 读取HDF5文件，其路径不能有中文</h4><h4 id="28-Dataframe输出是保留开头的0"><a href="#28-Dataframe输出是保留开头的0" class="headerlink" title="28 Dataframe输出是保留开头的0"></a>28 Dataframe输出是保留开头的0</h4><h4 id="29-Groupby后计算各行占比"><a href="#29-Groupby后计算各行占比" class="headerlink" title="29 Groupby后计算各行占比"></a>29 Groupby后计算各行占比</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df_order_before.groupby([<span class="hljs-string">&#x27;编码&#x27;</span>,<span class="hljs-string">&#x27;区域&#x27;</span>])[<span class="hljs-string">&#x27;发料数&#x27;</span>].count().groupby(level=<span class="hljs-number">0</span>).apply(<span class="hljs-keyword">lambda</span> x: x/<span class="hljs-built_in">float</span>(x.<span class="hljs-built_in">sum</span>())).reset_index()<br></code></pre></div></td></tr></table></figure>
+<h4 id="30-比较两列是否相同，生成第三列"><a href="#30-比较两列是否相同，生成第三列" class="headerlink" title="30 比较两列是否相同，生成第三列"></a>30 比较两列是否相同，生成第三列</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df_user_no[<span class="hljs-string">&#x27;diff&#x27;</span>] = np.where(df_user_no[<span class="hljs-string">&#x27;new_user_id&#x27;</span>]==df_user_no[<span class="hljs-string">&#x27;user_id&#x27;</span>],<span class="hljs-string">&#x27;no changed&#x27;</span>,<span class="hljs-string">&#x27;changed&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
 
-      
-    </div>
-    
-    
-    
-
-	<div>
-    
-      <div>
-    
-        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
-    
-</div>
-    
-    </div>
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/06/09/Inventory management based on target-oriented/" rel="next" title="Inventory management based on target-oriented robust optimization">
-                <i class="fa fa-chevron-left"></i> Inventory management based on target-oriented robust optimization
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/11/SQL(MYSQL、ORACLE)日常/" rel="prev" title="SQL(MYSQL、ORACLE)日常">
-                SQL(MYSQL、ORACLE)日常 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-
-  
-
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview-wrap sidebar-panel">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Guan Mengcheng">
-            
-              <p class="site-author-name" itemprop="name">Guan Mengcheng</p>
-              <p class="site-description motion-element" itemprop="description">Mengcheng</p>
-          </div>
-
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
-              
-                <a href="/archives">
-              
-                  <span class="site-state-item-count">37</span>
-                  <span class="site-state-item-name">日志</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">8</span>
-                  <span class="site-state-item-name">分类</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
-                  <span class="site-state-item-name">标签</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
-          
-
-          
-            <div class="links-of-author motion-element">
-                
-                  <span class="links-of-author-item">
-                    <a href="https://github.com/guanmengcheng" target="_blank" title="GitHub">
-                      
-                        <i class="fa fa-fw fa-github"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="mailto:gmengcheng@163.com" target="_blank" title="E-Mail">
-                      
-                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
-                  </span>
-                
             </div>
-          
-
-          
-          
-
-          
-          
-
-          
-
-        </div>
-      </section>
-
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/python/">python</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/python/">python</a>
+                    
+                  </div>
+                
+              </div>
               
-            
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2019/01/11/SQL(MYSQL%E3%80%81ORACLE)%E6%97%A5%E5%B8%B8/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SQL(MYSQL、ORACLE)日常</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/06/09/Inventory%20management%20based%20on%20target-oriented/">
+                        <span class="hidden-mobile">Inventory management based on target-oriented robust optimization</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Python连接MYSQL数据库"><span class="nav-number">1.</span> <span class="nav-text">1 Python连接MYSQL数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-写入xlsx文件-多个sheet"><span class="nav-number">2.</span> <span class="nav-text">2 写入xlsx文件(多个sheet)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DataFrame按某列排序"><span class="nav-number">3.</span> <span class="nav-text">3 DataFrame按某列排序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-取出DataFrame某列中非空的行"><span class="nav-number">4.</span> <span class="nav-text">4 取出DataFrame某列中非空的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-Pandas读取xlsx文件的sheetname"><span class="nav-number">5.</span> <span class="nav-text">5 Pandas读取xlsx文件的sheetname</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-DataFrame中的apply方法"><span class="nav-number">6.</span> <span class="nav-text">6 DataFrame中的apply方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-按时间统计数据"><span class="nav-number">7.</span> <span class="nav-text">7 按时间统计数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-获取DataFrame中某列包含特定字符的所有行"><span class="nav-number">8.</span> <span class="nav-text">8 获取DataFrame中某列包含特定字符的所有行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-取时间中的天数"><span class="nav-number">9.</span> <span class="nav-text">9 取时间中的天数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-按特定的值取DataFrame中的行"><span class="nav-number">10.</span> <span class="nav-text">10 按特定的值取DataFrame中的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-删除DataFrame中的重复值"><span class="nav-number">11.</span> <span class="nav-text">11 删除DataFrame中的重复值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-合并DataFrame"><span class="nav-number">12.</span> <span class="nav-text">12 合并DataFrame</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-DataFrame的Merge方法"><span class="nav-number">13.</span> <span class="nav-text">13 DataFrame的Merge方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-改变某列的数据类型"><span class="nav-number">14.</span> <span class="nav-text">14 改变某列的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-选取以字母G开头的数据"><span class="nav-number">15.</span> <span class="nav-text">15  选取以字母G开头的数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-Group-by方法"><span class="nav-number">16.</span> <span class="nav-text">16 Group by方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#17-Concat合并"><span class="nav-number">17.</span> <span class="nav-text">17 Concat合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#18-删除有缺失值的行"><span class="nav-number">18.</span> <span class="nav-text">18 删除有缺失值的行</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#19-优秀的第三方库"><span class="nav-number">19.</span> <span class="nav-text">19 优秀的第三方库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#20-多层索引处理"><span class="nav-number">20.</span> <span class="nav-text">20 多层索引处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#21-重命名列名"><span class="nav-number">21.</span> <span class="nav-text">21 重命名列名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#22-唯一值ID替换"><span class="nav-number">22.</span> <span class="nav-text">22 唯一值ID替换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#24-根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）"><span class="nav-number">23.</span> <span class="nav-text">24 根据另一个DataFrame更新当前DataFrame的某一列值（两种方法）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#25-Dataframe-稀疏矩阵转换"><span class="nav-number">24.</span> <span class="nav-text">25  Dataframe 稀疏矩阵转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#26-One-hot编码转换"><span class="nav-number">25.</span> <span class="nav-text">26 One-hot编码转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#27-读取HDF5文件，其路径不能有中文"><span class="nav-number">26.</span> <span class="nav-text">27 读取HDF5文件，其路径不能有中文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#28-Dataframe输出是保留开头的0"><span class="nav-number">27.</span> <span class="nav-text">28 Dataframe输出是保留开头的0</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#29-Groupby后计算各行占比"><span class="nav-number">28.</span> <span class="nav-text">29 Groupby后计算各行占比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#30-比较两列是否相同，生成第三列"><span class="nav-number">29.</span> <span class="nav-text">30 比较两列是否相同，生成第三列</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
-
-      
-
+          </article>
+        </div>
+      </div>
     </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
-  <span class="with-love">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Guan Mengcheng</span>
-
-  
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
 </div>
 
-
-  <div class="powered-by">
-  <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
-    本站访客数:<span id="busuanzi_value_site_uv"></span>人</span>
+      </div>
+    
   </div>
-  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
-
-
-
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
-
-
-
-<div class="theme-info">
-  <div class="powered-by"></div>
-  <span class="post-count">博客全站共34.1k字</span>
 </div>
-        
+
+<!-- Custom -->
 
 
+    
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-
-
-
-        
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
       </div>
+    </div>
+  </div>
+</div>
     
 
     
+  </main>
 
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
   </div>
 
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
-</script>
-
-
-
-
-
-
-
-
 
   
 
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
 
 
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-
-
-
-
-
-
+<!-- Plugins -->
 
 
   
+    <script  src="/js/lazyload.js" ></script>
   
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
-
-  
-  
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  
-
-
-
-
-	
-
-
 
 
 
@@ -846,338 +483,51 @@
 
 
 
-
-
-  
-
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
 
 
 
-
-  
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
         searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
   </script>
 
 
@@ -1187,48 +537,56 @@
   
 
   
-
-  
-
-  
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
         }
-      });
+      };
     </script>
 
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-  
-
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
 
   
 
-  
-
-  
-
-  <script async src="//code.tidio.co/f7dintesbvjb2dzhgosgkre2vmhl5kwx.js"></script>
 
 
 
 
-  <script async src="/js/cursor/fireworks.js"></script>
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
 
 </body>
 </html>
