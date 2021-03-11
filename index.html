@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
@@ -184,7 +184,146 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">Hexo博客美化</a>
+          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
+        
+        <a href="/2019/01/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%97%A5%E5%B8%B8/">Python数据分析日常</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2019/01/10/Python%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E6%97%A5%E5%B8%B8/">
+          
+          
+            
+          
+          总结一下在使用python进行数据分析的过程中碰到的问题及解决方案:smile:。
+1 Python连接MYSQL数据库12345import pymysqlpymysql.install_as_MySQLdb()import MySQLdbimport MySQLdb.cursorsmysql_cn= MySQLdb.connect(host=&#x27;数据库地址&#x27;, port=&#
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2019-01-10 16:58" pubdate>
+              2019-01-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/python/">python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/python/">python</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+          <i class="index-pin iconfont icon-top" title="Pin on top"></i>
+        
+        <a href="/2021/01/13/R/">R</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/01/13/R/">
+          
+          
+            
+          
+          参考博客：知乎文章、知乎文章2、50题搞定data.table
+1.修改Rstudio报错信息显示为英文1Sys.setenv(LANGUAGE = &quot;en&quot;）
+这个设置是临时的，如果需要永久修改，需要修改文件。
+2. 清除变量123rm(object) # 清除单个变量rm(list = ls()) # 清除所有变量gc() # 垃圾回收，清除内存占用
+3. data.tab
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-01-13 19:18" pubdate>
+              2021-01-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/categories/R/">R</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/R/">R</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/">Rmarkdown示例</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/">
+          
+          
+            
+          
+          Here's something encrypted, password is required to continue reading.
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-03-11 20:55" pubdate>
+              2021-03-11
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/">Hexo博客相关</a>
       </h1>
 
       <p class="index-excerpt">
@@ -197,6 +336,8 @@
 2. 添加评论系统评论系统选择Valine，参考链接
 Valine管理页面
 3.增加网站运行时长参考链接
+4.将自己制作的html文件添加到博客在本地丢到/theme/主题名/source/中即可，就可避免其被hexo渲染
+部署之后在博客网址/html名称即可访问
 
         </a>
       </p>
@@ -246,7 +387,7 @@ Valine管理页面
             
           
           RMarkdown为我们的数据分析创建一个清晰美观的报告，它能够包含代码，图，表，说明，查看的人能够很清楚地理解。RMarkdown利用Markdown的语法，能够被方便的转成其他类型(如html或pdf)的文件。也可以创建学术性很强的beamer，参考知乎。
-刚刚入坑，发现默认render的html会出现chunk太小，居中，浪费了大量的空白空间，当需要展示非常大的表格时，会导致页面及其不美观。
+1. Template刚刚入坑，发现默认render的html会出现chunk太小，居中，浪费了大量的空白空间，当需要展示非常大的表格时，
         </a>
       </p>
 
@@ -372,58 +513,6 @@ PSM能够解决什么问题？在医疗领域，研究一款新药是否有效�
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6/">计量经济学</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/01/13/R/">R</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2021/01/13/R/">
-          
-          
-            
-          
-          参考博客：知乎文章、知乎文章2、50题搞定data.table
-1.修改Rstudio报错信息显示为英文1Sys.setenv(LANGUAGE = &quot;en&quot;）
-这个设置是临时的，如果需要永久修改，需要修改文件。
-2. 清除变量123rm(object) # 清除单个变量rm(list = ls()) # 清除所有变量gc() # 垃圾回收，清除内存占用
-3. data.tab
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-01-13 19:18" pubdate>
-              2021-01-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/R/">R</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/R/">R</a>
             
           </div>
         
@@ -585,103 +674,6 @@ $i$
               <a href="/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6/">运筹学</a>
             
               <a href="/tags/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95/">精确算法</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/12/16/STATA/">STATA</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/12/16/STATA/">
-          
-          
-            
-          
-          1234reg var1 var2 ...    #var1为因变量，后面的为自变量gen new_var= date(var,&quot;YMD&quot;) #生成时间变量new_varformat %td new_var #变换变量为时间（天）tsset new_var, daily  #设置变量new_var为时间序列变量，粒度为天
-
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-12-16 15:55" pubdate>
-              2019-12-16
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/stata/">stata</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/stata/">stata</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2019/09/02/%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/">训练计划</a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/2019/09/02/%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/">
-          
-          
-            
-          
-          Here's something encrypted, password is required to continue reading.
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2019-09-02 14:43" pubdate>
-              2019-09-02
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/categories/%E8%AE%A1%E5%88%92/">计划</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E8%AE%A1%E5%88%92/">计划</a>
             
           </div>
         

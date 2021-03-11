@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
 
 
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      19
        分钟
     </span>
   
@@ -239,7 +239,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月7日 中午
+                  本文最后更新于：2021年3月10日 晚上
                 
               </p>
             
@@ -305,6 +305,11 @@
 <h4 id="25-Dataframe-稀疏矩阵转换"><a href="#25-Dataframe-稀疏矩阵转换" class="headerlink" title="25  Dataframe 稀疏矩阵转换"></a>25  Dataframe 稀疏矩阵转换</h4><h4 id="26-One-hot编码转换"><a href="#26-One-hot编码转换" class="headerlink" title="26 One-hot编码转换"></a>26 One-hot编码转换</h4><p>pd.get_dummies()</p>
 <h4 id="27-读取HDF5文件，其路径不能有中文"><a href="#27-读取HDF5文件，其路径不能有中文" class="headerlink" title="27 读取HDF5文件，其路径不能有中文"></a>27 读取HDF5文件，其路径不能有中文</h4><h4 id="28-Dataframe输出是保留开头的0"><a href="#28-Dataframe输出是保留开头的0" class="headerlink" title="28 Dataframe输出是保留开头的0"></a>28 Dataframe输出是保留开头的0</h4><h4 id="29-Groupby后计算各行占比"><a href="#29-Groupby后计算各行占比" class="headerlink" title="29 Groupby后计算各行占比"></a>29 Groupby后计算各行占比</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df_order_before.groupby([<span class="hljs-string">&#x27;编码&#x27;</span>,<span class="hljs-string">&#x27;区域&#x27;</span>])[<span class="hljs-string">&#x27;发料数&#x27;</span>].count().groupby(level=<span class="hljs-number">0</span>).apply(<span class="hljs-keyword">lambda</span> x: x/<span class="hljs-built_in">float</span>(x.<span class="hljs-built_in">sum</span>())).reset_index()<br></code></pre></div></td></tr></table></figure>
 <h4 id="30-比较两列是否相同，生成第三列"><a href="#30-比较两列是否相同，生成第三列" class="headerlink" title="30 比较两列是否相同，生成第三列"></a>30 比较两列是否相同，生成第三列</h4><figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python">df_user_no[<span class="hljs-string">&#x27;diff&#x27;</span>] = np.where(df_user_no[<span class="hljs-string">&#x27;new_user_id&#x27;</span>]==df_user_no[<span class="hljs-string">&#x27;user_id&#x27;</span>],<span class="hljs-string">&#x27;no changed&#x27;</span>,<span class="hljs-string">&#x27;changed&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+<h4 id="31-vscode-python-在Interactive-window中运行"><a href="#31-vscode-python-在Interactive-window中运行" class="headerlink" title="31 vscode python 在Interactive window中运行"></a>31 vscode python 在Interactive window中运行</h4><p>在vscode中运行python代码，默认是在终端中运行，如下：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210310183734880.png" srcset="/img/loading.gif" alt="image-20210310183734880"></p>
+<p>要想在Interactive window中运行需要进入vscode设置，搜索<code>interactive window</code>，勾选即可</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210310183931267.png" srcset="/img/loading.gif" alt="image-20210310183931267"></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210310183734880.png" srcset="/img/loading.gif" alt=""></p>
 
             </div>
             <hr>
