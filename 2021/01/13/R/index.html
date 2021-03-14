@@ -403,7 +403,7 @@
 <figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">trend = orders[gmv &gt; <span class="hljs-number">0</span>,<br>               .(total_sales = <span class="hljs-built_in">log</span>(<span class="hljs-built_in">sum</span>(gmv))), <br>               by = .(ordr_time_cut = cut(ordr_time, breaks = <span class="hljs-string">&quot;month&quot;</span>), cat1_id)]<br>trend_d = dcast(trend,ordr_time_cut~cat1_id,value.var = <span class="hljs-string">&quot;total_sales&quot;</span>)<br></code></pre></div></td></tr></table></figure>
 <h2 id="12-Plot-in-R"><a href="#12-Plot-in-R" class="headerlink" title="12. Plot in R"></a>12. Plot in R</h2><p><a target="_blank" rel="noopener" href="https://rstudio.github.io/dygraphs/index.html">Dygraphs</a></p>
 <p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30509866/for-loop-over-dygraph-does-not-work-in-r">dygraphs循环画图不出图解决方案</a></p>
-<p>绘制的图形可以参考我用Rmd制作的报告<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/30509866/for-loop-over-dygraph-does-not-work-in-r">order_exploration</a></p>
+<p>绘制的图形可以参考我用Rmd制作的报告，见文章Rmarkdown示例。</p>
 <p>时间序列的图在用很多包都可以绘制，ggplot2是最基本的，另外可以用Dygraphs, Plotly绘制交互式的图表。下面记录下画时序图时遇到的几个问题：</p>
 <h3 id="12-1-ggplot2基本函数"><a href="#12-1-ggplot2基本函数" class="headerlink" title="12.1 ggplot2基本函数"></a>12.1 ggplot2基本函数</h3><p>首先介绍ggplo2的一些基本参数：</p>
 <p><code>ggplot(data = df, aes(x = col1, y = col2, group = col3, color = as.factor(col4)))</code></p>
