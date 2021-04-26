@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.2k 字
+      1.7k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      13
+      18
        分钟
     </span>
   
@@ -239,7 +239,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月7日 中午
+                  本文最后更新于：2021年3月14日 晚上
                 
               </p>
             
@@ -263,6 +263,32 @@
 </blockquote>
 <p>为概括从图形解到代数解的转换，我们称$(n-m)$个零变量为<strong>非基变量</strong>(nonbasic variable)；称余下的$m$ 个变量为<strong>基变量</strong>(basic variable),它的解(由解$m$ 个方程得到)称为基本解。<br>单纯形法通过借助于考察解空间中所有可能的基本可行解(角点)的一小部分，极大地减轻了计算负担。本质上，单纯形法利用一个智能的搜索过程，用有效的方法查找最优角点的位置。</p>
 <h3 id="3-3-单纯形法"><a href="#3-3-单纯形法" class="headerlink" title="3.3 单纯形法"></a>3.3 单纯形法</h3><h4 id="3-3-1-单纯形法的迭代本质"><a href="#3-3-1-单纯形法的迭代本质" class="headerlink" title="3.3.1 单纯形法的迭代本质"></a>3.3.1 单纯形法的迭代本质</h4><p>正常情况下，单纯形法从原点开始，在这个初始点，目标函数值是零，因此合乎逻辑的问题是，能否在当前零值得基础上，通过增加非基变量的值来改进目标函数值。<br>单纯形法的设计要求每次增加一个变量，并且选择使目标函数值有最大改善率的那个变量。</p>
+<p><strong>初级单纯形法步骤</strong></p>
+<blockquote>
+<p>参考书目：Optimization in Operations Research, 2nd Edition, Ronald L.Rardin</p>
+<p>中文翻译：《运筹学》，肖勇波等译</p>
+</blockquote>
+<ol>
+<li><strong>初始化</strong>。任选一个初始的可行基，即非基变量为0，计算相应的基本解$\textbf{x}^{(0)}$，并令该基本解序号$t=0$。</li>
+<li><strong>单纯形方向。</strong>在当前基本可行解处，找出每个非基变量$x_j$对应的单纯形方向$\Delta \textbf{x}$，并计算对应的成本减少$\overline{c}_j=c*\Delta \textbf{x}$。</li>
+</ol>
+<blockquote>
+<p>与非基变量$x_j$相关的成本减少为：（）</p>
+<script type="math/tex; mode=display">
+\overline{c}_j=c*\Delta \textbf{x}</script><p>其中，$\Delta \textbf{x}$是增加$x_j$得到的单纯形方向。</p>
+<p>在其他非基变量不变的情况下，增加一个非基变量的值，并计算为了满足约束，基需要进行什么变化，就可以获得单纯形方向。也就是说，需要增加的非基变量出的$\Delta x_j=1$，其他非基变量处$\Delta x_j=0$，而基中的元素要通过解方程组$A \Delta \textbf{x}=0$来获得。</p>
+</blockquote>
+<ol>
+<li><p><strong>最优性</strong>。如果没有单纯形方向可以优化目标函数（求最大化的问题中没有$\overline{c}_j&gt;0$，求最小化的问题中没有$\overline{c}_j&lt;0$），则计算结束，当前解$\textbf{x}^{(t)}$为最优。否则，任选一个优化性的单纯形方向作为$\Delta \textbf{x}^{(t+1)}$，相应变量$x_p$入基。</p>
+</li>
+<li><p><strong>确定步长</strong>。如果单纯形方向所有元素均为非负，则计算结束，该模型可行域无界。否则，找出满足：</p>
+<script type="math/tex; mode=display">
+\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r} = \text{min}\{\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}\Delta x^{(t+1)}_j<0\}</script><p>的基变量$x_r$，并令：</p>
+<script type="math/tex; mode=display">
+\lambda=\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}</script></li>
+<li><p><strong>新顶点和基</strong>。计算出新解：$\textbf{x}^{(t+1)}=\textbf{x}^{(t)}+\lambda \Delta\textbf{x}^{(t+1)}$，并且用$x_p$替换基中的$x_r$。然后令$t=t+1$，再回到第一步。</p>
+</li>
+</ol>
 
             </div>
             <hr>

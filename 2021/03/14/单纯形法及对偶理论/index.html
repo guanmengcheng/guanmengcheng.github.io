@@ -1,0 +1,976 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;dark&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  
+    <meta name="description" content="Mengcheng">
+  
+  <meta name="author" content="Guan Mengcheng">
+  <meta name="keywords" content="">
+  
+  <title>单纯形法及对偶理论 - Mengcheng&#39;s Blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.4.0/styles/monokai.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","version":"1.8.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Mengcheng</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/wedding.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="单纯形法及对偶理论">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-03-14 22:18" pubdate>
+        2021年3月14日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      543 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      6
+       分钟
+    </span>
+  
+
+  
+  
+    
+      <!-- 不蒜子统计文章PV -->
+      <span id="busuanzi_container_page_pv" style="display: none">
+        <i class="iconfont icon-eye" aria-hidden="true"></i>
+        <span id="busuanzi_value_page_pv"></span> 次
+      </span>
+    
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">单纯形法及对偶理论</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2021年3月14日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="1-单纯形法"><a href="#1-单纯形法" class="headerlink" title="1. 单纯形法"></a>1. 单纯形法</h1><h3 id="1-1单纯形法的迭代本质"><a href="#1-1单纯形法的迭代本质" class="headerlink" title="1.1单纯形法的迭代本质"></a>1.1单纯形法的迭代本质</h3><p>正常情况下，单纯形法从原点开始，在这个初始点，目标函数值是零，因此合乎逻辑的问题是，能否在当前零值得基础上，通过增加非基变量的值来改进目标函数值。<br>单纯形法的设计要求每次增加一个变量，并且选择使目标函数值有最大改善率的那个变量。</p>
+<h3 id="1-2初级单纯形法步骤"><a href="#1-2初级单纯形法步骤" class="headerlink" title="1.2初级单纯形法步骤"></a>1.2<strong>初级单纯形法步骤</strong></h3><blockquote>
+<p>参考书目：Optimization in Operations Research, 2nd Edition, Ronald L.Rardin</p>
+<p>中文翻译：《运筹学》，肖勇波等译</p>
+</blockquote>
+<ol>
+<li><strong>初始化</strong>。任选一个初始的可行基，即非基变量为0，计算相应的基本解$\textbf{x}^{(0)}$，并令该基本解序号$t=0$。</li>
+<li><strong>单纯形方向。</strong>在当前基本可行解处，找出每个非基变量$x_j$对应的单纯形方向$\Delta \textbf{x}$，并计算对应的成本减少$\overline{c}_j=c*\Delta \textbf{x}$。</li>
+</ol>
+<blockquote>
+<p>与非基变量$x_j$相关的成本减少为：reduce cost</p>
+<script type="math/tex; mode=display">
+\overline{c}_j=c*\Delta \textbf{x}</script><p>其中，$\Delta \textbf{x}$是增加$x_j$得到的单纯形方向。</p>
+<p>在其他非基变量不变的情况下，增加一个非基变量的值，并计算为了满足约束，基需要进行什么变化，就可以获得单纯形方向。也就是说，需要增加的非基变量出的$\Delta x_j=1$，其他非基变量处$\Delta x_j=0$，而基中的元素要通过解方程组$A \Delta \textbf{x}=0$来获得。</p>
+</blockquote>
+<ol>
+<li><p><strong>最优性</strong>。如果没有单纯形方向可以优化目标函数（求最大化的问题中没有$\overline{c}_j&gt;0$，求最小化的问题中没有$\overline{c}_j&lt;0$），则计算结束，当前解$\textbf{x}^{(t)}$为最优。否则，任选一个优化性的单纯形方向作为$\Delta \textbf{x}^{(t+1)}$，相应变量$x_p$入基。</p>
+</li>
+<li><p><strong>确定步长</strong>。如果单纯形方向所有元素均为非负，则计算结束，该模型可行域无界。否则，找出满足：</p>
+<script type="math/tex; mode=display">
+\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r} = \text{min}\{\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}\Delta x^{(t+1)}_j<0\}</script><p>的基变量$x_r$，并令：</p>
+<script type="math/tex; mode=display">
+\lambda=\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}</script></li>
+<li><p><strong>新顶点和基</strong>。计算出新解：$\textbf{x}^{(t+1)}=\textbf{x}^{(t)}+\lambda \Delta\textbf{x}^{(t+1)}$，并且用$x_p$替换基中的$x_r$。然后令$t=t+1$，再回到第一步。</p>
+</li>
+</ol>
+<h1 id="2-对偶理论"><a href="#2-对偶理论" class="headerlink" title="2. 对偶理论"></a>2. 对偶理论</h1><p><a target="_blank" rel="noopener" href="https://github.com/Operations-Research-Science/Ebook-Linear_Programming">原文链接</a></p>
+<h2 id="2-1-对偶问题"><a href="#2-1-对偶问题" class="headerlink" title="2.1 对偶问题"></a>2.1 对偶问题</h2><h3 id="2-1-1-对偶问题的理解"><a href="#2-1-1-对偶问题的理解" class="headerlink" title="2.1.1 对偶问题的理解"></a>2.1.1 对偶问题的理解</h3><p>线性规划里，每个原始线性规划问题，即<strong>原问题（primal problem）</strong>都有相应的另一个线性规划问题——<strong>对偶问题（dual problem）</strong>，而对偶的对偶又是原问题本身。既然我们已经知道用单纯形法去求解原问题了，为什么还要了解它的对偶问题呢？哪些情况下，考虑对偶问题有助于求解原问题？下面我们从两个角度阐述。</p>
+<p><strong>1.经济学角度</strong></p>
+<p>这是一个在教材上被广泛使用的解释：如果原问题是企业A拥有m种资源（有m个约束），计划生产n种产品（有n个变量），目标是最大化总收入；那么对偶问题就是，企业B想要收购这些资源，需要确定m种资源的报价（有m个变量），目标是最小化总成本，但企业A只有在卖资源的收益不低于卖产品的时候才会同意卖资源（n个约束）。</p>
+<p>我们通过一个数值实例来进一步解释：</p>
+<p>企业A生产书架、桌子和椅子三种产品，拥有48m³木材，20h制造工时，8h测试工时三项资源。已知：书架售价60元，生产一个书架需要8单位木材、4单位制造工时和2单位测试工时；桌子售价30元，生产一张桌子需要6单位木材、2单位制造工时和1.5单位测试工时；椅子售价20元，生产一把椅子需要1单位木材、1.5单位制造工时和0.5单位测试工时；求三种产品各生产多少数量时，企业A能够最大化总收入。</p>
+<p><strong>原问题</strong>的线性规划为：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max\quad  & 60x_1+30x_2+20x_3 \nonumber（卖出三种产品的总收入） 
+\\\\\text{s.t.}\quad & 8x_1+6x_2+x_3\le48 \nonumber（木材总量约束）
+\\\\ \quad & 4x_1+2x_2+1.5x_3\le20 \nonumber （制造工时总量约束）
+\\\\ \quad & 2x_1+1.5x_2+0.5x_3\le8  \nonumber（测试工时总量约束）
+\\\\ \quad &x_1,x_2,x_3\ge0 \nonumber
+\\\\\end{alignat}</script><p>如果企业B想要收购木材、制造工时、测试工时这三样资源，就必须为每项资源报价，并且满足企业A愿意出让资源的条件，即让企业A获得不低于自己制造产品的收入。求三项资源的单位报价各为多少时，企业B能够最小化总成本。</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\min\quad  & 48y_1+20y_2+8y_3 \nonumber（收购三种资源的总成本） 
+\\\\\text{s.t.}\quad & 8y_1+4y_2+2y_3\ge60 \nonumber（把足够制造一个书架的资源卖掉，获得的收入必须不低于书架售价）
+\\\\ \quad & 6y_1+2y_2+1.5y_3\ge30 \nonumber（把足够制造一张桌子的资源卖掉，获得的收入必须不低于桌子售价）
+\\\\ \quad & y_1+1.5y_2+0.5y_3\ge20 \nonumber（把足够制造一把椅子的资源卖掉，获得的收入必须不低于椅子售价）
+\\\\ \quad &y_1,y_2,y_3\ge0 \nonumber（分别是一单位木材、制造工时和测试工时的报价）
+\\\\\end{alignat}</script><p>上面的例子，旨在从实际经济问题的角度解释<strong>「每一个线性规划问题都存在一个与其对偶的问题」</strong>这句话的合理性。</p>
+<p><strong>2.数学角度</strong></p>
+<p>从数学角度，对偶问题可以被理解为<strong>寻找原问题目标函数上界（或下界）</strong>的问题。</p>
+<p>以原问题是求<strong>目标函数最大化</strong>为例，我们以向量形式写线性规划：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max\quad  z=\textbf{cx} \nonumber
+\\\\\text{s.t.}\quad A\textbf{x} \le \textbf{b} \nonumber
+\\\\\textbf{x} \geq 0  \nonumber &{}& 
+\\\\\end{alignat}</script><p>其中$\textbf{c}$为$1\times n$向量，$\textbf{x}$为$n\times 1$向量，$A$为$m\times n$矩阵，$\textbf{b}$为$m\times 1$向量。</p>
+<p>对于任意一个非负的$n\times1$向量$\textbf{y}\ge0$和可行解$\textbf{x}$，原问题约束两边同乘$\textbf{y}^T$，有：</p>
+<script type="math/tex; mode=display">
+\textbf{y}^TA\textbf{x} \le \textbf{y}^T\textbf{b}</script><p>如果找到一个$\textbf{y}^T$满足$\textbf{c}\le\textbf{y}^TA<script type="math/tex">，那么对所有可行解</script>\textbf{x}$，都有：</p>
+<script type="math/tex; mode=display">
+\textbf{cx}\le\textbf{y}^TA\textbf{x}\le\textbf{y}^T\textbf{b}</script><p>这意味着，$\textbf{y}^T\textbf{b}$就是<strong>原问题的一个上界</strong>。</p>
+<p>换言之，所有满足$\textbf{c}\le\textbf{y}^TA<script type="math/tex">的</script>\textbf{y}<script type="math/tex">对应的</script>\textbf{y}^T\textbf{b}$，都是原问题的上界。</p>
+<p>那么，最小的上界就是原问题目标函数的最优值。在所有的上界中，我们要找到最小的那一个，这个问题表述出来就是：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\min\quad w=\textbf{b}^T\textbf{y}  \nonumber
+\\\\\text{s.t.}\quad A^T\textbf{y} \ge \textbf{c}^T  \nonumber
+\\\\\textbf{y} \geq 0  \nonumber
+\end{alignat}</script><p>可以发现，<strong>这就是对偶问题的形式</strong>。反之，如果原问题是求目标函数最小化，那么对偶问题就是在寻找原问题目标函数的下界。图4.1可以帮助理解：26是目标函数最优值，两个问题<strong>分别从左右两侧逼近最优值</strong>。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/4-1.jpg" srcset="/img/loading.gif"/></p>
+<center>图4.1 原问题和对偶问题从两侧逼近最优解</center>
+
+<p>3.<strong>结合两个角度的解释</strong></p>
+<p>依然从刚才的例子出发，现在有一组生产方案满足原问题约束，对应企业A总收入是$\bar{z}$；有一组报价满足对偶问题约束，对应企业B总成本是$\bar{w}$。</p>
+<p>一定有$\bar{z}\le\bar{w}$，也就是企业B付出的总成本一定不低于企业A的总收入（这是对偶问题的约束，所以一定成立）。</p>
+<p>也就是说，在这个例子里，对偶问题的任意一个可行解，都是原问题的一个上界。因为企业B用这组报价可以买到资源，所以企业A制造产品的收入不可能高于这组报价对应的成本。</p>
+<p>当我们找到企业B所有报价里总成本最低的那一组，就是企业A能获得的总收入的最大值，是原问题的最优解。</p>
+<h3 id="2-1-2-对偶问题的优势"><a href="#2-1-2-对偶问题的优势" class="headerlink" title="2.1.2 对偶问题的优势"></a>2.1.2 对偶问题的优势</h3><p>接下来我们考虑，同样是求解线性规划，解对偶问题就会比解原问题更容易吗？或者说，什么情况下，考虑对偶问题有助于求解原问题？</p>
+<p><strong>1.</strong>   <strong>原问题约束多、变量少时，求解对偶问题能够降低计算时间</strong>。</p>
+<p>使用单纯形法时，如果原问题约束多变量少，转换成对偶问题，就是约束少变量多。根据单纯形法的原理，约束的减少能够有效降低计算时间。</p>
+<p><strong>2.</strong>   <strong>帮助证明原问题无解</strong>。</p>
+<p>类似“证明无罪比证明有罪更难”，要证明原问题有解，只需要找出一个满足约束的点，却不能通过遍历所有的点来证明原问题无解。对偶问题的出现为证明原问题无解提供了思路。</p>
+<p><strong>3.</strong>   <strong>便于进行敏感度分析</strong>。</p>
+<p>很多时候我们对原问题的好奇心并不仅限于得到最优解，而是还关注「如果某些已知条件发生变化，对最优解的影响程度如何」，这就是敏感度分析。对偶问题和敏感度分析息息相关：一是增加敏感度分析的直观程度（例如，对偶问题的最优解就是原问题约束的影子价格），二是在改变某些条件导致原问题无可行解时，可以借助仍然有可行解的对偶问题来分析。</p>
+<h3 id="2-1-3-对偶问题的表达"><a href="#2-1-3-对偶问题的表达" class="headerlink" title="2.1.3 对偶问题的表达"></a>2.1.3 对偶问题的表达</h3><p>上两小节我们解释了「<strong>为何引入对偶问题</strong>」，这一节将阐述<strong>对偶问题的表达</strong>，即已知原问题时，如何快速写出对偶问题。先介绍一般形式的对偶问题写法，再介绍如何将非一般形式转化为一般形式，最后总结。</p>
+<p><strong>1.</strong>   <strong>一般形式的对偶问题</strong></p>
+<p>以目标函数最大化问题为例，<strong>原问题的一般形式</strong>指的是变量全部非负、约束全部为小于等于约束的线性规划，向量形式如下：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad  z=\textbf{cx} \nonumber
+\\\\\text{s.t.}&  \quad A\textbf{x} \le \textbf{b} \nonumber
+\\\\ &\quad  \textbf{x} \geq 0  \nonumber 
+\end{alignat}</script><p>根据上一小节内容，其对偶问题的含义是：在原问题目标函数的所有上界中，找到最小的一个。相应<strong>对偶问题的一般形式</strong>，指的是变量全部非负、约束全部为大于等于约束的线性规划，向量形式如下：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\min & \quad  w=\textbf{b}^T\textbf{y} \nonumber
+\\\\\text{s.t.}& \quad A^T\textbf{y} \ge \textbf{c}^T \nonumber
+\\\\ & \quad \textbf{y} \geq 0  \nonumber
+\end{alignat}</script><p>在向量形式中，可以直观看出原问题和对偶问题的系数存在对应关系，例如：原问题目标函数的系数向量的转置$\textbf{c}^T$，是对偶问题约束的右侧向量，原问题中约束条件中的向量$\textbf{b}$则出现在对偶问题的目标函数中；原问题约束的系数矩阵的转置$A^T$，是对偶问题约束的系数矩阵。借用上一节的实例，对应关系如图4.2： </p>
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-2.jpg" srcset="/img/loading.gif"/></p>
+<center>图4.2 原问题与对偶问题对应关系</center>
+
+
+
+<p>如果我们面对的是一般形式问题，可以使用<strong>表格法</strong>便捷地写出对偶问题。图4.3中，<strong>由上至下按行读</strong>是<strong>原问题</strong>的约束和目标函数，<strong>由左至右按列读</strong>是<strong>对偶问题</strong>的约束和目标函数。</p>
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-3a.jpg" srcset="/img/loading.gif"/></p>
+<center>(a) 标示max问题</center>
+
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-3b.jpg" srcset="/img/loading.gif"/></p>
+<center>(b) 标示min问题</center>
+
+<center>图4.3 表格法写对偶问题</center>
+
+
+
+<p><strong>2.</strong>   <strong>非一般形式的对偶问题</strong></p>
+<p>实际中我们常常会遇到非一般形式的线性规划问题，在应用表格法之前需要先<strong>对变量和约束的形式进行转化</strong>（以目标函数最大化问题为例）：</p>
+<p>①如果有$\ge$约束，则左右同乘-1，转化为$\le$约束；</p>
+<p>②如果有$=$约束，则先转换为一个$\le$约束和一个$\ge$约束，再按①把$\ge$约束转换为$\le$约束。例如，如果存在约束$x_1+x_2=2$，等价于同时满足$x_1+x_2 \le 2$和$x_1+x_2\ge2$，后者再写成$-x_1-x_2\le-2$。</p>
+<p>③如果有无符号限制(unrestricted in sign, <strong>urs</strong>)的变量，用两个符号限制为$\ge0$的变量相减表示，转换关系为：$x(x\quad \textbf{urs})=x^{‘}-x^{‘’}(x^{‘},x^{‘’}\ge0)$。</p>
+<p><strong>3.   总结</strong></p>
+<p>将原问题转换为对偶问题的通用步骤归纳如下：①将原问题转换为标准形式；②由上至下逐行写原问题一般形式的变量及符号限制、约束和目标函数；③根据对应关系表确定对偶问题的<strong>约束符号和变量符号</strong>；④由左至右逐列读，得到对偶问题的变量及符号限制、约束和目标函数。</p>
+<p>表格法中，<strong>原问题和对偶问题的符号对应关系</strong>可参考表4.1。（由于对偶的对偶是原问题，所以当原问题是最小化问题时，对应关系同样适用）</p>
+<center>表4.1 原问题与对偶问题对应关系</center>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th><strong>原问题</strong></th>
+<th></th>
+<th></th>
+<th><strong>对偶问题</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量向量</td>
+<td>$\textbf{x}(n\times1)$</td>
+<td>$\textbf{y}(m\times1)$</td>
+<td>变量向量</td>
+</tr>
+<tr>
+<td>目标函数方向</td>
+<td>max</td>
+<td>min</td>
+<td>目标函数方向</td>
+</tr>
+<tr>
+<td>目标函数系数向量</td>
+<td>$\textbf{c}(1\times n)$</td>
+<td>$\textbf{b}^T(1\times m)$</td>
+<td>目标函数系数向量</td>
+</tr>
+<tr>
+<td>约束系数矩阵</td>
+<td>$A(m\times n)$</td>
+<td>$A^T(n\times m)$</td>
+<td>约束系数矩阵</td>
+</tr>
+<tr>
+<td>约束右侧常数向量</td>
+<td>$\textbf{b}(m\times 1)$</td>
+<td>$\textbf{c}^T(n\times 1)$</td>
+<td>约束右侧常数向量</td>
+</tr>
+<tr>
+<td>变量符号</td>
+<td>$\ge0$</td>
+<td>$\ge c_i$</td>
+<td>约束符号</td>
+</tr>
+<tr>
+<td></td>
+<td>$\le0$</td>
+<td>$\le c_i$</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>urs</td>
+<td>$=c_i$</td>
+<td></td>
+</tr>
+<tr>
+<td>约束符号</td>
+<td>$\le b_i$</td>
+<td>$\ge 0$</td>
+<td>变量符号</td>
+</tr>
+<tr>
+<td></td>
+<td>$\ge b_i$</td>
+<td>$\le 0$</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>$=b_i$</td>
+<td>urs</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>本章到目前已经回答了「<strong>为什么要引入对偶问题</strong>」以及「<strong>如何写对偶问题</strong>」，下一节的主题是对偶原理，回答的问题是「<strong>为什么原问题和对偶问题具有相同的最优解</strong>（在有最优解的前提下）」，在证明的过程中，也会发现线性规划的一些其他性质。</p>
+<h2 id="2-2-对偶原理"><a href="#2-2-对偶原理" class="headerlink" title="2.2 对偶原理"></a>2.2 对偶原理</h2><p>这一节着重讲述<strong>原问题和对偶问题的解之间的关系</strong>，即对偶原理。通过对偶原理，我们可以更好地理解如何借助对偶问题的解获得原问题的解。本节先概述<strong>弱对偶定理、强对偶定理和互补松弛定理</strong>的内容，再逐个进行说明。</p>
+<p>以原问题是最大化问题为例，<strong>弱对偶定理</strong>是与可行解相关的一个定理：<strong>当对偶问题有任一可行解$\textbf{y}_0$时，其相应的对偶问题目标函数值$w_0$是原问题目标函数值的上界</strong>。换句话说，对原问题任一可行解$\textbf{x}_0$对应的原问题目标函数$z_0$，一定有$z_0\le w_0$成立。在4.1.1节解释为什么每一个线性规划都一定存在对偶问题时，我们已经简单说明过这一定理，接下来将在4.2.1节给出更详细的证明。</p>
+<p><strong>强对偶定理</strong>则与最优解相关：<strong>当已知原问题最优解时，对偶问题也一定有最优解，且两个问题最优解的目标函数值相等</strong>。</p>
+<p>当原问题和对偶问题各自有一个可行解$\textbf{x}_0$和$\textbf{y}_0$时，要判断$\textbf{x}_0$和$\textbf{y}_0$是否为最优解，就涉及<strong>互补松弛定理</strong>：$\textbf{x}_0$和$\textbf{y}_0$分别为原问题和对偶问题最优解的充要条件是，</p>
+<script type="math/tex; mode=display">
+\textbf{y}_0\textbf{s}=\textbf{y}_0(A\textbf{x}_0-\textbf{b})=0
+\\\\\textbf{x}_0^T\textbf{e}=\textbf{x}_0^T(A^T\textbf{y}_0-\textbf{c}^T)=0</script><p>其中$\textbf{s}$和$\textbf{e}$分别为原问题和对偶问题的松弛变量(slack variables)和剩余变量(excess variables)。</p>
+<p>借助这些定理，<strong>给出对偶问题的最优解，便可求得原问题的最优解；给出对偶问题的可行解，也可限定原问题最优解的范围</strong>，反之亦然。接下来对每个定理进行详细说明。</p>
+<h3 id="2-2-1-弱对偶定理"><a href="#2-2-1-弱对偶定理" class="headerlink" title="2.2.1 弱对偶定理"></a>2.2.1 弱对偶定理</h3><p>以原问题是最大化问题为例，原问题和对偶问题的一般形式见4.1.3节。</p>
+<p>已知原问题和对偶问题各自有一个可行解$\textbf{x}_0$和$\textbf{y}_0$。由于$\textbf{y}_0$为非负向量，因此在原问题约束两边同乘$\textbf{y}_0$，得到以下公式，对任意$\textbf{x}$都成立：</p>
+<script type="math/tex; mode=display">
+\textbf{y}_0^TA\textbf{x}\le\textbf{y}_0^T\textbf{b}</script><p>同理，在对偶问题约束两边同乘$\textbf{x}_0$，得到以下公式，对任意$\textbf{y}$都成立：</p>
+<script type="math/tex; mode=display">
+\textbf{x}_0^TA^T\textbf{y} \ge \textbf{x}_0^T\textbf{c}^T \Longleftrightarrow  \textbf{y}^TA\textbf{x}_0\ge\textbf{cx}_0</script><p>对以上两个公式，分别代入$\textbf{x}_0$和$\textbf{y}_0$后合并，得到：</p>
+<script type="math/tex; mode=display">
+\textbf{cx}_0 \le \textbf{y}_0^TA\textbf{x}_0 \le \textbf{y}_0^T\textbf{b}  \Longleftrightarrow  z_0 \le w_0</script><p>即原问题目标函数$z_0$一定不高于对偶问题目标函数$w_0$，弱对偶定理得以证明。</p>
+<p>基于弱对偶定理，还可以得到<strong>两个推论</strong>：</p>
+<ol>
+<li><p>（最优性）如果原问题和对偶问题各自有一个可行解$\textbf{x}_0$和$\textbf{y}_0$，且相应的目标函数值$z_0=w_0$，那么$\textbf{x}_0$和$\textbf{y}_0$分别是原问题和对偶问题的最优解。</p>
+</li>
+<li><p>如果原问题的解无界(unbounded)，那么对偶问题无可行解；如果原问题无可行解，那么对偶问题的解无界。</p>
+</li>
+</ol>
+<h3 id="2-2-2-强对偶定理"><a href="#2-2-2-强对偶定理" class="headerlink" title="2.2.2  强对偶定理"></a>2.2.2  强对偶定理</h3><p>强对偶定理的完整表述是：如果$BV$是原问题的一组最优基，那么$\textbf{c}_{BV}B^{-1}$是对偶问题的一组最优解，$\textbf{c}_{BV}B^{-1}\textbf{b}$是原问题和对偶问题最优解对应的目标函数值。</p>
+<p>其证明思路分为三步：</p>
+<ol>
+<li><p>已知$BV$是原问题的一组最优基，证明$\textbf{c}_{BV}B^{-1}$是对偶问题的一组可行解。此时<strong>原问题和对偶问题各有一组可行解</strong>。</p>
+</li>
+<li><p>证明$\textbf{c}_{BV}B^{-1}$对应的对偶问题目标函数值等于$BV$对应的原问题目标函数值，即<strong>两组可行解的目标函数值相同</strong>。</p>
+</li>
+<li><p>前两步的证明结果恰好是<strong>弱对偶定理最优性推论</strong>的条件，因此可以推出<strong>这两组可行解分别是原问题和对偶问题的最优解</strong>。</p>
+</li>
+</ol>
+<h3 id="2-2-3-互补松弛定理"><a href="#2-2-3-互补松弛定理" class="headerlink" title="2.2.3 互补松弛定理"></a>2.2.3 互补松弛定理</h3><p>互补松弛定理是关联原问题和对偶问题解的重要定理，在证明之前，首先定义原问题的松弛变量$\textbf{s}$和对偶问题的剩余变量$\textbf{e}$。</p>
+<p>已知$\textbf{x}_0$是原问题的一个可行解，松弛变量$\textbf{s}$描述的是$\textbf{x}_0$代入原问题时约束的“松弛”程度。将约束$A\textbf{x}\le\textbf{b}$右边的常量$\textbf{b}$理解为资源，<strong>当约束是以等号成立时，说明此时资源正好全部用完，没有富余；当约束时以不等号成立时，说明此时资源还没有被全部利用，存在富余，有一定的“松弛”</strong>。同理，剩余变量$\textbf{e}$描述的是对偶问题约束$A^T\textbf{y}\ge\textbf{c}^T$的“剩余”程度，两者的计算公式如下：</p>
+<script type="math/tex; mode=display">
+\textbf{s}=A\textbf{x}_0-\textbf{b}
+\\\\ \textbf{e}=A^T\textbf{y}_0-\textbf{c}^T</script><p><strong>互补松弛定理</strong>的内容是，可行解$\textbf{x}_0$和$\textbf{y}_0$分别为原问题和对偶问题最优解的<strong>充要条件</strong>是</p>
+<script type="math/tex; mode=display">
+\textbf{y}_0\textbf{s}=0 \\\\ \textbf{x}_0^T\textbf{e}=0</script><p>第一个公式有两种成立情况，分别可以用文字表述为：</p>
+<ul>
+<li>原问题第i个松弛变量大于0，此时对偶问题第i个变量等于0；</li>
+<li>对偶问题第i个变量大于0，此时原问题第i个松弛变量等于0；</li>
+</ul>
+<p>第二个公式同样有两种成立情况，用文字表述为：</p>
+<ul>
+<li>对偶问题第j个剩余变量大于0，此时原问题第j个变量等于0；</li>
+<li>原问题第j个变量大于0，此时对偶问题第j个剩余变量等于0。</li>
+</ul>
+<p>上述四种情况意味着，<strong>如果原问题/对偶问题中任一个约束时是以非等号形式成立的</strong>（nonbinding，不具约束力，即$\textbf{s}_i$或$\textbf{e}_j$大于0），<strong>那么在对偶问题/原问题中该约束对应的变量就一定为0</strong>，因此这一定理称为互补松弛。通过互补松弛定理，给出原问题的最优解，便可求得其对偶问题的最优解，反之亦然。</p>
+<p>本节介绍了弱对偶定理、强对偶定理和互补松弛定理，阐述了原问题和对偶问题的解之间的关系。下一节「对偶单纯形法」将进一步利用这些关系，介绍利用对偶可行性逐步搜索出原始问题最优解的方法。</p>
+<h2 id="2-3-对偶单纯形法"><a href="#2-3-对偶单纯形法" class="headerlink" title="2.3 对偶单纯形法"></a>2.3 对偶单纯形法</h2><p>第三章介绍了求解线性规划问题的经典算法——单纯形法，这一节介绍另一种求解算法——对偶单纯形法。这一方法基于对偶原理，利用对偶可行性逐步搜索出原始问题最优解。本节先概述对偶单纯形法的原理、优点，再介绍具体求解步骤和一个算例。</p>
+<h3 id="2-3-1-基本思想"><a href="#2-3-1-基本思想" class="headerlink" title="2.3.1 基本思想"></a>2.3.1 基本思想</h3><p>在4.1节中我们提到过，原问题和对偶问题是<strong>分别从左右两侧逼近最优值</strong>。以图4.1为例，左侧是对偶问题的可行解，右侧是原问题的可行解，当两个可行解有相同的目标函数值时（图中的26），这两个解分别是原问题和对偶问题的最优解。</p>
+<p>单纯形法是先找到原问题可行解，再通过努力实现对偶可行性（最优性检验）找到最优解。对偶单纯形法可以看作是<strong>单纯形法的镜像</strong>，先找到对偶问题可行解，再通过努力实现原问题可行来靠近最优解。也可以理解为，我们是<strong>把单纯形法应用在对偶问题</strong>。</p>
+<p>对偶单纯形法在某些特殊情况下比单纯形法更方便：</p>
+<ol>
+<li><p>需要引入多个人工变量来构造原问题可行解时，找到对偶问题可行解可能更容易一些，找到最优解的迭代次数也可能更少。</p>
+</li>
+<li><p>对偶单纯形法可以与敏感度分析结合使用。假设用单纯形法得到了一个最优解，但需要对数据做一些小修改。在新的条件下，如果原来的最优解不再是原问题可行解，但仍然满足最优性检验，则可以从对偶可行解开始应用对偶单纯形法，更快找到新问题最优解。</p>
+</li>
+<li><p>在求解某些大型线性规划问题时，对偶单纯形法也有一定的实用价值。CPLEX计算经验表明，对偶单纯形法在解决实际中遇到的大型线性规划问题时通常比单纯形方法更有效。</p>
+</li>
+</ol>
+<h3 id="2-3-2-求解步骤"><a href="#2-3-2-求解步骤" class="headerlink" title="2.3.2 求解步骤"></a>2.3.2 求解步骤</h3><p>对偶单纯形法的规则与单纯形法的规则非常相似，区别就是选择进入变量(entering variable)和离开变量(leaving variable)的标准以及停止算法的标准不同。</p>
+<p>以目标函数最大化问题为例，具体求解步骤如下。</p>
+<p><strong>步骤1 初始化</strong></p>
+<p>所有约束转化为$\le$形式；找到一个基本解，使得目标函数中基本变量的系数为0，非基本变量的系数非负（这样如果这个解是可行的，则可保证它是最优的）。</p>
+<p><strong>步骤2 可行检验</strong></p>
+<p>检验是否所有的基本变量都为非负。如果是，那么这一解是可行解，也是最优解，算法结束。否则，进行迭代。</p>
+<p><strong>步骤3 迭代</strong></p>
+<p>1）确定离开变量：在值为负的基本变量中，选择绝对值最大的。</p>
+<p>2）确定进入变量：在包含离开变量的约束中选择系数为负的非基本变量，进而在其中选择（目标函数系数/在该约束中的系数）比值绝对值最小的。</p>
+<p>3）确定一个新的基本解，返回步骤2检验。</p>
+<p><strong>例题4.1</strong> 用对偶单纯形法解下列问题：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad  z=-4y_1-12y_2-18y_3 \nonumber
+\\\\\text{s.t.} & \quad -y_1-3y_3+y_4=-3 \nonumber
+\\\\ & \quad -2y_2-2y_3+y_5=-5 \nonumber
+\\\\ & \quad y_1,y_2,y_3,y_4,y_5 \ge 0 \nonumber
+\end{alignat}</script><p>其中$y_4$和$y_5$为松弛变量。</p>
+<p><strong>步骤1 初始化</strong></p>
+<p>首先找到一组基本解，$BV=\{y_4,y_5\}$，$NBV=\{y_1,y_2,y_3\}$。令$NBV$中的变量为0，这一组基本解对应的值是：$y_1=0, y_2=0, y_3=0, y_4=-3, y_5=-5, Z=0$。</p>
+<p><strong>步骤2 可行检验</strong></p>
+<p>由于基本变量存在负值，因此不是可行解，需要确定离开变量和进入变量，寻找新一组基本解。</p>
+<p><strong>步骤3 迭代</strong></p>
+<p>（1）从$BV$中确定离开变量：基本变量中$y_4$和$y_5$都为负值，其中$y_5$的绝对值更大，因此选择$y_5$作为离开变量；</p>
+<p>（2）从$NBV$中确定进入变量：$y_5$所在的约束中系数为负的非基本变量是$y_2$和$y_3$，两者的（目标函数系数/在该约束中的系数）比值绝对值分别是|12/-2|和|18/-2|，前者更小，所以选择$y_2$作为进入变量。</p>
+<p>（3） 由此产生新一组基本解：$BV=\{y_4,y_2\}$，$NBV=\{y_1,y_5,y_3\}$。返回步骤2进行可行检验。完整求解过程见图4.4，经过两次迭代后找到最优解。</p>
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-4.jpg" srcset="/img/loading.gif"/></p>
+<center>图4.4  算例迭代过程</center>
+
+
+
+<p>本节介绍了由对偶理论引出的一个新求解算法——对偶单纯形法的原理、优点以及求解步骤，并指出对偶单纯形法的优点之一是便于与敏感度分析结合使用，下一节「敏感度分析」将具体探讨数据变化对求解结果的影响。</p>
+<h2 id="2-4-敏感度分析"><a href="#2-4-敏感度分析" class="headerlink" title="2.4 敏感度分析"></a>2.4 敏感度分析</h2><p>除了获得线性规划最优解以外，很多时候我们也关心<strong>参数变动对最优解的影响</strong>，或者说<strong>最优解对参数的依赖情况</strong>，这就是「敏感度分析」的研究内容。本节先用一个简单例子直观理解敏感度分析的含义，再讨论分析公式以及三类参数变化情况。</p>
+<h3 id="2-4-1-直观图解"><a href="#2-4-1-直观图解" class="headerlink" title="2.4.1 直观图解"></a>2.4.1 直观图解</h3><p>考虑一个玩具制造问题。$x_1$和$x_2$分别表示每周soldiers和trains两种玩具的制造数量，两种玩具的利润分别是3元和2元，目标函数是最大化利润，有Finishing、Carpentry和Demand三项资源约束。线性规划如下：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad  z=3x_1+2x_2 \nonumber
+\\\\\text{s.t.} & \quad 2x_1+x_2\le100 \quad (Finishing \quad constraint)\nonumber
+\\\\ & \quad x_1+x_2\le80 \quad (Carpentry \quad constraint)\nonumber
+\\\\ & \quad x_1\le40 \quad (Demand \quad constraint)\nonumber
+\\\\ & \quad x_1, x_2\ge0\nonumber
+\end{alignat}</script><p>上述线性规划的最优解是$x_1=20, x_2=60, z=180$，即生产20个soldiers和60个trains，总收入可以达到最高值180。</p>
+<p>由于这一线性规划只有两个变量，我们可以在二维平面上绘制。如图4.5，三条实线分别表示三个约束，和坐标轴一起组成了可行域（黄色区域），虚线为目标函数的等利润线（两种玩具的售价已知，因此斜率固定为-3/2，平移改变$z$的值）。当平移到B点时，$z$取最大值，因此可行域中的最优解在B点。</p>
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-5.jpg" srcset="/img/loading.gif"/></p>
+<center>图4.5  最优解示意图（斜率=-1.5）</center>
+
+
+
+<p>此时，如果soldiers的利润发生变化，从3元变更为另一个常数$c_1$，目标函数变更为$max \quad z=c_1x_1+2x_2$，等利润线的斜率为$-c_1/2$。可以发现，当价格变化时，等利润线的斜率变化，最优解的位置也随之变化。例如$c_1=1$时，soldiers的利润为1元，等利润线的斜率为-0.5，此时在可行域中A点取到最高总利润，如图4.6虚线所示：</p>
+<p><img src="E:\Guan\我的坚果云\书籍\运筹优化电子书\Ebook-Linear_Programming-master\docs\chapter4\img\4-6.jpg" srcset="/img/loading.gif"/></p>
+<center>图4.6  最优解示意图（斜率=-0.5）</center>
+
+
+
+<p>借助斜率稍作计算，可以得到$c_1$变化对最优解的影响，即针对$c_1$的敏感度分析：</p>
+<ul>
+<li>当soldiers的利润低于2元时，等利润线比约束(3)更平缓，最优解在点A；</li>
+<li>当soldiers的利润在2元到4元之间时，等利润线的斜率介于约束(2)和约束(3)之间，最优解在点B；</li>
+<li>当soldiers的利润高于4元时，等利润线比约束(2)更陡，最优解在点C。</li>
+</ul>
+<p>基于上述分析，当soldiers的利润发生变动时，我们可以迅速判断变动是否影响现有生产方案，而不必重新求解线性规划。这就是<strong>敏感度分析的重要价值之一</strong>（尤其是在大规模问题中）：<strong>参数发生变化时，可以根据原问题直接计算出最优解的变化情况（原最优解是否仍然可行？如果可行，是否仍是最优？），而不需要重新求解线性规划</strong>。</p>
+<h3 id="2-4-2-分析公式"><a href="#2-4-2-分析公式" class="headerlink" title="2.4.2 分析公式"></a>2.4.2 分析公式</h3><p>当问题不止两个变量时，我们无法在平面图中根据斜率分析，因此需要寻找更普适的方法，即原最优解在新问题中的<strong>可行性条件</strong>和<strong>最优性条件</strong>。</p>
+<p>首先回顾标准形式线性规划问题：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad  z=\textbf{cx} \nonumber
+\\\\\text{s.t.} & \quad A\textbf{x} \le \textbf{b} \nonumber
+\\\\ & \quad \textbf{x} \geq 0 \nonumber 
+\end{alignat}</script><p>按照基本变量和非基本变量，我们把原问题中的变量和系数拆分为两部分，拆分后的表述如下表所示。</p>
+<center>表4.2  线性规划中的变量和系数</center>
+
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>总称</th>
+<th>基本变量部分</th>
+<th>非基本变量部分</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>变量</td>
+<td>$\textbf{x}: n\times1$</td>
+<td>$\textbf{x}_{BV}: m\times1$</td>
+<td>$\textbf{x}_{NBV}: (n-m)\times1$</td>
+</tr>
+<tr>
+<td>目标函数系数</td>
+<td>$\textbf{c}: 1\times n$</td>
+<td>$\textbf{c}_{BV}: 1\times m$</td>
+<td>$\textbf{c}_{NBV}: 1\times (n-m)$</td>
+</tr>
+<tr>
+<td>约束系数</td>
+<td>$A: m\times n$<br /> $\textbf{a}_j: m\times1$</td>
+<td>$B: m\times n$</td>
+<td>$N: m\times (n-m)$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中，$\textbf{a}_j: m\times1$特指变量$\textbf{x}_j$的约束系数向量。</p>
+<p>由此，我们可以把线性规划改写为：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad z=\pmb{c}_{BV}\pmb{x}_{BV}+\pmb{c}_{NBV}\pmb{x}_{NBV} \nonumber
+\\\\\text{s.t.} & \quad B\pmb{x}_{BV}+N\pmb{x}_{NBV} = \pmb{b} \nonumber
+\\\\ & \quad \pmb{x}_{BV}, \pmb{x}_{NBV} \geq 0   \nonumber
+\end{alignat}</script><p>约束左乘$B^{-1}$，得到：</p>
+<script type="math/tex; mode=display">
+B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
+\\\\ \Longleftrightarrow \textbf{x}_{BV}=B^{-1}\textbf{b}-B^{-1}N\textbf{x}_{NBV}</script><p>用这一等式替代目标函数中的$\textbf{x}_{BV}$，则目标函数中只包含参数和非基本变量，变更为如下形式：</p>
+<script type="math/tex; mode=display">
+\begin{alignat}{2}\max & \quad z=\textbf{c}_{BV}(B^{-1}\textbf{b}-B^{-1}N\textbf{x}_{NBV})+\textbf{c}_{NBV}\textbf{x}_{NBV}  \nonumber
+\\\\ & \quad \quad = \textbf{c}_{BV}B^{-1}\textbf{b}-(\textbf{c}_{BV}B^{-1}N-\textbf{c}_{NBV})\textbf{x}_{NBV} \nonumber
+\\\\\text{s.t.}&\quad \textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV} = B^{-1}\textbf{b} \nonumber
+\\\\ & \quad \textbf{x}_{BV}, \textbf{x}_{NBV} \geq 0   \nonumber
+\\\\\end{alignat}</script><p>上述线性规划中的参数如下：</p>
+<ul>
+<li>变量$\textbf{x}_j$的约束系数向量为$B^{-1}\textbf{a}_j$；</li>
+<li>约束右端常量为$B^{-1}\textbf{b}$；</li>
+<li>非基本变量$\textbf{x}_j$的reduced cost（即目标函数系数的负值）为$\textbf{c}_{BV}B^{-1}\textbf{a}_j-c_j$，用$\bar{c_j}$表示；</li>
+<li>目标函数右端常量为$\textbf{c}_{BV}B^{-1}\textbf{b}$。</li>
+</ul>
+<p>根据单纯形法的最优解求解规则（最大化问题）：基于一组基本变量$BV$的解是最优解，当且仅当<strong>每个约束右端常量非负</strong>，并且<strong>每个变量的目标函数系数非正</strong>。我们推出两个条件。</p>
+<p><strong>可行性条件</strong>：$B^{-1}\textbf{b}\ge0$。当一组$BV$能使得每个约束右端常量非负的时候，这组$BV$对应的解可行。</p>
+<p><strong>最优性条件</strong>：$\bar{c}_j=\textbf{c}_{BV}B^{-1}\textbf{a}_j-c_j \ge 0, \forall j \in NBV$。只要每个非基本变量的reduced cost都大于0，即不可能再通过增加这一变量来提高总收入，这组$BV$对应的解是最优解。</p>
+<p>通过分析参数变动是否影响两个条件的结果，我们可以判断原最优解是否仍然可行/最优。接下来，我们详细阐述三类参数变化对最优解的影响。</p>
+<h3 id="2-4-3三类参数变化"><a href="#2-4-3三类参数变化" class="headerlink" title="2.4.3三类参数变化"></a>2.4.3三类参数变化</h3><p>三类参数变化指的是：目标函数系数$\textbf{c}$变化、约束右端常量$\textbf{b}$变化和约束系数$A$变化。</p>
+<p><strong>1.</strong>   <strong>目标函数系数变化</strong></p>
+<p>包含两种情况：非基本变量的目标函数系数$\textbf{c}_{NBV}$变化，或基本变量的目标函数系数$\textbf{c}_{BV}$变化。不论哪一种，<strong>原最优解一定仍然可行，但不一定最优</strong>。</p>
+<p>先看可行性条件，由于$B$和$\textbf{b}$都没有变化，$B^{-1}\textbf{b}\ge0$仍然成立，所以可行性不受影响，原来的最优解仍然可行；</p>
+<p>再看最优性条件，$c_j$或$\textbf{c}_{BV}$的变化都会影响$\bar{c}_j=\textbf{c}_{BV}B^{-1}\textbf{a}_j-c_j $的结果，所以最优性受影响。如果改变后的$\bar{c}_j \ge 0, \forall j \in NBV$仍然成立，则原最优解仍然最优；反之原最优解可行但不再最优。</p>
+<p><strong>2.</strong>   <strong>约束右端常量变化</strong></p>
+<p>$\textbf{b}$变化，此时<strong>原最优解要么仍然是最优解，要么不再可行</strong>。</p>
+<p>$\textbf{b}$的变化使得可行性条件受影响，最优性条件不受影响。因此，如果改变后可行性条件$B^{-1}\textbf{b}\ge0$仍然成立，那么原最优解仍然最优；如果不成立，那么原最优解不再可行，需要重新寻找最优解。</p>
+<p><strong>3.</strong>   <strong>约束系数变化</strong></p>
+<p>（1）非基本变量的约束系数$N$变化</p>
+<p>此时<strong>原最优解一定可行，但不一定最优</strong>。可行性条件不受影响，最优性条件受影响。与之间的分析相同，如果改变后的$\bar{c}_j \ge 0, \forall j \in NBV$仍然成立，则原最优解仍然最优（但注意此时目标函数值会改变）；反之原最优解可行但不再最优。</p>
+<p>（2） 基本变量的约束系数$B$变化</p>
+<p>此时原最优解不可行/可行非最优/最优三种情况都可能。因为两个条件都受到了影响，需要重新计算两个条件是否满足。</p>
+<p>本节介绍了「敏感度分析」，借助单纯形法和对偶理论，当线性规划中的参数发生变化时，不一定需要重新求解问题，可以通过计算可行性条件和最优性条件的成立情况来判断原最优解是否仍然可行/最优。</p>
+<p>到这里第四章内容全部结束。简单回顾，在这一章中，我们先引入了「<strong>对偶问题</strong>」，介绍它的优势和写法；再次，通过<strong>「对偶原理」</strong>，即弱对偶定理、强对偶定理和互补松弛定理，进一步阐述了原问题和对偶问题的解之间的关系；基于对偶原理，发现利用对偶可行性也可以逐步搜索出原始问题最优解，产生了另一种线性规划求解算法——<strong>「对偶单纯形法」</strong>；最后，当线性规划的参数发生变动时，通过<strong>「敏感度分析」</strong>可以判断参数变化对最优解的影响情况。</p>
+<h2 id="本章参考文献"><a href="#本章参考文献" class="headerlink" title="本章参考文献"></a>本章参考文献</h2><p>[1] L Winston, Wayne &amp; B Goldberg, Jeffrey. (2004). Operations research: applications and algorithms.</p>
+<p>[2] Frederick S. Hillier, Gerald J. Lieberman. Introduction to Operations Research (9th).</p>
+<p>[3] Vijay V. Vazirani. (2003). Approximation Algorithms.</p>
+<p>[4] 为什么我们要考虑线性规划的对偶问题？-知乎<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/26658861">https://www.zhihu.com/question/26658861</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E8%BF%90%E7%AD%B9%E5%AD%A6/">运筹学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6/">运筹学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/03/19/Gurobi%E6%9B%B4%E6%96%B0License/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Gurobi更新License</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/03/14/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/">
+                        <span class="hidden-mobile">精确算法相关学习资源</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments">
+                
+                  
+                
+                
+  <div id="vcomments"></div>
+  <script type="text/javascript">
+    Fluid.utils.waitElementVisible('vcomments', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js', function () {
+        new Valine({
+          el: "#vcomments",
+          app_id: "T9jFNn8AA9CiLACTxYrl9t50-gzGzoHsz",
+          app_key: "hwOXQLVnYVtpsV4RwSri6OGv",
+          placeholder: "欢迎批评指正",
+          path: window.location.pathname,
+          avatar: "retro",
+          meta: ["nick","mail","link"],
+          pageSize: "10",
+          lang: "zh-CN",
+          highlight: false,
+          recordIP: false,
+          serverURLs: "",
+        });
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the
+    <a target="_blank" href="https://valine.js.org" rel="nofollow noopener noopener">comments powered by Valine.</a>
+  </noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.0/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.0/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      $('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      $('#modalSearch').on('shown.bs.modal', function() {
+        $('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.1.2/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
+</body>
+</html>
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/love.js"></script>

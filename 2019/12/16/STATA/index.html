@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      58 字
+      239 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      2
        分钟
     </span>
   
@@ -239,12 +239,19 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年3月7日 中午
+                  本文最后更新于：2021年4月21日 晚上
                 
               </p>
             
             <div class="markdown-body">
               <figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">reg</span> var1 var2 ...    #var1为因变量，后面的为自变量<br><span class="hljs-keyword">gen</span> new_var= <span class="hljs-built_in">date</span>(<span class="hljs-keyword">var</span>,<span class="hljs-string">&quot;YMD&quot;</span>) #生成时间变量new_var<br><span class="hljs-keyword">format</span> %td new_var #变换变量为时间（天）<br><span class="hljs-keyword">tsset</span> new_var, daily  #设置变量new_var为时间序列变量，粒度为天<br></code></pre></div></td></tr></table></figure>
+<h2 id="1-x-predicts-failure-success-perfectly"><a href="#1-x-predicts-failure-success-perfectly" class="headerlink" title="1 !=x predicts failure/success perfectly"></a>1 !=x predicts failure/success perfectly</h2><p><a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_c2b4a64b0102v37y.html">参考博客</a></p>
+<p>在样本量不够大且我们控制的固定效应相对较多时，在Stata中使用Probit或Logit模型进行回归分析，很可能出现提示“……!= 0 predicts failure perfectly”或“……!= 0 predicts success perfectly”，并且Stata会自动删除相应的观测值。</p>
+<p> 这里“……!= 0 predicts failure perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于0。</p>
+<p> 类似地，“……!= 0 predicts success perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于1。</p>
+<h2 id="2-统计变量唯一值个数"><a href="#2-统计变量唯一值个数" class="headerlink" title="2 统计变量唯一值个数"></a>2 统计变量唯一值个数</h2><p><code>codebook [variable]</code></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210421202748777.png" srcset="/img/loading.gif" alt="image-20210421202748777"></p>
+<h2 id="3-logit回归样本数变少"><a href="#3-logit回归样本数变少" class="headerlink" title="3 logit回归样本数变少"></a>3 logit回归样本数变少</h2><p>某些变量出现了<a href="1">1</a>中的问题。</p>
 
             </div>
             <hr>
