@@ -1,65 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DID</title>
-    <url>/2019/08/27/DID/</url>
-    <content><![CDATA[<blockquote>
-<p>双重差分法，英文名Differences-in-Differences，别名“倍差法”，小名“差中差”。作为政策效应评估方法中的一大利器，双重差分法受到越来越多人的青睐，概括起来有如下几个方面的原因：（1）可以很大程度上避免内生性问题的困扰：政策相对于微观经济主体而言一般是外生的，因而不存在逆向因果问题。此外，使用固定效应估计一定程度上也缓解了遗漏变量偏误问题。（2）传统方法下评估政策效应，主要是通过设置一个政策发生与否的虚拟变量然后进行回归，相较而言，双重差分法的模型设置更加科学，能更加准确地估计出政策效应。（3）双重差分法的原理和模型设置很简单，容易理解和运用，并不像空间计量等方法一样让人望而生畏。（4）尽管<strong>双重差分法估计的本质就是面板数据固定效应估计</strong>，但是DID听上去或多或少也要比OLS、FE之流更加“时尚高端”，因而DID的使用一定程度上可以满足“虚荣心”。<br>作者：经管联盟链接：<a href="https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。">https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</a></p>
-</blockquote>
-<p> <a href="https://zhuanlan.zhihu.com/p/48952513">参考链接(作者：经管联盟)</a></p>
-<p>Ashenfelter 和 Card（1985）首次引入 DID 模型来解决此问题，继而该模型的应用开始得到越来越多的重视。</p>
-<p>DID仅适用于面板数据，基准DID模型设置如下：</p>
-<script type="math/tex; mode=display">
-Y_it = \alpha_0+\alpha_1du+\alpha_2dt+\alpha_3du \cdot dt+\epsilon_{it} \tag{1}</script><p>其中，$du$为分组虚拟变量，若个体$i$受政策实施的影响，则个体i属于处理组，对应的$du$取值为1，若个体$i$不受政策实施的影响，则个体$i$属于对照组，对应的$du$取值为0。$dt$为政策实施虚拟变量，政策实施之前$dt$取值为0，政策实施之后$dt$取值为1。$du·dt$为分组虚拟变量与政策实施虚拟变量的交互项，其系数$\alpha_3$就反映了政策实施的净效应。</p>
-<p>从DID的模型设置来看，要想使用DID必须满足以下两个关键条件：一是必须存在一个具有试点性质的政策冲击，这样才能找到处理组和对照组，那种一次性全铺开的政策并不适用于DID分析；二是必须具有一个相应的至少两年（政策实施前后各一年）的面板数据集。</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092342.png" alt=""></p>
-<p>双重差分法的基本思想就是通过对政策实施前后对照组和处理组之间差异的比较构造出反映政策效果的双重差分统计量，将该思想与上表的内容转化为简单的模型（1），这个时候只需要关注模型（1）中交互项的系数，就得到了想要的DID下的政策净效应。</p>
-<p>更进一步地，DID的思想与上表的内容可以通过下图来体现：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092500.png" alt=""></p>
-<p>图中红色虚线表示的是假设政策并未实施时处理组的发展趋势。事实上，该图也反映出了DID最为重要和关键的前提条件：<strong>共同趋势（Common Trends）</strong>，也就是说，处理组和对照组在政策实施之前必须具有相同的发展趋势。DID的使用不需要什么政策随机以及分组随机，只要求CT假设，因此用DID做论文时必须对该假设进行验证，至于具体怎么验证，后面再说。</p>
-<p>很多时候，大家在看使用DID的文献时，会发现别人的基准模型和模型（1）并不完全一致，别人的模型如下：</p>
-<script type="math/tex; mode=display">
-Y_{i t}=\alpha_{0}+\alpha_{1} d u \cdot d t+\lambda_{i}+v_{t}+\varepsilon_{i t} \tag{2}</script><p>别人的模型里只有交互项$du·dt$，而缺失了$du$和$dt$，是哪里出问题了么？并没有，模型（1）和（2）本质还是一样的，且模型（2）在多年面板数据集里更为常见。</p>
-<p>模型（2）中，$\lambda_i$为个体固定效应，更为精确地反映了个体特征，替代了原来粗糙的分组变量$du$；</p>
-<p>$v_t$为时间固定效应，更为精确地反映了时间特征，替代了原来粗糙的政策实施变量$dt$。因而，$du$和$dt$并未真正从模型中消失，只是换了个马甲。模型（2）事实上就是一个<strong>双向固定效应模型</strong>，这也是为什么DID方法一定程度上可以减轻遗漏变量偏误的原因（主要是消除那些不可观测的非时变因素，为了使估计结果尽可能准确，模型中还是要加入控制变量）。</p>
-<p>在介绍完DID的基本思想和模型设定后，现在要开始强调同等重要的内容，那就是<strong>稳健性检验</strong>——必须证实所有效应确实是由政策实施所导致的。很多人对这一点并不重视，认为DID很简单，随便跑几个回归就可以写出一篇大作了。关于DID的稳健性检验，主要表现在两个方面：</p>
-<p>（1）<strong>共同趋势的检验</strong>。这个假设是比较难验证的，看文献时会发现别人经常没有做该检验，比如，很多人做DID时只有政策实施前后各一年的数据，这样的的话根本无法验证政策实施前的趋势问题。不过，如果是多年的面板数据，可以通过画图来检验CT假设，之前推荐的那篇AER文章就画了大量的图形对此进行了说明。</p>
-<p>（2）即便处理组和对照组在政策实施之前的趋势相同，仍要担心是否同时发生了其他可能影响趋势变化的政策，也就是说，政策干预时点之后处理组和对照组趋势的变化，可能并不真正是由该政策导致的，而是同时期其他的政策导致的。这一问题可以概括为处理变量对产出变量作用机制的排他性，对此，可以进行如下的检验：</p>
-<p>A. 安慰剂检验，即通过虚构处理组进行回归，具体可以：a）选取政策实施之前的年份进行处理，比如原来的政策发生在2008年，研究区间为2007-2009年，这时可以将研究区间前移至2005-2007年，并假定政策实施年份为2006年，然后进行回归；b）选取已知的并不受政策实施影响的群组作为处理组进行回归。如果不同虚构方式下的DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。</p>
-<p>B. 可以利用不同的对照组进行回归，看研究结论是否依然一致。</p>
-<p>C. 可以选取一个完全不受政策干预影响的因素作为被解释变量进行回归，如果DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。等等。</p>
-<p>例子：<a href="https://mp.weixin.qq.com/s?__biz=MjM5OTMwODM1Mw==&amp;mid=2448065404&amp;idx=1&amp;sn=ab5cebd5ec535fb7924acd90d595120f&amp;chksm=b3235e528454d7440f11be82406612e7c60b3340adde7d03a6c70e09ca35186cbf86498ef126&amp;scene=7&amp;key=a55d3882c60fb4f8615fc2308f60298f7e7b29da982ddc28b4dd5045666417f450521d00771332d3a6f39677208c994e24e6e13adab294e57f7d5321b24373d1c1aefdaf6ed502a4aad8c75551719b4b&amp;ascene=0&amp;uin=NDQxMzAxODU1&amp;devicetype=Windows+10&amp;version=62070041&amp;lang=zh_CN&amp;pass_ticket=C8pJsHOu7hWDLdYm9ybAytVnspjaXLqqAV0nMWiqVilRYF1TaSsrVahMzzDjPCUc">参考链接</a></p>
-<p>我们假设浙江省政府仅在杭州、嘉兴与湖州（简称杭嘉湖）三个地区的各乡镇实行了一项经济改革试验，而现在的任务是对改革的绩效进行评价。假设横向比较的结果是，杭嘉湖地区在改革后的绩效高于没有进行改革的浙江非杭嘉湖地区的绩效，那么我们能否认为这就是改革取得成功的证据呢？答案是不确定的，其理由是：杭嘉湖地区与非杭嘉湖地区若在改革之前就存在绩效差异，则改革后两个地区的绩效差异很可能继承了改革之前的绩效差异。因此，仅仅对改革后的绩效进行横向比较，无法准确评估杭嘉湖地区改革的净效应。</p>
-<p>现在进行纵向比较。如果杭嘉湖地区改革前后的绩效出现非常明显的变化，那么我们能否认为这就是改革取得成功的证据呢？若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期也发生了相同幅度的变化，则答案很可能是否定的，理由是：既然在非杭嘉湖地区没有实行改革，那么这些地区发生的同等变化就应该与改革无关。我们可以认为，杭嘉湖地区与非杭嘉湖地区发生的同等变化是源于全国宏观经济形势与浙江整体经济形势的变化。</p>
-<p>若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期发生了较小的变化，则对上述问题的回答就是肯定的 。当然，在进行纵向比较时，我们必须施加共同趋势假定，即：如果杭嘉湖地区未实行改革试验，那么也会发生与非杭嘉湖地区相同的较小变化。可以认为， 浙江非杭嘉湖地区发生的较小变化是源于全国宏观经济形势与浙江整体经济形势的变化， 而杭嘉湖地区之所以有较大变化，是因为还存在额外的改革绩效。</p>
-<p>实行改革的杭嘉湖地区就是所谓的处理组，而实行的改革就是实施的处理。相应的， 未实行改革的非杭嘉湖地区就是对照组。在对处理组实施处理的前后，对照组亦会发生或大或小的变化。如果在评估改革绩效即评估处理效应时，没有将处理组与对照组的变化进行同期对照，那么我们所发现的处理效应很可能存在偏差。在本文的例子中，杭嘉湖地区改革前后的绩效变化具有三个来源：全国宏观经济形势变化、浙江整体经济形势变化、改革绩效。如果没有与非杭嘉湖地区的变化进行同期对照，那么我们评估的改革绩效就混杂了全国宏观经济形势与浙江整体经济形势变化的影响，因此很可能存在较大偏差。</p>
-<p>鉴于非杭嘉湖地区作为对照组，其绩效变化可以代表全国宏观经济形势与浙江整体经济形势变化的影响，一个简单有效的纠偏方法就是：通过对杭嘉湖地区的绩效变化与非杭嘉湖地区的绩效变化进行比较，将全国宏观经济形势与浙江整体经济形势变化的影响从杭嘉湖地区的绩效变化中一并剔除，进而获得净的处理效应，而这正是双重差分模型的基本逻辑。</p>
-<p>建立 DID 模型首先需设立两个虚拟变量：</p>
-<script type="math/tex; mode=display">
-D_{1}=\left\{\begin{array}{l}{1 \qquad \text{浙江杭嘉湖地区}} \\ {0\qquad \text{浙江非杭嘉湖地区}}\end{array}\right.
-\qquad D_{2}=\left\{\begin{array}{l}{1 \qquad \text{改革后}} \\ {0\qquad \text{改革前}}\end{array}\right.</script><p>然后建立模型：</p>
-<script type="math/tex; mode=display">
-Score_{i}=\alpha_{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}</script><p>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
-<p>在所有参数中，a2 与 a3 是最为关键的。为了进一步理解这两个参数的含义，接下来我们对虚拟变量赋值，有：</p>
-<p>1） 对于浙江非杭嘉湖地区（D1=0）：</p>
-<p>改革后（D2=1）的期望绩效为：a0  +a2 ；</p>
-<p>改革前（D2=0）的期望绩效为：a0 。</p>
-<p>因此，浙江非杭嘉湖地区改革前后的绩效差异为：（a0  +a2）-a0 =a2。a2 就是共同的趋势，即全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。</p>
-<p>2） 对于浙江杭嘉湖地区（D1=1）：</p>
-<p>改革后（D2=1）的期望绩效为：a0 +a1 +a2 + a3 ；</p>
-<p>改革前（D2=0）的期望绩效为：a0 +a1 。</p>
-<p>因此，杭嘉湖地区改革前后的绩效差异为： a0  +a1 +a2  + a3）-（a0  +a1）=a2  + a3 。杭嘉湖地区的绩效变化是全国宏观经济形势变化影响、浙江整体经济形势变化影响与改革绩效这三者之和，而a2 是全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。因此，a3 就是杭嘉湖地区的改革绩效。</p>
-<p>杭嘉湖地区改革前后的绩效差异（a2  + a3）与同期非杭嘉湖地区绩效差异（a2）的差为 a3 。因此，改革绩效a3 属于差异的差异，从而这就解释了DID（Difference-In-Difference）称谓的来源。</p>
-<p>上述虚拟变量模型能够被拓展：一方面，若杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异可以用变量 x 来加以解释，则变量 x 可作为解释变量进入模型、进而改善模型估计的精度；另一方面，若 x 的差异还会造成共同趋势假设被违背，则需引入交互项 x·D2， 以控制趋势差异的影响。</p>
-]]></content>
-      <categories>
-        <category>计量经济学</category>
-      </categories>
-      <tags>
-        <tag>计量经济学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Column Generation</title>
     <url>/2019/12/26/Column%20generation/</url>
     <content><![CDATA[<p>这篇博客主要介绍列生成的原理以及应用到VRPTW的实例</p>
@@ -126,6 +67,82 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
+    <title>Hexo博客相关</title>
+    <url>/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<h3 id="1-主题Fluid"><a href="#1-主题Fluid" class="headerlink" title="1. 主题Fluid"></a>1. 主题Fluid</h3><p>从Next更换到Fluid，<a href="https://github.com/fluid-dev/hexo-theme-fluid">主题链接</a></p>
+<h3 id="2-添加评论系统"><a href="#2-添加评论系统" class="headerlink" title="2. 添加评论系统"></a>2. 添加评论系统</h3><p>评论系统选择Valine，<a href="https://zhuanlan.zhihu.com/p/152369801">参考链接</a></p>
+<p><a href="https://console.leancloud.cn/apps">Valine管理页面</a></p>
+<h3 id="3-增加网站运行时长"><a href="#3-增加网站运行时长" class="headerlink" title="3.增加网站运行时长"></a>3.增加网站运行时长</h3><p><a href="https://hexo.fluid-dev.com/posts/fluid-footer-custom/">参考链接</a></p>
+<h3 id="4-将自己制作的html文件添加到博客"><a href="#4-将自己制作的html文件添加到博客" class="headerlink" title="4.将自己制作的html文件添加到博客"></a>4.将自己制作的html文件添加到博客</h3><p>在本地丢到/theme/主题名/source/中即可，就可避免其被hexo渲染</p>
+<p>部署之后在博客网址/html名称即可访问</p>
+]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>bolg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>DID</title>
+    <url>/2019/08/27/DID/</url>
+    <content><![CDATA[<blockquote>
+<p>双重差分法，英文名Differences-in-Differences，别名“倍差法”，小名“差中差”。作为政策效应评估方法中的一大利器，双重差分法受到越来越多人的青睐，概括起来有如下几个方面的原因：（1）可以很大程度上避免内生性问题的困扰：政策相对于微观经济主体而言一般是外生的，因而不存在逆向因果问题。此外，使用固定效应估计一定程度上也缓解了遗漏变量偏误问题。（2）传统方法下评估政策效应，主要是通过设置一个政策发生与否的虚拟变量然后进行回归，相较而言，双重差分法的模型设置更加科学，能更加准确地估计出政策效应。（3）双重差分法的原理和模型设置很简单，容易理解和运用，并不像空间计量等方法一样让人望而生畏。（4）尽管<strong>双重差分法估计的本质就是面板数据固定效应估计</strong>，但是DID听上去或多或少也要比OLS、FE之流更加“时尚高端”，因而DID的使用一定程度上可以满足“虚荣心”。<br>作者：经管联盟链接：<a href="https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。">https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</a></p>
+</blockquote>
+<p> <a href="https://zhuanlan.zhihu.com/p/48952513">参考链接(作者：经管联盟)</a></p>
+<p>Ashenfelter 和 Card（1985）首次引入 DID 模型来解决此问题，继而该模型的应用开始得到越来越多的重视。</p>
+<p>DID仅适用于面板数据，基准DID模型设置如下：</p>
+<script type="math/tex; mode=display">
+Y_it = \alpha_0+\alpha_1du+\alpha_2dt+\alpha_3du \cdot dt+\epsilon_{it} \tag{1}</script><p>其中，$du$为分组虚拟变量，若个体$i$受政策实施的影响，则个体i属于处理组，对应的$du$取值为1，若个体$i$不受政策实施的影响，则个体$i$属于对照组，对应的$du$取值为0。$dt$为政策实施虚拟变量，政策实施之前$dt$取值为0，政策实施之后$dt$取值为1。$du·dt$为分组虚拟变量与政策实施虚拟变量的交互项，其系数$\alpha_3$就反映了政策实施的净效应。</p>
+<p>从DID的模型设置来看，要想使用DID必须满足以下两个关键条件：一是必须存在一个具有试点性质的政策冲击，这样才能找到处理组和对照组，那种一次性全铺开的政策并不适用于DID分析；二是必须具有一个相应的至少两年（政策实施前后各一年）的面板数据集。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092342.png" alt=""></p>
+<p>双重差分法的基本思想就是通过对政策实施前后对照组和处理组之间差异的比较构造出反映政策效果的双重差分统计量，将该思想与上表的内容转化为简单的模型（1），这个时候只需要关注模型（1）中交互项的系数，就得到了想要的DID下的政策净效应。</p>
+<p>更进一步地，DID的思想与上表的内容可以通过下图来体现：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092500.png" alt=""></p>
+<p>图中红色虚线表示的是假设政策并未实施时处理组的发展趋势。事实上，该图也反映出了DID最为重要和关键的前提条件：<strong>共同趋势（Common Trends）</strong>，也就是说，处理组和对照组在政策实施之前必须具有相同的发展趋势。DID的使用不需要什么政策随机以及分组随机，只要求CT假设，因此用DID做论文时必须对该假设进行验证，至于具体怎么验证，后面再说。</p>
+<p>很多时候，大家在看使用DID的文献时，会发现别人的基准模型和模型（1）并不完全一致，别人的模型如下：</p>
+<script type="math/tex; mode=display">
+Y_{i t}=\alpha_{0}+\alpha_{1} d u \cdot d t+\lambda_{i}+v_{t}+\varepsilon_{i t} \tag{2}</script><p>别人的模型里只有交互项$du·dt$，而缺失了$du$和$dt$，是哪里出问题了么？并没有，模型（1）和（2）本质还是一样的，且模型（2）在多年面板数据集里更为常见。</p>
+<p>模型（2）中，$\lambda_i$为个体固定效应，更为精确地反映了个体特征，替代了原来粗糙的分组变量$du$；</p>
+<p>$v_t$为时间固定效应，更为精确地反映了时间特征，替代了原来粗糙的政策实施变量$dt$。因而，$du$和$dt$并未真正从模型中消失，只是换了个马甲。模型（2）事实上就是一个<strong>双向固定效应模型</strong>，这也是为什么DID方法一定程度上可以减轻遗漏变量偏误的原因（主要是消除那些不可观测的非时变因素，为了使估计结果尽可能准确，模型中还是要加入控制变量）。</p>
+<p>在介绍完DID的基本思想和模型设定后，现在要开始强调同等重要的内容，那就是<strong>稳健性检验</strong>——必须证实所有效应确实是由政策实施所导致的。很多人对这一点并不重视，认为DID很简单，随便跑几个回归就可以写出一篇大作了。关于DID的稳健性检验，主要表现在两个方面：</p>
+<p>（1）<strong>共同趋势的检验</strong>。这个假设是比较难验证的，看文献时会发现别人经常没有做该检验，比如，很多人做DID时只有政策实施前后各一年的数据，这样的的话根本无法验证政策实施前的趋势问题。不过，如果是多年的面板数据，可以通过画图来检验CT假设，之前推荐的那篇AER文章就画了大量的图形对此进行了说明。</p>
+<p>（2）即便处理组和对照组在政策实施之前的趋势相同，仍要担心是否同时发生了其他可能影响趋势变化的政策，也就是说，政策干预时点之后处理组和对照组趋势的变化，可能并不真正是由该政策导致的，而是同时期其他的政策导致的。这一问题可以概括为处理变量对产出变量作用机制的排他性，对此，可以进行如下的检验：</p>
+<p>A. 安慰剂检验，即通过虚构处理组进行回归，具体可以：a）选取政策实施之前的年份进行处理，比如原来的政策发生在2008年，研究区间为2007-2009年，这时可以将研究区间前移至2005-2007年，并假定政策实施年份为2006年，然后进行回归；b）选取已知的并不受政策实施影响的群组作为处理组进行回归。如果不同虚构方式下的DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。</p>
+<p>B. 可以利用不同的对照组进行回归，看研究结论是否依然一致。</p>
+<p>C. 可以选取一个完全不受政策干预影响的因素作为被解释变量进行回归，如果DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。等等。</p>
+<p>例子：<a href="https://mp.weixin.qq.com/s?__biz=MjM5OTMwODM1Mw==&amp;mid=2448065404&amp;idx=1&amp;sn=ab5cebd5ec535fb7924acd90d595120f&amp;chksm=b3235e528454d7440f11be82406612e7c60b3340adde7d03a6c70e09ca35186cbf86498ef126&amp;scene=7&amp;key=a55d3882c60fb4f8615fc2308f60298f7e7b29da982ddc28b4dd5045666417f450521d00771332d3a6f39677208c994e24e6e13adab294e57f7d5321b24373d1c1aefdaf6ed502a4aad8c75551719b4b&amp;ascene=0&amp;uin=NDQxMzAxODU1&amp;devicetype=Windows+10&amp;version=62070041&amp;lang=zh_CN&amp;pass_ticket=C8pJsHOu7hWDLdYm9ybAytVnspjaXLqqAV0nMWiqVilRYF1TaSsrVahMzzDjPCUc">参考链接</a></p>
+<p>我们假设浙江省政府仅在杭州、嘉兴与湖州（简称杭嘉湖）三个地区的各乡镇实行了一项经济改革试验，而现在的任务是对改革的绩效进行评价。假设横向比较的结果是，杭嘉湖地区在改革后的绩效高于没有进行改革的浙江非杭嘉湖地区的绩效，那么我们能否认为这就是改革取得成功的证据呢？答案是不确定的，其理由是：杭嘉湖地区与非杭嘉湖地区若在改革之前就存在绩效差异，则改革后两个地区的绩效差异很可能继承了改革之前的绩效差异。因此，仅仅对改革后的绩效进行横向比较，无法准确评估杭嘉湖地区改革的净效应。</p>
+<p>现在进行纵向比较。如果杭嘉湖地区改革前后的绩效出现非常明显的变化，那么我们能否认为这就是改革取得成功的证据呢？若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期也发生了相同幅度的变化，则答案很可能是否定的，理由是：既然在非杭嘉湖地区没有实行改革，那么这些地区发生的同等变化就应该与改革无关。我们可以认为，杭嘉湖地区与非杭嘉湖地区发生的同等变化是源于全国宏观经济形势与浙江整体经济形势的变化。</p>
+<p>若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期发生了较小的变化，则对上述问题的回答就是肯定的 。当然，在进行纵向比较时，我们必须施加共同趋势假定，即：如果杭嘉湖地区未实行改革试验，那么也会发生与非杭嘉湖地区相同的较小变化。可以认为， 浙江非杭嘉湖地区发生的较小变化是源于全国宏观经济形势与浙江整体经济形势的变化， 而杭嘉湖地区之所以有较大变化，是因为还存在额外的改革绩效。</p>
+<p>实行改革的杭嘉湖地区就是所谓的处理组，而实行的改革就是实施的处理。相应的， 未实行改革的非杭嘉湖地区就是对照组。在对处理组实施处理的前后，对照组亦会发生或大或小的变化。如果在评估改革绩效即评估处理效应时，没有将处理组与对照组的变化进行同期对照，那么我们所发现的处理效应很可能存在偏差。在本文的例子中，杭嘉湖地区改革前后的绩效变化具有三个来源：全国宏观经济形势变化、浙江整体经济形势变化、改革绩效。如果没有与非杭嘉湖地区的变化进行同期对照，那么我们评估的改革绩效就混杂了全国宏观经济形势与浙江整体经济形势变化的影响，因此很可能存在较大偏差。</p>
+<p>鉴于非杭嘉湖地区作为对照组，其绩效变化可以代表全国宏观经济形势与浙江整体经济形势变化的影响，一个简单有效的纠偏方法就是：通过对杭嘉湖地区的绩效变化与非杭嘉湖地区的绩效变化进行比较，将全国宏观经济形势与浙江整体经济形势变化的影响从杭嘉湖地区的绩效变化中一并剔除，进而获得净的处理效应，而这正是双重差分模型的基本逻辑。</p>
+<p>建立 DID 模型首先需设立两个虚拟变量：</p>
+<script type="math/tex; mode=display">
+D_{1}=\left\{\begin{array}{l}{1 \qquad \text{浙江杭嘉湖地区}} \\ {0\qquad \text{浙江非杭嘉湖地区}}\end{array}\right.
+\qquad D_{2}=\left\{\begin{array}{l}{1 \qquad \text{改革后}} \\ {0\qquad \text{改革前}}\end{array}\right.</script><p>然后建立模型：</p>
+<script type="math/tex; mode=display">
+Score_{i}=\alpha_{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}</script><p>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
+<p>在所有参数中，a2 与 a3 是最为关键的。为了进一步理解这两个参数的含义，接下来我们对虚拟变量赋值，有：</p>
+<p>1） 对于浙江非杭嘉湖地区（D1=0）：</p>
+<p>改革后（D2=1）的期望绩效为：a0  +a2 ；</p>
+<p>改革前（D2=0）的期望绩效为：a0 。</p>
+<p>因此，浙江非杭嘉湖地区改革前后的绩效差异为：（a0  +a2）-a0 =a2。a2 就是共同的趋势，即全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。</p>
+<p>2） 对于浙江杭嘉湖地区（D1=1）：</p>
+<p>改革后（D2=1）的期望绩效为：a0 +a1 +a2 + a3 ；</p>
+<p>改革前（D2=0）的期望绩效为：a0 +a1 。</p>
+<p>因此，杭嘉湖地区改革前后的绩效差异为： a0  +a1 +a2  + a3）-（a0  +a1）=a2  + a3 。杭嘉湖地区的绩效变化是全国宏观经济形势变化影响、浙江整体经济形势变化影响与改革绩效这三者之和，而a2 是全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。因此，a3 就是杭嘉湖地区的改革绩效。</p>
+<p>杭嘉湖地区改革前后的绩效差异（a2  + a3）与同期非杭嘉湖地区绩效差异（a2）的差为 a3 。因此，改革绩效a3 属于差异的差异，从而这就解释了DID（Difference-In-Difference）称谓的来源。</p>
+<p>上述虚拟变量模型能够被拓展：一方面，若杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异可以用变量 x 来加以解释，则变量 x 可作为解释变量进入模型、进而改善模型估计的精度；另一方面，若 x 的差异还会造成共同趋势假设被违背，则需引入交互项 x·D2， 以控制趋势差异的影响。</p>
+]]></content>
+      <categories>
+        <category>计量经济学</category>
+      </categories>
+      <tags>
+        <tag>计量经济学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Gurobi更新License</title>
     <url>/2021/03/19/Gurobi%E6%9B%B4%E6%96%B0License/</url>
     <content><![CDATA[<ol>
@@ -148,33 +165,27 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Latex使用问题</title>
-    <url>/2021/03/06/Latex%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="1-使用hyperref-package后引用section"><a href="#1-使用hyperref-package后引用section" class="headerlink" title="1. 使用hyperref package后引用section"></a>1. 使用hyperref package后引用section</h2><p>使用hyperref package之后引用图片、表格还是使用命令<code>\ref&#123;fig_label&#125;</code>，但是引用section使用<code>\ref</code>会没有作用，应该使用<code>\hyperref[model]&#123;Section 2&#125;</code>其中model是section label的名称，Section 2是显示的文字。效果如下：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306160939220.png" alt="image-20210306160939220"></p>
+    <title>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</title>
+    <url>/2017/12/21/Modelling%20and%20performance%20evaluation%20of%20explosive%20storage%20policies%20in%20internet/</url>
+    <content><![CDATA[<h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
+<h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
+<h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
+<h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
+<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:</p>
+<script type="math/tex; mode=display">\Psi_i=\frac{L_i}{V_i}</script><p>整个仓库的Explosion Ratio:</p>
+<script type="math/tex; mode=display">\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}</script><p>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
+<h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
+<h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
+<h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
+<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
 ]]></content>
       <categories>
-        <category>Latex</category>
+        <category>论文</category>
       </categories>
       <tags>
-        <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客相关</title>
-    <url>/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<h3 id="1-主题Fluid"><a href="#1-主题Fluid" class="headerlink" title="1. 主题Fluid"></a>1. 主题Fluid</h3><p>从Next更换到Fluid，<a href="https://github.com/fluid-dev/hexo-theme-fluid">主题链接</a></p>
-<h3 id="2-添加评论系统"><a href="#2-添加评论系统" class="headerlink" title="2. 添加评论系统"></a>2. 添加评论系统</h3><p>评论系统选择Valine，<a href="https://zhuanlan.zhihu.com/p/152369801">参考链接</a></p>
-<p><a href="https://console.leancloud.cn/apps">Valine管理页面</a></p>
-<h3 id="3-增加网站运行时长"><a href="#3-增加网站运行时长" class="headerlink" title="3.增加网站运行时长"></a>3.增加网站运行时长</h3><p><a href="https://hexo.fluid-dev.com/posts/fluid-footer-custom/">参考链接</a></p>
-<h3 id="4-将自己制作的html文件添加到博客"><a href="#4-将自己制作的html文件添加到博客" class="headerlink" title="4.将自己制作的html文件添加到博客"></a>4.将自己制作的html文件添加到博客</h3><p>在本地丢到/theme/主题名/source/中即可，就可避免其被hexo渲染</p>
-<p>部署之后在博客网址/html名称即可访问</p>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>bolg</tag>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -329,20 +340,16 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Matlab函数记录</title>
-    <url>/2019/02/18/Matlab%E5%87%BD%E6%95%B0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
-<p>randsample的命令格式：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></div></td></tr></table></figure>
-<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
-<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
-<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
+    <title>Latex使用问题</title>
+    <url>/2021/03/06/Latex%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="1-使用hyperref-package后引用section"><a href="#1-使用hyperref-package后引用section" class="headerlink" title="1. 使用hyperref package后引用section"></a>1. 使用hyperref package后引用section</h2><p>使用hyperref package之后引用图片、表格还是使用命令<code>\ref&#123;fig_label&#125;</code>，但是引用section使用<code>\ref</code>会没有作用，应该使用<code>\hyperref[model]&#123;Section 2&#125;</code>其中model是section label的名称，Section 2是显示的文字。效果如下：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306160939220.png" alt="image-20210306160939220"></p>
 ]]></content>
       <categories>
-        <category>Matlab</category>
+        <category>Latex</category>
       </categories>
       <tags>
-        <tag>Matlab</tag>
+        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -375,28 +382,61 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</title>
-    <url>/2017/12/21/Modelling%20and%20performance%20evaluation%20of%20explosive%20storage%20policies%20in%20internet/</url>
-    <content><![CDATA[<h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
-<h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
-<h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
-<h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
-<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:</p>
-<script type="math/tex; mode=display">\Psi_i=\frac{L_i}{V_i}</script><p>整个仓库的Explosion Ratio:</p>
-<script type="math/tex; mode=display">\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}</script><p>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
-<h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
-<h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
-<h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
-<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
-]]></content>
+    <title>On the Scattered Storage Assignment Problem</title>
+    <url>/2018/03/07/On%20the%20Scattered%20Storage%20Assignment%20Problem/</url>
+    <content><![CDATA[<p>Author: <a href="http://www.om.uni-jena.de/Lehrstuhlteam/Felix+Weidinger+M_+Sc_.html">Felix Weidiner</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要:"></a>摘要:</h2><p>本文主要针对电商仓库的分散存储策略进行研究。基于文章:</p>
+<blockquote>
+<p>Scattered storage: how to distribute stock keeping units all around a mixed-shelves warehouse.Working Paper Friedrich-Schiller-University Jena, 2015 (下载不了)</p>
+</blockquote>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>电商仓库目前面临的4个挑战:</p>
+<ul>
+<li>订单包含商品种类少</li>
+<li>库存大，商品种类多</li>
+<li>灵活性</li>
+<li>时效要求高</li>
+</ul>
+<h2 id="2-The-Scattered-Storage-Strategy"><a href="#2-The-Scattered-Storage-Strategy" class="headerlink" title="2.The Scattered Storage Strategy"></a>2.The Scattered Storage Strategy</h2><p>分散存储策略是在货物到达时进行拆分，将其存储到不同的储位上。</p>
+<h3 id="2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse"><a href="#2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse" class="headerlink" title="2.1.The Picking Process in a Scattered Storage Warehouse"></a>2.1.The Picking Process in a Scattered Storage Warehouse</h3><h3 id="2-2-The-Scattered-Storage-Assignment-Problem"><a href="#2-2-The-Scattered-Storage-Assignment-Problem" class="headerlink" title="2.2.The Scattered Storage Assignment Problem"></a>2.2.The Scattered Storage Assignment Problem</h3>]]></content>
       <categories>
         <category>论文</category>
       </categories>
       <tags>
         <tag>论文</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Matlab函数记录</title>
+    <url>/2019/02/18/Matlab%E5%87%BD%E6%95%B0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
+<p>randsample的命令格式：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></div></td></tr></table></figure>
+<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
+<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
+<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
+]]></content>
+      <categories>
+        <category>Matlab</category>
+      </categories>
+      <tags>
+        <tag>Matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Rmarkdown示例</title>
+    <url>/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="53b098c9d532903486b17c81462414e747f9ed7ffe8f9557178bff0065bc0f87">d5bf5a23a5d7260901cfc89a23618729068f15a8cfaa179e7bc01ce01558b309567d1e05b2cdf31d09bfef54672eb8e7579957a9d1c06163c66baa2c84913e58</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">机密文件，请找博主索要密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>Python读取JSON</title>
@@ -532,46 +572,6 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </categories>
       <tags>
         <tag>计量经济学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rmarkdown示例</title>
-    <url>/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="53b098c9d532903486b17c81462414e747f9ed7ffe8f9557178bff0065bc0f87">d5bf5a23a5d7260901cfc89a23618729068f15a8cfaa179e7bc01ce01558b309567d1e05b2cdf31d09bfef54672eb8e7579957a9d1c06163c66baa2c84913e58</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">机密文件，请找博主索要密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-  </entry>
-  <entry>
-    <title>On the Scattered Storage Assignment Problem</title>
-    <url>/2018/03/07/On%20the%20Scattered%20Storage%20Assignment%20Problem/</url>
-    <content><![CDATA[<p>Author: <a href="http://www.om.uni-jena.de/Lehrstuhlteam/Felix+Weidinger+M_+Sc_.html">Felix Weidiner</a></p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要:"></a>摘要:</h2><p>本文主要针对电商仓库的分散存储策略进行研究。基于文章:</p>
-<blockquote>
-<p>Scattered storage: how to distribute stock keeping units all around a mixed-shelves warehouse.Working Paper Friedrich-Schiller-University Jena, 2015 (下载不了)</p>
-</blockquote>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>电商仓库目前面临的4个挑战:</p>
-<ul>
-<li>订单包含商品种类少</li>
-<li>库存大，商品种类多</li>
-<li>灵活性</li>
-<li>时效要求高</li>
-</ul>
-<h2 id="2-The-Scattered-Storage-Strategy"><a href="#2-The-Scattered-Storage-Strategy" class="headerlink" title="2.The Scattered Storage Strategy"></a>2.The Scattered Storage Strategy</h2><p>分散存储策略是在货物到达时进行拆分，将其存储到不同的储位上。</p>
-<h3 id="2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse"><a href="#2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse" class="headerlink" title="2.1.The Picking Process in a Scattered Storage Warehouse"></a>2.1.The Picking Process in a Scattered Storage Warehouse</h3><h3 id="2-2-The-Scattered-Storage-Assignment-Problem"><a href="#2-2-The-Scattered-Storage-Assignment-Problem" class="headerlink" title="2.2.The Scattered Storage Assignment Problem"></a>2.2.The Scattered Storage Assignment Problem</h3>]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -781,31 +781,23 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Robust Storage Assignment in Unit-Load Warehouses</title>
-    <url>/2018/06/09/Robust%20Storage%20Assignment/</url>
-    <content><![CDATA[<p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[marcusang@smu.edu.sg, yflim@smu.edu.sg]</p>
-<hr>
-<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
-<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
-<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\\{1,…,N\\}$<br>$\mathcal N^-=\\{1,…,N-1\\}$<br>$\mathcal M=\\{1,…,M\\}$<br>$\mathcal T=\\{1,…,T\\}$<br>$\mathcal T^+=\\{1,…,T+1\\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
-<p><strong>Assumption </strong></p>
-<ol>
-<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}\; i\in \mathcal M,j\in \mathcal N$.</li>
-<li>假设仓库一开始库存为0.</li>
-<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<script type="math/tex; mode=display">\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},\; i \in \mathcal M,t \in \mathcal T</script></li>
-</ol>
-<p><strong>Model(1)</strong></p>
-<script type="math/tex; mode=display">Z_D=\text{min}\; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}</script><script type="math/tex; mode=display">\text{s.t.}\; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}</script><script type="math/tex; mode=display">\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}</script><script type="math/tex; mode=display">\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}</script><script type="math/tex; mode=display">x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}</script><script type="math/tex; mode=display">\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}</script><script type="math/tex; mode=display">x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}</script><script type="math/tex; mode=display">v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}</script><p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
-<blockquote>
-<p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
-<h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
-</blockquote>
+    <title>SCI常用句型</title>
+    <url>/2018/04/12/SCI%E5%B8%B8%E7%94%A8%E5%8F%A5%E5%9E%8B/</url>
+    <content><![CDATA[<p>1.在Introduction里面经常会使用到的一个句子：很多文献已经讨论过了<br>Solar energy conversion by photoelectrochemical cells <strong>has been intensively investigated</strong>.<br>2.值得注意的是…<br>It must also be mentioned that…<br>It is important to highlight that …<br>It is worthwhile mentioning that …<br>3.正如下文将提到的…<br>As will be described below（也可以是As we shall see below）,<br>…will be further discussed below.<br>The observation of nanocluster spheres at the ends of the nanowires is suggestive of a VLS growth process <strong>(see below)</strong><br>4.什么东西还尚未发现/系统研究<br>have not yet been realized.<br>There are relatively few studies devoted to…<br>5.考虑到…<br>Taking the above observations into account,<br> taking into account<br>6.本项研究的意义/亮点在于…<br>Our research extends the knowledge into…<br>This research extends our knowledge of…<br>7.重点在于<br>The key to …is…<br>The development of sustainable energy solutions represents one of the most important scientific and technical challenges of our time, and heterogeneous catalysis is <strong>at the  heart of the problem</strong>.<br>Particular emphasis is placed on …<br>8.一篇论文不可能把所有需要研究的内容都搞清楚，那么在文章中如何委婉地表述某些内容并不是本文的关注重点？<br><strong>Although a detailed investigation of</strong> these factors is <strong>beyond the scope of this work, we acknowledge that </strong>the V(motif) represents an upper bound of the equilibrium active site coverage for the specific materials we have considered.</p>
 ]]></content>
       <categories>
-        <category>论文</category>
+        <category>英文写作</category>
       </categories>
       <tags>
-        <tag>论文</tag>
+        <tag>写作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL(MYSQL、ORACLE)日常</title>
+    <url>/2019/01/11/SQL(MYSQL%E3%80%81ORACLE)%E6%97%A5%E5%B8%B8/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>SQL</tag>
       </tags>
   </entry>
   <entry>
@@ -835,42 +827,111 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>SQL(MYSQL、ORACLE)日常</title>
-    <url>/2019/01/11/SQL(MYSQL%E3%80%81ORACLE)%E6%97%A5%E5%B8%B8/</url>
-    <content><![CDATA[]]></content>
+    <title>Robust Storage Assignment in Unit-Load Warehouses</title>
+    <url>/2018/06/09/Robust%20Storage%20Assignment/</url>
+    <content><![CDATA[<p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[marcusang@smu.edu.sg, yflim@smu.edu.sg]</p>
+<hr>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
+<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\\{1,…,N\\}$<br>$\mathcal N^-=\\{1,…,N-1\\}$<br>$\mathcal M=\\{1,…,M\\}$<br>$\mathcal T=\\{1,…,T\\}$<br>$\mathcal T^+=\\{1,…,T+1\\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
+<p><strong>Assumption </strong></p>
+<ol>
+<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}\; i\in \mathcal M,j\in \mathcal N$.</li>
+<li>假设仓库一开始库存为0.</li>
+<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<script type="math/tex; mode=display">\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},\; i \in \mathcal M,t \in \mathcal T</script></li>
+</ol>
+<p><strong>Model(1)</strong></p>
+<script type="math/tex; mode=display">Z_D=\text{min}\; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}</script><script type="math/tex; mode=display">\text{s.t.}\; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}</script><script type="math/tex; mode=display">\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}</script><script type="math/tex; mode=display">\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}</script><script type="math/tex; mode=display">x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}</script><script type="math/tex; mode=display">\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}</script><script type="math/tex; mode=display">x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}</script><script type="math/tex; mode=display">v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}</script><p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
+<blockquote>
+<p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
+<h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
       <tags>
-        <tag>SQL</tag>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
-    <title>STATA</title>
-    <url>/2019/12/16/STATA/</url>
-    <content><![CDATA[<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">reg</span> var1 var2 ...    #var1为因变量，后面的为自变量<br><span class="hljs-keyword">gen</span> new_var= <span class="hljs-built_in">date</span>(<span class="hljs-keyword">var</span>,<span class="hljs-string">&quot;YMD&quot;</span>) #生成时间变量new_var<br><span class="hljs-keyword">format</span> %td new_var #变换变量为时间（天）<br><span class="hljs-keyword">tsset</span> new_var, daily  #设置变量new_var为时间序列变量，粒度为天<br></code></pre></div></td></tr></table></figure>
-<h2 id="1-x-predicts-failure-success-perfectly"><a href="#1-x-predicts-failure-success-perfectly" class="headerlink" title="1 !=x predicts failure/success perfectly"></a>1 !=x predicts failure/success perfectly</h2><p><a href="http://blog.sina.com.cn/s/blog_c2b4a64b0102v37y.html">参考博客</a></p>
-<p>在样本量不够大且我们控制的固定效应相对较多时，在Stata中使用Probit或Logit模型进行回归分析，很可能出现提示“……!= 0 predicts failure perfectly”或“……!= 0 predicts success perfectly”，并且Stata会自动删除相应的观测值。</p>
-<p> 这里“……!= 0 predicts failure perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于0。</p>
-<p> 类似地，“……!= 0 predicts success perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于1。</p>
-<h2 id="2-统计变量唯一值个数"><a href="#2-统计变量唯一值个数" class="headerlink" title="2 统计变量唯一值个数"></a>2 统计变量唯一值个数</h2><p><code>codebook [variable]</code></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210421202748777.png" alt="image-20210421202748777"></p>
-<h2 id="3-logit回归样本数变少"><a href="#3-logit回归样本数变少" class="headerlink" title="3 logit回归样本数变少"></a>3 logit回归样本数变少</h2><p>某些变量出现了<a href="1">1</a>中的问题。</p>
-]]></content>
+    <title>Velocity-based storage and stowage decisions in a semi-automated fulfillment system</title>
+    <url>/2017/12/12/Velocity-based%20storage%20and%20stowage%20decisions%20in%20a%20semi-automated%20fulfillment%20system/</url>
+    <content><![CDATA[<h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
+<p>we consider three types of storage policies in this paper:</p>
+<ul>
+<li>random storage policy:随机存储策略</li>
+<li>full-velocity storage policy:基于周转率的存储策略，货架的周转率等于其上物品的需求率之和</li>
+<li>class-based storage policy:分级存储，将存储区域分区，将物品分级，对应存放</li>
+</ul>
+</blockquote>
+<h2 id="2-1-literature-Review"><a href="#2-1-literature-Review" class="headerlink" title="2.1 literature Review"></a>2.1 literature Review</h2><p>疑问：</p>
+<blockquote>
+<p>they set expected duration of stay of the $i^{th}$ storage unit of an item to be i/V for i = 1,2,. . . ,Q, where V is the demand rate of the item and Q is the number of storage units of the item in the system. With the duration of stay policy, the storage units across all the different items can be ordered according to this measure and then assigned in order to the closest locations. <strong>Hence, the storage units of a single item may not be stored together in the warehouse.</strong></p>
+</blockquote>
+<h2 id="2-2-Model-Assumptions"><a href="#2-2-Model-Assumptions" class="headerlink" title="2.2 Model Assumptions"></a>2.2 Model Assumptions</h2><blockquote>
+<p>We establish a <strong>fluid</strong> model that evaluates the expected travel distance of the pods for their pick tours.</p>
+</blockquote>
+<p>对于某个可移动货架而言，其预计行驶距离=其存储位置到工作站的距离乘以其周转率</p>
+<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
+<li>A1: Fluidity of inventory items<br>对物品进行连续性处理<br>fluidity:流动性，流畅<blockquote>
+<p><strong>we index the items (i.e., the stock keeping units) on the continuum from 0 to 1</strong>.We assume that the items are indexed in descending order of <em>demand</em>.</p>
+</blockquote>
+</li>
+</ul>
+<p>按照物品的需求量对仓库内的物品在0到1内进行降序排列。<br>(Q:是否是需求量占比？)</p>
+<ul>
+<li>A2: Fluidity of inventory units, exponential demand for each item<br>假设物品的需求量符合指数分布<blockquote>
+<p>We model the demand of each item as being the number of units required for picking in a specified period of time,e.g.,the next twelve hours.For each item we model the demand as a continuous random variable with an exponential distribution.</p>
+</blockquote>
+</li>
+</ul>
+<p>定义每个物品的需求量为未来一段时间内该物品的单位拣选量。假设每个物品的需求是服从指数分布的连续型随机变量。指数分布能够反映需求的长尾效应和需求的多变性。</p>
+<blockquote>
+<p>we model the inventory as being continuous, as like a fluid.</p>
+<ul>
+<li>A3: Ranked inventory<br>对每个物品库存数量进行排序<br>Thus, if the demand for item  i  equals  x   units, then the x -highest ranked units of inventory will be picked to meet the demand.</li>
+</ul>
+</blockquote>
+<p>由于物品分散存储，不同的储位存放的数量可能不一样，对同一商品的不同货位进行排序，当订单到达时，选取库存数量最多的储位满足订单。</p>
+<ul>
+<li><p>A4： Universal stock out rate for all items<br>所有物品在下一段时间的缺货率相等均为$\alpha$   </p>
+</li>
+<li><p>A5: Same unit size for all items, fixed pod size<br>假设每个货架的储位数量相等，每个物品大小尺寸相等</p>
+</li>
+<li><p>A6: Number of picks independent of the pod’s velocity measure<br>货架在工作站拣选的物品数量不依赖其周转率，主要关注货架到达工作站的频次</p>
+</li>
+<li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
+</li>
+<li>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</li>
+<li>A9: Ignore stow operations<br>忽略上货操作</li>
+<li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
+<h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
+<li><script type="math/tex; mode=display">v_i(x)=e^{-x/V_i}</script><p>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：</p>
+<script type="math/tex; mode=display">\int_o^1V_idi=1$$"CDF”（Cumulative Distribution Function）：分布函数
+指数分布概率密度函数:</script><p>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \\<br>&amp; 0,  x\lt 0 \\<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
+</li>
+<li>定义物品$i$的库存数量为$Q_i$<script type="math/tex; mode=display">Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha</script></li>
+</ul>
+<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：</p>
+<script type="math/tex; mode=display">Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha</script><p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:</p>
+<script type="math/tex; mode=display">DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha</script><p>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
+<ul>
+<li>$C$表示货架的货位数，$J$表示货架的数量<script type="math/tex; mode=display">J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}</script><center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center><br>[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]<h2 id="2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><a href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage" class="headerlink" title="2.4Evaluation of Storage Policies under Random Stowage"></a>2.4Evaluation of Storage Policies under Random Stowage</h2>随机存储策略下的货架布局策略评估<blockquote>
+<p>Our objective is to evaluate the expected total travel distance under the different storage policies</p>
+</blockquote>
+</li>
+</ul>
+<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:</p>
+<script type="math/tex; mode=display">Pr[D_i> x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i</script><script type="math/tex; mode=display">Pr[D_i > x]=0,for\quad x\geq Q_i</script><p>则其期望与方差$E[D_i],Var(D_i)$:</p>
+<script type="math/tex; mode=display">E[D_i]=V_i(1-\alpha)</script><script type="math/tex; mode=display">Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)</script><p>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:</p>
+<script type="math/tex; mode=display">E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C</script><script type="math/tex; mode=display">Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C</script><p>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
+<script type="math/tex; mode=display">L=4</script><script type="math/tex; mode=display">l \in \\{1,2,...,L\\}</script>]]></content>
       <categories>
-        <category>stata</category>
+        <category>论文</category>
       </categories>
       <tags>
-        <tag>stata</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SCI常用句型</title>
-    <url>/2018/04/12/SCI%E5%B8%B8%E7%94%A8%E5%8F%A5%E5%9E%8B/</url>
-    <content><![CDATA[<p>1.在Introduction里面经常会使用到的一个句子：很多文献已经讨论过了<br>Solar energy conversion by photoelectrochemical cells <strong>has been intensively investigated</strong>.<br>2.值得注意的是…<br>It must also be mentioned that…<br>It is important to highlight that …<br>It is worthwhile mentioning that …<br>3.正如下文将提到的…<br>As will be described below（也可以是As we shall see below）,<br>…will be further discussed below.<br>The observation of nanocluster spheres at the ends of the nanowires is suggestive of a VLS growth process <strong>(see below)</strong><br>4.什么东西还尚未发现/系统研究<br>have not yet been realized.<br>There are relatively few studies devoted to…<br>5.考虑到…<br>Taking the above observations into account,<br> taking into account<br>6.本项研究的意义/亮点在于…<br>Our research extends the knowledge into…<br>This research extends our knowledge of…<br>7.重点在于<br>The key to …is…<br>The development of sustainable energy solutions represents one of the most important scientific and technical challenges of our time, and heterogeneous catalysis is <strong>at the  heart of the problem</strong>.<br>Particular emphasis is placed on …<br>8.一篇论文不可能把所有需要研究的内容都搞清楚，那么在文章中如何委婉地表述某些内容并不是本文的关注重点？<br><strong>Although a detailed investigation of</strong> these factors is <strong>beyond the scope of this work, we acknowledge that </strong>the V(motif) represents an upper bound of the equilibrium active site coverage for the specific materials we have considered.</p>
-]]></content>
-      <categories>
-        <category>英文写作</category>
-      </categories>
-      <tags>
-        <tag>写作</tag>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -994,16 +1055,22 @@ a_{in}=
       </tags>
   </entry>
   <entry>
-    <title>Jupyter 修改主题、字体、宽度、字号</title>
-    <url>/2017/12/14/jupyter%20theme/</url>
-    <content><![CDATA[<p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt=""><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt=""><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt=""><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt=""></p>
-<p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt=""><br>更多设置：<br><figure class="highlight inform7"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs inform7">C:\Users\Administrator&gt;jt -t<br>usage: jt <span class="hljs-comment">[-h]</span> <span class="hljs-comment">[-l]</span> <span class="hljs-comment">[-t THEME]</span> <span class="hljs-comment">[-f MONOFONT]</span> <span class="hljs-comment">[-fs MONOSIZE]</span> <span class="hljs-comment">[-nf NBFONT]</span><br>          <span class="hljs-comment">[-nfs NBFONTSIZE]</span> <span class="hljs-comment">[-tf TCFONT]</span> <span class="hljs-comment">[-tfs TCFONTSIZE]</span> <span class="hljs-comment">[-dfs DFFONTSIZE]</span><br>          <span class="hljs-comment">[-ofs OUTFONTSIZE]</span> <span class="hljs-comment">[-mathfs MATHFONTSIZE]</span> <span class="hljs-comment">[-m MARGINS]</span><br>          <span class="hljs-comment">[-cursw CURSORWIDTH]</span> <span class="hljs-comment">[-cursc CURSORCOLOR]</span> <span class="hljs-comment">[-cellw CELLWIDTH]</span><br>          <span class="hljs-comment">[-lineh LINEHEIGHT]</span> <span class="hljs-comment">[-altp]</span> <span class="hljs-comment">[-altmd]</span> <span class="hljs-comment">[-altout]</span> <span class="hljs-comment">[-P]</span> <span class="hljs-comment">[-T]</span> <span class="hljs-comment">[-N]</span> <span class="hljs-comment">[-vim]</span><br>          <span class="hljs-comment">[-r]</span> <span class="hljs-comment">[-dfonts]</span><br></code></pre></div></td></tr></table></figure></p>
+    <title>STATA</title>
+    <url>/2019/12/16/STATA/</url>
+    <content><![CDATA[<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">reg</span> var1 var2 ...    #var1为因变量，后面的为自变量<br><span class="hljs-keyword">gen</span> new_var= <span class="hljs-built_in">date</span>(<span class="hljs-keyword">var</span>,<span class="hljs-string">&quot;YMD&quot;</span>) #生成时间变量new_var<br><span class="hljs-keyword">format</span> %td new_var #变换变量为时间（天）<br><span class="hljs-keyword">tsset</span> new_var, daily  #设置变量new_var为时间序列变量，粒度为天<br></code></pre></div></td></tr></table></figure>
+<h2 id="1-x-predicts-failure-success-perfectly"><a href="#1-x-predicts-failure-success-perfectly" class="headerlink" title="1 !=x predicts failure/success perfectly"></a>1 !=x predicts failure/success perfectly</h2><p><a href="http://blog.sina.com.cn/s/blog_c2b4a64b0102v37y.html">参考博客</a></p>
+<p>在样本量不够大且我们控制的固定效应相对较多时，在Stata中使用Probit或Logit模型进行回归分析，很可能出现提示“……!= 0 predicts failure perfectly”或“……!= 0 predicts success perfectly”，并且Stata会自动删除相应的观测值。</p>
+<p> 这里“……!= 0 predicts failure perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于0。</p>
+<p> 类似地，“……!= 0 predicts success perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于1。</p>
+<h2 id="2-统计变量唯一值个数"><a href="#2-统计变量唯一值个数" class="headerlink" title="2 统计变量唯一值个数"></a>2 统计变量唯一值个数</h2><p><code>codebook [variable]</code></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210421202748777.png" alt="image-20210421202748777"></p>
+<h2 id="3-logit回归样本数变少"><a href="#3-logit回归样本数变少" class="headerlink" title="3 logit回归样本数变少"></a>3 logit回归样本数变少</h2><p>某些变量出现了<a href="1">1</a>中的问题。</p>
 ]]></content>
       <categories>
-        <category>python</category>
+        <category>stata</category>
       </categories>
       <tags>
-        <tag>jupyter notebook</tag>
+        <tag>stata</tag>
       </tags>
   </entry>
   <entry>
@@ -1078,6 +1145,39 @@ a_{in}=
       </tags>
   </entry>
   <entry>
+    <title>Jupyter 修改主题、字体、宽度、字号</title>
+    <url>/2017/12/14/jupyter%20theme/</url>
+    <content><![CDATA[<p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt=""><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt=""><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt=""><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt=""></p>
+<p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt=""><br>更多设置：<br><figure class="highlight inform7"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs inform7">C:\Users\Administrator&gt;jt -t<br>usage: jt <span class="hljs-comment">[-h]</span> <span class="hljs-comment">[-l]</span> <span class="hljs-comment">[-t THEME]</span> <span class="hljs-comment">[-f MONOFONT]</span> <span class="hljs-comment">[-fs MONOSIZE]</span> <span class="hljs-comment">[-nf NBFONT]</span><br>          <span class="hljs-comment">[-nfs NBFONTSIZE]</span> <span class="hljs-comment">[-tf TCFONT]</span> <span class="hljs-comment">[-tfs TCFONTSIZE]</span> <span class="hljs-comment">[-dfs DFFONTSIZE]</span><br>          <span class="hljs-comment">[-ofs OUTFONTSIZE]</span> <span class="hljs-comment">[-mathfs MATHFONTSIZE]</span> <span class="hljs-comment">[-m MARGINS]</span><br>          <span class="hljs-comment">[-cursw CURSORWIDTH]</span> <span class="hljs-comment">[-cursc CURSORCOLOR]</span> <span class="hljs-comment">[-cellw CELLWIDTH]</span><br>          <span class="hljs-comment">[-lineh LINEHEIGHT]</span> <span class="hljs-comment">[-altp]</span> <span class="hljs-comment">[-altmd]</span> <span class="hljs-comment">[-altout]</span> <span class="hljs-comment">[-P]</span> <span class="hljs-comment">[-T]</span> <span class="hljs-comment">[-N]</span> <span class="hljs-comment">[-vim]</span><br>          <span class="hljs-comment">[-r]</span> <span class="hljs-comment">[-dfonts]</span><br></code></pre></div></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在WORD中插入LATEX伪代码</title>
+    <url>/2017/12/08/%E5%9C%A8WORD%E4%B8%AD%E6%8F%92%E5%85%A5LATEX%E4%BC%AA%E4%BB%A3%E7%A0%81/</url>
+    <content><![CDATA[<h1 id="在WORD中插入LATEX伪代码"><a href="#在WORD中插入LATEX伪代码" class="headerlink" title="在WORD中插入LATEX伪代码"></a>在WORD中插入LATEX伪代码</h1><span id="more"></span>
+<p>参见博客：<a href="http://hustsxh.is-programmer.com/posts/38801.html#%E4%BC%AA%E4%BB%A3%E7%A0%81">latex伪代码</a>—-<a href="http://www.voidcn.com/article/p-vmggdiit-mc.html">word中插入latex伪代码</a></p>
+<h3 id="工具准备："><a href="#工具准备：" class="headerlink" title="工具准备："></a>工具准备：</h3><p>1.下载并安装Aurora，及注册，下载文件见网盘aurora和注册机。</p>
+<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><h4 id="1-word中插入-对象-Aurora-equation"><a href="#1-word中插入-对象-Aurora-equation" class="headerlink" title="1.word中插入-对象-Aurora equation"></a>1.word中插入-对象-Aurora equation</h4><p><img src="http://static.zybuluo.com/betterbert/zzcyigzhhaezbggc8782c9eb/image_1bvmj7n9iuimdbq1fk1tki4p49.png" alt="image_1bvmj7n9iuimdbq1fk1tki4p49.png-52.4kB"></p>
+<h4 id="2-设置包：Properties-packages"><a href="#2-设置包：Properties-packages" class="headerlink" title="2.设置包：Properties-packages"></a>2.设置包：Properties-packages</h4><p><img src="http://static.zybuluo.com/betterbert/xz7a5816900xaj1c6igll772/image_1bvmjbmr0m88130tenkcr4v9f2m.png" alt="image_1bvmjbmr0m88130tenkcr4v9f2m.png-95.2kB"><br><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>&#123;CJK&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;ctex&#125;<br><span class="hljs-keyword">\usepackage</span>[top=2cm, bottom=2cm, left=2cm, right=2cm]&#123;geometry&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algorithm&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algorithmicx&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algpseudocode&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;amsmath&#125;<br></code></pre></div></td></tr></table></figure></p>
+<h4 id="3-输入伪代码的代码"><a href="#3-输入伪代码的代码" class="headerlink" title="3.输入伪代码的代码"></a>3.输入伪代码的代码</h4><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-comment">%\floatname&#123;algorithm&#125;&#123;算法&#125;</span><br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicrequire</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Input:&#125;&#125;<br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicensure</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Output:&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithm&#125;[H]<br><span class="hljs-keyword">\caption</span>&#123;<span class="hljs-keyword">\textbf</span>&#123;Spectral Clustering&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithmic&#125;[1] <span class="hljs-comment">%每行显示行号</span><br>            <span class="hljs-keyword">\Require</span> Affinity Matrix W， Cluster num <span class="hljs-built_in">$</span>k<span class="hljs-built_in">$</span><br>            <span class="hljs-keyword">\Ensure</span> Clustering results<br>            <span class="hljs-keyword">\Function</span> &#123;SpectralClustering&#125;&#123;<span class="hljs-built_in">$</span>W,k<span class="hljs-built_in">$</span>&#125;<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>D <span class="hljs-keyword">\gets</span> diag(sum(W))<span class="hljs-built_in">$</span>       //Calculate degree matrix<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>L <span class="hljs-keyword">\gets</span> D-W<span class="hljs-built_in">$</span>                //Construct Laplacian matrix<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>L<span class="hljs-built_in">_</span>&#123;nor&#125; <span class="hljs-keyword">\gets</span> (D<span class="hljs-built_in">^</span>&#123;-1/2&#125;)*L*(D<span class="hljs-built_in">^</span>&#123;-1/2&#125;)<span class="hljs-built_in">$</span>     //Construct normalized Laplacian matrix<br>                <span class="hljs-keyword">\State</span>  do Eigendecomposition of <span class="hljs-built_in">$</span>L<span class="hljs-built_in">_</span>&#123;nor&#125;<span class="hljs-built_in">$</span><br>                <span class="hljs-keyword">\State</span>  do K-means of feature vector<br>                <span class="hljs-keyword">\State</span> <span class="hljs-keyword">\Return</span>&#123;<span class="hljs-built_in">$</span>result<span class="hljs-built_in">$</span>&#125;<br>            <span class="hljs-keyword">\EndFunction</span><br><span class="hljs-keyword">\end</span>&#123;algorithmic&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithm&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h4><p><img src="http://static.zybuluo.com/betterbert/6xsjm8ke55nz44na1bir4djn/image_1c05ktoah1u19hs5nbc1g0ko5om.png" alt="image_1c05ktoah1u19hs5nbc1g0ko5om.png-53.9kB"></p>
+<h4 id="4-同一文章中插入第二个伪代码，显示algorithm-2方法："><a href="#4-同一文章中插入第二个伪代码，显示algorithm-2方法：" class="headerlink" title="4.同一文章中插入第二个伪代码，显示algorithm 2方法："></a>4.同一文章中插入第二个伪代码，显示algorithm 2方法：</h4><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-comment">%\floatname&#123;algorithm&#125;&#123;算法&#125;</span><br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicrequire</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Input:&#125;&#125;<br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicensure</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Output:&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithm&#125;[H]<br><span class="hljs-keyword">\setcounter</span>&#123;algorithm&#125;&#123;1&#125;  <span class="hljs-params">#</span>表示该伪代码为algorithm2（1+1）<br><span class="hljs-keyword">\caption</span>&#123;<span class="hljs-keyword">\textbf</span>&#123;Shelves distribution&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithmic&#125;[1] <span class="hljs-comment">%每行显示行号</span><br>            <span class="hljs-keyword">\Require</span> Cluster results,SKU historical delivery frequency<br>            <span class="hljs-keyword">\Ensure</span> Shelves layout<br>            <span class="hljs-keyword">\State</span> Determine the number of shelves that each cluster should be assigned to each subdivision based on the number of shelves that each partition can hold<br>            <span class="hljs-keyword">\State</span> Assign shelves within each cluster to each partition<br>            <span class="hljs-keyword">\State</span> Sort the shelves of each partition by frequency <br>            <span class="hljs-keyword">\State</span> <span class="hljs-keyword">\Return</span>&#123;<span class="hljs-built_in">$</span>result<span class="hljs-built_in">$</span>&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithmic&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithm&#125;<br></code></pre></div></td></tr></table></figure>
+<h4 id="效果如下：-1"><a href="#效果如下：-1" class="headerlink" title="效果如下："></a>效果如下：</h4><p><img src="http://static.zybuluo.com/betterbert/xquvwf8doto96effwoasketw/image_1c05krr8f8ap1hc61kpe120r5tj9.png" alt="image_1c05krr8f8ap1hc61kpe120r5tj9.png-50.3kB"></p>
+]]></content>
+      <categories>
+        <category>实用技巧</category>
+      </categories>
+      <tags>
+        <tag>实用技巧</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Order batching</title>
     <url>/2018/04/30/order%20batching/</url>
     <content><![CDATA[<h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&amp;mid=2650459983&amp;idx=1&amp;sn=02d696afefef36f1699a55e7f0380c75&amp;chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&amp;scene=21#wechat_redirect">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
@@ -1122,269 +1222,6 @@ z_{ib} =
       </categories>
       <tags>
         <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Velocity-based storage and stowage decisions in a semi-automated fulfillment system</title>
-    <url>/2017/12/12/Velocity-based%20storage%20and%20stowage%20decisions%20in%20a%20semi-automated%20fulfillment%20system/</url>
-    <content><![CDATA[<h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
-<p>we consider three types of storage policies in this paper:</p>
-<ul>
-<li>random storage policy:随机存储策略</li>
-<li>full-velocity storage policy:基于周转率的存储策略，货架的周转率等于其上物品的需求率之和</li>
-<li>class-based storage policy:分级存储，将存储区域分区，将物品分级，对应存放</li>
-</ul>
-</blockquote>
-<h2 id="2-1-literature-Review"><a href="#2-1-literature-Review" class="headerlink" title="2.1 literature Review"></a>2.1 literature Review</h2><p>疑问：</p>
-<blockquote>
-<p>they set expected duration of stay of the $i^{th}$ storage unit of an item to be i/V for i = 1,2,. . . ,Q, where V is the demand rate of the item and Q is the number of storage units of the item in the system. With the duration of stay policy, the storage units across all the different items can be ordered according to this measure and then assigned in order to the closest locations. <strong>Hence, the storage units of a single item may not be stored together in the warehouse.</strong></p>
-</blockquote>
-<h2 id="2-2-Model-Assumptions"><a href="#2-2-Model-Assumptions" class="headerlink" title="2.2 Model Assumptions"></a>2.2 Model Assumptions</h2><blockquote>
-<p>We establish a <strong>fluid</strong> model that evaluates the expected travel distance of the pods for their pick tours.</p>
-</blockquote>
-<p>对于某个可移动货架而言，其预计行驶距离=其存储位置到工作站的距离乘以其周转率</p>
-<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
-<li>A1: Fluidity of inventory items<br>对物品进行连续性处理<br>fluidity:流动性，流畅<blockquote>
-<p><strong>we index the items (i.e., the stock keeping units) on the continuum from 0 to 1</strong>.We assume that the items are indexed in descending order of <em>demand</em>.</p>
-</blockquote>
-</li>
-</ul>
-<p>按照物品的需求量对仓库内的物品在0到1内进行降序排列。<br>(Q:是否是需求量占比？)</p>
-<ul>
-<li>A2: Fluidity of inventory units, exponential demand for each item<br>假设物品的需求量符合指数分布<blockquote>
-<p>We model the demand of each item as being the number of units required for picking in a specified period of time,e.g.,the next twelve hours.For each item we model the demand as a continuous random variable with an exponential distribution.</p>
-</blockquote>
-</li>
-</ul>
-<p>定义每个物品的需求量为未来一段时间内该物品的单位拣选量。假设每个物品的需求是服从指数分布的连续型随机变量。指数分布能够反映需求的长尾效应和需求的多变性。</p>
-<blockquote>
-<p>we model the inventory as being continuous, as like a fluid.</p>
-<ul>
-<li>A3: Ranked inventory<br>对每个物品库存数量进行排序<br>Thus, if the demand for item  i  equals  x   units, then the x -highest ranked units of inventory will be picked to meet the demand.</li>
-</ul>
-</blockquote>
-<p>由于物品分散存储，不同的储位存放的数量可能不一样，对同一商品的不同货位进行排序，当订单到达时，选取库存数量最多的储位满足订单。</p>
-<ul>
-<li><p>A4： Universal stock out rate for all items<br>所有物品在下一段时间的缺货率相等均为$\alpha$   </p>
-</li>
-<li><p>A5: Same unit size for all items, fixed pod size<br>假设每个货架的储位数量相等，每个物品大小尺寸相等</p>
-</li>
-<li><p>A6: Number of picks independent of the pod’s velocity measure<br>货架在工作站拣选的物品数量不依赖其周转率，主要关注货架到达工作站的频次</p>
-</li>
-<li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
-</li>
-<li>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</li>
-<li>A9: Ignore stow operations<br>忽略上货操作</li>
-<li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
-<h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
-<li><script type="math/tex; mode=display">v_i(x)=e^{-x/V_i}</script><p>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：</p>
-<script type="math/tex; mode=display">\int_o^1V_idi=1$$"CDF”（Cumulative Distribution Function）：分布函数
-指数分布概率密度函数:</script><p>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \\<br>&amp; 0,  x\lt 0 \\<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
-</li>
-<li>定义物品$i$的库存数量为$Q_i$<script type="math/tex; mode=display">Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha</script></li>
-</ul>
-<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：</p>
-<script type="math/tex; mode=display">Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha</script><p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:</p>
-<script type="math/tex; mode=display">DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha</script><p>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
-<ul>
-<li>$C$表示货架的货位数，$J$表示货架的数量<script type="math/tex; mode=display">J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}</script><center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center><br>[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]<h2 id="2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><a href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage" class="headerlink" title="2.4Evaluation of Storage Policies under Random Stowage"></a>2.4Evaluation of Storage Policies under Random Stowage</h2>随机存储策略下的货架布局策略评估<blockquote>
-<p>Our objective is to evaluate the expected total travel distance under the different storage policies</p>
-</blockquote>
-</li>
-</ul>
-<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:</p>
-<script type="math/tex; mode=display">Pr[D_i> x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i</script><script type="math/tex; mode=display">Pr[D_i > x]=0,for\quad x\geq Q_i</script><p>则其期望与方差$E[D_i],Var(D_i)$:</p>
-<script type="math/tex; mode=display">E[D_i]=V_i(1-\alpha)</script><script type="math/tex; mode=display">Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)</script><p>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:</p>
-<script type="math/tex; mode=display">E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C</script><script type="math/tex; mode=display">Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C</script><p>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
-<script type="math/tex; mode=display">L=4</script><script type="math/tex; mode=display">l \in \\{1,2,...,L\\}</script>]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在WORD中插入LATEX伪代码</title>
-    <url>/2017/12/08/%E5%9C%A8WORD%E4%B8%AD%E6%8F%92%E5%85%A5LATEX%E4%BC%AA%E4%BB%A3%E7%A0%81/</url>
-    <content><![CDATA[<h1 id="在WORD中插入LATEX伪代码"><a href="#在WORD中插入LATEX伪代码" class="headerlink" title="在WORD中插入LATEX伪代码"></a>在WORD中插入LATEX伪代码</h1><span id="more"></span>
-<p>参见博客：<a href="http://hustsxh.is-programmer.com/posts/38801.html#%E4%BC%AA%E4%BB%A3%E7%A0%81">latex伪代码</a>—-<a href="http://www.voidcn.com/article/p-vmggdiit-mc.html">word中插入latex伪代码</a></p>
-<h3 id="工具准备："><a href="#工具准备：" class="headerlink" title="工具准备："></a>工具准备：</h3><p>1.下载并安装Aurora，及注册，下载文件见网盘aurora和注册机。</p>
-<h3 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h3><h4 id="1-word中插入-对象-Aurora-equation"><a href="#1-word中插入-对象-Aurora-equation" class="headerlink" title="1.word中插入-对象-Aurora equation"></a>1.word中插入-对象-Aurora equation</h4><p><img src="http://static.zybuluo.com/betterbert/zzcyigzhhaezbggc8782c9eb/image_1bvmj7n9iuimdbq1fk1tki4p49.png" alt="image_1bvmj7n9iuimdbq1fk1tki4p49.png-52.4kB"></p>
-<h4 id="2-设置包：Properties-packages"><a href="#2-设置包：Properties-packages" class="headerlink" title="2.设置包：Properties-packages"></a>2.设置包：Properties-packages</h4><p><img src="http://static.zybuluo.com/betterbert/xz7a5816900xaj1c6igll772/image_1bvmjbmr0m88130tenkcr4v9f2m.png" alt="image_1bvmjbmr0m88130tenkcr4v9f2m.png-95.2kB"><br><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-keyword">\usepackage</span>&#123;CJK&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;ctex&#125;<br><span class="hljs-keyword">\usepackage</span>[top=2cm, bottom=2cm, left=2cm, right=2cm]&#123;geometry&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algorithm&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algorithmicx&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;algpseudocode&#125;<br><span class="hljs-keyword">\usepackage</span>&#123;amsmath&#125;<br></code></pre></div></td></tr></table></figure></p>
-<h4 id="3-输入伪代码的代码"><a href="#3-输入伪代码的代码" class="headerlink" title="3.输入伪代码的代码"></a>3.输入伪代码的代码</h4><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-comment">%\floatname&#123;algorithm&#125;&#123;算法&#125;</span><br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicrequire</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Input:&#125;&#125;<br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicensure</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Output:&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithm&#125;[H]<br><span class="hljs-keyword">\caption</span>&#123;<span class="hljs-keyword">\textbf</span>&#123;Spectral Clustering&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithmic&#125;[1] <span class="hljs-comment">%每行显示行号</span><br>            <span class="hljs-keyword">\Require</span> Affinity Matrix W， Cluster num <span class="hljs-built_in">$</span>k<span class="hljs-built_in">$</span><br>            <span class="hljs-keyword">\Ensure</span> Clustering results<br>            <span class="hljs-keyword">\Function</span> &#123;SpectralClustering&#125;&#123;<span class="hljs-built_in">$</span>W,k<span class="hljs-built_in">$</span>&#125;<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>D <span class="hljs-keyword">\gets</span> diag(sum(W))<span class="hljs-built_in">$</span>       //Calculate degree matrix<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>L <span class="hljs-keyword">\gets</span> D-W<span class="hljs-built_in">$</span>                //Construct Laplacian matrix<br>                <span class="hljs-keyword">\State</span> <span class="hljs-built_in">$</span>L<span class="hljs-built_in">_</span>&#123;nor&#125; <span class="hljs-keyword">\gets</span> (D<span class="hljs-built_in">^</span>&#123;-1/2&#125;)*L*(D<span class="hljs-built_in">^</span>&#123;-1/2&#125;)<span class="hljs-built_in">$</span>     //Construct normalized Laplacian matrix<br>                <span class="hljs-keyword">\State</span>  do Eigendecomposition of <span class="hljs-built_in">$</span>L<span class="hljs-built_in">_</span>&#123;nor&#125;<span class="hljs-built_in">$</span><br>                <span class="hljs-keyword">\State</span>  do K-means of feature vector<br>                <span class="hljs-keyword">\State</span> <span class="hljs-keyword">\Return</span>&#123;<span class="hljs-built_in">$</span>result<span class="hljs-built_in">$</span>&#125;<br>            <span class="hljs-keyword">\EndFunction</span><br><span class="hljs-keyword">\end</span>&#123;algorithmic&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithm&#125;<br></code></pre></div></td></tr></table></figure>
-<h4 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h4><p><img src="http://static.zybuluo.com/betterbert/6xsjm8ke55nz44na1bir4djn/image_1c05ktoah1u19hs5nbc1g0ko5om.png" alt="image_1c05ktoah1u19hs5nbc1g0ko5om.png-53.9kB"></p>
-<h4 id="4-同一文章中插入第二个伪代码，显示algorithm-2方法："><a href="#4-同一文章中插入第二个伪代码，显示algorithm-2方法：" class="headerlink" title="4.同一文章中插入第二个伪代码，显示algorithm 2方法："></a>4.同一文章中插入第二个伪代码，显示algorithm 2方法：</h4><figure class="highlight latex"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs latex"><span class="hljs-comment">%\floatname&#123;algorithm&#125;&#123;算法&#125;</span><br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicrequire</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Input:&#125;&#125;<br><span class="hljs-keyword">\renewcommand</span>&#123;<span class="hljs-keyword">\algorithmicensure</span>&#125;&#123;<span class="hljs-keyword">\textbf</span>&#123;Output:&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithm&#125;[H]<br><span class="hljs-keyword">\setcounter</span>&#123;algorithm&#125;&#123;1&#125;  <span class="hljs-params">#</span>表示该伪代码为algorithm2（1+1）<br><span class="hljs-keyword">\caption</span>&#123;<span class="hljs-keyword">\textbf</span>&#123;Shelves distribution&#125;&#125;<br><span class="hljs-keyword">\begin</span>&#123;algorithmic&#125;[1] <span class="hljs-comment">%每行显示行号</span><br>            <span class="hljs-keyword">\Require</span> Cluster results,SKU historical delivery frequency<br>            <span class="hljs-keyword">\Ensure</span> Shelves layout<br>            <span class="hljs-keyword">\State</span> Determine the number of shelves that each cluster should be assigned to each subdivision based on the number of shelves that each partition can hold<br>            <span class="hljs-keyword">\State</span> Assign shelves within each cluster to each partition<br>            <span class="hljs-keyword">\State</span> Sort the shelves of each partition by frequency <br>            <span class="hljs-keyword">\State</span> <span class="hljs-keyword">\Return</span>&#123;<span class="hljs-built_in">$</span>result<span class="hljs-built_in">$</span>&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithmic&#125;<br><span class="hljs-keyword">\end</span>&#123;algorithm&#125;<br></code></pre></div></td></tr></table></figure>
-<h4 id="效果如下：-1"><a href="#效果如下：-1" class="headerlink" title="效果如下："></a>效果如下：</h4><p><img src="http://static.zybuluo.com/betterbert/xquvwf8doto96effwoasketw/image_1c05krr8f8ap1hc61kpe120r5tj9.png" alt="image_1c05krr8f8ap1hc61kpe120r5tj9.png-50.3kB"></p>
-]]></content>
-      <categories>
-        <category>实用技巧</category>
-      </categories>
-      <tags>
-        <tag>实用技巧</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>学习计划</title>
-    <url>/2019/08/05/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="444ccec27a2c9c0c18b3d8a0f2ef5b75417ab9a0942f05a8d61ed7e6f60091d2">120b185a11a8d2a31df3379a03631b4708c94278111704cbe2fe0effc71e0dd58771f3e8e2bb1835ede63a945b530a3acceaca065e05f5488ff282ceddfdab8c3851c9a215d4ad7bbf3b8d9504d73d339f8d44b2166daef2779c56a816264464cf6e6dd2a47784a080ddb359e97d6908602ec4f848ecb3a54774e046cb8b72e0b5d6b597cdbfa4b217dc61a836273eac8cdbf929beb879ad83ea3dfd4c24598be34aac750f1744fbfac217f0ae55006eabf2a7b893fccb8259a7f0891a4123176064d47d0f8d518e5a4e885934a367804e60ed142ebd80d0794d7eda08d72d46c2cdf7f981329d6f1569c921e4f17fe303caeaac43c6a2653f921decd3c2cfe35edaa54d86f8c2ea66f7e70a865d11630a99d0d26ed15af40b095447ca9bdbbbfffa1419490f373c127844c3c6e7d4c0d073cca34d5fbf3e7b6877ca4a0348b56835f3c00b5ae7a0ec45baac8667427623e5d7f1d517390ef81e431d992d754a55fa1ea60962955f328d4d44b352481c375b1b1f0b644d57d75156107e62dd28cac692f2025bf04f30f646887688679ff03f0cb9fa04bf04659c1ce96e999b5c43a1a4dafd1f0dae36e24ab4a4725f39e037fad34b65aa254322bf8159b71a1f95fe50956e293a24e6e0d563a30a75877d55ef1ee506332ad221b93356740ca9453a6d26a8229b44b29deaad1a68d97411ccf0bbf657d0c491597f9b626bb877393fbf59d414d4259ea5cf4525f65f3d727eb6ba1aaae44d02dc8d56c0432ad6f802081d0a3c2e51682082b6cdc337aa365ccab37da2dc1d19fbe15e67f53e984f7b204cb11d5f8608e8191953d6527b720825602ac18353656c6be8b6a743bfca3b81324680ce97ed9806cdef24ceacc795d837924fdd5b422e26468eab7d8bee3d2da1bd13a167bcdf2d1ca8cc87a4d877771103553f847aaff8e639699a74e8ded169689b896f459a43dbb5a59a9044e4122995f3bd51d5232ec3b60ab4f675e8980977280ea5df00e7a3a2bf5240</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码，查看文章</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
-      <categories>
-        <category>计划</category>
-      </categories>
-      <tags>
-        <tag>计划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>我的电脑软件</title>
-    <url>/2019/01/18/%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/</url>
-    <content><![CDATA[<p>记录下使用电脑过程中的优秀软件：</p>
-<h3 id="1-Bandzip"><a href="#1-Bandzip" class="headerlink" title="1 Bandzip"></a>1 Bandzip</h3><p>解压缩软件，<a href="http://www.bandisoft.com/">下载地址</a></p>
-<h3 id="2-QuickLook"><a href="#2-QuickLook" class="headerlink" title="2  QuickLook"></a>2  QuickLook</h3><p>快速预览文件，<a href="https://github.com/QL-Win/QuickLook">下载地址</a></p>
-<h3 id="3-Office-Tab"><a href="#3-Office-Tab" class="headerlink" title="3  Office Tab"></a>3  Office Tab</h3><p>实现MS office的多标签功能，<a href="https://pan.baidu.com/s/1WkwqgqByxhTqs9XCVrwYfQ">下载地址</a></p>
-<h3 id="4-Clover"><a href="#4-Clover" class="headerlink" title="4  Clover"></a>4  Clover</h3><p>实现电脑资源管理器多标签功能，<a href="http://cn.ejie.me/">下载地址</a></p>
-<h3 id="5-Snipaste"><a href="#5-Snipaste" class="headerlink" title="5  Snipaste"></a>5  Snipaste</h3><p>截图软件，带贴图功能，<a href="https://www.snipaste.com/">下载地址</a></p>
-<h3 id="6-KeePass"><a href="#6-KeePass" class="headerlink" title="6  KeePass"></a>6  KeePass</h3><p>密码管理软件，电脑端手机端多平台使用，<a href="https://keepass.info/">下载地址</a></p>
-<h3 id="7-Onequick"><a href="#7-Onequick" class="headerlink" title="7  Onequick"></a>7  Onequick</h3><p>热键快捷工具，屏幕边缘操作（调节音量，换歌等），<a href="https://onequick.org/">下载地址</a></p>
-<h3 id="8-Picgo"><a href="#8-Picgo" class="headerlink" title="8 Picgo"></a>8 Picgo</h3><p>开源工具，图片上传至图床，支持多家图床，<a href="https://github.com/Molunerfinn/PicGo">下载地址</a></p>
-<h3 id="9-Listary"><a href="#9-Listary" class="headerlink" title="9  Listary"></a>9  Listary</h3><p>快速文件检索工具，<a href="https://www.listary.com/download">下载地址</a></p>
-<h3 id="10-小黄条"><a href="#10-小黄条" class="headerlink" title="10  小黄条"></a>10  小黄条</h3><p>多平台同步To do List，<a href="http://www.6fcsj.com/">下载地址</a></p>
-<h3 id="11-f-lux"><a href="#11-f-lux" class="headerlink" title="11  f.lux"></a>11  f.lux</h3><p>护眼软件，<a href="https://justgetflux.com/">下载地址</a></p>
-<h3 id="12-licecap"><a href="#12-licecap" class="headerlink" title="12  licecap"></a>12  licecap</h3><p>gif图截图软件，<a href="https://www.cockos.com/licecap/">下载地址</a></p>
-<h3 id="13-spacesniffer"><a href="#13-spacesniffer" class="headerlink" title="13  spacesniffer"></a>13  spacesniffer</h3><p>磁盘分析工具，分析哪些文件占的空间大，<a href="http://www.uderzo.it/main_products/space_sniffer/">下载地址</a></p>
-<h3 id="14-PanDownload"><a href="#14-PanDownload" class="headerlink" title="14  PanDownload"></a>14  PanDownload</h3><p>百度网盘不限速多线程下载，<a href="http://pandownload.com/">下载地址</a></p>
-<h3 id="15-Ditto"><a href="#15-Ditto" class="headerlink" title="15  Ditto"></a>15  Ditto</h3><p>剪贴板工具，连续复制不影响，<a href="https://ditto-cp.sourceforge.io/">下载地址</a></p>
-<h3 id="16-Synergy"><a href="#16-Synergy" class="headerlink" title="16  Synergy"></a>16  Synergy</h3><p>完爆Logitech flow，一套键鼠控制多台设备，<a href="https://pan.baidu.com/s/1i_aZmJGCkn1YwU715IonUA">下载地址</a></p>
-<h3 id="17-TrafficMonitor"><a href="#17-TrafficMonitor" class="headerlink" title="17 TrafficMonitor"></a>17 TrafficMonitor</h3><p>任务栏上随时监测网速，CPU使用率，内存使用率</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190224161509.png" alt=""></p>
-<p><a href="https://github.com/zhongyang219/TrafficMonitor/releases">下载地址</a></p>
-<h3 id="18-QTranslate"><a href="#18-QTranslate" class="headerlink" title="18 QTranslate"></a>18 QTranslate</h3><p>翻译软件，一个<strong>完全免费</strong>，集合了巴比伦，百度，谷歌，微软，有道，DeepL，SDL等<strong>10个翻译引擎</strong>，支持<strong>71 种语言</strong>和<strong>OCR功能</strong>而<strong>体积不足1MB</strong>！这款软件在国外也算是老牌神器了。<a href="http://quest-app.appspot.com/download">下载地址</a></p>
-<h3 id="19-Inpaint"><a href="#19-Inpaint" class="headerlink" title="19 Inpaint"></a>19 Inpaint</h3><p>去水印神器，<a href="https://pan.baidu.com/s/1Fumyt55aqtorm9OXKFoPzQ">下载地址</a></p>
-<h3 id="20-Caesium"><a href="#20-Caesium" class="headerlink" title="20 Caesium"></a>20 Caesium</h3><p>图片无损压缩开源软件，<a href="https://saerasoft.com/caesium/">官网</a></p>
-]]></content>
-      <categories>
-        <category>软件</category>
-      </categories>
-      <tags>
-        <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>李宏毅机器学习笔记（一）</title>
-    <url>/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
-<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
-<p>笔记导航：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805112637.png" alt=""></p>
-<h2 id="Introduction-of-this-course"><a href="#Introduction-of-this-course" class="headerlink" title="Introduction of this course"></a>Introduction of this course</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805112818.png" alt=""></p>
-<blockquote>
-<p>What is Machine Learning?</p>
-<p>$\approx$ Looking for a Function <strong>From Data</strong></p>
-</blockquote>
-<p>机器学习三步骤：把大象塞进冰箱</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805114211.png" alt=""></p>
-<p><strong>Learning Map：</strong></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805145357.png" alt=""></p>
-<p><strong>Regression</strong>: The output of the target function $f$ is “scalar”.（e.g.预测PM2.5进行天气预报）</p>
-<p><strong>Classification</strong>:</p>
-<ul>
-<li>Binary Classification 二元分类 （e.g.Spam filtering）</li>
-<li>Multi-class Classification 多分类 （e.g.Document Classification）</li>
-</ul>
-<p><strong><em>Classification</em></strong>的Model分为Linear Model和Non-linear Model，Non-linear Model中最出名的就是Deep Learning。</p>
-<p>以上均为<strong><em>Supervised Learning</em></strong>，均需要大量的Training Data，<em>Training Data</em>可以告诉我们要找的那个function的Input与Output之间有什么样的关系(Function的output又常叫label)。</p>
-<p><em>Semi-supervised learning（半监督学习）</em>可以减少Training Data的用量。<em>Transfer Learning（迁移学习）</em>也可以减少Training Data的用量，数据可以与考虑的任务无关（可以是标记的或未标记的）。</p>
-<p><strong><em>Unsupervised Learning</em></strong>就是想让机器学到无师自通。例1：让机器看大量的文章，看机器是否可以学会词汇的意思，比如用向量表示词汇。例2：让机器去动物园看一大堆，看机器是否能在看过动物后学会自己创造动物。例3：机器在看过大量图片后是否能学会自己生成图片。</p>
-<p><em>Structured Learning</em>是我们希望机器能输出有结构性的东西。</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805115404.png" alt=""></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805115452.png" alt=""></p>
-<p><em>Reinforcement Learning（强化学习）</em>是我们不告诉机器正确答案，只告诉机器我们对它输出的评价，机器唯一知道的的就是它做的好与不好。更加符合人类真实学习的情景。Alpha Go is supervised learning + reinforcement learning.</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>李宏毅机器学习笔记（二）</title>
-    <url>/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
-<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a></p>
-<p>笔记导航：</p>
-<p><a href="https://guanmc.cn/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">李宏毅机器学习笔记（一）</a></p>
-<h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><p>例子：预测pokemon的CP值</p>
-<h2 id="Step-1-Model"><a href="#Step-1-Model" class="headerlink" title="Step 1 : Model"></a>Step 1 : Model</h2><p>假设为Liner model: $y=b+w\cdot x_{cp}$($w_i$: weight, $b$: bias)</p>
-<h2 id="Step-2-Goodness-of-Function"><a href="#Step-2-Goodness-of-Function" class="headerlink" title="Step 2: Goodness of Function"></a>Step 2: Goodness of Function</h2><p>首先准备好<em>training data</em>。</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805142222.png" alt=""></p>
-<p>我们需要使用<em>Loss Function</em>衡量function的效果好坏。</p>
-<p>Loss Function $L$: </p>
-<script type="math/tex; mode=display">L(f) = \sum_{n=1}^{10}(\hat{y}^n-f(x_{cp}^n))^2</script><p>Input：a function，output：how bad it is</p>
-<h2 id="Step-3：Best-Function"><a href="#Step-3：Best-Function" class="headerlink" title="Step 3：Best Function"></a>Step 3：Best Function</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805142800.png" alt=""></p>
-<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a><em>Gradient Descent</em></h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143041.png" alt=""></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/1564986745800.png" alt=""></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/1564986761139.png" alt=""></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143839.png" alt=""></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143859.png" alt=""></p>
-<p><em>Overfitting</em>就是model在training data上表现很好，在testing data上表现不好。</p>
-<p>应对Overfitting的方法：</p>
-<ol>
-<li>收集更多的数据。</li>
-<li>以前的模型有一些隐藏的因素没有考虑进去。所以我们需要重新设计一番。</li>
-</ol>
-<p><strong><em>Regularization</em></strong></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805144228.png" alt=""></p>
-<p>使用这个Loss Function找到的最好的function不止可以让$L$最小，同时还要是$w$很小的function。$w$很小的Function意味着Function是<em>smooth</em>（平滑）的。</p>
-<p>我们相信在多数的状况下，smoother function更像是正确的function。</p>
-<p>$\lambda$设置的大一些，找到的function就会越smooth。</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805144427.png" alt=""></p>
-<p>从上图中可以发现，$\lambda$越大，Training Error越大。</p>
-<p>我们希望选到smooth function，但是不要too smooth。</p>
-<p>调整$\lambda$，获得最好的model</p>
-<p>做Regularization 的时候不需要考虑bias，bias不影响function的平滑程度。</p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>智能算法思考</title>
-    <url>/2020/12/01/%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E7%AE%97%E6%B3%95%E6%80%9D%E8%80%83/</url>
-    <content><![CDATA[<h1 id="1-邻域搜索及局部搜索"><a href="#1-邻域搜索及局部搜索" class="headerlink" title="1 邻域搜索及局部搜索"></a>1 邻域搜索及局部搜索</h1><p>对于邻域搜索以及局部搜索的概念一直没有做系统的学习,在我看来邻域搜索即是对某一个当前解进行邻域操作之后产生的解空间进行的搜索操作,而局部搜索同样是对当前解进行类似交叉算子的操作,若进行多次交叉操作之后,其本质就是根据当前解产生了新的邻域,更详细的了解还需要看一下<a href="https://www.bilibili.com/video/BV1yW411A7BA">离散优化的课程</a></p>
-<p>根据阅读的文献<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[1]王征,张俊,王旭坪.多车场带时间窗车辆路径问题的变邻域搜索算法[J].中国管理科学,2011,19(02):99-109.
-">[1]</span></a></sup>有一些话能帮助理解邻域搜索及局部搜索的区别，该文章采用VNS求解MDVRPTW问题：</p>
-<blockquote>
-<p> 在VNS算法中，执行Shaking过程的主要目的是扩展当前解的搜索空间，减小算法陷入局部最优的可能性，使得算法能够求得较好的解。Shaking过程首先从当前解的邻域结构集合中选取一个邻域结构，然后根据这个邻域结构对当前解做相应的改变生成新的解。</p>
-<p>Shaking过程首先从当前解中随机选出两条路径，然后从这两条路径中各随机选取一段子路径，最后采用特定的交换算子将这两段子路径进行交换从而得到两条新的路径。<strong>Shaking过程类似于遗传算法中的交叉操作</strong>。</p>
-</blockquote>
-<p>这篇文献采用了多个邻域结构，当前解包含了多个车场的车辆路径信息，邻域结构之间不同处在于参与路径交换的车场数以及子路径的最大长度不同（由于MDVRPTW存在多个车场，用于路径交换的两条路径既可以从同一车场内选取，也可以分别从不同的车场中选取）。但是这种交换子路径的操作很可能生成两个不可行解。</p>
-<blockquote>
-<p>Local Search过程</p>
-<p>Local Search过程将对Shaking过程中生成的两条新的路径分别进行局部搜索，并求得各自的局部最优解，采用的算子有2-opt、Or-opt和3-opt。</p>
-</blockquote>
-<p>可以看到作者的表述意思是对某一条路径进行的局部搜索，类似于遗传算法中的单亲遗传，但是本质上也是通过2-opt等算子产生了新的邻域，再进行邻域搜索。</p>
-<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>[1]王征,张俊,王旭坪.多车场带时间窗车辆路径问题的变邻域搜索算法[J].中国管理科学,2011,19(02):99-109.
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>智能算法</tag>
       </tags>
   </entry>
   <entry>
@@ -1808,28 +1645,152 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
-    <title>李宏毅机器学习笔记（三）</title>
-    <url>/2019/08/07/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[<p> 课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
-<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
-<p>笔记导航：</p>
-<h1 id="Where-does-the-error-come-from"><a href="#Where-does-the-error-come-from" class="headerlink" title="Where does the error come from?"></a>Where does the error come from?</h1><p>bias、variance的区别：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png" alt=""></p>
+    <title>智能算法思考</title>
+    <url>/2020/12/01/%E6%99%BA%E8%83%BD%E7%AE%97%E6%B3%95%E7%AE%97%E6%B3%95%E6%80%9D%E8%80%83/</url>
+    <content><![CDATA[<h1 id="1-邻域搜索及局部搜索"><a href="#1-邻域搜索及局部搜索" class="headerlink" title="1 邻域搜索及局部搜索"></a>1 邻域搜索及局部搜索</h1><p>对于邻域搜索以及局部搜索的概念一直没有做系统的学习,在我看来邻域搜索即是对某一个当前解进行邻域操作之后产生的解空间进行的搜索操作,而局部搜索同样是对当前解进行类似交叉算子的操作,若进行多次交叉操作之后,其本质就是根据当前解产生了新的邻域,更详细的了解还需要看一下<a href="https://www.bilibili.com/video/BV1yW411A7BA">离散优化的课程</a></p>
+<p>根据阅读的文献<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="[1]王征,张俊,王旭坪.多车场带时间窗车辆路径问题的变邻域搜索算法[J].中国管理科学,2011,19(02):99-109.
+">[1]</span></a></sup>有一些话能帮助理解邻域搜索及局部搜索的区别，该文章采用VNS求解MDVRPTW问题：</p>
 <blockquote>
-<ul>
-<li><strong>准：</strong>bias描述的是根据样本拟合出的模型的输出预测结果的期望<strong>与样本真实结果的差距</strong>，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得复杂化模型，增加模型的参数，但这样容易过拟合（overfitting），过拟合对应上图是high variance，点很分散。low bias对应就是点都打在靶心附近，所以瞄的是准的，但手不一定稳。</li>
-<li><strong>确：</strong>varience描述的是样本上训练出来的模型<strong>在测试集上的表现</strong>，要想在variance上表现好，low varience，就要简化模型，减少模型的参数，但这样容易欠拟合（unfitting），欠拟合对应上图是high bias，点偏离中心。low variance对应就是点都打的很集中，但不一定是靶心附近，手很稳，但是瞄的不准。</li>
-</ul>
-<p><a href="https://www.zhihu.com/question/27068705">参考知乎回答</a></p>
+<p> 在VNS算法中，执行Shaking过程的主要目的是扩展当前解的搜索空间，减小算法陷入局部最优的可能性，使得算法能够求得较好的解。Shaking过程首先从当前解的邻域结构集合中选取一个邻域结构，然后根据这个邻域结构对当前解做相应的改变生成新的解。</p>
+<p>Shaking过程首先从当前解中随机选出两条路径，然后从这两条路径中各随机选取一段子路径，最后采用特定的交换算子将这两段子路径进行交换从而得到两条新的路径。<strong>Shaking过程类似于遗传算法中的交叉操作</strong>。</p>
 </blockquote>
-<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png" alt=""></p>
-<h2 id="N-fold-Cross-Validation"><a href="#N-fold-Cross-Validation" class="headerlink" title="N-fold Cross Validation"></a>N-fold Cross Validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png" alt=""></p>
+<p>这篇文献采用了多个邻域结构，当前解包含了多个车场的车辆路径信息，邻域结构之间不同处在于参与路径交换的车场数以及子路径的最大长度不同（由于MDVRPTW存在多个车场，用于路径交换的两条路径既可以从同一车场内选取，也可以分别从不同的车场中选取）。但是这种交换子路径的操作很可能生成两个不可行解。</p>
+<blockquote>
+<p>Local Search过程</p>
+<p>Local Search过程将对Shaking过程中生成的两条新的路径分别进行局部搜索，并求得各自的局部最优解，采用的算子有2-opt、Or-opt和3-opt。</p>
+</blockquote>
+<p>可以看到作者的表述意思是对某一条路径进行的局部搜索，类似于遗传算法中的单亲遗传，但是本质上也是通过2-opt等算子产生了新的邻域，再进行邻域搜索。</p>
+<section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>[1]王征,张俊,王旭坪.多车场带时间窗车辆路径问题的变邻域搜索算法[J].中国管理科学,2011,19(02):99-109.
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>智能算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>精确算法相关学习资源</title>
+    <url>/2021/03/14/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<h2 id="Branch-and-Bound"><a href="#Branch-and-Bound" class="headerlink" title="Branch and Bound"></a>Branch and Bound</h2><ol>
+<li><p><a href="https://mp.weixin.qq.com/s/lUSaoZKJH1GPBwfuB2H_vQ">干货 | 10分钟带你全面掌握branch and bound（分支定界）算法-概念篇</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/aoGhu25h80xxUNouLvm72A">干货 | 10分钟教你用branch and bound（分支定界）算法求解TSP旅行商问题</a></p>
+</li>
+<li><p><a href="https://mp.weixin.qq.com/s/CaHBY8dt1FzHZdNVP3noMw">干货 | 10分钟搞懂branch and bound算法的代码实现附带java代码</a></p>
+</li>
+<li><p><a href="https://www.youtube.com/watch?v=vx2LNKx48vY&amp;ab_channel=StanfordUniversitySchoolofEngineering">Marco Lübbecke - Column Generation, Dantzig-Wolfe, Branch-Price-and-Cut</a></p>
+</li>
+</ol>
+<ol>
+<li><a href="https://mp.weixin.qq.com/s/tF-ayzjpZfuZvelvItuecw">优化| 手把手教你用Python调用Gurobi求解VRPTW</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>运筹学</category>
+      </categories>
+      <tags>
+        <tag>精确算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习计划</title>
+    <url>/2019/08/05/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="444ccec27a2c9c0c18b3d8a0f2ef5b75417ab9a0942f05a8d61ed7e6f60091d2">120b185a11a8d2a31df3379a03631b4708c94278111704cbe2fe0effc71e0dd58771f3e8e2bb1835ede63a945b530a3acceaca065e05f5488ff282ceddfdab8c3851c9a215d4ad7bbf3b8d9504d73d339f8d44b2166daef2779c56a816264464cf6e6dd2a47784a080ddb359e97d6908602ec4f848ecb3a54774e046cb8b72e0b5d6b597cdbfa4b217dc61a836273eac8cdbf929beb879ad83ea3dfd4c24598be34aac750f1744fbfac217f0ae55006eabf2a7b893fccb8259a7f0891a4123176064d47d0f8d518e5a4e885934a367804e60ed142ebd80d0794d7eda08d72d46c2cdf7f981329d6f1569c921e4f17fe303caeaac43c6a2653f921decd3c2cfe35edaa54d86f8c2ea66f7e70a865d11630a99d0d26ed15af40b095447ca9bdbbbfffa1419490f373c127844c3c6e7d4c0d073cca34d5fbf3e7b6877ca4a0348b56835f3c00b5ae7a0ec45baac8667427623e5d7f1d517390ef81e431d992d754a55fa1ea60962955f328d4d44b352481c375b1b1f0b644d57d75156107e62dd28cac692f2025bf04f30f646887688679ff03f0cb9fa04bf04659c1ce96e999b5c43a1a4dafd1f0dae36e24ab4a4725f39e037fad34b65aa254322bf8159b71a1f95fe50956e293a24e6e0d563a30a75877d55ef1ee506332ad221b93356740ca9453a6d26a8229b44b29deaad1a68d97411ccf0bbf657d0c491597f9b626bb877393fbf59d414d4259ea5cf4525f65f3d727eb6ba1aaae44d02dc8d56c0432ad6f802081d0a3c2e51682082b6cdc337aa365ccab37da2dc1d19fbe15e67f53e984f7b204cb11d5f8608e8191953d6527b720825602ac18353656c6be8b6a743bfca3b81324680ce97ed9806cdef24ceacc795d837924fdd5b422e26468eab7d8bee3d2da1bd13a167bcdf2d1ca8cc87a4d877771103553f847aaff8e639699a74e8ded169689b896f459a43dbb5a59a9044e4122995f3bd51d5232ec3b60ab4f675e8980977280ea5df00e7a3a2bf5240</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码，查看文章</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>计划</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>李宏毅机器学习笔记（二）</title>
+    <url>/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
+<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a></p>
+<p>笔记导航：</p>
+<p><a href="https://guanmc.cn/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">李宏毅机器学习笔记（一）</a></p>
+<h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><p>例子：预测pokemon的CP值</p>
+<h2 id="Step-1-Model"><a href="#Step-1-Model" class="headerlink" title="Step 1 : Model"></a>Step 1 : Model</h2><p>假设为Liner model: $y=b+w\cdot x_{cp}$($w_i$: weight, $b$: bias)</p>
+<h2 id="Step-2-Goodness-of-Function"><a href="#Step-2-Goodness-of-Function" class="headerlink" title="Step 2: Goodness of Function"></a>Step 2: Goodness of Function</h2><p>首先准备好<em>training data</em>。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805142222.png" alt=""></p>
+<p>我们需要使用<em>Loss Function</em>衡量function的效果好坏。</p>
+<p>Loss Function $L$: </p>
+<script type="math/tex; mode=display">L(f) = \sum_{n=1}^{10}(\hat{y}^n-f(x_{cp}^n))^2</script><p>Input：a function，output：how bad it is</p>
+<h2 id="Step-3：Best-Function"><a href="#Step-3：Best-Function" class="headerlink" title="Step 3：Best Function"></a>Step 3：Best Function</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805142800.png" alt=""></p>
+<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a><em>Gradient Descent</em></h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143041.png" alt=""></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/1564986745800.png" alt=""></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/1564986761139.png" alt=""></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143839.png" alt=""></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805143859.png" alt=""></p>
+<p><em>Overfitting</em>就是model在training data上表现很好，在testing data上表现不好。</p>
+<p>应对Overfitting的方法：</p>
+<ol>
+<li>收集更多的数据。</li>
+<li>以前的模型有一些隐藏的因素没有考虑进去。所以我们需要重新设计一番。</li>
+</ol>
+<p><strong><em>Regularization</em></strong></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805144228.png" alt=""></p>
+<p>使用这个Loss Function找到的最好的function不止可以让$L$最小，同时还要是$w$很小的function。$w$很小的Function意味着Function是<em>smooth</em>（平滑）的。</p>
+<p>我们相信在多数的状况下，smoother function更像是正确的function。</p>
+<p>$\lambda$设置的大一些，找到的function就会越smooth。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805144427.png" alt=""></p>
+<p>从上图中可以发现，$\lambda$越大，Training Error越大。</p>
+<p>我们希望选到smooth function，但是不要too smooth。</p>
+<p>调整$\lambda$，获得最好的model</p>
+<p>做Regularization 的时候不需要考虑bias，bias不影响function的平滑程度。</p>
 ]]></content>
       <categories>
         <category>机器学习</category>
       </categories>
       <tags>
         <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的电脑软件</title>
+    <url>/2019/01/18/%E6%88%91%E7%9A%84%E7%94%B5%E8%84%91%E8%BD%AF%E4%BB%B6/</url>
+    <content><![CDATA[<p>记录下使用电脑过程中的优秀软件：</p>
+<h3 id="1-Bandzip"><a href="#1-Bandzip" class="headerlink" title="1 Bandzip"></a>1 Bandzip</h3><p>解压缩软件，<a href="http://www.bandisoft.com/">下载地址</a></p>
+<h3 id="2-QuickLook"><a href="#2-QuickLook" class="headerlink" title="2  QuickLook"></a>2  QuickLook</h3><p>快速预览文件，<a href="https://github.com/QL-Win/QuickLook">下载地址</a></p>
+<h3 id="3-Office-Tab"><a href="#3-Office-Tab" class="headerlink" title="3  Office Tab"></a>3  Office Tab</h3><p>实现MS office的多标签功能，<a href="https://pan.baidu.com/s/1WkwqgqByxhTqs9XCVrwYfQ">下载地址</a></p>
+<h3 id="4-Clover"><a href="#4-Clover" class="headerlink" title="4  Clover"></a>4  Clover</h3><p>实现电脑资源管理器多标签功能，<a href="http://cn.ejie.me/">下载地址</a></p>
+<h3 id="5-Snipaste"><a href="#5-Snipaste" class="headerlink" title="5  Snipaste"></a>5  Snipaste</h3><p>截图软件，带贴图功能，<a href="https://www.snipaste.com/">下载地址</a></p>
+<h3 id="6-KeePass"><a href="#6-KeePass" class="headerlink" title="6  KeePass"></a>6  KeePass</h3><p>密码管理软件，电脑端手机端多平台使用，<a href="https://keepass.info/">下载地址</a></p>
+<h3 id="7-Onequick"><a href="#7-Onequick" class="headerlink" title="7  Onequick"></a>7  Onequick</h3><p>热键快捷工具，屏幕边缘操作（调节音量，换歌等），<a href="https://onequick.org/">下载地址</a></p>
+<h3 id="8-Picgo"><a href="#8-Picgo" class="headerlink" title="8 Picgo"></a>8 Picgo</h3><p>开源工具，图片上传至图床，支持多家图床，<a href="https://github.com/Molunerfinn/PicGo">下载地址</a></p>
+<h3 id="9-Listary"><a href="#9-Listary" class="headerlink" title="9  Listary"></a>9  Listary</h3><p>快速文件检索工具，<a href="https://www.listary.com/download">下载地址</a></p>
+<h3 id="10-小黄条"><a href="#10-小黄条" class="headerlink" title="10  小黄条"></a>10  小黄条</h3><p>多平台同步To do List，<a href="http://www.6fcsj.com/">下载地址</a></p>
+<h3 id="11-f-lux"><a href="#11-f-lux" class="headerlink" title="11  f.lux"></a>11  f.lux</h3><p>护眼软件，<a href="https://justgetflux.com/">下载地址</a></p>
+<h3 id="12-licecap"><a href="#12-licecap" class="headerlink" title="12  licecap"></a>12  licecap</h3><p>gif图截图软件，<a href="https://www.cockos.com/licecap/">下载地址</a></p>
+<h3 id="13-spacesniffer"><a href="#13-spacesniffer" class="headerlink" title="13  spacesniffer"></a>13  spacesniffer</h3><p>磁盘分析工具，分析哪些文件占的空间大，<a href="http://www.uderzo.it/main_products/space_sniffer/">下载地址</a></p>
+<h3 id="14-PanDownload"><a href="#14-PanDownload" class="headerlink" title="14  PanDownload"></a>14  PanDownload</h3><p>百度网盘不限速多线程下载，<a href="http://pandownload.com/">下载地址</a></p>
+<h3 id="15-Ditto"><a href="#15-Ditto" class="headerlink" title="15  Ditto"></a>15  Ditto</h3><p>剪贴板工具，连续复制不影响，<a href="https://ditto-cp.sourceforge.io/">下载地址</a></p>
+<h3 id="16-Synergy"><a href="#16-Synergy" class="headerlink" title="16  Synergy"></a>16  Synergy</h3><p>完爆Logitech flow，一套键鼠控制多台设备，<a href="https://pan.baidu.com/s/1i_aZmJGCkn1YwU715IonUA">下载地址</a></p>
+<h3 id="17-TrafficMonitor"><a href="#17-TrafficMonitor" class="headerlink" title="17 TrafficMonitor"></a>17 TrafficMonitor</h3><p>任务栏上随时监测网速，CPU使用率，内存使用率</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190224161509.png" alt=""></p>
+<p><a href="https://github.com/zhongyang219/TrafficMonitor/releases">下载地址</a></p>
+<h3 id="18-QTranslate"><a href="#18-QTranslate" class="headerlink" title="18 QTranslate"></a>18 QTranslate</h3><p>翻译软件，一个<strong>完全免费</strong>，集合了巴比伦，百度，谷歌，微软，有道，DeepL，SDL等<strong>10个翻译引擎</strong>，支持<strong>71 种语言</strong>和<strong>OCR功能</strong>而<strong>体积不足1MB</strong>！这款软件在国外也算是老牌神器了。<a href="http://quest-app.appspot.com/download">下载地址</a></p>
+<h3 id="19-Inpaint"><a href="#19-Inpaint" class="headerlink" title="19 Inpaint"></a>19 Inpaint</h3><p>去水印神器，<a href="https://pan.baidu.com/s/1Fumyt55aqtorm9OXKFoPzQ">下载地址</a></p>
+<h3 id="20-Caesium"><a href="#20-Caesium" class="headerlink" title="20 Caesium"></a>20 Caesium</h3><p>图片无损压缩开源软件，<a href="https://saerasoft.com/caesium/">官网</a></p>
+]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -1926,6 +1887,31 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
+    <title>李宏毅机器学习笔记（三）</title>
+    <url>/2019/08/07/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<p> 课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
+<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
+<p>笔记导航：</p>
+<h1 id="Where-does-the-error-come-from"><a href="#Where-does-the-error-come-from" class="headerlink" title="Where does the error come from?"></a>Where does the error come from?</h1><p>bias、variance的区别：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png" alt=""></p>
+<blockquote>
+<ul>
+<li><strong>准：</strong>bias描述的是根据样本拟合出的模型的输出预测结果的期望<strong>与样本真实结果的差距</strong>，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得复杂化模型，增加模型的参数，但这样容易过拟合（overfitting），过拟合对应上图是high variance，点很分散。low bias对应就是点都打在靶心附近，所以瞄的是准的，但手不一定稳。</li>
+<li><strong>确：</strong>varience描述的是样本上训练出来的模型<strong>在测试集上的表现</strong>，要想在variance上表现好，low varience，就要简化模型，减少模型的参数，但这样容易欠拟合（unfitting），欠拟合对应上图是high bias，点偏离中心。low variance对应就是点都打的很集中，但不一定是靶心附近，手很稳，但是瞄的不准。</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/27068705">参考知乎回答</a></p>
+</blockquote>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png" alt=""></p>
+<h2 id="N-fold-Cross-Validation"><a href="#N-fold-Cross-Validation" class="headerlink" title="N-fold Cross Validation"></a>N-fold Cross Validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>训练计划</title>
     <url>/2019/09/02/%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -1948,71 +1934,52 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
-    <title>高级计量经济学（二）</title>
-    <url>/2019/08/05/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>笔记导航：</p>
-<h1 id="CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析"><a href="#CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析" class="headerlink" title="CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析"></a>CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析</h1><h2 id="2-1-Conditional-Probability-Distribution"><a href="#2-1-Conditional-Probability-Distribution" class="headerlink" title="2.1 Conditional Probability Distribution"></a>2.1 Conditional Probability Distribution</h2><p>假设$Z=\left(Y, X^{\prime}\right)^{\prime}$是一个随机向量，$E\left(Y^{2}\right)&lt;\infty$, $Y$是一个标量，$X$是一个$(k+1)\times1$的向量。 $f(x,y)$为联合概率密度分布（probability density function, PDF）,则对于$X$的边缘概率分布为：</p>
-<script type="math/tex; mode=display">
-f_{X}(x)=\int_{-\infty}^{\infty} f(x, y) d y</script><p>给定$X$,对于$Y$的条件概率密度分布为：</p>
-<script type="math/tex; mode=display">
-f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)}</script><p>则条件概率分布能够完整表示出$Y$依赖$X$的程度。根据$f_{Y | X}(y | x)$可以计算以下：</p>
+    <title>李宏毅机器学习笔记（一）</title>
+    <url>/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
+<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
+<p>笔记导航：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805112637.png" alt=""></p>
+<h2 id="Introduction-of-this-course"><a href="#Introduction-of-this-course" class="headerlink" title="Introduction of this course"></a>Introduction of this course</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805112818.png" alt=""></p>
+<blockquote>
+<p>What is Machine Learning?</p>
+<p>$\approx$ Looking for a Function <strong>From Data</strong></p>
+</blockquote>
+<p>机器学习三步骤：把大象塞进冰箱</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805114211.png" alt=""></p>
+<p><strong>Learning Map：</strong></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805145357.png" alt=""></p>
+<p><strong>Regression</strong>: The output of the target function $f$ is “scalar”.（e.g.预测PM2.5进行天气预报）</p>
+<p><strong>Classification</strong>:</p>
 <ul>
-<li>The conditional mean</li>
+<li>Binary Classification 二元分类 （e.g.Spam filtering）</li>
+<li>Multi-class Classification 多分类 （e.g.Document Classification）</li>
 </ul>
-<script type="math/tex; mode=display">
-\begin{aligned} E(Y | x) & \equiv E(Y | X=x) \\ &=\int_{-\infty}^{\infty} y f_{Y | X}(y | x) d y \end{aligned}</script><ul>
-<li>the conditional variance </li>
-</ul>
-<script type="math/tex; mode=display">
-\begin{aligned} \operatorname{var}(Y | x) & \equiv \operatorname{var}(Y | X=x) \\ &=\int_{-\infty}^{\infty}[y-E(Y | x)]^{2} f_{Y | X}(y | x) d y \\ &=E\left(Y^{2} | x\right)-[E(Y | x)]^{2} \end{aligned}</script><ul>
-<li>the conditional skewness （刻画Y分布是否对称）</li>
-</ul>
-<script type="math/tex; mode=display">
-S(Y | x)=\frac{E\left[(Y-E(Y | x))^{3} | x\right]}{[\operatorname{var}(Y | x)]^{3 / 2}}</script><ul>
-<li>the conditional kurtosis (刻画有没有heavy tail)</li>
-</ul>
-<script type="math/tex; mode=display">
-K(Y | x)=\frac{E\left[(Y-E(Y | x))^{4} | x\right]}{[\operatorname{var}(Y | x)]^{2}}</script><ul>
-<li>the $\alpha$-conditional quantile $Q(x,\alpha)$ (分位数):</li>
-</ul>
-<script type="math/tex; mode=display">
-P[Y \leq Q(X, \alpha) | X=x]=\alpha \in(0,1)</script><p>Note that when $\alpha=0.5, Q(x, 0.5)$is the conditional median, which is the cutoff point or threshold that divides the population into two equal halves, conditional on $X = x$.</p>
-<p>A mathematical model (i.e., an assumed functional form with a finite number of unknown parameters) for a conditional moment is called an econometric model for that conditional moment.</p>
-<h2 id="2-2-Regression-Analysis"><a href="#2-2-Regression-Analysis" class="headerlink" title="2.2 Regression Analysis"></a>2.2 Regression Analysis</h2><p><strong>Deffnition 2.1 [Regression Function]:</strong> The conditional mean $E(Y|X)$ is called a regression function of $Y$ on $X$:</p>
-<script type="math/tex; mode=display">
-E(y|X=x) = \int_{- \infty}^{\infty}yf_{Y|X}(y|x)dy = g(x)\text{(只是关于$x$的函数)}</script><p><strong>Lemma 2.1</strong> :$E[E(Y|X)=E(Y)]$</p>
-<p><strong>Definition 2.2[MSE]:</strong> Suppose function $g(X)$ is used to predict $Y$. Then the mean squared error of function $g(X)$ is defined as:</p>
-<script type="math/tex; mode=display">
-MSE(g)=E[Y-g(X)]^2</script>]]></content>
+<p><strong><em>Classification</em></strong>的Model分为Linear Model和Non-linear Model，Non-linear Model中最出名的就是Deep Learning。</p>
+<p>以上均为<strong><em>Supervised Learning</em></strong>，均需要大量的Training Data，<em>Training Data</em>可以告诉我们要找的那个function的Input与Output之间有什么样的关系(Function的output又常叫label)。</p>
+<p><em>Semi-supervised learning（半监督学习）</em>可以减少Training Data的用量。<em>Transfer Learning（迁移学习）</em>也可以减少Training Data的用量，数据可以与考虑的任务无关（可以是标记的或未标记的）。</p>
+<p><strong><em>Unsupervised Learning</em></strong>就是想让机器学到无师自通。例1：让机器看大量的文章，看机器是否可以学会词汇的意思，比如用向量表示词汇。例2：让机器去动物园看一大堆，看机器是否能在看过动物后学会自己创造动物。例3：机器在看过大量图片后是否能学会自己生成图片。</p>
+<p><em>Structured Learning</em>是我们希望机器能输出有结构性的东西。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805115404.png" alt=""></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190805115452.png" alt=""></p>
+<p><em>Reinforcement Learning（强化学习）</em>是我们不告诉机器正确答案，只告诉机器我们对它输出的评价，机器唯一知道的的就是它做的好与不好。更加符合人类真实学习的情景。Alpha Go is supervised learning + reinforcement learning.</p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高级计量经济学（三）</title>
+    <url>/2019/08/07/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>计量经济学</category>
       </categories>
       <tags>
         <tag>计量经济学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>精确算法相关学习资源</title>
-    <url>/2021/03/14/%E7%B2%BE%E7%A1%AE%E7%AE%97%E6%B3%95%E7%9B%B8%E5%85%B3%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90/</url>
-    <content><![CDATA[<h2 id="Branch-and-Bound"><a href="#Branch-and-Bound" class="headerlink" title="Branch and Bound"></a>Branch and Bound</h2><ol>
-<li><p><a href="https://mp.weixin.qq.com/s/lUSaoZKJH1GPBwfuB2H_vQ">干货 | 10分钟带你全面掌握branch and bound（分支定界）算法-概念篇</a></p>
-</li>
-<li><p><a href="https://mp.weixin.qq.com/s/aoGhu25h80xxUNouLvm72A">干货 | 10分钟教你用branch and bound（分支定界）算法求解TSP旅行商问题</a></p>
-</li>
-<li><p><a href="https://mp.weixin.qq.com/s/CaHBY8dt1FzHZdNVP3noMw">干货 | 10分钟搞懂branch and bound算法的代码实现附带java代码</a></p>
-</li>
-<li><p><a href="https://www.youtube.com/watch?v=vx2LNKx48vY&amp;ab_channel=StanfordUniversitySchoolofEngineering">Marco Lübbecke - Column Generation, Dantzig-Wolfe, Branch-Price-and-Cut</a></p>
-</li>
-</ol>
-<ol>
-<li><a href="https://mp.weixin.qq.com/s/tF-ayzjpZfuZvelvItuecw">优化| 手把手教你用Python调用Gurobi求解VRPTW</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>运筹学</category>
-      </categories>
-      <tags>
-        <tag>精确算法</tag>
       </tags>
   </entry>
   <entry>
@@ -2107,9 +2074,42 @@ MSE(g)=E[Y-g(X)]^2</script>]]></content>
       </tags>
   </entry>
   <entry>
-    <title>高级计量经济学（三）</title>
-    <url>/2019/08/07/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[]]></content>
+    <title>高级计量经济学（二）</title>
+    <url>/2019/08/05/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>笔记导航：</p>
+<h1 id="CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析"><a href="#CHAPTER-2-GENERAL-REGRESSION-ANALYSIS-一般回归分析" class="headerlink" title="CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析"></a>CHAPTER 2 GENERAL REGRESSION ANALYSIS 一般回归分析</h1><h2 id="2-1-Conditional-Probability-Distribution"><a href="#2-1-Conditional-Probability-Distribution" class="headerlink" title="2.1 Conditional Probability Distribution"></a>2.1 Conditional Probability Distribution</h2><p>假设$Z=\left(Y, X^{\prime}\right)^{\prime}$是一个随机向量，$E\left(Y^{2}\right)&lt;\infty$, $Y$是一个标量，$X$是一个$(k+1)\times1$的向量。 $f(x,y)$为联合概率密度分布（probability density function, PDF）,则对于$X$的边缘概率分布为：</p>
+<script type="math/tex; mode=display">
+f_{X}(x)=\int_{-\infty}^{\infty} f(x, y) d y</script><p>给定$X$,对于$Y$的条件概率密度分布为：</p>
+<script type="math/tex; mode=display">
+f_{Y | X}(y | x)=\frac{f(x, y)}{f_{X}(x)}</script><p>则条件概率分布能够完整表示出$Y$依赖$X$的程度。根据$f_{Y | X}(y | x)$可以计算以下：</p>
+<ul>
+<li>The conditional mean</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned} E(Y | x) & \equiv E(Y | X=x) \\ &=\int_{-\infty}^{\infty} y f_{Y | X}(y | x) d y \end{aligned}</script><ul>
+<li>the conditional variance </li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{aligned} \operatorname{var}(Y | x) & \equiv \operatorname{var}(Y | X=x) \\ &=\int_{-\infty}^{\infty}[y-E(Y | x)]^{2} f_{Y | X}(y | x) d y \\ &=E\left(Y^{2} | x\right)-[E(Y | x)]^{2} \end{aligned}</script><ul>
+<li>the conditional skewness （刻画Y分布是否对称）</li>
+</ul>
+<script type="math/tex; mode=display">
+S(Y | x)=\frac{E\left[(Y-E(Y | x))^{3} | x\right]}{[\operatorname{var}(Y | x)]^{3 / 2}}</script><ul>
+<li>the conditional kurtosis (刻画有没有heavy tail)</li>
+</ul>
+<script type="math/tex; mode=display">
+K(Y | x)=\frac{E\left[(Y-E(Y | x))^{4} | x\right]}{[\operatorname{var}(Y | x)]^{2}}</script><ul>
+<li>the $\alpha$-conditional quantile $Q(x,\alpha)$ (分位数):</li>
+</ul>
+<script type="math/tex; mode=display">
+P[Y \leq Q(X, \alpha) | X=x]=\alpha \in(0,1)</script><p>Note that when $\alpha=0.5, Q(x, 0.5)$is the conditional median, which is the cutoff point or threshold that divides the population into two equal halves, conditional on $X = x$.</p>
+<p>A mathematical model (i.e., an assumed functional form with a finite number of unknown parameters) for a conditional moment is called an econometric model for that conditional moment.</p>
+<h2 id="2-2-Regression-Analysis"><a href="#2-2-Regression-Analysis" class="headerlink" title="2.2 Regression Analysis"></a>2.2 Regression Analysis</h2><p><strong>Deffnition 2.1 [Regression Function]:</strong> The conditional mean $E(Y|X)$ is called a regression function of $Y$ on $X$:</p>
+<script type="math/tex; mode=display">
+E(y|X=x) = \int_{- \infty}^{\infty}yf_{Y|X}(y|x)dy = g(x)\text{(只是关于$x$的函数)}</script><p><strong>Lemma 2.1</strong> :$E[E(Y|X)=E(Y)]$</p>
+<p><strong>Definition 2.2[MSE]:</strong> Suppose function $g(X)$ is used to predict $Y$. Then the mean squared error of function $g(X)$ is defined as:</p>
+<script type="math/tex; mode=display">
+MSE(g)=E[Y-g(X)]^2</script>]]></content>
       <categories>
         <category>计量经济学</category>
       </categories>
