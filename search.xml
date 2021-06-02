@@ -1,147 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>DID</title>
-    <url>/2019/08/27/DID/</url>
-    <content><![CDATA[<blockquote>
-<p>双重差分法，英文名Differences-in-Differences，别名“倍差法”，小名“差中差”。作为政策效应评估方法中的一大利器，双重差分法受到越来越多人的青睐，概括起来有如下几个方面的原因：（1）可以很大程度上避免内生性问题的困扰：政策相对于微观经济主体而言一般是外生的，因而不存在逆向因果问题。此外，使用固定效应估计一定程度上也缓解了遗漏变量偏误问题。（2）传统方法下评估政策效应，主要是通过设置一个政策发生与否的虚拟变量然后进行回归，相较而言，双重差分法的模型设置更加科学，能更加准确地估计出政策效应。（3）双重差分法的原理和模型设置很简单，容易理解和运用，并不像空间计量等方法一样让人望而生畏。（4）尽管<strong>双重差分法估计的本质就是面板数据固定效应估计</strong>，但是DID听上去或多或少也要比OLS、FE之流更加“时尚高端”，因而DID的使用一定程度上可以满足“虚荣心”。<br>作者：经管联盟链接：<a href="https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。">https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</a></p>
-</blockquote>
-<p> <a href="https://zhuanlan.zhihu.com/p/48952513">参考链接(作者：经管联盟)</a></p>
-<p>Ashenfelter 和 Card（1985）首次引入 DID 模型来解决此问题，继而该模型的应用开始得到越来越多的重视。</p>
-<p>DID仅适用于面板数据，基准DID模型设置如下：</p>
-<script type="math/tex; mode=display">
-Y_it = \alpha_0+\alpha_1du+\alpha_2dt+\alpha_3du \cdot dt+\epsilon_{it} \tag{1}</script><p>其中，$du$为分组虚拟变量，若个体$i$受政策实施的影响，则个体i属于处理组，对应的$du$取值为1，若个体$i$不受政策实施的影响，则个体$i$属于对照组，对应的$du$取值为0。$dt$为政策实施虚拟变量，政策实施之前$dt$取值为0，政策实施之后$dt$取值为1。$du·dt$为分组虚拟变量与政策实施虚拟变量的交互项，其系数$\alpha_3$就反映了政策实施的净效应。</p>
-<p>从DID的模型设置来看，要想使用DID必须满足以下两个关键条件：一是必须存在一个具有试点性质的政策冲击，这样才能找到处理组和对照组，那种一次性全铺开的政策并不适用于DID分析；二是必须具有一个相应的至少两年（政策实施前后各一年）的面板数据集。</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092342.png" alt=""></p>
-<p>双重差分法的基本思想就是通过对政策实施前后对照组和处理组之间差异的比较构造出反映政策效果的双重差分统计量，将该思想与上表的内容转化为简单的模型（1），这个时候只需要关注模型（1）中交互项的系数，就得到了想要的DID下的政策净效应。</p>
-<p>更进一步地，DID的思想与上表的内容可以通过下图来体现：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092500.png" alt=""></p>
-<p>图中红色虚线表示的是假设政策并未实施时处理组的发展趋势。事实上，该图也反映出了DID最为重要和关键的前提条件：<strong>共同趋势（Common Trends）</strong>，也就是说，处理组和对照组在政策实施之前必须具有相同的发展趋势。DID的使用不需要什么政策随机以及分组随机，只要求CT假设，因此用DID做论文时必须对该假设进行验证，至于具体怎么验证，后面再说。</p>
-<p>很多时候，大家在看使用DID的文献时，会发现别人的基准模型和模型（1）并不完全一致，别人的模型如下：</p>
-<script type="math/tex; mode=display">
-Y_{i t}=\alpha_{0}+\alpha_{1} d u \cdot d t+\lambda_{i}+v_{t}+\varepsilon_{i t} \tag{2}</script><p>别人的模型里只有交互项$du·dt$，而缺失了$du$和$dt$，是哪里出问题了么？并没有，模型（1）和（2）本质还是一样的，且模型（2）在多年面板数据集里更为常见。</p>
-<p>模型（2）中，$\lambda_i$为个体固定效应，更为精确地反映了个体特征，替代了原来粗糙的分组变量$du$；</p>
-<p>$v_t$为时间固定效应，更为精确地反映了时间特征，替代了原来粗糙的政策实施变量$dt$。因而，$du$和$dt$并未真正从模型中消失，只是换了个马甲。模型（2）事实上就是一个<strong>双向固定效应模型</strong>，这也是为什么DID方法一定程度上可以减轻遗漏变量偏误的原因（主要是消除那些不可观测的非时变因素，为了使估计结果尽可能准确，模型中还是要加入控制变量）。</p>
-<p>在介绍完DID的基本思想和模型设定后，现在要开始强调同等重要的内容，那就是<strong>稳健性检验</strong>——必须证实所有效应确实是由政策实施所导致的。很多人对这一点并不重视，认为DID很简单，随便跑几个回归就可以写出一篇大作了。关于DID的稳健性检验，主要表现在两个方面：</p>
-<p>（1）<strong>共同趋势的检验</strong>。这个假设是比较难验证的，看文献时会发现别人经常没有做该检验，比如，很多人做DID时只有政策实施前后各一年的数据，这样的的话根本无法验证政策实施前的趋势问题。不过，如果是多年的面板数据，可以通过画图来检验CT假设，之前推荐的那篇AER文章就画了大量的图形对此进行了说明。</p>
-<p>（2）即便处理组和对照组在政策实施之前的趋势相同，仍要担心是否同时发生了其他可能影响趋势变化的政策，也就是说，政策干预时点之后处理组和对照组趋势的变化，可能并不真正是由该政策导致的，而是同时期其他的政策导致的。这一问题可以概括为处理变量对产出变量作用机制的排他性，对此，可以进行如下的检验：</p>
-<p>A. 安慰剂检验，即通过虚构处理组进行回归，具体可以：a）选取政策实施之前的年份进行处理，比如原来的政策发生在2008年，研究区间为2007-2009年，这时可以将研究区间前移至2005-2007年，并假定政策实施年份为2006年，然后进行回归；b）选取已知的并不受政策实施影响的群组作为处理组进行回归。如果不同虚构方式下的DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。</p>
-<p>B. 可以利用不同的对照组进行回归，看研究结论是否依然一致。</p>
-<p>C. 可以选取一个完全不受政策干预影响的因素作为被解释变量进行回归，如果DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。等等。</p>
-<p>例子：<a href="https://mp.weixin.qq.com/s?__biz=MjM5OTMwODM1Mw==&amp;mid=2448065404&amp;idx=1&amp;sn=ab5cebd5ec535fb7924acd90d595120f&amp;chksm=b3235e528454d7440f11be82406612e7c60b3340adde7d03a6c70e09ca35186cbf86498ef126&amp;scene=7&amp;key=a55d3882c60fb4f8615fc2308f60298f7e7b29da982ddc28b4dd5045666417f450521d00771332d3a6f39677208c994e24e6e13adab294e57f7d5321b24373d1c1aefdaf6ed502a4aad8c75551719b4b&amp;ascene=0&amp;uin=NDQxMzAxODU1&amp;devicetype=Windows+10&amp;version=62070041&amp;lang=zh_CN&amp;pass_ticket=C8pJsHOu7hWDLdYm9ybAytVnspjaXLqqAV0nMWiqVilRYF1TaSsrVahMzzDjPCUc">参考链接</a></p>
-<p>我们假设浙江省政府仅在杭州、嘉兴与湖州（简称杭嘉湖）三个地区的各乡镇实行了一项经济改革试验，而现在的任务是对改革的绩效进行评价。假设横向比较的结果是，杭嘉湖地区在改革后的绩效高于没有进行改革的浙江非杭嘉湖地区的绩效，那么我们能否认为这就是改革取得成功的证据呢？答案是不确定的，其理由是：杭嘉湖地区与非杭嘉湖地区若在改革之前就存在绩效差异，则改革后两个地区的绩效差异很可能继承了改革之前的绩效差异。因此，仅仅对改革后的绩效进行横向比较，无法准确评估杭嘉湖地区改革的净效应。</p>
-<p>现在进行纵向比较。如果杭嘉湖地区改革前后的绩效出现非常明显的变化，那么我们能否认为这就是改革取得成功的证据呢？若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期也发生了相同幅度的变化，则答案很可能是否定的，理由是：既然在非杭嘉湖地区没有实行改革，那么这些地区发生的同等变化就应该与改革无关。我们可以认为，杭嘉湖地区与非杭嘉湖地区发生的同等变化是源于全国宏观经济形势与浙江整体经济形势的变化。</p>
-<p>若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期发生了较小的变化，则对上述问题的回答就是肯定的 。当然，在进行纵向比较时，我们必须施加共同趋势假定，即：如果杭嘉湖地区未实行改革试验，那么也会发生与非杭嘉湖地区相同的较小变化。可以认为， 浙江非杭嘉湖地区发生的较小变化是源于全国宏观经济形势与浙江整体经济形势的变化， 而杭嘉湖地区之所以有较大变化，是因为还存在额外的改革绩效。</p>
-<p>实行改革的杭嘉湖地区就是所谓的处理组，而实行的改革就是实施的处理。相应的， 未实行改革的非杭嘉湖地区就是对照组。在对处理组实施处理的前后，对照组亦会发生或大或小的变化。如果在评估改革绩效即评估处理效应时，没有将处理组与对照组的变化进行同期对照，那么我们所发现的处理效应很可能存在偏差。在本文的例子中，杭嘉湖地区改革前后的绩效变化具有三个来源：全国宏观经济形势变化、浙江整体经济形势变化、改革绩效。如果没有与非杭嘉湖地区的变化进行同期对照，那么我们评估的改革绩效就混杂了全国宏观经济形势与浙江整体经济形势变化的影响，因此很可能存在较大偏差。</p>
-<p>鉴于非杭嘉湖地区作为对照组，其绩效变化可以代表全国宏观经济形势与浙江整体经济形势变化的影响，一个简单有效的纠偏方法就是：通过对杭嘉湖地区的绩效变化与非杭嘉湖地区的绩效变化进行比较，将全国宏观经济形势与浙江整体经济形势变化的影响从杭嘉湖地区的绩效变化中一并剔除，进而获得净的处理效应，而这正是双重差分模型的基本逻辑。</p>
-<p>建立 DID 模型首先需设立两个虚拟变量：</p>
-<script type="math/tex; mode=display">
-D_{1}=\left\{\begin{array}{l}{1 \qquad \text{浙江杭嘉湖地区}} \\ {0\qquad \text{浙江非杭嘉湖地区}}\end{array}\right.
-\qquad D_{2}=\left\{\begin{array}{l}{1 \qquad \text{改革后}} \\ {0\qquad \text{改革前}}\end{array}\right.</script><p>然后建立模型：</p>
-<script type="math/tex; mode=display">
-Score_{i}=\alpha_{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}</script><p>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
-<p>在所有参数中，a2 与 a3 是最为关键的。为了进一步理解这两个参数的含义，接下来我们对虚拟变量赋值，有：</p>
-<p>1） 对于浙江非杭嘉湖地区（D1=0）：</p>
-<p>改革后（D2=1）的期望绩效为：a0  +a2 ；</p>
-<p>改革前（D2=0）的期望绩效为：a0 。</p>
-<p>因此，浙江非杭嘉湖地区改革前后的绩效差异为：（a0  +a2）-a0 =a2。a2 就是共同的趋势，即全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。</p>
-<p>2） 对于浙江杭嘉湖地区（D1=1）：</p>
-<p>改革后（D2=1）的期望绩效为：a0 +a1 +a2 + a3 ；</p>
-<p>改革前（D2=0）的期望绩效为：a0 +a1 。</p>
-<p>因此，杭嘉湖地区改革前后的绩效差异为： a0  +a1 +a2  + a3）-（a0  +a1）=a2  + a3 。杭嘉湖地区的绩效变化是全国宏观经济形势变化影响、浙江整体经济形势变化影响与改革绩效这三者之和，而a2 是全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。因此，a3 就是杭嘉湖地区的改革绩效。</p>
-<p>杭嘉湖地区改革前后的绩效差异（a2  + a3）与同期非杭嘉湖地区绩效差异（a2）的差为 a3 。因此，改革绩效a3 属于差异的差异，从而这就解释了DID（Difference-In-Difference）称谓的来源。</p>
-<p>上述虚拟变量模型能够被拓展：一方面，若杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异可以用变量 x 来加以解释，则变量 x 可作为解释变量进入模型、进而改善模型估计的精度；另一方面，若 x 的差异还会造成共同趋势假设被违背，则需引入交互项 x·D2， 以控制趋势差异的影响。</p>
-]]></content>
-      <categories>
-        <category>计量经济学</category>
-      </categories>
-      <tags>
-        <tag>计量经济学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Latex使用问题</title>
-    <url>/2021/03/06/Latex%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="1-使用hyperref-package后引用section"><a href="#1-使用hyperref-package后引用section" class="headerlink" title="1. 使用hyperref package后引用section"></a>1. 使用hyperref package后引用section</h2><p>使用hyperref package之后引用图片、表格还是使用命令<code>\ref&#123;fig_label&#125;</code>，但是引用section使用<code>\ref</code>会没有作用，应该使用<code>\hyperref[model]&#123;Section 2&#125;</code>其中model是section label的名称，Section 2是显示的文字。效果如下：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306160939220.png" alt="image-20210306160939220"></p>
-]]></content>
-      <categories>
-        <category>Latex</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Gurobi更新License</title>
-    <url>/2021/03/19/Gurobi%E6%9B%B4%E6%96%B0License/</url>
-    <content><![CDATA[<ol>
-<li><p>官网：<a href="https://www.gurobi.com">https://www.gurobi.com</a></p>
-</li>
-<li><p>申请License：（download&amp;licence-&gt;academic license）</p>
-</li>
-<li><p>复制 <code>grbgetkey xxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
-</li>
-<li>如果电脑上Gurobi不是最新版，则卸载并装上最新版本（download&amp;licence-&gt;download center-&gt;Gurobi Optimizer）</li>
-<li>在CMD中运行3中代码，保存到默认位置</li>
-<li>完成</li>
-</ol>
-]]></content>
-      <categories>
-        <category>精确算法</category>
-      </categories>
-      <tags>
-        <tag>Gurobi</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hexo博客相关</title>
-    <url>/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</url>
-    <content><![CDATA[<h3 id="1-主题Fluid"><a href="#1-主题Fluid" class="headerlink" title="1. 主题Fluid"></a>1. 主题Fluid</h3><p>从Next更换到Fluid，<a href="https://github.com/fluid-dev/hexo-theme-fluid">主题链接</a></p>
-<h3 id="2-添加评论系统"><a href="#2-添加评论系统" class="headerlink" title="2. 添加评论系统"></a>2. 添加评论系统</h3><p>评论系统选择Valine，<a href="https://zhuanlan.zhihu.com/p/152369801">参考链接</a></p>
-<p><a href="https://console.leancloud.cn/apps">Valine管理页面</a></p>
-<h3 id="3-增加网站运行时长"><a href="#3-增加网站运行时长" class="headerlink" title="3.增加网站运行时长"></a>3.增加网站运行时长</h3><p><a href="https://hexo.fluid-dev.com/posts/fluid-footer-custom/">参考链接</a></p>
-<h3 id="4-将自己制作的html文件添加到博客"><a href="#4-将自己制作的html文件添加到博客" class="headerlink" title="4.将自己制作的html文件添加到博客"></a>4.将自己制作的html文件添加到博客</h3><p>在本地丢到/theme/主题名/source/中即可，就可避免其被hexo渲染</p>
-<p>部署之后在博客网址/html名称即可访问</p>
-]]></content>
-      <categories>
-        <category>blog</category>
-      </categories>
-      <tags>
-        <tag>bolg</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Inventory management based on target-oriented robust optimization</title>
-    <url>/2018/06/09/Inventory%20management%20based%20on%20target-oriented/</url>
-    <content><![CDATA[<p><strong>Management Science</strong><br>Author: Yun Fong Lim, SMU; Chen Wang,SMU</p>
-<hr>
-<h4 id="Absract"><a href="#Absract" class="headerlink" title="Absract"></a>Absract</h4><p>我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总成本比预先设定的成本目标更低。我们证明了一个静态决策规则是最优的，降低了计算负担。通过调整成本目标，结果策略能在预期成本和相关成本之间取得一个平衡。数值实验表明，尽管只利用了有限的需求信息，提出的方法与基于动态规划的传统方法的性能相当。更重要的是，如果需求分布不明确，我们的方法要明显优于传统的方法。通过两个行业的案例研究验证了我们的方法。</p>
-<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h4><p>本文研究了一个多商品、多周期，具有固定订货成本和订货提前期的库存管理问题。动态规划是这个领域所用的主要方法，动态规划的局限性是当变量数增多时，将导致维数灾难。另一个主要方法是随机规划，随机规划只能解决很短的计划问题。鲁棒优化的研究近年增长了非常多，鲁棒优化方法有两个优点：1.只需要使用一部分潜在的不确定参数。2.鲁棒优化可以保存优化问题的可追踪性。</p>
-<h4 id="2-Problem-description-and-notation"><a href="#2-Problem-description-and-notation" class="headerlink" title="2. Problem description and notation"></a>2. Problem description and notation</h4><p><strong>Notation</strong></p>
-<hr>
-<p>$P$：商品数量,$\mathcal P=\\{1,2,3,…,P\\}$<br>$T$：规划范围内的周期数，$\mathcal T=\\{1,2,3,…,T\\}$<br>$l(i)$：商品$i$的订货提前期(以周期为单位)，常量<br>$h_t^i$：每单位的商品$i$在$t$周期到$t+1$的库存持有成本<br>$b_t^i$：每单位的商品$i$在$t$周期到$t+1$的积压成本<br>$A_t^i$：商品$i$在$t$周期内的固定订购成本（每次订购）<br>$c_t^i$：商品$i$在$t$周期内的单位订购成本<br>$\widetilde{d}_t^i$：商品$i$在$t$周期内的需求support set $[\underline{d_t^i},\overline{d_t^i}]$<br>$d_t^i$：商品$i$在$t$周期内已实现的需求<br>$\mathbf{\widetilde{d}}_t^i$：商品$i$从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t^i:=\bigl(\widetilde{d}_1^i,…,\widetilde{d}_t^i\bigr)\in \mathbb{R^t}$<br>$\mathbf{\widetilde{d}}_t$：所有商品从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t:=\bigl(\widetilde{d}_t^1,…,\widetilde{d}_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$\mathbf{d}_t^i$：商品$i$从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t^i:=\bigl(d_1^i,…,d_t^i\bigr)\in \mathbb{R}^{t}$<br>$\mathbf{d_t}$：所有商品从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t:=\bigl(d_t^1,…,d_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$y_t^i$：$t$周期开始时商品$i$的现有库存水平<br>$x_t^i$：$t$周期开始时商品$i$的订购数量<br>$\mathbf{y}_t:=\bigl(y_t^1,…,y_t^P\bigr)\in \mathbb{R}^P$<br>$\mathbf{x}_t:=\bigl(x_t^1,…,x_t^P\bigr)\in \mathbb{R}^P$<br>$\overline{x}_t$：所有商品在$t$周期的最大订购数量<br>$\mathcal{N}_t$：$\mathbb{R}^{(t-1)\times P}$到$\mathbb R$的非预期映射函数</p>
-<hr>
-<p>假设仓库中有$P$种商品，计划周期共$T$个周期，在每个周期$t$内，以下的进程被重复执行：<br>1.$y_t^i$表示商品$i$在周期$t$的现有库存水平。基于这个库存水平，我们需要确定商品$i$在周期$t$开始时的订购批量（生产批量）$x_t^i$，这就会产生一个固定订购成本$A_t^i$和一个变动订购成本$c_t^ix_t^i$，$c_t^i$表示商品$i$的单位订购成本。在这个问题中，$x_t^i$是决策变量，$y_t^i$是因变量。<br>2.商品$i$的订货提前期设为$l(i)$。在$t-l(i)$时刻订购的商品将在$t$周期开始时到达。<br>3.每个商品$i$在周期$t$内都有随机需求$\widetilde{d}_t^i$，最终实现的需求为$d_t^i$。在$t$周期结束时库存水平变成$y_t^i+x_{t-l(i)}^i-d_t^i$。<br>4.如果$y_t^i+x_{t-l(i)}^i-d_t^i \geq 0$,剩余的库存将会转到下个周期$t+1$中，这将导致每单位$h_t^i$的持有成本(holding cost)。如果$y_t^i+x_{t-l(i)}^i-d_t^i &lt; 0$，未满足的需求将会积压到下个周期中，这将产生每单位$b_t^i$的积压成本(backlog cost)。（注意持有成本与积压成本的区别，积压成本是由未满足的需求造成的）</p>
-<blockquote>
-<p><strong>Inventory holding cost</strong>:Holding inventory causes two type of cost<br>1.Out-of-pocket  holding  cost represents  real  costs  of  holding  inventory  such  as  warehouse rental, handling, insurance and refrigeration costs.<br>2.Opportunity cost represents the opportunity cost of funds tied to inventory.  It is calculated by multiplying the value of inventory with an opportunity cost rate parameter r≥0.The value of inventory is assumed to be equal to the unit ordering cost c.<br><strong>Backlog cost</strong>:Backlogging means not meeting a certain demand immediately from stock. The customer is assumed to wait until the demand is eventually met after some delay.  To determine the level of this planned backlog, the firm needs to trade-off inventory holding and backlog costs.Figure 1 illustrates the evolution of inventory and backlog levels in a typical order cycle,also indicating the maximum inventory and backlog levels.<br>cited from: Frenk J B G, Kaya M, Pourghannad B. Generalizing the ordering cost and holding-backlog cost rate functions in EOQ-type inventory models[M]//Handbook of EOQ Inventory Problems. Springer, Boston, MA, 2014: 79-119.</p>
-</blockquote>
-<p>5.$t+1$周期开始时库存水平为$y_{t+1}^i=y_t^i+x_{t-l(i)}^i-d_t^i$。1-4重复操作。<br>值得注意的是，实际上补货决策$x_t^i$没有必要再计划期开始即第1个周期开始时就决定，为了达到更好的效果，这个决策可以延迟到$t$周期在确定$d_{t-1}$与$\mathbf{d}_{t-1}$的比例之后。因此，$x_t^i$是一个非预期函数(non-anticipative funtion)，由$x_t^i(\mathbf d_{t-1})$表示，只取决于到$t-1$周期为止的需求信息。<br>考虑到初始库存水平$y_1^i$，补货数量$x_{1-l(i)}^i,x_{2-l(i)}^i,…x_{t-l(i)}^i$，以及已实现需求$\mathbf d_t^i$，那么在$t+1$时期的库存水平函数为$y_{t+1}^i: \mathbb R \times \mathbb R^t \times \mathbb R^t \rightarrow \mathbb R$,</p>
-<script type="math/tex; mode=display">y_{t+1}^i=y_1^i+\sum_{k=1}^t x_{k-l(i)}^i -\sum_{k=1}^t d_k^i \tag{1}</script><p>对于任意的$y \in \mathbb R$，定义$(y)^+:=max\\{0,y\\},(y)^-:=max\\{0,-y\\}$。因此，$(y_{t+1}^i)^+$和$(y_{t+1}^i)^-$表示库存过剩和库存不足。考虑到补货数量$x_t^i$和库存水平$y_{t+1}^i$，商品$i$在周期$t$中产生的总成本为:$A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-$，当$x_t^i&gt;0$时$I(x_t^i)=1$,否则等于0.</p>
-<h4 id="3-A-stochastic-optimization-model"><a href="#3-A-stochastic-optimization-model" class="headerlink" title="3. A stochastic optimization model"></a>3. A stochastic optimization model</h4><p>考虑到随机需求$\widetilde {\mathbf d}_{t-1}$，我们的目标是确定订货策略$x_t^i \bigl(\widetilde {\mathbf d}_{t-1} \bigr),for\quad all \quad i\in P,t \in \mathcal T$，以最小化计划周期内的总成本。我们构建了一个多周期随机优化模型:</p>
-<script type="math/tex; mode=display">\text{min}\quad E\Biggl[\sum_{i\in \mathcal P}\sum_{t\in \mathcal T}A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-\Biggr]</script><p>$\text{s.t.}\quad \sum_{i\in \mathcal P}x_t^i \bigl(\widetilde{\mathbf d}_{t-1}\bigr)\leq \overline{x}_t, \qquad t\in \mathcal T;\tag{2a}$<br>$x_t^i\bigl(\widetilde{\mathbf d}_{t-1}\bigr) \geq 0, \qquad i \in \mathcal P,t\in \mathcal T;\tag{2b}$<br>$x_t^i \in \mathcal N_t,\qquad i \in \mathcal P,t\in \mathcal T;\tag{2c}$<br>$\mathcal N_t$是一个集合，包含了所有非预期的$\mathbb R^{(t-1)\times P}$到$\mathbb R$函数映射。约束(2a)表示订购总量限制。这个模型是一个比较难的优化模型，很难求解。<br>理论上，我们能用动态规划DP来解决这个模型。定义$\mathbb q_t^i:=(x_{t-l(i)},…,x_{t-1}^i)$为商品$i$在周期$t$中未完成的订购数量。当t=1时$\mathbb q_1^i:=(x_{1-l(i)},…,x_0^i)$，令$\mathbb q_t:=(\mathbb q_t^1,…,\mathbb q_t^P)$.记订购数量为$\mathbb x_t$,库存水平为$\mathbb y_t$，未完成订购数量为$\mathbb q_t$,已实现需求为$\mathbb d_{t-1}$,则t周期的期望成本为:</p>
-<script type="math/tex; mode=display">r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}_{\mathbb x_t \in \mathcal F_t}\biggl\\{\sum_{i \in \mathcal P }(A_t^iI(x_t^i)+c_t^ix_t^i)+E_{\widetilde{d}_t}\Biggl[\sum_{i \in \mathcal P}(h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-)\Biggr|\mathbb{\widetilde d}_{t-1}= \mathbb d_{t-1}\Biggr] \biggr\\}\tag{3}</script><p>令$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})$为从t周期开始一直到计划期结束的最优期望成本，则:</p>
-<script type="math/tex; mode=display">J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}_{\mathbb x \in \mathcal F_t}\biggr\\{r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})+E_{\mathbb {\widetilde d}_t}\biggr[J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})\biggr|\mathbb{\widetilde d}_{t-1}= \mathbb d_{t-1}\biggr]\biggr\\}\tag{4}</script><p>这里的$\mathcal F_t=\\{\mathbb x_t|x_t^i \geq 0, i \in \mathcal P,\sum_{i \in \mathcal P}x_t^i \leq \overline x_t\\}$,边界条件是$J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})=0$,对于任意的$\mathbb y_{t+1},\mathbb q_{t+1},\mathbb d_{t}$。<br>特别的，当$l(i)=0$时，<br>$J_t(\mathbb y_t)=\text{min}_{\mathbb x \in \mathcal F_t}\\{r_t(\mathbb x_t,\mathbb y_t)+E_{(\widetilde{d}_t^1,…,\widetilde{d}_t^P)}[J_{t+1}(\mathbb y_{t+1})]\\}\tag{5}$<br>此时边界条件为$J_{T+1}(\mathbb y_{T+1})=0$，对任意的$\mathbb y_{T+1}$。<br>令$\mathbb x_t^<em>$表示问题(4)在t周期的最优决策，则整个计划过程的决策可表示为$\\{\mathbb x_1^</em>,…,\mathbb x_T^*\\}$，我们称这个为DP策略。然而问题(4)是很难解的，因为在实际中它有很多的状态空间。</p>
-<h4 id="4-A-target-oriented-robust-optimization-approach"><a href="#4-A-target-oriented-robust-optimization-approach" class="headerlink" title="4. A target-oriented robust optimization approach"></a>4. A target-oriented robust optimization approach</h4>]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-        <tag>inventory</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Column Generation</title>
     <url>/2019/12/26/Column%20generation/</url>
     <content><![CDATA[<p>这篇博客主要介绍列生成的原理以及应用到VRPTW的实例</p>
@@ -208,44 +67,144 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Matlab函数记录</title>
-    <url>/2019/02/18/Matlab%E5%87%BD%E6%95%B0%E8%AE%B0%E5%BD%95/</url>
-    <content><![CDATA[<h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
-<p>randsample的命令格式：</p>
-<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></div></td></tr></table></figure>
-<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
-<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
-<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
+    <title>DID</title>
+    <url>/2019/08/27/DID/</url>
+    <content><![CDATA[<blockquote>
+<p>双重差分法，英文名Differences-in-Differences，别名“倍差法”，小名“差中差”。作为政策效应评估方法中的一大利器，双重差分法受到越来越多人的青睐，概括起来有如下几个方面的原因：（1）可以很大程度上避免内生性问题的困扰：政策相对于微观经济主体而言一般是外生的，因而不存在逆向因果问题。此外，使用固定效应估计一定程度上也缓解了遗漏变量偏误问题。（2）传统方法下评估政策效应，主要是通过设置一个政策发生与否的虚拟变量然后进行回归，相较而言，双重差分法的模型设置更加科学，能更加准确地估计出政策效应。（3）双重差分法的原理和模型设置很简单，容易理解和运用，并不像空间计量等方法一样让人望而生畏。（4）尽管<strong>双重差分法估计的本质就是面板数据固定效应估计</strong>，但是DID听上去或多或少也要比OLS、FE之流更加“时尚高端”，因而DID的使用一定程度上可以满足“虚荣心”。<br>作者：经管联盟链接：<a href="https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。">https://zhuanlan.zhihu.com/p/48952513来源：知乎著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</a></p>
+</blockquote>
+<p> <a href="https://zhuanlan.zhihu.com/p/48952513">参考链接(作者：经管联盟)</a></p>
+<p>Ashenfelter 和 Card（1985）首次引入 DID 模型来解决此问题，继而该模型的应用开始得到越来越多的重视。</p>
+<p>DID仅适用于面板数据，基准DID模型设置如下：</p>
+<script type="math/tex; mode=display">
+Y_it = \alpha_0+\alpha_1du+\alpha_2dt+\alpha_3du \cdot dt+\epsilon_{it} \tag{1}</script><p>其中，$du$为分组虚拟变量，若个体$i$受政策实施的影响，则个体i属于处理组，对应的$du$取值为1，若个体$i$不受政策实施的影响，则个体$i$属于对照组，对应的$du$取值为0。$dt$为政策实施虚拟变量，政策实施之前$dt$取值为0，政策实施之后$dt$取值为1。$du·dt$为分组虚拟变量与政策实施虚拟变量的交互项，其系数$\alpha_3$就反映了政策实施的净效应。</p>
+<p>从DID的模型设置来看，要想使用DID必须满足以下两个关键条件：一是必须存在一个具有试点性质的政策冲击，这样才能找到处理组和对照组，那种一次性全铺开的政策并不适用于DID分析；二是必须具有一个相应的至少两年（政策实施前后各一年）的面板数据集。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092342.png" alt=""></p>
+<p>双重差分法的基本思想就是通过对政策实施前后对照组和处理组之间差异的比较构造出反映政策效果的双重差分统计量，将该思想与上表的内容转化为简单的模型（1），这个时候只需要关注模型（1）中交互项的系数，就得到了想要的DID下的政策净效应。</p>
+<p>更进一步地，DID的思想与上表的内容可以通过下图来体现：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190827092500.png" alt=""></p>
+<p>图中红色虚线表示的是假设政策并未实施时处理组的发展趋势。事实上，该图也反映出了DID最为重要和关键的前提条件：<strong>共同趋势（Common Trends）</strong>，也就是说，处理组和对照组在政策实施之前必须具有相同的发展趋势。DID的使用不需要什么政策随机以及分组随机，只要求CT假设，因此用DID做论文时必须对该假设进行验证，至于具体怎么验证，后面再说。</p>
+<p>很多时候，大家在看使用DID的文献时，会发现别人的基准模型和模型（1）并不完全一致，别人的模型如下：</p>
+<script type="math/tex; mode=display">
+Y_{i t}=\alpha_{0}+\alpha_{1} d u \cdot d t+\lambda_{i}+v_{t}+\varepsilon_{i t} \tag{2}</script><p>别人的模型里只有交互项$du·dt$，而缺失了$du$和$dt$，是哪里出问题了么？并没有，模型（1）和（2）本质还是一样的，且模型（2）在多年面板数据集里更为常见。</p>
+<p>模型（2）中，$\lambda_i$为个体固定效应，更为精确地反映了个体特征，替代了原来粗糙的分组变量$du$；</p>
+<p>$v_t$为时间固定效应，更为精确地反映了时间特征，替代了原来粗糙的政策实施变量$dt$。因而，$du$和$dt$并未真正从模型中消失，只是换了个马甲。模型（2）事实上就是一个<strong>双向固定效应模型</strong>，这也是为什么DID方法一定程度上可以减轻遗漏变量偏误的原因（主要是消除那些不可观测的非时变因素，为了使估计结果尽可能准确，模型中还是要加入控制变量）。</p>
+<p>在介绍完DID的基本思想和模型设定后，现在要开始强调同等重要的内容，那就是<strong>稳健性检验</strong>——必须证实所有效应确实是由政策实施所导致的。很多人对这一点并不重视，认为DID很简单，随便跑几个回归就可以写出一篇大作了。关于DID的稳健性检验，主要表现在两个方面：</p>
+<p>（1）<strong>共同趋势的检验</strong>。这个假设是比较难验证的，看文献时会发现别人经常没有做该检验，比如，很多人做DID时只有政策实施前后各一年的数据，这样的的话根本无法验证政策实施前的趋势问题。不过，如果是多年的面板数据，可以通过画图来检验CT假设，之前推荐的那篇AER文章就画了大量的图形对此进行了说明。</p>
+<p>（2）即便处理组和对照组在政策实施之前的趋势相同，仍要担心是否同时发生了其他可能影响趋势变化的政策，也就是说，政策干预时点之后处理组和对照组趋势的变化，可能并不真正是由该政策导致的，而是同时期其他的政策导致的。这一问题可以概括为处理变量对产出变量作用机制的排他性，对此，可以进行如下的检验：</p>
+<p>A. 安慰剂检验，即通过虚构处理组进行回归，具体可以：a）选取政策实施之前的年份进行处理，比如原来的政策发生在2008年，研究区间为2007-2009年，这时可以将研究区间前移至2005-2007年，并假定政策实施年份为2006年，然后进行回归；b）选取已知的并不受政策实施影响的群组作为处理组进行回归。如果不同虚构方式下的DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。</p>
+<p>B. 可以利用不同的对照组进行回归，看研究结论是否依然一致。</p>
+<p>C. 可以选取一个完全不受政策干预影响的因素作为被解释变量进行回归，如果DID估计量的回归结果依然显著，说明原来的估计结果很有可能出现了偏误。等等。</p>
+<p>例子：<a href="https://mp.weixin.qq.com/s?__biz=MjM5OTMwODM1Mw==&amp;mid=2448065404&amp;idx=1&amp;sn=ab5cebd5ec535fb7924acd90d595120f&amp;chksm=b3235e528454d7440f11be82406612e7c60b3340adde7d03a6c70e09ca35186cbf86498ef126&amp;scene=7&amp;key=a55d3882c60fb4f8615fc2308f60298f7e7b29da982ddc28b4dd5045666417f450521d00771332d3a6f39677208c994e24e6e13adab294e57f7d5321b24373d1c1aefdaf6ed502a4aad8c75551719b4b&amp;ascene=0&amp;uin=NDQxMzAxODU1&amp;devicetype=Windows+10&amp;version=62070041&amp;lang=zh_CN&amp;pass_ticket=C8pJsHOu7hWDLdYm9ybAytVnspjaXLqqAV0nMWiqVilRYF1TaSsrVahMzzDjPCUc">参考链接</a></p>
+<p>我们假设浙江省政府仅在杭州、嘉兴与湖州（简称杭嘉湖）三个地区的各乡镇实行了一项经济改革试验，而现在的任务是对改革的绩效进行评价。假设横向比较的结果是，杭嘉湖地区在改革后的绩效高于没有进行改革的浙江非杭嘉湖地区的绩效，那么我们能否认为这就是改革取得成功的证据呢？答案是不确定的，其理由是：杭嘉湖地区与非杭嘉湖地区若在改革之前就存在绩效差异，则改革后两个地区的绩效差异很可能继承了改革之前的绩效差异。因此，仅仅对改革后的绩效进行横向比较，无法准确评估杭嘉湖地区改革的净效应。</p>
+<p>现在进行纵向比较。如果杭嘉湖地区改革前后的绩效出现非常明显的变化，那么我们能否认为这就是改革取得成功的证据呢？若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期也发生了相同幅度的变化，则答案很可能是否定的，理由是：既然在非杭嘉湖地区没有实行改革，那么这些地区发生的同等变化就应该与改革无关。我们可以认为，杭嘉湖地区与非杭嘉湖地区发生的同等变化是源于全国宏观经济形势与浙江整体经济形势的变化。</p>
+<p>若在杭嘉湖地区改革前后，浙江非杭嘉湖地区同期发生了较小的变化，则对上述问题的回答就是肯定的 。当然，在进行纵向比较时，我们必须施加共同趋势假定，即：如果杭嘉湖地区未实行改革试验，那么也会发生与非杭嘉湖地区相同的较小变化。可以认为， 浙江非杭嘉湖地区发生的较小变化是源于全国宏观经济形势与浙江整体经济形势的变化， 而杭嘉湖地区之所以有较大变化，是因为还存在额外的改革绩效。</p>
+<p>实行改革的杭嘉湖地区就是所谓的处理组，而实行的改革就是实施的处理。相应的， 未实行改革的非杭嘉湖地区就是对照组。在对处理组实施处理的前后，对照组亦会发生或大或小的变化。如果在评估改革绩效即评估处理效应时，没有将处理组与对照组的变化进行同期对照，那么我们所发现的处理效应很可能存在偏差。在本文的例子中，杭嘉湖地区改革前后的绩效变化具有三个来源：全国宏观经济形势变化、浙江整体经济形势变化、改革绩效。如果没有与非杭嘉湖地区的变化进行同期对照，那么我们评估的改革绩效就混杂了全国宏观经济形势与浙江整体经济形势变化的影响，因此很可能存在较大偏差。</p>
+<p>鉴于非杭嘉湖地区作为对照组，其绩效变化可以代表全国宏观经济形势与浙江整体经济形势变化的影响，一个简单有效的纠偏方法就是：通过对杭嘉湖地区的绩效变化与非杭嘉湖地区的绩效变化进行比较，将全国宏观经济形势与浙江整体经济形势变化的影响从杭嘉湖地区的绩效变化中一并剔除，进而获得净的处理效应，而这正是双重差分模型的基本逻辑。</p>
+<p>建立 DID 模型首先需设立两个虚拟变量：</p>
+<script type="math/tex; mode=display">
+D_{1}=\left\{\begin{array}{l}{1 \qquad \text{浙江杭嘉湖地区}} \\ {0\qquad \text{浙江非杭嘉湖地区}}\end{array}\right.
+\qquad D_{2}=\left\{\begin{array}{l}{1 \qquad \text{改革后}} \\ {0\qquad \text{改革前}}\end{array}\right.</script><p>然后建立模型：</p>
+<script type="math/tex; mode=display">
+Score_{i}=\alpha_{0}+\alpha_{1} D_{1 i}+\alpha_{2} D_{2 i}+\alpha_{3} D_{1 i} \cdot D_{2 i}+\varepsilon_{i}</script><p>在这里，i 代表各乡镇，Score 代表绩效评价指标；参数a0代表改革前所有乡镇共同的初始绩效均值；a1 代表杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异；a2 代表杭嘉湖地区与非杭嘉湖地区在改革前后共同发生的绩效变化，即共同趋势，具体是指全国宏观经济形势与浙江整体经济形势变化的影响；a3 代表在控制了初始绩效差异与共同趋势之后，杭嘉湖地区所具有的额外绩效变化，此即改革绩效。</p>
+<p>在所有参数中，a2 与 a3 是最为关键的。为了进一步理解这两个参数的含义，接下来我们对虚拟变量赋值，有：</p>
+<p>1） 对于浙江非杭嘉湖地区（D1=0）：</p>
+<p>改革后（D2=1）的期望绩效为：a0  +a2 ；</p>
+<p>改革前（D2=0）的期望绩效为：a0 。</p>
+<p>因此，浙江非杭嘉湖地区改革前后的绩效差异为：（a0  +a2）-a0 =a2。a2 就是共同的趋势，即全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。</p>
+<p>2） 对于浙江杭嘉湖地区（D1=1）：</p>
+<p>改革后（D2=1）的期望绩效为：a0 +a1 +a2 + a3 ；</p>
+<p>改革前（D2=0）的期望绩效为：a0 +a1 。</p>
+<p>因此，杭嘉湖地区改革前后的绩效差异为： a0  +a1 +a2  + a3）-（a0  +a1）=a2  + a3 。杭嘉湖地区的绩效变化是全国宏观经济形势变化影响、浙江整体经济形势变化影响与改革绩效这三者之和，而a2 是全国宏观经济形势变化影响与浙江整体经济形势变化影响之和。因此，a3 就是杭嘉湖地区的改革绩效。</p>
+<p>杭嘉湖地区改革前后的绩效差异（a2  + a3）与同期非杭嘉湖地区绩效差异（a2）的差为 a3 。因此，改革绩效a3 属于差异的差异，从而这就解释了DID（Difference-In-Difference）称谓的来源。</p>
+<p>上述虚拟变量模型能够被拓展：一方面，若杭嘉湖地区与非杭嘉湖地区在改革前的初始绩效差异可以用变量 x 来加以解释，则变量 x 可作为解释变量进入模型、进而改善模型估计的精度；另一方面，若 x 的差异还会造成共同趋势假设被违背，则需引入交互项 x·D2， 以控制趋势差异的影响。</p>
 ]]></content>
       <categories>
-        <category>Matlab</category>
+        <category>计量经济学</category>
       </categories>
       <tags>
-        <tag>Matlab</tag>
+        <tag>计量经济学</tag>
       </tags>
   </entry>
   <entry>
-    <title>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</title>
-    <url>/2017/12/21/Modelling%20and%20performance%20evaluation%20of%20explosive%20storage%20policies%20in%20internet/</url>
-    <content><![CDATA[<h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
-<h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
-<h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
-<h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
-<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:</p>
-<script type="math/tex; mode=display">\Psi_i=\frac{L_i}{V_i}</script><p>整个仓库的Explosion Ratio:</p>
-<script type="math/tex; mode=display">\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}</script><p>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
-<h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
-<h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
-<h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
-<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
+    <title>Hexo博客相关</title>
+    <url>/2021/03/07/Hexo%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/</url>
+    <content><![CDATA[<h3 id="1-主题Fluid"><a href="#1-主题Fluid" class="headerlink" title="1. 主题Fluid"></a>1. 主题Fluid</h3><p>从Next更换到Fluid，<a href="https://github.com/fluid-dev/hexo-theme-fluid">主题链接</a></p>
+<h3 id="2-添加评论系统"><a href="#2-添加评论系统" class="headerlink" title="2. 添加评论系统"></a>2. 添加评论系统</h3><p>评论系统选择Valine，<a href="https://zhuanlan.zhihu.com/p/152369801">参考链接</a></p>
+<p><a href="https://console.leancloud.cn/apps">Valine管理页面</a></p>
+<h3 id="3-增加网站运行时长"><a href="#3-增加网站运行时长" class="headerlink" title="3.增加网站运行时长"></a>3.增加网站运行时长</h3><p><a href="https://hexo.fluid-dev.com/posts/fluid-footer-custom/">参考链接</a></p>
+<h3 id="4-将自己制作的html文件添加到博客"><a href="#4-将自己制作的html文件添加到博客" class="headerlink" title="4.将自己制作的html文件添加到博客"></a>4.将自己制作的html文件添加到博客</h3><p>在本地丢到/theme/主题名/source/中即可，就可避免其被hexo渲染</p>
+<p>部署之后在博客网址/html名称即可访问</p>
 ]]></content>
+      <categories>
+        <category>blog</category>
+      </categories>
+      <tags>
+        <tag>bolg</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Latex使用问题</title>
+    <url>/2021/03/06/Latex%E4%BD%BF%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="1-使用hyperref-package后引用section"><a href="#1-使用hyperref-package后引用section" class="headerlink" title="1. 使用hyperref package后引用section"></a>1. 使用hyperref package后引用section</h2><p>使用hyperref package之后引用图片、表格还是使用命令<code>\ref&#123;fig_label&#125;</code>，但是引用section使用<code>\ref</code>会没有作用，应该使用<code>\hyperref[model]&#123;Section 2&#125;</code>其中model是section label的名称，Section 2是显示的文字。效果如下：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306160939220.png" alt="image-20210306160939220"></p>
+]]></content>
+      <categories>
+        <category>Latex</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gurobi更新License</title>
+    <url>/2021/03/19/Gurobi%E6%9B%B4%E6%96%B0License/</url>
+    <content><![CDATA[<ol>
+<li><p>官网：<a href="https://www.gurobi.com">https://www.gurobi.com</a></p>
+</li>
+<li><p>申请License：（download&amp;licence-&gt;academic license）</p>
+</li>
+<li><p>复制 <code>grbgetkey xxxxxxxxxxxxxxxxxxxxxxxxxx</code></p>
+</li>
+<li>如果电脑上Gurobi不是最新版，则卸载并装上最新版本（download&amp;licence-&gt;download center-&gt;Gurobi Optimizer）</li>
+<li>在CMD中运行3中代码，保存到默认位置</li>
+<li>完成</li>
+</ol>
+]]></content>
+      <categories>
+        <category>精确算法</category>
+      </categories>
+      <tags>
+        <tag>Gurobi</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Inventory management based on target-oriented robust optimization</title>
+    <url>/2018/06/09/Inventory%20management%20based%20on%20target-oriented/</url>
+    <content><![CDATA[<p><strong>Management Science</strong><br>Author: Yun Fong Lim, SMU; Chen Wang,SMU</p>
+<hr>
+<h4 id="Absract"><a href="#Absract" class="headerlink" title="Absract"></a>Absract</h4><p>我们提出了一个目标导向的鲁棒优化方法来解决受订购容量限制的多商品、多周期的库存管理问题。我们假设每个商品在每个周期内的需求由一个不确定集合表示，这个集合只取决于商品的参考价值和需求上界。我们的目标是找到一个订购策略以最大化所有不确定集合的大小，所有的需求实现所需的总成本比预先设定的成本目标更低。我们证明了一个静态决策规则是最优的，降低了计算负担。通过调整成本目标，结果策略能在预期成本和相关成本之间取得一个平衡。数值实验表明，尽管只利用了有限的需求信息，提出的方法与基于动态规划的传统方法的性能相当。更重要的是，如果需求分布不明确，我们的方法要明显优于传统的方法。通过两个行业的案例研究验证了我们的方法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h4><p>本文研究了一个多商品、多周期，具有固定订货成本和订货提前期的库存管理问题。动态规划是这个领域所用的主要方法，动态规划的局限性是当变量数增多时，将导致维数灾难。另一个主要方法是随机规划，随机规划只能解决很短的计划问题。鲁棒优化的研究近年增长了非常多，鲁棒优化方法有两个优点：1.只需要使用一部分潜在的不确定参数。2.鲁棒优化可以保存优化问题的可追踪性。</p>
+<h4 id="2-Problem-description-and-notation"><a href="#2-Problem-description-and-notation" class="headerlink" title="2. Problem description and notation"></a>2. Problem description and notation</h4><p><strong>Notation</strong></p>
+<hr>
+<p>$P$：商品数量,$\mathcal P=\\{1,2,3,…,P\\}$<br>$T$：规划范围内的周期数，$\mathcal T=\\{1,2,3,…,T\\}$<br>$l(i)$：商品$i$的订货提前期(以周期为单位)，常量<br>$h_t^i$：每单位的商品$i$在$t$周期到$t+1$的库存持有成本<br>$b_t^i$：每单位的商品$i$在$t$周期到$t+1$的积压成本<br>$A_t^i$：商品$i$在$t$周期内的固定订购成本（每次订购）<br>$c_t^i$：商品$i$在$t$周期内的单位订购成本<br>$\widetilde{d}_t^i$：商品$i$在$t$周期内的需求support set $[\underline{d_t^i},\overline{d_t^i}]$<br>$d_t^i$：商品$i$在$t$周期内已实现的需求<br>$\mathbf{\widetilde{d}}_t^i$：商品$i$从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t^i:=\bigl(\widetilde{d}_1^i,…,\widetilde{d}_t^i\bigr)\in \mathbb{R^t}$<br>$\mathbf{\widetilde{d}}_t$：所有商品从第1到第$t$周期的需求集合，$\mathbf{\widetilde{d}}_t:=\bigl(\widetilde{d}_t^1,…,\widetilde{d}_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$\mathbf{d}_t^i$：商品$i$从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t^i:=\bigl(d_1^i,…,d_t^i\bigr)\in \mathbb{R}^{t}$<br>$\mathbf{d_t}$：所有商品从第1到第$t$周期的已实现需求集合，$\mathbf{d}_t:=\bigl(d_t^1,…,d_t^P\bigr)\in \mathbb{R}^{t\times P}$<br>$y_t^i$：$t$周期开始时商品$i$的现有库存水平<br>$x_t^i$：$t$周期开始时商品$i$的订购数量<br>$\mathbf{y}_t:=\bigl(y_t^1,…,y_t^P\bigr)\in \mathbb{R}^P$<br>$\mathbf{x}_t:=\bigl(x_t^1,…,x_t^P\bigr)\in \mathbb{R}^P$<br>$\overline{x}_t$：所有商品在$t$周期的最大订购数量<br>$\mathcal{N}_t$：$\mathbb{R}^{(t-1)\times P}$到$\mathbb R$的非预期映射函数</p>
+<hr>
+<p>假设仓库中有$P$种商品，计划周期共$T$个周期，在每个周期$t$内，以下的进程被重复执行：<br>1.$y_t^i$表示商品$i$在周期$t$的现有库存水平。基于这个库存水平，我们需要确定商品$i$在周期$t$开始时的订购批量（生产批量）$x_t^i$，这就会产生一个固定订购成本$A_t^i$和一个变动订购成本$c_t^ix_t^i$，$c_t^i$表示商品$i$的单位订购成本。在这个问题中，$x_t^i$是决策变量，$y_t^i$是因变量。<br>2.商品$i$的订货提前期设为$l(i)$。在$t-l(i)$时刻订购的商品将在$t$周期开始时到达。<br>3.每个商品$i$在周期$t$内都有随机需求$\widetilde{d}_t^i$，最终实现的需求为$d_t^i$。在$t$周期结束时库存水平变成$y_t^i+x_{t-l(i)}^i-d_t^i$。<br>4.如果$y_t^i+x_{t-l(i)}^i-d_t^i \geq 0$,剩余的库存将会转到下个周期$t+1$中，这将导致每单位$h_t^i$的持有成本(holding cost)。如果$y_t^i+x_{t-l(i)}^i-d_t^i &lt; 0$，未满足的需求将会积压到下个周期中，这将产生每单位$b_t^i$的积压成本(backlog cost)。（注意持有成本与积压成本的区别，积压成本是由未满足的需求造成的）</p>
+<blockquote>
+<p><strong>Inventory holding cost</strong>:Holding inventory causes two type of cost<br>1.Out-of-pocket  holding  cost represents  real  costs  of  holding  inventory  such  as  warehouse rental, handling, insurance and refrigeration costs.<br>2.Opportunity cost represents the opportunity cost of funds tied to inventory.  It is calculated by multiplying the value of inventory with an opportunity cost rate parameter r≥0.The value of inventory is assumed to be equal to the unit ordering cost c.<br><strong>Backlog cost</strong>:Backlogging means not meeting a certain demand immediately from stock. The customer is assumed to wait until the demand is eventually met after some delay.  To determine the level of this planned backlog, the firm needs to trade-off inventory holding and backlog costs.Figure 1 illustrates the evolution of inventory and backlog levels in a typical order cycle,also indicating the maximum inventory and backlog levels.<br>cited from: Frenk J B G, Kaya M, Pourghannad B. Generalizing the ordering cost and holding-backlog cost rate functions in EOQ-type inventory models[M]//Handbook of EOQ Inventory Problems. Springer, Boston, MA, 2014: 79-119.</p>
+</blockquote>
+<p>5.$t+1$周期开始时库存水平为$y_{t+1}^i=y_t^i+x_{t-l(i)}^i-d_t^i$。1-4重复操作。<br>值得注意的是，实际上补货决策$x_t^i$没有必要再计划期开始即第1个周期开始时就决定，为了达到更好的效果，这个决策可以延迟到$t$周期在确定$d_{t-1}$与$\mathbf{d}_{t-1}$的比例之后。因此，$x_t^i$是一个非预期函数(non-anticipative funtion)，由$x_t^i(\mathbf d_{t-1})$表示，只取决于到$t-1$周期为止的需求信息。<br>考虑到初始库存水平$y_1^i$，补货数量$x_{1-l(i)}^i,x_{2-l(i)}^i,…x_{t-l(i)}^i$，以及已实现需求$\mathbf d_t^i$，那么在$t+1$时期的库存水平函数为$y_{t+1}^i: \mathbb R \times \mathbb R^t \times \mathbb R^t \rightarrow \mathbb R$,</p>
+<script type="math/tex; mode=display">y_{t+1}^i=y_1^i+\sum_{k=1}^t x_{k-l(i)}^i -\sum_{k=1}^t d_k^i \tag{1}</script><p>对于任意的$y \in \mathbb R$，定义$(y)^+:=max\\{0,y\\},(y)^-:=max\\{0,-y\\}$。因此，$(y_{t+1}^i)^+$和$(y_{t+1}^i)^-$表示库存过剩和库存不足。考虑到补货数量$x_t^i$和库存水平$y_{t+1}^i$，商品$i$在周期$t$中产生的总成本为:$A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-$，当$x_t^i&gt;0$时$I(x_t^i)=1$,否则等于0.</p>
+<h4 id="3-A-stochastic-optimization-model"><a href="#3-A-stochastic-optimization-model" class="headerlink" title="3. A stochastic optimization model"></a>3. A stochastic optimization model</h4><p>考虑到随机需求$\widetilde {\mathbf d}_{t-1}$，我们的目标是确定订货策略$x_t^i \bigl(\widetilde {\mathbf d}_{t-1} \bigr),for\quad all \quad i\in P,t \in \mathcal T$，以最小化计划周期内的总成本。我们构建了一个多周期随机优化模型:</p>
+<script type="math/tex; mode=display">\text{min}\quad E\Biggl[\sum_{i\in \mathcal P}\sum_{t\in \mathcal T}A_t^iI(x_t^i)+c_t^ix_t^i+h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-\Biggr]</script><p>$\text{s.t.}\quad \sum_{i\in \mathcal P}x_t^i \bigl(\widetilde{\mathbf d}_{t-1}\bigr)\leq \overline{x}_t, \qquad t\in \mathcal T;\tag{2a}$<br>$x_t^i\bigl(\widetilde{\mathbf d}_{t-1}\bigr) \geq 0, \qquad i \in \mathcal P,t\in \mathcal T;\tag{2b}$<br>$x_t^i \in \mathcal N_t,\qquad i \in \mathcal P,t\in \mathcal T;\tag{2c}$<br>$\mathcal N_t$是一个集合，包含了所有非预期的$\mathbb R^{(t-1)\times P}$到$\mathbb R$函数映射。约束(2a)表示订购总量限制。这个模型是一个比较难的优化模型，很难求解。<br>理论上，我们能用动态规划DP来解决这个模型。定义$\mathbb q_t^i:=(x_{t-l(i)},…,x_{t-1}^i)$为商品$i$在周期$t$中未完成的订购数量。当t=1时$\mathbb q_1^i:=(x_{1-l(i)},…,x_0^i)$，令$\mathbb q_t:=(\mathbb q_t^1,…,\mathbb q_t^P)$.记订购数量为$\mathbb x_t$,库存水平为$\mathbb y_t$，未完成订购数量为$\mathbb q_t$,已实现需求为$\mathbb d_{t-1}$,则t周期的期望成本为:</p>
+<script type="math/tex; mode=display">r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}_{\mathbb x_t \in \mathcal F_t}\biggl\\{\sum_{i \in \mathcal P }(A_t^iI(x_t^i)+c_t^ix_t^i)+E_{\widetilde{d}_t}\Biggl[\sum_{i \in \mathcal P}(h_t^i(y_{t+1}^i)^++b_t^i(y_{t+1}^i)^-)\Biggr|\mathbb{\widetilde d}_{t-1}= \mathbb d_{t-1}\Biggr] \biggr\\}\tag{3}</script><p>令$J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})$为从t周期开始一直到计划期结束的最优期望成本，则:</p>
+<script type="math/tex; mode=display">J_t(\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})=\text{min}_{\mathbb x \in \mathcal F_t}\biggr\\{r_t(\mathbb x_t,\mathbb y_t,\mathbb q_t;\mathbb d_{t-1})+E_{\mathbb {\widetilde d}_t}\biggr[J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})\biggr|\mathbb{\widetilde d}_{t-1}= \mathbb d_{t-1}\biggr]\biggr\\}\tag{4}</script><p>这里的$\mathcal F_t=\\{\mathbb x_t|x_t^i \geq 0, i \in \mathcal P,\sum_{i \in \mathcal P}x_t^i \leq \overline x_t\\}$,边界条件是$J_{t+1}(\mathbb y_{t+1},\mathbb q_{t+1};\mathbb d_{t})=0$,对于任意的$\mathbb y_{t+1},\mathbb q_{t+1},\mathbb d_{t}$。<br>特别的，当$l(i)=0$时，<br>$J_t(\mathbb y_t)=\text{min}_{\mathbb x \in \mathcal F_t}\\{r_t(\mathbb x_t,\mathbb y_t)+E_{(\widetilde{d}_t^1,…,\widetilde{d}_t^P)}[J_{t+1}(\mathbb y_{t+1})]\\}\tag{5}$<br>此时边界条件为$J_{T+1}(\mathbb y_{T+1})=0$，对任意的$\mathbb y_{T+1}$。<br>令$\mathbb x_t^<em>$表示问题(4)在t周期的最优决策，则整个计划过程的决策可表示为$\\{\mathbb x_1^</em>,…,\mathbb x_T^*\\}$，我们称这个为DP策略。然而问题(4)是很难解的，因为在实际中它有很多的状态空间。</p>
+<h4 id="4-A-target-oriented-robust-optimization-approach"><a href="#4-A-target-oriented-robust-optimization-approach" class="headerlink" title="4. A target-oriented robust optimization approach"></a>4. A target-oriented robust optimization approach</h4>]]></content>
       <categories>
         <category>论文</category>
       </categories>
       <tags>
         <tag>论文</tag>
+        <tag>inventory</tag>
       </tags>
   </entry>
   <entry>
@@ -370,41 +329,68 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>Propensity Score Matching(PSM)</title>
-    <url>/2021/02/24/PSM/</url>
-    <content><![CDATA[<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/184958085">知乎文章</a></p>
-<h2 id="PSM能够解决什么问题？"><a href="#PSM能够解决什么问题？" class="headerlink" title="PSM能够解决什么问题？"></a>PSM能够解决什么问题？</h2><p>在医疗领域，研究一款新药是否有效，通常需要做的是大规模分组实验，treatment（实验组） 与 control（对照组）除了服用的药物有所不同外，其他因素，如：身高、体重、病情等，应该是类似的，这样的实验结果才能对新药的药效有客观的评价。</p>
-<p>在互联网、电商等公司，也有类似的场景：为了测试一个新优化的页面是否能够提高支付转化率，需要做ABtest。这时一个很重要的环节就是将流量随机的分为A组和B组，A与B的关系是平行宇宙，我们希望的是A与B的区别只是看到的页面有所不同，其他特征如性别、用户生命周期等均一致。</p>
-<p>但是在实际工作中，我们也可能遇到<strong>现实情况不允许做随机实验</strong>，那么我们如何去判定一个动作的收益呢？或者说如何科学地将某个指标的变化归因于某个动作呢？这时PSM可能是一个解决方案。</p>
-<h2 id="Let’s-get-started"><a href="#Let’s-get-started" class="headerlink" title="Let’s get started"></a>Let’s get started</h2><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
-<li>一个NGO组织在一些村庄建立了健康诊所（实验组），并且选取另外一些村庄不建立健康诊所，设置其为对照组</li>
-<li>值得注意的是这些村庄的分组并非随机，他们之间可能存在一些bias</li>
-<li>与此同时，这个NGO组织在启动建立健康诊所这个项目前，对所有村庄（包括实验组和对照组村庄）有过调查，手上有一些村庄的特征</li>
-<li>通常情况下，我们可以分别对比对照组和实验组项目实施前和项目实施后的新生儿死亡率，进行Difference in Difference 的研究，目前我们假设，并没有历史的新生儿死亡率数据</li>
-</ul>
-<h2 id="简单粗暴看健康诊所项目对新生儿死亡率的影响"><a href="#简单粗暴看健康诊所项目对新生儿死亡率的影响" class="headerlink" title="简单粗暴看健康诊所项目对新生儿死亡率的影响"></a>简单粗暴看健康诊所项目对新生儿死亡率的影响</h2><p><img src="https://pic2.zhimg.com/v2-9b3ae67a20e6bc3239a846ee93ce07d1_b.png" alt="img"></p>
-<p> 上图中的T=1代表建立诊所，T=0代表没有建立诊所，infant mortality为新生儿死亡率。我们简单看下每个分组的平均新生儿死亡率： </p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210214.png" alt=""></p>
-<p> (⇀‸↼‶)我去，建立了健康诊所的实验组新生儿死亡率16.5%，而没有建立健康诊所的对照组新生儿死亡率12.4%，居然健康诊所对新生儿健康的影响是负向的？这非常不make sense！有理由怀疑，AA差异非常明显（也就是在项目启动前，实验组和对照组有明显的差异）</p>
-<h2 id="更加科学地看这个NGO项目的效果"><a href="#更加科学地看这个NGO项目的效果" class="headerlink" title="更加科学地看这个NGO项目的效果"></a>更加科学地看这个NGO项目的效果</h2><p>在问题描述里，我们提到这个NGO组织在启动健康诊所项目之前对所有村庄进行过仔细的调研，有一些其他的特征被采集。 </p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210233.png" alt=""></p>
-<p> 我们在这里添加了两个特征：poverty rate 贫穷率 和per capita doctors 人均医生数。<strong>大体来看，实验组VS对照组，有更高的贫穷率和更低的人均医生数。</strong>在这样的情况下，我们如何来衡量该项目的效果呢？ 1. 为每一个实验组的村庄创建/找到新的对照组：   针对每一个实验组的村庄，找到其特征类似的对照组。换句话说，针对每一个实验组的村庄S，在对照组中找到其“映射”S’，在项目启动前，这个S’与S有相似性（类似的贫穷率、类似的人均医生数等）。这个映射S’的集合，我们姑且称之为新对照组。 2. 计算实验组效果   计算实验组和新对照组平均新生儿死亡率，进行对比。</p>
-<p>OK，到此为止一些basic idea已经介绍完毕，下面搞一个比较细节的问题：<strong>如何找到映射S’？</strong>这时我们就需要用到Propensity Score的计算。</p>
-<h3 id="PSM-Step1：计算Propensity-Score"><a href="#PSM-Step1：计算Propensity-Score" class="headerlink" title="PSM Step1：计算Propensity Score"></a>PSM Step1：计算Propensity Score</h3><p>我们选择使用Logistic Regression作为计算Propensity Score的方法： <script type="math/tex">Prob(T=1|X_1,X_2,...,X_k)</script> 在NGO的健康诊所场景下，自变量：$X_1$为贫穷率，$X_2$为人均医生数，因变量为T。<strong>这个操作可以解释为，通过背景数据（贫困率、人均医生数）来预测每一个村庄与实验组村庄的相似程度，从而帮助我们找到新的对照组。</strong> 可以参考如下python代码搭建逻辑回归模型，并预测对照组和实验组中的每一个村庄的$Prob$值</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm<br>formula = <span class="hljs-string">&quot;T ~ poverty_rate + per_capita_doctors&quot;</span><br>model = sm.Logit.from_formula(formula, data = data)<br>re = model.fit()<br>X = data[[<span class="hljs-string">&#x27;poverty_rate&#x27;</span>, <span class="hljs-string">&#x27;per_capita_doctors&#x27;</span>]]<br>data[<span class="hljs-string">&#x27;ps&#x27;</span>] = re.predict(X)<br></code></pre></div></td></tr></table></figure>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210253.png" alt=""></p>
-<h3 id="PSM-Step2：Matching"><a href="#PSM-Step2：Matching" class="headerlink" title="PSM Step2：Matching"></a>PSM Step2：Matching</h3><p>计算出Propensity Score后，在对照组中需要寻找到与实验组行为（贫穷率、人均医生数）相似的村庄，此过程被称为Matching。 在这里我们采取最简单的临近匹配法，对每一个实验组村庄进行遍历，找到ps值最接近的对照组村庄作为新对照组集合中的元素，即为new_control_index。 </p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210307.png" alt=""></p>
-<p> 以index=0的实验组村庄为例（ps=0.416571），在健康诊所项目启动前，与其贫穷率、人均医生数最为接近的对照组成员为index=5村庄（ps=0.395162）。到此为止，每个实验组村庄都找到了其新的对照组归宿~</p>
-<h3 id="PSM-Step3：实验组-VS-新对照组-评估建立健康诊所对新生儿死亡率的影响"><a href="#PSM-Step3：实验组-VS-新对照组-评估建立健康诊所对新生儿死亡率的影响" class="headerlink" title="PSM Step3：实验组 VS 新对照组 评估建立健康诊所对新生儿死亡率的影响"></a>PSM Step3：实验组 VS 新对照组 评估建立健康诊所对新生儿死亡率的影响</h3><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210315.png" alt=""></p>
-<p> wow，新对照组村庄（未建立健康诊所）新生儿死亡率比实验组村庄（建立健康诊所）足足高出7%，从而证明这个NGO组织的健康诊所项目对新生儿死亡率的降低有显著作用。</p>
-<p>Reference： <a href="https://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3DACVyPp1Fy6Y%26t%3D911s">YouTube：An intuitive introduction to Propensity Score Matching</a></p>
+    <title>Matlab函数记录</title>
+    <url>/2019/02/18/Matlab%E5%87%BD%E6%95%B0%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h3 id="randsample"><a href="#randsample" class="headerlink" title="randsample"></a>randsample</h3><p>randsample的命令组合比randperm要复杂，事实上这个命令内部也有对randperm的调用。因此，在适当的情况下，使用randperm的速度理论上比randsample快。（事实上也快很多）</p>
+<p>randsample的命令格式：</p>
+<figure class="highlight matlab"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs matlab">y = randsample(n,k)<br>y = randsample(population,k)<br>y = randsample(n,k,replacement)<br>y = randsample(population,k,replacement)<br>y = randsample(n,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(population,k,<span class="hljs-built_in">true</span>,w)<br>y = randsample(s,...)<br></code></pre></div></td></tr></table></figure>
+<p>第一种情形，randsample(n,k)和randperm(n,k)的功能一样，都是产生k个不相同的数（1-n）。</p>
+<p>第二种情形，randsample(ARRAY,k)，事实上就是randperm和原数组结合使用的形式，从ARRAY数组里面随机取出k个不相同的数。</p>
+<p>第三种情形，replacement是一个bool变量，为1的时候，取出的数可能是重复的，为0的时候，可能不重复。</p>
 ]]></content>
       <categories>
-        <category>计量经济学</category>
+        <category>Matlab</category>
       </categories>
       <tags>
-        <tag>计量经济学</tag>
+        <tag>Matlab</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>On the Scattered Storage Assignment Problem</title>
+    <url>/2018/03/07/On%20the%20Scattered%20Storage%20Assignment%20Problem/</url>
+    <content><![CDATA[<p>Author: <a href="http://www.om.uni-jena.de/Lehrstuhlteam/Felix+Weidinger+M_+Sc_.html">Felix Weidiner</a></p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要:"></a>摘要:</h2><p>本文主要针对电商仓库的分散存储策略进行研究。基于文章:</p>
+<blockquote>
+<p>Scattered storage: how to distribute stock keeping units all around a mixed-shelves warehouse.Working Paper Friedrich-Schiller-University Jena, 2015 (下载不了)</p>
+</blockquote>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>电商仓库目前面临的4个挑战:</p>
+<ul>
+<li>订单包含商品种类少</li>
+<li>库存大，商品种类多</li>
+<li>灵活性</li>
+<li>时效要求高</li>
+</ul>
+<h2 id="2-The-Scattered-Storage-Strategy"><a href="#2-The-Scattered-Storage-Strategy" class="headerlink" title="2.The Scattered Storage Strategy"></a>2.The Scattered Storage Strategy</h2><p>分散存储策略是在货物到达时进行拆分，将其存储到不同的储位上。</p>
+<h3 id="2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse"><a href="#2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse" class="headerlink" title="2.1.The Picking Process in a Scattered Storage Warehouse"></a>2.1.The Picking Process in a Scattered Storage Warehouse</h3><h3 id="2-2-The-Scattered-Storage-Assignment-Problem"><a href="#2-2-The-Scattered-Storage-Assignment-Problem" class="headerlink" title="2.2.The Scattered Storage Assignment Problem"></a>2.2.The Scattered Storage Assignment Problem</h3>]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</title>
+    <url>/2017/12/21/Modelling%20and%20performance%20evaluation%20of%20explosive%20storage%20policies%20in%20internet/</url>
+    <content><![CDATA[<h1 id="Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses"><a href="#Modelling-and-performance-evaluation-of-explosive-storage-policies-in-internet-fulfilment-warehouses" class="headerlink" title="Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses"></a>Modelling and performance evaluation of explosive storage policies in internet fulfilment warehouses</h1><p>作者:Sevilay Onal, Jingran Zhang and Sanchoy Das<br>[管梦城]]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>电商履约仓库IFW与传统仓库有很大不同，主要体现在六个方面:巨量的库存，大量的储位，SKU混合存储在一个货位中，及时的履约，单次拣选路径短，交易量巨大。本文提出两个算法解决:1.库存。2.订单拣选。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>IFW仓库与传统仓库最大的差异是商品分散存储，根据这个差异构造模型并提出算法解决，以降低履约时间为目标，并通过仿真来验证模型的优越性。</p>
+<h2 id="2-Background"><a href="#2-Background" class="headerlink" title="2.Background"></a>2.Background</h2><h3 id="2-1-Order-picking-algorithms"><a href="#2-1-Order-picking-algorithms" class="headerlink" title="2.1 Order picking algorithms"></a>2.1 Order picking algorithms</h3><p>订单分批，路径规划问题</p>
+<h3 id="2-2-Storage-location-rules"><a href="#2-2-Storage-location-rules" class="headerlink" title="2.2 Storage location rules"></a>2.2 Storage location rules</h3><p>储位分配策略</p>
+<h3 id="2-3-Shared-storage"><a href="#2-3-Shared-storage" class="headerlink" title="2.3 Shared storage"></a>2.3 Shared storage</h3><p>共享存储</p>
+<h3 id="2-4-Order-picking-objective"><a href="#2-4-Order-picking-objective" class="headerlink" title="2.4 Order picking objective"></a>2.4 Order picking objective</h3><h2 id="3-Observational-study"><a href="#3-Observational-study" class="headerlink" title="3.Observational study"></a>3.Observational study</h2><h2 id="4-Key-IFW-structural-differentiators"><a href="#4-Key-IFW-structural-differentiators" class="headerlink" title="4.Key IFW structural differentiators"></a>4.Key IFW structural differentiators</h2><h3 id="4-1-Explosive-storage-policy"><a href="#4-1-Explosive-storage-policy" class="headerlink" title="4.1 Explosive storage policy"></a>4.1 Explosive storage policy</h3><p>传统仓库中，每个SKU存放的储位数不超过10个；IFW仓库中，SKU被分散存储到E个储位，称之为explosive storage policy，分散存储策略，每个储位存放不到10%数量的该SKU，且这些储位不相邻。传统的存储策略E=1，分散存储策略E&gt;10。<br>定义:<br>$i \in N$,SKU及总种类数<br>$E_i$,物品 $i$ 的explosion factor<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br><strong>define:</strong><br>Explosion ratio for product $i$,物品 $i$ 的分散率:</p>
+<script type="math/tex; mode=display">\Psi_i=\frac{L_i}{V_i}</script><p>整个仓库的Explosion Ratio:</p>
+<script type="math/tex; mode=display">\Psi_o=\frac{\sum_{i\in N}L_i}{\sum_{i\in N}V_i}</script><p>$L_i$不一定等于$E_i$，因为在补货的同时也会有履约产生，所以$L_i$及$\Psi_i$随着时间不断在变化，在IFW仓库中，参数大概分布在$0.10&lt;\Psi_i&lt;0.50$。在储物分配策略制定时，可将$\Psi_i,\Psi_i$作为惩罚参数</p>
+<h3 id="4-2-Very-large-number-of-beehive-storage-locations"><a href="#4-2-Very-large-number-of-beehive-storage-locations" class="headerlink" title="4.2 Very large number of beehive storage locations"></a>4.2 Very large number of beehive storage locations</h3><p>IFW仓库储位远远多于传统仓库</p>
+<h3 id="4-3-Bins-with-commingled-SKUs"><a href="#4-3-Bins-with-commingled-SKUs" class="headerlink" title="4.3 Bins with commingled SKUs"></a>4.3 Bins with commingled SKUs</h3><p>共享存储，混合存储。IFW仓库与传统仓库最根本的区别之一是在IFW仓库中多种SKU被同时存放在同一个货位。</p>
+<h3 id="4-4-Immediate-fulfilment-objective"><a href="#4-4-Immediate-fulfilment-objective" class="headerlink" title="4.4 Immediate fulfilment objective"></a>4.4 Immediate fulfilment objective</h3><p>IFW需要在较短的时间内完成订单，假设运输车辆离开仓库的时间间隔为$\hat T$，那么完成订单的时间窗就为稍小于$\hat T$</p>
+<h3 id="4-5-Short-picking-routes-with-single-unit-picks"><a href="#4-5-Short-picking-routes-with-single-unit-picks" class="headerlink" title="4.5 Short picking routes with single unit picks"></a>4.5 Short picking routes with single unit picks</h3><h2 id="5-Modelling-fulfilment-operations"><a href="#5-Modelling-fulfilment-operations" class="headerlink" title="5.Modelling fulfilment operations"></a>5.Modelling fulfilment operations</h2><p>本文提出了融合这些关键性差异的IFW运作模型。<br>定义如下变量:<br>$i \in N$,SKU及总种类数<br>$b \in M$,仓库储位/货位的顺序编号<br>$z$,存储分区$\\{ b\in z|B_{min,z}\leq b\leq B_{max,z}\\}$<br>$s\in S_{z}$,分配到 $z$ 区域的补货人员<br>$p\in P_{z}$,分配到 $z$ 区域的拣货人员<br>$E_i$,物品 $i$ 的explosion factor<br>$t\in T$,operational days in the control model<br>$r\in R_{t}$,在 $t$ 时期到达仓库的散货<br>$j\in J_t$,在 $t$ 时期接受的顾客订单<br>$I_{i,b,t}$,在 $t$ 时期储位 $b$ 上的物品 $i$ 的库存数量<br>$L_i$物品 $i$ 存储的储位总数量<br>$V_i$,物品 $i$ 的总库存<br>$G_i$,物品 $i$ 的最小储存份额<br>$\beta$,每个货位的存储数量上限</p>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -435,93 +421,6 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       <tags>
         <tag>python</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>On the Scattered Storage Assignment Problem</title>
-    <url>/2018/03/07/On%20the%20Scattered%20Storage%20Assignment%20Problem/</url>
-    <content><![CDATA[<p>Author: <a href="http://www.om.uni-jena.de/Lehrstuhlteam/Felix+Weidinger+M_+Sc_.html">Felix Weidiner</a></p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要:"></a>摘要:</h2><p>本文主要针对电商仓库的分散存储策略进行研究。基于文章:</p>
-<blockquote>
-<p>Scattered storage: how to distribute stock keeping units all around a mixed-shelves warehouse.Working Paper Friedrich-Schiller-University Jena, 2015 (下载不了)</p>
-</blockquote>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>电商仓库目前面临的4个挑战:</p>
-<ul>
-<li>订单包含商品种类少</li>
-<li>库存大，商品种类多</li>
-<li>灵活性</li>
-<li>时效要求高</li>
-</ul>
-<h2 id="2-The-Scattered-Storage-Strategy"><a href="#2-The-Scattered-Storage-Strategy" class="headerlink" title="2.The Scattered Storage Strategy"></a>2.The Scattered Storage Strategy</h2><p>分散存储策略是在货物到达时进行拆分，将其存储到不同的储位上。</p>
-<h3 id="2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse"><a href="#2-1-The-Picking-Process-in-a-Scattered-Storage-Warehouse" class="headerlink" title="2.1.The Picking Process in a Scattered Storage Warehouse"></a>2.1.The Picking Process in a Scattered Storage Warehouse</h3><h3 id="2-2-The-Scattered-Storage-Assignment-Problem"><a href="#2-2-The-Scattered-Storage-Assignment-Problem" class="headerlink" title="2.2.The Scattered Storage Assignment Problem"></a>2.2.The Scattered Storage Assignment Problem</h3>]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python读取JSON</title>
-    <url>/2017/12/15/Python%E8%AF%BB%E5%8F%96JSON/</url>
-    <content><![CDATA[<p>参考博客:<a href="https://zhuanlan.zhihu.com/p/27917664">python 读写json文件</a>   <a href="http://blog.csdn.net/heatdeath/article/details/72833459">使用python读取json文件 </a><br><a href="http://www.cnblogs.com/lhj588/archive/2012/05/24/2516046.html">Python多维/嵌套字典数据无限遍历</a><br><a href="http://www.cnblogs.com/HZQHZA/p/7301362.html">python json文件遍历所有key、value 及替换key对于的value</a><br>$\times$<br>json数据部分展示:</p>
-<ul>
-<li><p>读取多个JSON数据，提取不同已知属性的值:<br>代码:</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> time<br>start=time.time()<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;C:/Users/Administrator/Desktop/extract.json&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    tdid=[]<br>    androidId=[]<br>    imei=[]<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f.readlines():<br>        <span class="hljs-comment">#print(line)</span><br>        <span class="hljs-comment">#line=f.readline()</span><br>        d = json.loads(line)<br>        tdid.append(d[<span class="hljs-string">&#x27;tdid&#x27;</span>])<br>        androidId.append(d[<span class="hljs-string">&#x27;id&#x27;</span>][<span class="hljs-string">&#x27;androidId&#x27;</span>])<br>        <span class="hljs-comment">#imei.append(d[&#x27;id&#x27;][&#x27;sim&#x27;][1][&#x27;imei&#x27;])</span><br>timeUsed=time.time()-start<span class="hljs-comment">#计时</span><br>print(tdid,androidId)<br></code></pre></div></td></tr></table></figure>
-</li>
-<li><p>读取单个JSON数据，提取该JSON所有值(函数自我调用)<br>代码</p>
-<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;C:/Users/Administrator/Desktop/XS/new.json&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    jsonValue=[]<br>    <span class="hljs-comment">#for line in f.readlines():</span><br>    <span class="hljs-comment">#print(line)</span><br>    line=f.readline()<br>    d = json.loads(line)<span class="hljs-comment">#转换为字典</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">jsonAll</span>(<span class="hljs-params">d</span>):</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">dict</span>) <span class="hljs-keyword">or</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">list</span>):<span class="hljs-comment">#判断是否为字典或列表</span><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> d:<br>            <span class="hljs-comment">#print(key)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">dict</span>):<br>                tempValue = d[key]<br>            <span class="hljs-keyword">else</span>:<br>                tempValue = d[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(tempValue,<span class="hljs-built_in">dict</span>) <span class="hljs-keyword">or</span><span class="hljs-comment">#判断是否为字典或列表 isinstance(tempValue,list):</span><br>                <span class="hljs-comment">#print(tempValue)</span><br>                <span class="hljs-comment">#if isinstance(tempValue,dict):</span><br>                jsonAll(tempValue)<span class="hljs-comment">#自我调用</span><br>            <span class="hljs-comment">#print(&quot;%s :%s&quot; %(key,tempValue))</span><br>            <span class="hljs-keyword">else</span>:<br>                jsonValue.append(tempValue)<br>                <span class="hljs-comment">#print(tempValue)</span><br>                <span class="hljs-comment">#jsonValue += tempValue</span><br>    <span class="hljs-keyword">return</span> jsonValue<br>jsonValue=jsonAll(d)<br>print(jsonValue)<br></code></pre></div></td></tr></table></figure>
-<p>输出结果:</p>
-<figure class="highlight json"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">[&#x27;<span class="hljs-number">317</span>ee02415b4af4311787abf4382eb075&#x27;, <span class="hljs-number">1513069978654</span>, &#x27;ta&#x27;, <span class="hljs-number">2</span>, None, &#x27;<span class="hljs-number">9</span>ee0e03e4f552ac5&#x27;, None, None, None, None, &#x27;AC:C1:EE:<span class="hljs-number">33</span>:D9:D8&#x27;, &#x27;fb088626&#x27;, &#x27;<span class="hljs-number">869718024877240</span>&#x27;, &#x27;<span class="hljs-number">460008382291304</span>&#x27;, &#x27;<span class="hljs-number">89860084191445414192</span>&#x27;, &#x27;<span class="hljs-number">460</span>&#x27;, &#x27;<span class="hljs-number">00</span>&#x27;, &#x27;<span class="hljs-number">1</span>&#x27;, &#x27;<span class="hljs-number">869718024877240</span>&#x27;, &#x27;<span class="hljs-number">460008382291304</span>&#x27;, &#x27;<span class="hljs-number">89860084191445414192</span>&#x27;, &#x27;<span class="hljs-number">460</span>&#x27;, &#x27;<span class="hljs-number">00</span>&#x27;, &#x27;<span class="hljs-number">1</span>&#x27;, &#x27;<span class="hljs-number">69264580E09186</span>B40701BB968CE87FFC&#x27;, &#x27;Soul&#x27;, &#x27;<span class="hljs-number">2.8</span><span class="hljs-number">.6</span>&#x27;, &#x27;cn.soulapp.android&#x27;, <span class="hljs-number">1507785806909</span>, <span class="hljs-number">0</span>, &#x27;Android+TalkingData+V4<span class="hljs-number">.0</span><span class="hljs-number">.12</span>&#x27;, &#x27;Android+<span class="hljs-number">6.0</span><span class="hljs-number">.1</span>&#x27;, &#x27;<span class="hljs-number">23</span>&#x27;, &#x27;zh&#x27;, &#x27;zh_CN&#x27;, <span class="hljs-number">8.0</span>, <span class="hljs-number">23.008712</span>, <span class="hljs-number">113.748479</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1513069558940</span>, <span class="hljs-number">29.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, &#x27;network&#x27;, &#x27;cellular&#x27;, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;<span class="hljs-number">223.104</span><span class="hljs-number">.1</span><span class="hljs-number">.147</span>&#x27;, &#x27;Xiaomi&#x27;, &#x27;MI <span class="hljs-number">5</span>s&#x27;, &#x27;<span class="hljs-number">1080</span>*<span class="hljs-number">1920</span>*<span class="hljs-number">480</span>&#x27;, &#x27;Qualcomm Technologies, Inc MSM8996pro&#x27;, <span class="hljs-number">2</span>, <span class="hljs-number">1996800.0</span>, <span class="hljs-number">2779932</span>, <span class="hljs-number">112738896</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1511918381515</span>, None, None]<br></code></pre></div></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rmarkdown入坑</title>
-    <url>/2021/03/06/Rmarkdown%E5%85%A5%E5%9D%91/</url>
-    <content><![CDATA[<p>RMarkdown为我们的数据分析创建一个清晰美观的报告，它能够包含代码，图，表，说明，查看的人能够很清楚地理解。RMarkdown利用Markdown的语法，能够被方便的转成其他类型(如html或pdf)的文件。也可以创建学术性很强的beamer，<a href="https://www.zhihu.com/collection/145274311">参考知乎</a>。</p>
-<h2 id="1-Template"><a href="#1-Template" class="headerlink" title="1. Template"></a>1. Template</h2><p>刚刚入坑，发现默认render的html会出现chunk太小，居中，浪费了大量的空白空间，当需要展示非常大的表格时，会导致页面及其不美观。另外float toc也会导致无法使用整个页面，经过大量的搜索查找，确定了自己的R markdown template，<a href="https://biostat.app.vumc.org/wiki/Main/KnitrHtmlTemplate?rev=12">参考1</a>，<a href="http://hbiostat.org/R/rms/examples.html">参考2</a>，<a href="https://raw.githubusercontent.com/harrelfe/rms/master/inst/tests/examples.Rmd">参考3</a> ，使用到package <code>Hmisc</code> ，能够实现内容充满页面，修改了显示字体，显示float toc，修改了主题:</p>
-<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">---<br>title: <span class="hljs-string">&quot;My title&quot;</span><br>author: <span class="hljs-string">&quot;Mengcheng Guan&quot;</span><br>date: <span class="hljs-string">&#x27;`r Sys.Date()`&#x27;</span><br>output:<br>  html_document:<br>    toc: yes<br>    toc_depth: <span class="hljs-number">3</span><br>    number_sections: true<br>    theme: cerulean<br>    highlight: tango<br>    code_folding: show<br>description: <span class="hljs-string">&quot;some description ...&quot;</span><br>---<br>&lt;style type=<span class="hljs-string">&quot;text/css&quot;</span>&gt;<br>body, td &#123;<br>   font-family: Consolas;<br>   font-size: <span class="hljs-number">14</span>px;<br>&#125;<br>code.r&#123;<br>  font-family:  Consolas;<br>  font-size: <span class="hljs-number">14</span>px;<br>&#125;<br>pre &#123;<br>  font-size: <span class="hljs-number">12</span>px;<br>  overflow-x: auto;<br>&#125;<br>pre code &#123;<br>  word-wrap: normal;<br>  white-space: pre;<br>&#125;<br>&lt;/style&gt;<br><br>​```&#123;r, results=&#x27;hide&#x27;&#125;<br>library(Hmisc)<br>knitrSet(lang=&#x27;markdown&#x27;)<br>​```<br><br>`r hidingTOC(buttonLabel=&quot;Outline&quot;)`<br><br><span class="hljs-comment"># toc1 &#123;.tabset&#125;</span><br>​```&#123;r&#125;<br><br>​```<br><br></code></pre></div></td></tr></table></figure>
-<p>注意在使用这个template的时候, YAML设置是<code>toc</code>需为yes，但是<code>toc float</code>不要设置，否则还是会造成页面左右有大量留白。浮动目录使用<code>hidingTOC()</code>设置，效果如下：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306193110758.png" alt="image-20210306193110758"></p>
-<h2 id="2-表格美化"><a href="#2-表格美化" class="headerlink" title="2. 表格美化"></a>2. 表格美化</h2><p>当表格行列数较多时，使用package <code>DT</code>，配合当前template，能实现很好的显示效果：</p>
-<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">library(DT)<br><br>datatable(data, filter = <span class="hljs-string">&#x27;top&#x27;</span>, options = <span class="hljs-built_in">list</span>(pageLength = <span class="hljs-number">15</span>), caption = <span class="hljs-string">&#x27;Table 1: This is a title.&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
-<p>效果如下：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306193423088.png" alt="image-20210306193423088"></p>
-<h2 id="3-参数说明"><a href="#3-参数说明" class="headerlink" title="3. 参数说明"></a>3. 参数说明</h2><p> <code>eval</code>:是否计算代码块</p>
-<p><code>echo</code> 两个选项：TRUE或FALSE,或者是数字，用来控制那些行输出，那些行不输出(<code>echo = c(1)</code>)。</p>
-<p><code>fig</code>:控制图片大小</p>
-<p>待补充</p>
-<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R"><br>​```&#123;r,eval=FALSE, echo=FALSE,fig.width=10,fig.height=6&#125;<br><br>​```<br></code></pre></div></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>R</category>
-      </categories>
-      <tags>
-        <tag>R</tag>
-        <tag>Rmarkdown</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rmarkdown示例</title>
-    <url>/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="53b098c9d532903486b17c81462414e747f9ed7ffe8f9557178bff0065bc0f87">d5bf5a23a5d7260901cfc89a23618729068f15a8cfaa179e7bc01ce01558b309567d1e05b2cdf31d09bfef54672eb8e7579957a9d1c06163c66baa2c84913e58</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">机密文件，请找博主索要密码</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
   </entry>
   <entry>
     <title>Python数据分析日常</title>
@@ -601,50 +500,88 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
-    <title>STATA</title>
-    <url>/2019/12/16/STATA/</url>
-    <content><![CDATA[<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">reg</span> var1 var2 ...    #var1为因变量，后面的为自变量<br><span class="hljs-keyword">gen</span> new_var= <span class="hljs-built_in">date</span>(<span class="hljs-keyword">var</span>,<span class="hljs-string">&quot;YMD&quot;</span>) #生成时间变量new_var<br><span class="hljs-keyword">format</span> %td new_var #变换变量为时间（天）<br><span class="hljs-keyword">tsset</span> new_var, daily  #设置变量new_var为时间序列变量，粒度为天<br></code></pre></div></td></tr></table></figure>
-<h2 id="1-x-predicts-failure-success-perfectly"><a href="#1-x-predicts-failure-success-perfectly" class="headerlink" title="1 !=x predicts failure/success perfectly"></a>1 !=x predicts failure/success perfectly</h2><p><a href="http://blog.sina.com.cn/s/blog_c2b4a64b0102v37y.html">参考博客</a></p>
-<p>在样本量不够大且我们控制的固定效应相对较多时，在Stata中使用Probit或Logit模型进行回归分析，很可能出现提示“……!= 0 predicts failure perfectly”或“……!= 0 predicts success perfectly”，并且Stata会自动删除相应的观测值。</p>
-<p> 这里“……!= 0 predicts failure perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于0。</p>
-<p> 类似地，“……!= 0 predicts success perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于1。</p>
-<h2 id="2-统计变量唯一值个数"><a href="#2-统计变量唯一值个数" class="headerlink" title="2 统计变量唯一值个数"></a>2 统计变量唯一值个数</h2><p><code>codebook [variable]</code></p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210421202748777.png" alt="image-20210421202748777"></p>
-<h2 id="3-logit回归样本数变少"><a href="#3-logit回归样本数变少" class="headerlink" title="3 logit回归样本数变少"></a>3 logit回归样本数变少</h2><p>某些变量出现了<a href="1">1</a>中的问题。</p>
+    <title>Rmarkdown入坑</title>
+    <url>/2021/03/06/Rmarkdown%E5%85%A5%E5%9D%91/</url>
+    <content><![CDATA[<p>RMarkdown为我们的数据分析创建一个清晰美观的报告，它能够包含代码，图，表，说明，查看的人能够很清楚地理解。RMarkdown利用Markdown的语法，能够被方便的转成其他类型(如html或pdf)的文件。也可以创建学术性很强的beamer，<a href="https://www.zhihu.com/collection/145274311">参考知乎</a>。</p>
+<h2 id="1-Template"><a href="#1-Template" class="headerlink" title="1. Template"></a>1. Template</h2><p>刚刚入坑，发现默认render的html会出现chunk太小，居中，浪费了大量的空白空间，当需要展示非常大的表格时，会导致页面及其不美观。另外float toc也会导致无法使用整个页面，经过大量的搜索查找，确定了自己的R markdown template，<a href="https://biostat.app.vumc.org/wiki/Main/KnitrHtmlTemplate?rev=12">参考1</a>，<a href="http://hbiostat.org/R/rms/examples.html">参考2</a>，<a href="https://raw.githubusercontent.com/harrelfe/rms/master/inst/tests/examples.Rmd">参考3</a> ，使用到package <code>Hmisc</code> ，能够实现内容充满页面，修改了显示字体，显示float toc，修改了主题:</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">---<br>title: <span class="hljs-string">&quot;My title&quot;</span><br>author: <span class="hljs-string">&quot;Mengcheng Guan&quot;</span><br>date: <span class="hljs-string">&#x27;`r Sys.Date()`&#x27;</span><br>output:<br>  html_document:<br>    toc: yes<br>    toc_depth: <span class="hljs-number">3</span><br>    number_sections: true<br>    theme: cerulean<br>    highlight: tango<br>    code_folding: show<br>description: <span class="hljs-string">&quot;some description ...&quot;</span><br>---<br>&lt;style type=<span class="hljs-string">&quot;text/css&quot;</span>&gt;<br>body, td &#123;<br>   font-family: Consolas;<br>   font-size: <span class="hljs-number">14</span>px;<br>&#125;<br>code.r&#123;<br>  font-family:  Consolas;<br>  font-size: <span class="hljs-number">14</span>px;<br>&#125;<br>pre &#123;<br>  font-size: <span class="hljs-number">12</span>px;<br>  overflow-x: auto;<br>&#125;<br>pre code &#123;<br>  word-wrap: normal;<br>  white-space: pre;<br>&#125;<br>&lt;/style&gt;<br><br>​```&#123;r, results=&#x27;hide&#x27;&#125;<br>library(Hmisc)<br>knitrSet(lang=&#x27;markdown&#x27;)<br>​```<br><br>`r hidingTOC(buttonLabel=&quot;Outline&quot;)`<br><br><span class="hljs-comment"># toc1 &#123;.tabset&#125;</span><br>​```&#123;r&#125;<br><br>​```<br><br></code></pre></div></td></tr></table></figure>
+<p>注意在使用这个template的时候, YAML设置是<code>toc</code>需为yes，但是<code>toc float</code>不要设置，否则还是会造成页面左右有大量留白。浮动目录使用<code>hidingTOC()</code>设置，效果如下：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306193110758.png" alt="image-20210306193110758"></p>
+<h2 id="2-表格美化"><a href="#2-表格美化" class="headerlink" title="2. 表格美化"></a>2. 表格美化</h2><p>当表格行列数较多时，使用package <code>DT</code>，配合当前template，能实现很好的显示效果：</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">library(DT)<br><br>datatable(data, filter = <span class="hljs-string">&#x27;top&#x27;</span>, options = <span class="hljs-built_in">list</span>(pageLength = <span class="hljs-number">15</span>), caption = <span class="hljs-string">&#x27;Table 1: This is a title.&#x27;</span>)<br></code></pre></div></td></tr></table></figure>
+<p>效果如下：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210306193423088.png" alt="image-20210306193423088"></p>
+<h2 id="3-参数说明"><a href="#3-参数说明" class="headerlink" title="3. 参数说明"></a>3. 参数说明</h2><p> <code>eval</code>:是否计算代码块</p>
+<p><code>echo</code> 两个选项：TRUE或FALSE,或者是数字，用来控制那些行输出，那些行不输出(<code>echo = c(1)</code>)。</p>
+<p><code>fig</code>:控制图片大小</p>
+<p>待补充</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R"><br>​```&#123;r,eval=FALSE, echo=FALSE,fig.width=10,fig.height=6&#125;<br><br>​```<br></code></pre></div></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>stata</category>
+        <category>R</category>
       </categories>
       <tags>
-        <tag>stata</tag>
+        <tag>R</tag>
+        <tag>Rmarkdown</tag>
       </tags>
   </entry>
   <entry>
-    <title>Robust Storage Assignment in Unit-Load Warehouses</title>
-    <url>/2018/06/09/Robust%20Storage%20Assignment/</url>
-    <content><![CDATA[<p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[marcusang@smu.edu.sg, yflim@smu.edu.sg]</p>
-<hr>
-<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
-<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
-<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\\{1,…,N\\}$<br>$\mathcal N^-=\\{1,…,N-1\\}$<br>$\mathcal M=\\{1,…,M\\}$<br>$\mathcal T=\\{1,…,T\\}$<br>$\mathcal T^+=\\{1,…,T+1\\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
-<p><strong>Assumption </strong></p>
-<ol>
-<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}\; i\in \mathcal M,j\in \mathcal N$.</li>
-<li>假设仓库一开始库存为0.</li>
-<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<script type="math/tex; mode=display">\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},\; i \in \mathcal M,t \in \mathcal T</script></li>
-</ol>
-<p><strong>Model(1)</strong></p>
-<script type="math/tex; mode=display">Z_D=\text{min}\; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}</script><script type="math/tex; mode=display">\text{s.t.}\; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}</script><script type="math/tex; mode=display">\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}</script><script type="math/tex; mode=display">\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}</script><script type="math/tex; mode=display">x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}</script><script type="math/tex; mode=display">\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}</script><script type="math/tex; mode=display">x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}</script><script type="math/tex; mode=display">v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}</script><p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
-<blockquote>
-<p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
-<h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
-</blockquote>
+    <title>Propensity Score Matching(PSM)</title>
+    <url>/2021/02/24/PSM/</url>
+    <content><![CDATA[<p>参考文章：<a href="https://zhuanlan.zhihu.com/p/184958085">知乎文章</a></p>
+<h2 id="PSM能够解决什么问题？"><a href="#PSM能够解决什么问题？" class="headerlink" title="PSM能够解决什么问题？"></a>PSM能够解决什么问题？</h2><p>在医疗领域，研究一款新药是否有效，通常需要做的是大规模分组实验，treatment（实验组） 与 control（对照组）除了服用的药物有所不同外，其他因素，如：身高、体重、病情等，应该是类似的，这样的实验结果才能对新药的药效有客观的评价。</p>
+<p>在互联网、电商等公司，也有类似的场景：为了测试一个新优化的页面是否能够提高支付转化率，需要做ABtest。这时一个很重要的环节就是将流量随机的分为A组和B组，A与B的关系是平行宇宙，我们希望的是A与B的区别只是看到的页面有所不同，其他特征如性别、用户生命周期等均一致。</p>
+<p>但是在实际工作中，我们也可能遇到<strong>现实情况不允许做随机实验</strong>，那么我们如何去判定一个动作的收益呢？或者说如何科学地将某个指标的变化归因于某个动作呢？这时PSM可能是一个解决方案。</p>
+<h2 id="Let’s-get-started"><a href="#Let’s-get-started" class="headerlink" title="Let’s get started"></a>Let’s get started</h2><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><ul>
+<li>一个NGO组织在一些村庄建立了健康诊所（实验组），并且选取另外一些村庄不建立健康诊所，设置其为对照组</li>
+<li>值得注意的是这些村庄的分组并非随机，他们之间可能存在一些bias</li>
+<li>与此同时，这个NGO组织在启动建立健康诊所这个项目前，对所有村庄（包括实验组和对照组村庄）有过调查，手上有一些村庄的特征</li>
+<li>通常情况下，我们可以分别对比对照组和实验组项目实施前和项目实施后的新生儿死亡率，进行Difference in Difference 的研究，目前我们假设，并没有历史的新生儿死亡率数据</li>
+</ul>
+<h2 id="简单粗暴看健康诊所项目对新生儿死亡率的影响"><a href="#简单粗暴看健康诊所项目对新生儿死亡率的影响" class="headerlink" title="简单粗暴看健康诊所项目对新生儿死亡率的影响"></a>简单粗暴看健康诊所项目对新生儿死亡率的影响</h2><p><img src="https://pic2.zhimg.com/v2-9b3ae67a20e6bc3239a846ee93ce07d1_b.png" alt="img"></p>
+<p> 上图中的T=1代表建立诊所，T=0代表没有建立诊所，infant mortality为新生儿死亡率。我们简单看下每个分组的平均新生儿死亡率： </p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210214.png" alt=""></p>
+<p> (⇀‸↼‶)我去，建立了健康诊所的实验组新生儿死亡率16.5%，而没有建立健康诊所的对照组新生儿死亡率12.4%，居然健康诊所对新生儿健康的影响是负向的？这非常不make sense！有理由怀疑，AA差异非常明显（也就是在项目启动前，实验组和对照组有明显的差异）</p>
+<h2 id="更加科学地看这个NGO项目的效果"><a href="#更加科学地看这个NGO项目的效果" class="headerlink" title="更加科学地看这个NGO项目的效果"></a>更加科学地看这个NGO项目的效果</h2><p>在问题描述里，我们提到这个NGO组织在启动健康诊所项目之前对所有村庄进行过仔细的调研，有一些其他的特征被采集。 </p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210233.png" alt=""></p>
+<p> 我们在这里添加了两个特征：poverty rate 贫穷率 和per capita doctors 人均医生数。<strong>大体来看，实验组VS对照组，有更高的贫穷率和更低的人均医生数。</strong>在这样的情况下，我们如何来衡量该项目的效果呢？ 1. 为每一个实验组的村庄创建/找到新的对照组：   针对每一个实验组的村庄，找到其特征类似的对照组。换句话说，针对每一个实验组的村庄S，在对照组中找到其“映射”S’，在项目启动前，这个S’与S有相似性（类似的贫穷率、类似的人均医生数等）。这个映射S’的集合，我们姑且称之为新对照组。 2. 计算实验组效果   计算实验组和新对照组平均新生儿死亡率，进行对比。</p>
+<p>OK，到此为止一些basic idea已经介绍完毕，下面搞一个比较细节的问题：<strong>如何找到映射S’？</strong>这时我们就需要用到Propensity Score的计算。</p>
+<h3 id="PSM-Step1：计算Propensity-Score"><a href="#PSM-Step1：计算Propensity-Score" class="headerlink" title="PSM Step1：计算Propensity Score"></a>PSM Step1：计算Propensity Score</h3><p>我们选择使用Logistic Regression作为计算Propensity Score的方法： <script type="math/tex">Prob(T=1|X_1,X_2,...,X_k)</script> 在NGO的健康诊所场景下，自变量：$X_1$为贫穷率，$X_2$为人均医生数，因变量为T。<strong>这个操作可以解释为，通过背景数据（贫困率、人均医生数）来预测每一个村庄与实验组村庄的相似程度，从而帮助我们找到新的对照组。</strong> 可以参考如下python代码搭建逻辑回归模型，并预测对照组和实验组中的每一个村庄的$Prob$值</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> statsmodels.api <span class="hljs-keyword">as</span> sm<br>formula = <span class="hljs-string">&quot;T ~ poverty_rate + per_capita_doctors&quot;</span><br>model = sm.Logit.from_formula(formula, data = data)<br>re = model.fit()<br>X = data[[<span class="hljs-string">&#x27;poverty_rate&#x27;</span>, <span class="hljs-string">&#x27;per_capita_doctors&#x27;</span>]]<br>data[<span class="hljs-string">&#x27;ps&#x27;</span>] = re.predict(X)<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210253.png" alt=""></p>
+<h3 id="PSM-Step2：Matching"><a href="#PSM-Step2：Matching" class="headerlink" title="PSM Step2：Matching"></a>PSM Step2：Matching</h3><p>计算出Propensity Score后，在对照组中需要寻找到与实验组行为（贫穷率、人均医生数）相似的村庄，此过程被称为Matching。 在这里我们采取最简单的临近匹配法，对每一个实验组村庄进行遍历，找到ps值最接近的对照组村庄作为新对照组集合中的元素，即为new_control_index。 </p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210307.png" alt=""></p>
+<p> 以index=0的实验组村庄为例（ps=0.416571），在健康诊所项目启动前，与其贫穷率、人均医生数最为接近的对照组成员为index=5村庄（ps=0.395162）。到此为止，每个实验组村庄都找到了其新的对照组归宿~</p>
+<h3 id="PSM-Step3：实验组-VS-新对照组-评估建立健康诊所对新生儿死亡率的影响"><a href="#PSM-Step3：实验组-VS-新对照组-评估建立健康诊所对新生儿死亡率的影响" class="headerlink" title="PSM Step3：实验组 VS 新对照组 评估建立健康诊所对新生儿死亡率的影响"></a>PSM Step3：实验组 VS 新对照组 评估建立健康诊所对新生儿死亡率的影响</h3><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20210224210315.png" alt=""></p>
+<p> wow，新对照组村庄（未建立健康诊所）新生儿死亡率比实验组村庄（建立健康诊所）足足高出7%，从而证明这个NGO组织的健康诊所项目对新生儿死亡率的降低有显著作用。</p>
+<p>Reference： <a href="https://link.zhihu.com/?target=https%3A//www.youtube.com/watch%3Fv%3DACVyPp1Fy6Y%26t%3D911s">YouTube：An intuitive introduction to Propensity Score Matching</a></p>
 ]]></content>
       <categories>
-        <category>论文</category>
+        <category>计量经济学</category>
       </categories>
       <tags>
-        <tag>论文</tag>
+        <tag>计量经济学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python读取JSON</title>
+    <url>/2017/12/15/Python%E8%AF%BB%E5%8F%96JSON/</url>
+    <content><![CDATA[<p>参考博客:<a href="https://zhuanlan.zhihu.com/p/27917664">python 读写json文件</a>   <a href="http://blog.csdn.net/heatdeath/article/details/72833459">使用python读取json文件 </a><br><a href="http://www.cnblogs.com/lhj588/archive/2012/05/24/2516046.html">Python多维/嵌套字典数据无限遍历</a><br><a href="http://www.cnblogs.com/HZQHZA/p/7301362.html">python json文件遍历所有key、value 及替换key对于的value</a><br>$\times$<br>json数据部分展示:</p>
+<ul>
+<li><p>读取多个JSON数据，提取不同已知属性的值:<br>代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><span class="hljs-keyword">import</span> time<br>start=time.time()<br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;C:/Users/Administrator/Desktop/extract.json&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    tdid=[]<br>    androidId=[]<br>    imei=[]<br>    <span class="hljs-keyword">for</span> line <span class="hljs-keyword">in</span> f.readlines():<br>        <span class="hljs-comment">#print(line)</span><br>        <span class="hljs-comment">#line=f.readline()</span><br>        d = json.loads(line)<br>        tdid.append(d[<span class="hljs-string">&#x27;tdid&#x27;</span>])<br>        androidId.append(d[<span class="hljs-string">&#x27;id&#x27;</span>][<span class="hljs-string">&#x27;androidId&#x27;</span>])<br>        <span class="hljs-comment">#imei.append(d[&#x27;id&#x27;][&#x27;sim&#x27;][1][&#x27;imei&#x27;])</span><br>timeUsed=time.time()-start<span class="hljs-comment">#计时</span><br>print(tdid,androidId)<br></code></pre></div></td></tr></table></figure>
+</li>
+<li><p>读取单个JSON数据，提取该JSON所有值(函数自我调用)<br>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-keyword">import</span> json<br><br><span class="hljs-keyword">with</span> <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;C:/Users/Administrator/Desktop/XS/new.json&#x27;</span>, encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>) <span class="hljs-keyword">as</span> f:<br>    jsonValue=[]<br>    <span class="hljs-comment">#for line in f.readlines():</span><br>    <span class="hljs-comment">#print(line)</span><br>    line=f.readline()<br>    d = json.loads(line)<span class="hljs-comment">#转换为字典</span><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">jsonAll</span>(<span class="hljs-params">d</span>):</span><br>    <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">dict</span>) <span class="hljs-keyword">or</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">list</span>):<span class="hljs-comment">#判断是否为字典或列表</span><br>        <span class="hljs-keyword">for</span> key <span class="hljs-keyword">in</span> d:<br>            <span class="hljs-comment">#print(key)</span><br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(d,<span class="hljs-built_in">dict</span>):<br>                tempValue = d[key]<br>            <span class="hljs-keyword">else</span>:<br>                tempValue = d[<span class="hljs-number">0</span>]<br>            <span class="hljs-keyword">if</span> <span class="hljs-built_in">isinstance</span>(tempValue,<span class="hljs-built_in">dict</span>) <span class="hljs-keyword">or</span><span class="hljs-comment">#判断是否为字典或列表 isinstance(tempValue,list):</span><br>                <span class="hljs-comment">#print(tempValue)</span><br>                <span class="hljs-comment">#if isinstance(tempValue,dict):</span><br>                jsonAll(tempValue)<span class="hljs-comment">#自我调用</span><br>            <span class="hljs-comment">#print(&quot;%s :%s&quot; %(key,tempValue))</span><br>            <span class="hljs-keyword">else</span>:<br>                jsonValue.append(tempValue)<br>                <span class="hljs-comment">#print(tempValue)</span><br>                <span class="hljs-comment">#jsonValue += tempValue</span><br>    <span class="hljs-keyword">return</span> jsonValue<br>jsonValue=jsonAll(d)<br>print(jsonValue)<br></code></pre></div></td></tr></table></figure>
+<p>输出结果:</p>
+<figure class="highlight json"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs json">[&#x27;<span class="hljs-number">317</span>ee02415b4af4311787abf4382eb075&#x27;, <span class="hljs-number">1513069978654</span>, &#x27;ta&#x27;, <span class="hljs-number">2</span>, None, &#x27;<span class="hljs-number">9</span>ee0e03e4f552ac5&#x27;, None, None, None, None, &#x27;AC:C1:EE:<span class="hljs-number">33</span>:D9:D8&#x27;, &#x27;fb088626&#x27;, &#x27;<span class="hljs-number">869718024877240</span>&#x27;, &#x27;<span class="hljs-number">460008382291304</span>&#x27;, &#x27;<span class="hljs-number">89860084191445414192</span>&#x27;, &#x27;<span class="hljs-number">460</span>&#x27;, &#x27;<span class="hljs-number">00</span>&#x27;, &#x27;<span class="hljs-number">1</span>&#x27;, &#x27;<span class="hljs-number">869718024877240</span>&#x27;, &#x27;<span class="hljs-number">460008382291304</span>&#x27;, &#x27;<span class="hljs-number">89860084191445414192</span>&#x27;, &#x27;<span class="hljs-number">460</span>&#x27;, &#x27;<span class="hljs-number">00</span>&#x27;, &#x27;<span class="hljs-number">1</span>&#x27;, &#x27;<span class="hljs-number">69264580E09186</span>B40701BB968CE87FFC&#x27;, &#x27;Soul&#x27;, &#x27;<span class="hljs-number">2.8</span><span class="hljs-number">.6</span>&#x27;, &#x27;cn.soulapp.android&#x27;, <span class="hljs-number">1507785806909</span>, <span class="hljs-number">0</span>, &#x27;Android+TalkingData+V4<span class="hljs-number">.0</span><span class="hljs-number">.12</span>&#x27;, &#x27;Android+<span class="hljs-number">6.0</span><span class="hljs-number">.1</span>&#x27;, &#x27;<span class="hljs-number">23</span>&#x27;, &#x27;zh&#x27;, &#x27;zh_CN&#x27;, <span class="hljs-number">8.0</span>, <span class="hljs-number">23.008712</span>, <span class="hljs-number">113.748479</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">1513069558940</span>, <span class="hljs-number">29.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, <span class="hljs-number">0.0</span>, &#x27;network&#x27;, &#x27;cellular&#x27;, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;LTE&#x27;, None, &#x27;<span class="hljs-number">2147483647</span>&#x27;, &#x27;<span class="hljs-number">2147483647</span>&#x27;, <span class="hljs-number">2147483647</span>, <span class="hljs-number">2147483647</span>, <span class="hljs-number">23</span>, False, &#x27;<span class="hljs-number">223.104</span><span class="hljs-number">.1</span><span class="hljs-number">.147</span>&#x27;, &#x27;Xiaomi&#x27;, &#x27;MI <span class="hljs-number">5</span>s&#x27;, &#x27;<span class="hljs-number">1080</span>*<span class="hljs-number">1920</span>*<span class="hljs-number">480</span>&#x27;, &#x27;Qualcomm Technologies, Inc MSM8996pro&#x27;, <span class="hljs-number">2</span>, <span class="hljs-number">1996800.0</span>, <span class="hljs-number">2779932</span>, <span class="hljs-number">112738896</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1511918381515</span>, None, None]<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -854,6 +791,58 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </tags>
   </entry>
   <entry>
+    <title>Rmarkdown示例</title>
+    <url>/2021/03/11/Rmarkdown%E7%A4%BA%E4%BE%8B/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="53b098c9d532903486b17c81462414e747f9ed7ffe8f9557178bff0065bc0f87">d5bf5a23a5d7260901cfc89a23618729068f15a8cfaa179e7bc01ce01558b309567d1e05b2cdf31d09bfef54672eb8e7579957a9d1c06163c66baa2c84913e58</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">机密文件，请找博主索要密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+  </entry>
+  <entry>
+    <title>Robust Storage Assignment in Unit-Load Warehouses</title>
+    <url>/2018/06/09/Robust%20Storage%20Assignment/</url>
+    <content><![CDATA[<p>[Robust Storage Assignment in Unit-Load Warehouses]<br>[Marcus Ang, Yun Fong Lim]<br>[Lee Kong Chian Schoolof Business, Singapore Management University]<br>[marcusang@smu.edu.sg, yflim@smu.edu.sg]</p>
+<hr>
+<h4 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h4><p>储位分配决策是单元存储仓库中的关键决策，能够降低仓库运作成本。当仓库在多周期中面临多个供应商以及不确定需求的时候，这个问题变得棘手。我们提出一个factor-based的需求模型，每周期中每个产品的需求均依赖于一些不确定的因素。这些因素的分布只有一部分被表示出来了。我们引入了鲁棒优化模型来最小化最坏情况下基于不确定需求的总拣选距离。基于一个线性决策规则，我们通过求解一个中等大小的线性规划问题得到存取策略。令人意外的是，尽管需求分布不精确，我们的计算研究表明线性策略实现了接近预期的值，给出了完美的信息，并且显著优于现有的文献中的启发式算法。</p>
+<h4 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h4><p>在unit-load仓库中，所有商品均被存取在一个单元负载（托盘）中。每个托盘存放同一种商品，通常是一次单独处理.</p>
+<h4 id="2-Problem-Formulation"><a href="#2-Problem-Formulation" class="headerlink" title="2. Problem Formulation"></a>2. Problem Formulation</h4><h5 id="2-1-Deterministic-Demand"><a href="#2-1-Deterministic-Demand" class="headerlink" title="2.1 Deterministic Demand"></a>2.1 Deterministic Demand</h5><p><strong>Notation</strong><br>$j$: the index of class,$j=1,2,…N$<br>$s_j$: the average store cost of all locations in class $j$<br>$r_j$:the average retrieve cost of all locations in class $j$<br>$c_j$: the capacity of class $j$<br>$i$: the index of products,$i=1,2,…M$<br>$t$: the index of period,$t=1,2,…,T$<br>$\mathcal N=\\{1,…,N\\}$<br>$\mathcal N^-=\\{1,…,N-1\\}$<br>$\mathcal M=\\{1,…,M\\}$<br>$\mathcal T=\\{1,…,T\\}$<br>$\mathcal T^+=\\{1,…,T+1\\}$<br>$a_i^t$: the number of pallets of product $i$ arriving at the start of period $t$<br>$v_{ij}^t$:<strong>decision variable</strong>,the number of arriving pallets of product $i$ that are assigned to class $j$ in period $t$<br>$d_i^t$:the number of pallets of product $i$ that are ordered in period $t$<br>$w_{ij}^t$:<strong>decision variable</strong>,the number of pallets of product $i$ that are retrieved from class$j$ in period $t$<br>$x_{ij}^t$: the number of pallets of product $i$ in class$j$ at the start of period $t$</p>
+<p><strong>Assumption </strong></p>
+<ol>
+<li>we assume there is no initial inventory in the warehouse,so $x_{ij}^1=0,\text{for}\; i\in \mathcal M,j\in \mathcal N$.</li>
+<li>假设仓库一开始库存为0.</li>
+<li>不考虑缺货成本，因为在任一时期都有足够的库存来满足需求。即:<script type="math/tex; mode=display">\sum_{\mathcal T=1}^td_i^{\mathcal T}\leq \sum_{\mathcal T=1}^ta_i^{\mathcal T},\; i \in \mathcal M,t \in \mathcal T</script></li>
+</ol>
+<p><strong>Model(1)</strong></p>
+<script type="math/tex; mode=display">Z_D=\text{min}\; \sum_{t\in \mathcal T} \sum_{i\in \mathcal M} \sum_{j\in \mathcal N}(s_jv_{ij}^t+r_jw_{ij}^t)\tag{1}</script><script type="math/tex; mode=display">\text{s.t.}\; \sum_{j\in \mathcal N}v_{ij}^t=a_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{2}</script><script type="math/tex; mode=display">\qquad\sum_{j\in \mathcal N}w_{ij}^t=d_i^t,\quad i\in \mathcal M,t\in \mathcal T;\tag{3}</script><script type="math/tex; mode=display">\quad x_{ij}^{t+1}=x_{ij}^t+v_{ij}^t-w_{ij}^t,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{4}</script><script type="math/tex; mode=display">x_{ij}^1=0,\quad i\in \mathcal M,j\in \mathcal N;\tag{5}</script><script type="math/tex; mode=display">\sum_{i\in \mathcal M}(x_{ij}^t+v_{ij}^t)\leq c_j,\quad j\in \mathcal N^-,t \in \mathcal T;\tag{6}</script><script type="math/tex; mode=display">x_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T^+;\tag{7}</script><script type="math/tex; mode=display">v_{ij}^t,w_{ij}^t\geq 0,\quad i\in \mathcal M,j\in \mathcal N,t\in \mathcal T;\tag{8}</script><p>等式(1)为目标函数，最小化所有周期的存取总成本。<br>约束(2)表示所有到达的托盘必须被分配到某一类中去。<br>约束(3)表示所有的需求必须被满足。<br>约束(4)表示$t+1$时期开始时的托盘的数量与$t$时期托盘数量的关系。<br>约束(5)为本文的假设，假设仓库的初始库存为0。<br>约束(6)表示每一类里的托盘数量不能超过该类的容量限制。<br>约束(7)表示不允许积压(backlog)订单，即使在规划的时间线之后也不可以。<br>约束(8)表示取值约束。</p>
+<blockquote>
+<p>命题1，模型(1)是合理的，当且仅当假设3成立。</p>
+<h5 id="2-2-Factor-Based-Demand-Model"><a href="#2-2-Factor-Based-Demand-Model" class="headerlink" title="2.2 Factor-Based Demand Model"></a>2.2 Factor-Based Demand Model</h5><p>$\widetilde{z}_k$: uncertain factors,$k=1,…,K_t$<br>$\mathscr {KT}$</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>SQL(MYSQL、ORACLE)日常</title>
+    <url>/2019/01/11/SQL(MYSQL%E3%80%81ORACLE)%E6%97%A5%E5%B8%B8/</url>
+    <content><![CDATA[]]></content>
+      <tags>
+        <tag>SQL</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SCI常用句型</title>
     <url>/2018/04/12/SCI%E5%B8%B8%E7%94%A8%E5%8F%A5%E5%9E%8B/</url>
     <content><![CDATA[<p>1.在Introduction里面经常会使用到的一个句子：很多文献已经讨论过了<br>Solar energy conversion by photoelectrochemical cells <strong>has been intensively investigated</strong>.<br>2.值得注意的是…<br>It must also be mentioned that…<br>It is important to highlight that …<br>It is worthwhile mentioning that …<br>3.正如下文将提到的…<br>As will be described below（也可以是As we shall see below）,<br>…will be further discussed below.<br>The observation of nanocluster spheres at the ends of the nanowires is suggestive of a VLS growth process <strong>(see below)</strong><br>4.什么东西还尚未发现/系统研究<br>have not yet been realized.<br>There are relatively few studies devoted to…<br>5.考虑到…<br>Taking the above observations into account,<br> taking into account<br>6.本项研究的意义/亮点在于…<br>Our research extends the knowledge into…<br>This research extends our knowledge of…<br>7.重点在于<br>The key to …is…<br>The development of sustainable energy solutions represents one of the most important scientific and technical challenges of our time, and heterogeneous catalysis is <strong>at the  heart of the problem</strong>.<br>Particular emphasis is placed on …<br>8.一篇论文不可能把所有需要研究的内容都搞清楚，那么在文章中如何委婉地表述某些内容并不是本文的关注重点？<br><strong>Although a detailed investigation of</strong> these factors is <strong>beyond the scope of this work, we acknowledge that </strong>the V(motif) represents an upper bound of the equilibrium active site coverage for the specific materials we have considered.</p>
@@ -863,6 +852,176 @@ s.t. \sum_{j \in J} \boldsymbol{a_j} \lambda_j \geq \boldsymbol{b} \\
       </categories>
       <tags>
         <tag>写作</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Velocity-based storage and stowage decisions in a semi-automated fulfillment system</title>
+    <url>/2017/12/12/Velocity-based%20storage%20and%20stowage%20decisions%20in%20a%20semi-automated%20fulfillment%20system/</url>
+    <content><![CDATA[<h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
+<p>we consider three types of storage policies in this paper:</p>
+<ul>
+<li>random storage policy:随机存储策略</li>
+<li>full-velocity storage policy:基于周转率的存储策略，货架的周转率等于其上物品的需求率之和</li>
+<li>class-based storage policy:分级存储，将存储区域分区，将物品分级，对应存放</li>
+</ul>
+</blockquote>
+<h2 id="2-1-literature-Review"><a href="#2-1-literature-Review" class="headerlink" title="2.1 literature Review"></a>2.1 literature Review</h2><p>疑问：</p>
+<blockquote>
+<p>they set expected duration of stay of the $i^{th}$ storage unit of an item to be i/V for i = 1,2,. . . ,Q, where V is the demand rate of the item and Q is the number of storage units of the item in the system. With the duration of stay policy, the storage units across all the different items can be ordered according to this measure and then assigned in order to the closest locations. <strong>Hence, the storage units of a single item may not be stored together in the warehouse.</strong></p>
+</blockquote>
+<h2 id="2-2-Model-Assumptions"><a href="#2-2-Model-Assumptions" class="headerlink" title="2.2 Model Assumptions"></a>2.2 Model Assumptions</h2><blockquote>
+<p>We establish a <strong>fluid</strong> model that evaluates the expected travel distance of the pods for their pick tours.</p>
+</blockquote>
+<p>对于某个可移动货架而言，其预计行驶距离=其存储位置到工作站的距离乘以其周转率</p>
+<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
+<li>A1: Fluidity of inventory items<br>对物品进行连续性处理<br>fluidity:流动性，流畅<blockquote>
+<p><strong>we index the items (i.e., the stock keeping units) on the continuum from 0 to 1</strong>.We assume that the items are indexed in descending order of <em>demand</em>.</p>
+</blockquote>
+</li>
+</ul>
+<p>按照物品的需求量对仓库内的物品在0到1内进行降序排列。<br>(Q:是否是需求量占比？)</p>
+<ul>
+<li>A2: Fluidity of inventory units, exponential demand for each item<br>假设物品的需求量符合指数分布<blockquote>
+<p>We model the demand of each item as being the number of units required for picking in a specified period of time,e.g.,the next twelve hours.For each item we model the demand as a continuous random variable with an exponential distribution.</p>
+</blockquote>
+</li>
+</ul>
+<p>定义每个物品的需求量为未来一段时间内该物品的单位拣选量。假设每个物品的需求是服从指数分布的连续型随机变量。指数分布能够反映需求的长尾效应和需求的多变性。</p>
+<blockquote>
+<p>we model the inventory as being continuous, as like a fluid.</p>
+<ul>
+<li>A3: Ranked inventory<br>对每个物品库存数量进行排序<br>Thus, if the demand for item  i  equals  x   units, then the x -highest ranked units of inventory will be picked to meet the demand.</li>
+</ul>
+</blockquote>
+<p>由于物品分散存储，不同的储位存放的数量可能不一样，对同一商品的不同货位进行排序，当订单到达时，选取库存数量最多的储位满足订单。</p>
+<ul>
+<li><p>A4： Universal stock out rate for all items<br>所有物品在下一段时间的缺货率相等均为$\alpha$   </p>
+</li>
+<li><p>A5: Same unit size for all items, fixed pod size<br>假设每个货架的储位数量相等，每个物品大小尺寸相等</p>
+</li>
+<li><p>A6: Number of picks independent of the pod’s velocity measure<br>货架在工作站拣选的物品数量不依赖其周转率，主要关注货架到达工作站的频次</p>
+</li>
+<li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
+</li>
+<li>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</li>
+<li>A9: Ignore stow operations<br>忽略上货操作</li>
+<li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
+<h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
+<li><script type="math/tex; mode=display">v_i(x)=e^{-x/V_i}</script><p>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：</p>
+<script type="math/tex; mode=display">\int_o^1V_idi=1$$"CDF”（Cumulative Distribution Function）：分布函数
+指数分布概率密度函数:</script><p>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \\<br>&amp; 0,  x\lt 0 \\<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
+</li>
+<li>定义物品$i$的库存数量为$Q_i$<script type="math/tex; mode=display">Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha</script></li>
+</ul>
+<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：</p>
+<script type="math/tex; mode=display">Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha</script><p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:</p>
+<script type="math/tex; mode=display">DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha</script><p>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
+<ul>
+<li>$C$表示货架的货位数，$J$表示货架的数量<script type="math/tex; mode=display">J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}</script><center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center><br>[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]<h2 id="2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><a href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage" class="headerlink" title="2.4Evaluation of Storage Policies under Random Stowage"></a>2.4Evaluation of Storage Policies under Random Stowage</h2>随机存储策略下的货架布局策略评估<blockquote>
+<p>Our objective is to evaluate the expected total travel distance under the different storage policies</p>
+</blockquote>
+</li>
+</ul>
+<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:</p>
+<script type="math/tex; mode=display">Pr[D_i> x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i</script><script type="math/tex; mode=display">Pr[D_i > x]=0,for\quad x\geq Q_i</script><p>则其期望与方差$E[D_i],Var(D_i)$:</p>
+<script type="math/tex; mode=display">E[D_i]=V_i(1-\alpha)</script><script type="math/tex; mode=display">Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)</script><p>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:</p>
+<script type="math/tex; mode=display">E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C</script><script type="math/tex; mode=display">Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C</script><p>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
+<script type="math/tex; mode=display">L=4</script><script type="math/tex; mode=display">l \in \\{1,2,...,L\\}</script>]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>STATA</title>
+    <url>/2019/12/16/STATA/</url>
+    <content><![CDATA[<figure class="highlight stata"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs stata"><span class="hljs-keyword">reg</span> var1 var2 ...    #var1为因变量，后面的为自变量<br><span class="hljs-keyword">gen</span> new_var= <span class="hljs-built_in">date</span>(<span class="hljs-keyword">var</span>,<span class="hljs-string">&quot;YMD&quot;</span>) #生成时间变量new_var<br><span class="hljs-keyword">format</span> %td new_var #变换变量为时间（天）<br><span class="hljs-keyword">tsset</span> new_var, daily  #设置变量new_var为时间序列变量，粒度为天<br></code></pre></div></td></tr></table></figure>
+<h2 id="1-x-predicts-failure-success-perfectly"><a href="#1-x-predicts-failure-success-perfectly" class="headerlink" title="1 !=x predicts failure/success perfectly"></a>1 !=x predicts failure/success perfectly</h2><p><a href="http://blog.sina.com.cn/s/blog_c2b4a64b0102v37y.html">参考博客</a></p>
+<p>在样本量不够大且我们控制的固定效应相对较多时，在Stata中使用Probit或Logit模型进行回归分析，很可能出现提示“……!= 0 predicts failure perfectly”或“……!= 0 predicts success perfectly”，并且Stata会自动删除相应的观测值。</p>
+<p> 这里“……!= 0 predicts failure perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于0。</p>
+<p> 类似地，“……!= 0 predicts success perfectly”的含义是指当某个虚拟变量取值为1时，被解释变量的取值<strong>全部</strong>等于1。</p>
+<h2 id="2-统计变量唯一值个数"><a href="#2-统计变量唯一值个数" class="headerlink" title="2 统计变量唯一值个数"></a>2 统计变量唯一值个数</h2><p><code>codebook [variable]</code></p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210421202748777.png" alt="image-20210421202748777"></p>
+<h2 id="3-logit回归样本数变少"><a href="#3-logit回归样本数变少" class="headerlink" title="3 logit回归样本数变少"></a>3 logit回归样本数变少</h2><p>某些变量出现了<a href="1">1</a>中的问题。</p>
+]]></content>
+      <categories>
+        <category>stata</category>
+      </categories>
+      <tags>
+        <tag>stata</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Stowage Decisions in Multi-Zone Storage Systems</title>
+    <url>/2017/12/19/Stowage%20Decisions%20in%20Multi-Zone%20Storage%20Systems/</url>
+    <content><![CDATA[<h1 id="多分区货到人智能仓库储位分配"><a href="#多分区货到人智能仓库储位分配" class="headerlink" title="多分区货到人智能仓库储位分配"></a>多分区货到人智能仓库储位分配</h1><p>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了两个分区储位分配策略，能有效平衡各分区的工作量。第一个分区储位分配策略采用chaining-inspired分配，通过分散各个物品的库存数量到两个分区。第二个区域存储策略明确地跟踪/更新每个存储分区的预期工作量（称为分区的周转率），然后将到达的物品存储到具有最小周转率的存储分区。</p>
+<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>在多分区的仓库中，库存区域被物理地分隔成不同的平行分区，每个分区拥有自己的库存区域和工作设备。</p>
+<blockquote>
+<p>See D’Andrea and Wurman (2008), Enright and Wurman (2011), Lamballais et al. (2017), Zou et al. (2017) and Yuan (2017) for details on these semi-automated storage systems.<br>将物品分散到各个分区存储能够提高系统的灵活性，同时也有一些附带的成本产生，比如工人拆箱。</p>
+</blockquote>
+<p>[<img src="http://p0voo3j3n.bkt.clouddn.com/blog/171218/dJIH4AKB9C.png?imageslim" alt="mark">]</p>
+<h2 id="2-Literature-Review"><a href="#2-Literature-Review" class="headerlink" title="2.Literature Review"></a>2.Literature Review</h2><p>仓库运筹优化的文献主要分为两类:库存决策及订单拣选决策。</p>
+<blockquote>
+<p>The storage decisions determine where and how to store the inventory in the warehouse; the order-picking decisions determine how to efficiently pick items from the storage system to fulfill a set of customer orders. The major research topics related to the storage decision are the <strong>forward-reserve allocation problem, the zoning problem, and the storage location assignment problem</strong>. The forward-reserve problem considers how to allocate items between the reserve area and the picking area within a warehouse; the zoning problem studies how to create multiple zones for picking and how to spread the inventory for each item over the multiple zones; the storage location assignment problem decides where to store the inventory within a storage zone.</p>
+<p>The major research topics related to the order picking decisions comprise<strong>batching, routing, and sorting problems.</strong> The batching problem studies how to group the orders together for a single picking tour; the routing problem considers how to sequence the tasks in a picking tour to construct the most efficient picking route; the sorting problem determines how to efficiently sort and assemble the picked items into customer orders.<br>We refer the reader to the review papers<strong> De Koster et al. (2007), Gu et al. (2007) and Staudt et al. (2015)</strong> for more extensive discussions of the overall literature on warehouse operational decisions.<br><strong>Jane and Laih (2005) propose a heuristic algorithm for a multi-zone system that assigns each item to a single zone accounting for item affinity, namely the likelihood that two items will appear in the same order.</strong><br><strong>Onal et al. (2017) recently discuss an explosive storage policy by which the items are stored at many storage locations in large online retailing fulfillment centers</strong></p>
+</blockquote>
+<p>分区储位分配问题的主要决策是对于每个物品，存储多少数量到各个分区。目标函数是平衡各个分区之间的工作量。主要目的是保证拣选的灵活性/柔性。</p>
+<h2 id="3-Evaluation-Model-for-Comparing-Stowage-Policies"><a href="#3-Evaluation-Model-for-Comparing-Stowage-Policies" class="headerlink" title="3. Evaluation Model for Comparing Stowage Policies"></a>3. Evaluation Model for Comparing Stowage Policies</h2><p>为了评估不同储位分配策略的有效性，我们采用了单周期(single-period)、理想化的模型。模型的输入是随机的物品需求、每个分区固定的容量以及待存储的库存。<br>In particular,<strong>假设开始该多分区仓库是空的</strong>，利用我们的储位分配策略进行储位分配。<br>single-period:</p>
+<blockquote>
+<p>We also think a single-period model is sufficient for our purposes where the length of the period would depend on how stowage and resource planning are done.</p>
+</blockquote>
+<p>周期长度决定于补货及资源配置何时结束</p>
+<blockquote>
+<p>If stowage occurs primarily, say, during the night or early morning hours, then the period might be one day, reflecting the fact that you can only make adjustments once a day to the inventory profiles.</p>
+</blockquote>
+<p>也就是周期时间内不会发生补货及资源配置的操作。<br>Model:<br>$I$:仓库中物品的数量；<br>$J$:仓库中分区的数量<br>$a_{ij}$:表示物品$i$ 存储在分区$j$ 中的数量；<br>$d_i$:物品$i$ 的总库存；<br>$c_j$:单个周期内 $j$ 存储分区的拣选容量，假设各个分区的拣选容量均固定；<br>决策变量:<br>$x_{ij}$:表示存储分区$j$ 用来满足物品$i$ 的需求的数量</p>
+<script type="math/tex; mode=display">max\sum_{i=1}^I \sum_{j=1}^J x_{ij}$$  $$s.t.\qquad \sum_{j=1}^J x_{ij} \leq d_i \qquad \forall i$$  $$\sum_{i=1}^I x_{ij} \leq c_j \qquad \forall j$$   $$0 \leq x_{ij}\leq a_{ij} \qquad \forall i,j</script><p>目标函数是在单个周期内尽可能拣选更多数量的商品，满足尽可能多的需求。</p>
+<h2 id="4-Model-Assumptions"><a href="#4-Model-Assumptions" class="headerlink" title="4.Model Assumptions"></a>4.Model Assumptions</h2><ul>
+<li><p>A1.假设有6个存储分区</p>
+</li>
+<li><p>A2.假设仓库中总共有100种($I=100$)物品，物品在单个周期内的需求率满足指数函数$\mu_i=\beta e^{is}$，$i=0,1,\cdots,99$，$s$ 和 $\beta$ are the shape and scale parameters respectively。考虑Bender(1981)提出的Pareto law,对于这个指数函数，前20%的物品的需求仅取决于参数 $s$，本文通过调整参数$s$ 使得前20%的物品拥有80%，70%，60%，50%的需求占比，称这4中需求模式分别为Ultra-high Skewness,High Skewness,Medium Skewness,Low Skewness。而且，相应地设置4种情况下的参数$\beta$，使得4种情况下在单个周期的总需求均为2000units。</p>
+</li>
+</ul>
+<ul>
+<li>A3.假设每个物品的需求符合泊松分布，参数为$\mu_i$</li>
+<li>A4.假设每个物品的库存数量为其需求平均数量的4倍，因此缺货率为:<script type="math/tex">Pr(d_i> [4\mu_i])=1-Pr(d_i\leq[4\mu_i])=1-e^{-\mu_i}\sum_{t=0}^{[4\mu_i]}\frac{\mu_i^t}{t!}</script>  缺货率很低很低<h2 id="5-Stowage-Policies"><a href="#5-Stowage-Policies" class="headerlink" title="5.Stowage Policies"></a>5.Stowage Policies</h2>以固定存储策略(dedicated stowage)作为基准策略，并基于chaining strategy构造了另外几种存储策略(Policy 2-5)，每种策略都将每个物品的库存分到多个存储分区。Policy 6-7为混合存储策略，部分为固定存储，部分为chaining stategy。Policy 8将固定存储进行改进，试图平衡各个分区的工作量，将物品分配至周转率最低的存储分区。</li>
+<li>Policy 1(no chain)<br>随机固定存储</li>
+<li>Policy 2(3 short chains)<br>每个物品有1/3的概率存放在Zone1&amp;2，1/3的概率存放在Zone3&amp;4，1/3的概率存放在Zone5&amp;6，每个物品被均分为两部分存放在两个分区。即每两个Zone为一个chain。</li>
+<li>Policy 3(2 short chains)<br>每个物品有1/2的概率存放在Zone1&amp;2&amp;3，1/2的概率存放在Zone4&amp;5&amp;6，每个物品被均分为两部分存放在两个分区。即每三个Zone为一个chain。</li>
+<li>Policy 4(full chains)<br>每个物品有1/6的概率存放在Zone1&amp;2，Zone2&amp;3，Zone3&amp;4，Zone4&amp;5，Zone5&amp;6，Zone1&amp;6，，每个物品被均分为两部分存放在两个分区。</li>
+<li><p>Policy 5(random pairs)<br>每个物品随机选择两个分区存放，每两个分区被选择的概率相等</p>
+</li>
+<li><p>Policy 6(mixed)<br>仓库中的物品被分为两个大类，第一类拥有80%的物品，他们根据Policy 1来存储。第二类拥有20%的物品，他们根据Policy 5来存储。</p>
+</li>
+<li>Policy 7(mixed smart)<br>首先对仓库中的物品根据其需求率进行排序，然后需求率排前20%的物品按照Policy 5来存储，后80%的物品根据Policy 1来存储。</li>
+<li>Policy 8(dynamic balance)<br>首先对仓库中的物品进行随机排序，然后根据这个顺序进行存储。对于每个物品，我们选择目前物品累计需求率/周转率最小的分区来存储其全部库存。每个分区的周转率计算公式为$\sum_{i\in A_j}\mu_i$，$A_j$为目前该分区存储的所有物品集合。<h2 id="6-Numerical-Results"><a href="#6-Numerical-Results" class="headerlink" title="6.Numerical Results"></a>6.Numerical Results</h2><h2 id="Comparision-of-Different-Stowage-Policies"><a href="#Comparision-of-Different-Stowage-Policies" class="headerlink" title="Comparision of Different Stowage Policies"></a>Comparision of Different Stowage Policies</h2>每个库存策略生成100种inventory profiles，每个库存布局对应会生成100种需求情况来进行仿真，即每个策略会有10000次仿真。<br>使用$A_k^p$ 表示策略$p$ 的第$k$ 种库存布局。$D_l$ 表示第$l$ 个物品的需求。<br>解本文的Model得到单个周期的未满足需求$U_{kl}^{p}$，通过调整该指标可以衡量系统里由不平衡的库存带来的未满足需求。调整方法如下<script type="math/tex">U_{kl}^p\leftarrow U_{kl}^p\leftarrow \sum_i max(0,d_{l,i}-a_{k,i}^p)</script><br>对于各个存储策略，平均未满足需求为:<script type="math/tex">\mu^p = \frac{\sum_k\sum_l U_{kl}^p}{nm}</script><br>同时也记录了第$k$ 种库存布局的未满足需求标准差:<script type="math/tex">\sigma=\sqrt{\frac{\sum_l (U_{kl}^p-\frac{\sum_l U_{kl}^p}{m})^2}{m}}</script><br>则每个库存策略$p$ 的平均标准差为:<script type="math/tex">v^p=\frac{\sum_k \sigma_k^p}{n}</script></li>
+</ul>
+<p>通过仿真分析我们发现:</p>
+<ul>
+<li>Policy 1的表现是最差的</li>
+<li>create chains以及Policy 8能显著提升表现。</li>
+<li>the chain is longer,the better，提升系统的柔性。</li>
+<li>random  pairs比full chain稍微好一点。</li>
+<li>如果我们要在每个区域存放1/6的库存而忽略完整性要求，我们从表2可以看出，full chain和random pairs策略有效地实现了将每个物品的库存均匀分布在存储区域的全柔性系统的性能。 这表明将物品的库存拆分为两个以上的存储区域可能没有什么价值。 </li>
+<li>从mixed和mixed smart的策略中，我们看到，我们可能只需要分散存储一小部分（20％）的物品，以获得chain的好处。 特别是mixed smart表明，只有高周转率的物品需要拆分。 从实际的角度来看，这一点非常重要，因为如前所述，存在拆分库存的运营成本。 对mixed smart的评估显示，只有将高周转率的物品分解，才能达到最佳存储策略的效果，即full chain和random pairs的效果。</li>
+<li><p>动态平衡策略也可能相当有效，尽管相对于full chain，random pairs和mixed smart来说，这种策略是滞后的。 如果在仓库中拆分物品的库存是不可能的或者成本过高，那么动态平衡策略看起来是最合理的，因为它可以确保库存在存储区域内“均匀”分布。 但是，这个策略需要知道所有物品的需求率。 相比之下，除mixed smart外，其他策略不需要知道物品需求率; 而对于mixed smart策略，我们只需要将物品分为高与低的需求。</p>
+<h2 id="7-Sensitivity-Analysis"><a href="#7-Sensitivity-Analysis" class="headerlink" title="7.Sensitivity Analysis"></a>7.Sensitivity Analysis</h2><p>我们对资源利用率，需求偏度和库存水平进行敏感性分析。目的是更深入地了解上一节中的不同分区存储策略的相对表现。</p>
+</li>
+<li><p>Sensitivity Analysis towards Resource Utilization Level<br>在这个测试中，我们分析了四种资源利用水平下的分区存储策略。我们观察到，当资源利用率提高时，系统的性能会变差，但是即使在容量很紧的情况下，chain和random pairs的策略仍然变现不错。事实上，随着利用率的提高，full chain或random pairs的相对改善也随之增加。 </p>
+</li>
+<li><p>Sensitivity Analysis towards Demand Skewness<br>在这个测试中，我们分析了低，中，高和超高需求偏度下的分区存储策略。假设在这个测试中资源利用率为90％。我们观察到当需求偏多时，系统的性能会变差。值得注意的是，mixed smart即使对于偏高需求模式也非常有效，因为高周转率的物品总是分成两个存储区。</p>
+</li>
+<li>Sensitivity Analysis towards Inventory Level<br>在这个测试中，我们放宽在A4种设定每个物品的库存水平的假设。 我们假设需求为中等偏度，平均资源利用率为90％。我们观察到，除动态平衡策略外，每个分区存储策略对库存水平的变化不敏感; 这表明，当库存的相对数量在各个物品之间变化时，根据总需求率存储物品可能不太有效。<h2 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8.Conclusion"></a>8.Conclusion</h2>在这项研究中，我们通过模拟研究来分析分区存储策略。我们确定了两个非常有效的存储策略，通过保持库存分配的平衡可以提高拣选效率。<br>第一个策略将每个物品的到达库存分成两半，并将每一半装入不同的存储区域。另一方面，我们发现按照full chain来存放库存几乎同样有效。此外，我们发现即使在高资源利用率和高需求变化的情况下，有效策略也只需要将random pairs策略应用于高周转率物品。<br>第二个策略是动态平衡策略，但是要实施这个策略，需要知道存储在存储区中的物品的总周转率。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -983,225 +1142,6 @@ a_{in}=
       </categories>
       <tags>
         <tag>论文, storage assignment</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SQL(MYSQL、ORACLE)日常</title>
-    <url>/2019/01/11/SQL(MYSQL%E3%80%81ORACLE)%E6%97%A5%E5%B8%B8/</url>
-    <content><![CDATA[]]></content>
-      <tags>
-        <tag>SQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Stowage Decisions in Multi-Zone Storage Systems</title>
-    <url>/2017/12/19/Stowage%20Decisions%20in%20Multi-Zone%20Storage%20Systems/</url>
-    <content><![CDATA[<h1 id="多分区货到人智能仓库储位分配"><a href="#多分区货到人智能仓库储位分配" class="headerlink" title="多分区货到人智能仓库储位分配"></a>多分区货到人智能仓库储位分配</h1><p>Author:Rong yuan(MIT)、Tolga Cezik(Amazon)<br>[管梦城]]</p>
-<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>储位分配决策决定到达的物品如何摆放在仓库中，本文考虑了大规模仓库的分区储位分配问题，将物品分配到不同的存储分区。考虑了一个实例:多层的货到人仓库，每层看成一个存储分区，每个分区拣选容量有限。将物品存储到各个分区中使得各个分区有限的拣选容量能满足整个仓库不确定的需求。定义了两个分区储位分配策略，能有效平衡各分区的工作量。第一个分区储位分配策略采用chaining-inspired分配，通过分散各个物品的库存数量到两个分区。第二个区域存储策略明确地跟踪/更新每个存储分区的预期工作量（称为分区的周转率），然后将到达的物品存储到具有最小周转率的存储分区。</p>
-<h2 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h2><p>在多分区的仓库中，库存区域被物理地分隔成不同的平行分区，每个分区拥有自己的库存区域和工作设备。</p>
-<blockquote>
-<p>See D’Andrea and Wurman (2008), Enright and Wurman (2011), Lamballais et al. (2017), Zou et al. (2017) and Yuan (2017) for details on these semi-automated storage systems.<br>将物品分散到各个分区存储能够提高系统的灵活性，同时也有一些附带的成本产生，比如工人拆箱。</p>
-</blockquote>
-<p>[<img src="http://p0voo3j3n.bkt.clouddn.com/blog/171218/dJIH4AKB9C.png?imageslim" alt="mark">]</p>
-<h2 id="2-Literature-Review"><a href="#2-Literature-Review" class="headerlink" title="2.Literature Review"></a>2.Literature Review</h2><p>仓库运筹优化的文献主要分为两类:库存决策及订单拣选决策。</p>
-<blockquote>
-<p>The storage decisions determine where and how to store the inventory in the warehouse; the order-picking decisions determine how to efficiently pick items from the storage system to fulfill a set of customer orders. The major research topics related to the storage decision are the <strong>forward-reserve allocation problem, the zoning problem, and the storage location assignment problem</strong>. The forward-reserve problem considers how to allocate items between the reserve area and the picking area within a warehouse; the zoning problem studies how to create multiple zones for picking and how to spread the inventory for each item over the multiple zones; the storage location assignment problem decides where to store the inventory within a storage zone.</p>
-<p>The major research topics related to the order picking decisions comprise<strong>batching, routing, and sorting problems.</strong> The batching problem studies how to group the orders together for a single picking tour; the routing problem considers how to sequence the tasks in a picking tour to construct the most efficient picking route; the sorting problem determines how to efficiently sort and assemble the picked items into customer orders.<br>We refer the reader to the review papers<strong> De Koster et al. (2007), Gu et al. (2007) and Staudt et al. (2015)</strong> for more extensive discussions of the overall literature on warehouse operational decisions.<br><strong>Jane and Laih (2005) propose a heuristic algorithm for a multi-zone system that assigns each item to a single zone accounting for item affinity, namely the likelihood that two items will appear in the same order.</strong><br><strong>Onal et al. (2017) recently discuss an explosive storage policy by which the items are stored at many storage locations in large online retailing fulfillment centers</strong></p>
-</blockquote>
-<p>分区储位分配问题的主要决策是对于每个物品，存储多少数量到各个分区。目标函数是平衡各个分区之间的工作量。主要目的是保证拣选的灵活性/柔性。</p>
-<h2 id="3-Evaluation-Model-for-Comparing-Stowage-Policies"><a href="#3-Evaluation-Model-for-Comparing-Stowage-Policies" class="headerlink" title="3. Evaluation Model for Comparing Stowage Policies"></a>3. Evaluation Model for Comparing Stowage Policies</h2><p>为了评估不同储位分配策略的有效性，我们采用了单周期(single-period)、理想化的模型。模型的输入是随机的物品需求、每个分区固定的容量以及待存储的库存。<br>In particular,<strong>假设开始该多分区仓库是空的</strong>，利用我们的储位分配策略进行储位分配。<br>single-period:</p>
-<blockquote>
-<p>We also think a single-period model is sufficient for our purposes where the length of the period would depend on how stowage and resource planning are done.</p>
-</blockquote>
-<p>周期长度决定于补货及资源配置何时结束</p>
-<blockquote>
-<p>If stowage occurs primarily, say, during the night or early morning hours, then the period might be one day, reflecting the fact that you can only make adjustments once a day to the inventory profiles.</p>
-</blockquote>
-<p>也就是周期时间内不会发生补货及资源配置的操作。<br>Model:<br>$I$:仓库中物品的数量；<br>$J$:仓库中分区的数量<br>$a_{ij}$:表示物品$i$ 存储在分区$j$ 中的数量；<br>$d_i$:物品$i$ 的总库存；<br>$c_j$:单个周期内 $j$ 存储分区的拣选容量，假设各个分区的拣选容量均固定；<br>决策变量:<br>$x_{ij}$:表示存储分区$j$ 用来满足物品$i$ 的需求的数量</p>
-<script type="math/tex; mode=display">max\sum_{i=1}^I \sum_{j=1}^J x_{ij}$$  $$s.t.\qquad \sum_{j=1}^J x_{ij} \leq d_i \qquad \forall i$$  $$\sum_{i=1}^I x_{ij} \leq c_j \qquad \forall j$$   $$0 \leq x_{ij}\leq a_{ij} \qquad \forall i,j</script><p>目标函数是在单个周期内尽可能拣选更多数量的商品，满足尽可能多的需求。</p>
-<h2 id="4-Model-Assumptions"><a href="#4-Model-Assumptions" class="headerlink" title="4.Model Assumptions"></a>4.Model Assumptions</h2><ul>
-<li><p>A1.假设有6个存储分区</p>
-</li>
-<li><p>A2.假设仓库中总共有100种($I=100$)物品，物品在单个周期内的需求率满足指数函数$\mu_i=\beta e^{is}$，$i=0,1,\cdots,99$，$s$ 和 $\beta$ are the shape and scale parameters respectively。考虑Bender(1981)提出的Pareto law,对于这个指数函数，前20%的物品的需求仅取决于参数 $s$，本文通过调整参数$s$ 使得前20%的物品拥有80%，70%，60%，50%的需求占比，称这4中需求模式分别为Ultra-high Skewness,High Skewness,Medium Skewness,Low Skewness。而且，相应地设置4种情况下的参数$\beta$，使得4种情况下在单个周期的总需求均为2000units。</p>
-</li>
-</ul>
-<ul>
-<li>A3.假设每个物品的需求符合泊松分布，参数为$\mu_i$</li>
-<li>A4.假设每个物品的库存数量为其需求平均数量的4倍，因此缺货率为:<script type="math/tex">Pr(d_i> [4\mu_i])=1-Pr(d_i\leq[4\mu_i])=1-e^{-\mu_i}\sum_{t=0}^{[4\mu_i]}\frac{\mu_i^t}{t!}</script>  缺货率很低很低<h2 id="5-Stowage-Policies"><a href="#5-Stowage-Policies" class="headerlink" title="5.Stowage Policies"></a>5.Stowage Policies</h2>以固定存储策略(dedicated stowage)作为基准策略，并基于chaining strategy构造了另外几种存储策略(Policy 2-5)，每种策略都将每个物品的库存分到多个存储分区。Policy 6-7为混合存储策略，部分为固定存储，部分为chaining stategy。Policy 8将固定存储进行改进，试图平衡各个分区的工作量，将物品分配至周转率最低的存储分区。</li>
-<li>Policy 1(no chain)<br>随机固定存储</li>
-<li>Policy 2(3 short chains)<br>每个物品有1/3的概率存放在Zone1&amp;2，1/3的概率存放在Zone3&amp;4，1/3的概率存放在Zone5&amp;6，每个物品被均分为两部分存放在两个分区。即每两个Zone为一个chain。</li>
-<li>Policy 3(2 short chains)<br>每个物品有1/2的概率存放在Zone1&amp;2&amp;3，1/2的概率存放在Zone4&amp;5&amp;6，每个物品被均分为两部分存放在两个分区。即每三个Zone为一个chain。</li>
-<li>Policy 4(full chains)<br>每个物品有1/6的概率存放在Zone1&amp;2，Zone2&amp;3，Zone3&amp;4，Zone4&amp;5，Zone5&amp;6，Zone1&amp;6，，每个物品被均分为两部分存放在两个分区。</li>
-<li><p>Policy 5(random pairs)<br>每个物品随机选择两个分区存放，每两个分区被选择的概率相等</p>
-</li>
-<li><p>Policy 6(mixed)<br>仓库中的物品被分为两个大类，第一类拥有80%的物品，他们根据Policy 1来存储。第二类拥有20%的物品，他们根据Policy 5来存储。</p>
-</li>
-<li>Policy 7(mixed smart)<br>首先对仓库中的物品根据其需求率进行排序，然后需求率排前20%的物品按照Policy 5来存储，后80%的物品根据Policy 1来存储。</li>
-<li>Policy 8(dynamic balance)<br>首先对仓库中的物品进行随机排序，然后根据这个顺序进行存储。对于每个物品，我们选择目前物品累计需求率/周转率最小的分区来存储其全部库存。每个分区的周转率计算公式为$\sum_{i\in A_j}\mu_i$，$A_j$为目前该分区存储的所有物品集合。<h2 id="6-Numerical-Results"><a href="#6-Numerical-Results" class="headerlink" title="6.Numerical Results"></a>6.Numerical Results</h2><h2 id="Comparision-of-Different-Stowage-Policies"><a href="#Comparision-of-Different-Stowage-Policies" class="headerlink" title="Comparision of Different Stowage Policies"></a>Comparision of Different Stowage Policies</h2>每个库存策略生成100种inventory profiles，每个库存布局对应会生成100种需求情况来进行仿真，即每个策略会有10000次仿真。<br>使用$A_k^p$ 表示策略$p$ 的第$k$ 种库存布局。$D_l$ 表示第$l$ 个物品的需求。<br>解本文的Model得到单个周期的未满足需求$U_{kl}^{p}$，通过调整该指标可以衡量系统里由不平衡的库存带来的未满足需求。调整方法如下<script type="math/tex">U_{kl}^p\leftarrow U_{kl}^p\leftarrow \sum_i max(0,d_{l,i}-a_{k,i}^p)</script><br>对于各个存储策略，平均未满足需求为:<script type="math/tex">\mu^p = \frac{\sum_k\sum_l U_{kl}^p}{nm}</script><br>同时也记录了第$k$ 种库存布局的未满足需求标准差:<script type="math/tex">\sigma=\sqrt{\frac{\sum_l (U_{kl}^p-\frac{\sum_l U_{kl}^p}{m})^2}{m}}</script><br>则每个库存策略$p$ 的平均标准差为:<script type="math/tex">v^p=\frac{\sum_k \sigma_k^p}{n}</script></li>
-</ul>
-<p>通过仿真分析我们发现:</p>
-<ul>
-<li>Policy 1的表现是最差的</li>
-<li>create chains以及Policy 8能显著提升表现。</li>
-<li>the chain is longer,the better，提升系统的柔性。</li>
-<li>random  pairs比full chain稍微好一点。</li>
-<li>如果我们要在每个区域存放1/6的库存而忽略完整性要求，我们从表2可以看出，full chain和random pairs策略有效地实现了将每个物品的库存均匀分布在存储区域的全柔性系统的性能。 这表明将物品的库存拆分为两个以上的存储区域可能没有什么价值。 </li>
-<li>从mixed和mixed smart的策略中，我们看到，我们可能只需要分散存储一小部分（20％）的物品，以获得chain的好处。 特别是mixed smart表明，只有高周转率的物品需要拆分。 从实际的角度来看，这一点非常重要，因为如前所述，存在拆分库存的运营成本。 对mixed smart的评估显示，只有将高周转率的物品分解，才能达到最佳存储策略的效果，即full chain和random pairs的效果。</li>
-<li><p>动态平衡策略也可能相当有效，尽管相对于full chain，random pairs和mixed smart来说，这种策略是滞后的。 如果在仓库中拆分物品的库存是不可能的或者成本过高，那么动态平衡策略看起来是最合理的，因为它可以确保库存在存储区域内“均匀”分布。 但是，这个策略需要知道所有物品的需求率。 相比之下，除mixed smart外，其他策略不需要知道物品需求率; 而对于mixed smart策略，我们只需要将物品分为高与低的需求。</p>
-<h2 id="7-Sensitivity-Analysis"><a href="#7-Sensitivity-Analysis" class="headerlink" title="7.Sensitivity Analysis"></a>7.Sensitivity Analysis</h2><p>我们对资源利用率，需求偏度和库存水平进行敏感性分析。目的是更深入地了解上一节中的不同分区存储策略的相对表现。</p>
-</li>
-<li><p>Sensitivity Analysis towards Resource Utilization Level<br>在这个测试中，我们分析了四种资源利用水平下的分区存储策略。我们观察到，当资源利用率提高时，系统的性能会变差，但是即使在容量很紧的情况下，chain和random pairs的策略仍然变现不错。事实上，随着利用率的提高，full chain或random pairs的相对改善也随之增加。 </p>
-</li>
-<li><p>Sensitivity Analysis towards Demand Skewness<br>在这个测试中，我们分析了低，中，高和超高需求偏度下的分区存储策略。假设在这个测试中资源利用率为90％。我们观察到当需求偏多时，系统的性能会变差。值得注意的是，mixed smart即使对于偏高需求模式也非常有效，因为高周转率的物品总是分成两个存储区。</p>
-</li>
-<li>Sensitivity Analysis towards Inventory Level<br>在这个测试中，我们放宽在A4种设定每个物品的库存水平的假设。 我们假设需求为中等偏度，平均资源利用率为90％。我们观察到，除动态平衡策略外，每个分区存储策略对库存水平的变化不敏感; 这表明，当库存的相对数量在各个物品之间变化时，根据总需求率存储物品可能不太有效。<h2 id="8-Conclusion"><a href="#8-Conclusion" class="headerlink" title="8.Conclusion"></a>8.Conclusion</h2>在这项研究中，我们通过模拟研究来分析分区存储策略。我们确定了两个非常有效的存储策略，通过保持库存分配的平衡可以提高拣选效率。<br>第一个策略将每个物品的到达库存分成两半，并将每一半装入不同的存储区域。另一方面，我们发现按照full chain来存放库存几乎同样有效。此外，我们发现即使在高资源利用率和高需求变化的情况下，有效策略也只需要将random pairs策略应用于高周转率物品。<br>第二个策略是动态平衡策略，但是要实施这个策略，需要知道存储在存储区中的物品的总周转率。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Order batching</title>
-    <url>/2018/04/30/order%20batching/</url>
-    <content><![CDATA[<h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&amp;mid=2650459983&amp;idx=1&amp;sn=02d696afefef36f1699a55e7f0380c75&amp;chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&amp;scene=21#wechat_redirect">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
-<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
-<blockquote>
-<p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
-</blockquote>
-<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">Indices   |   <br>$i$   |   商品索引，$i&#x3D;1,...,N$<br>$m$   |   货架索引，$m&#x3D;1,...,M$<br>$b$   |   批次索引，$b&#x3D;1,...,B$<br>**Parameters**   |   <br>$M$   |   货架总数<br>$N$   |   商品总数<br>$B$   |   批次总数<br>$L$   |   单个批次最大订单数限制<br>$O$   |   订单总数<br>$t_m$   |   货架$m$ 上的商品种类总数<br>$d_&#123;io&#125;$   |   &#x3D;1如果订单$o$ 包含商品$i$ ;否则为0<br>$c_&#123;im&#125;$   |   &#x3D;1如果货架$m$ 上有商品$i$ ;否则为0<br></code></pre></div></td></tr></table></figure>
-<p><strong>Decision variables</strong>  </p>
-<script type="math/tex; mode=display">
-x_{bm} =
-\begin{cases}
-1, &  \text{如果拣选批次$b$ 需要搬运货架$m$} \\\
-0, & \text{否则}
-\end{cases}</script><script type="math/tex; mode=display">
-h_{im} =
-\begin{cases}
-1, &  \text{如果需要从货架$m$ 上拣选商品$i$} \\\
-0,&  \text{否则}
-\end{cases}</script><script type="math/tex; mode=display">
-y_{ob} =
-\begin{cases}
-1, &  \text{如果订单 $o$被分配到批次$b$} \\\
-0,&  \text{否则}
-\end{cases}</script><script type="math/tex; mode=display">
-z_{ib} =
-\begin{cases}
-1,  & \text{如果批次$b$ 中包含商品$i$} \\\
-0,&  \text{否则}
-\end{cases}</script><p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:</p>
-<script type="math/tex; mode=display">min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}</script><script type="math/tex; mode=display">\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}</script><script type="math/tex; mode=display">\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}</script><script type="math/tex; mode=display">Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}</script><script type="math/tex; mode=display">h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}</script><script type="math/tex; mode=display">\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}</script><script type="math/tex; mode=display">x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}</script><script type="math/tex; mode=display">x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}</script><p>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
-<h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
-<h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
-<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
-<h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
-<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比<br>无效移动次数   |   406   |   809   | 49.815%<br></code></pre></div></td></tr></table></figure>
-<p>目标函数迭代情况:</p>
-<h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
-]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Velocity-based storage and stowage decisions in a semi-automated fulfillment system</title>
-    <url>/2017/12/12/Velocity-based%20storage%20and%20stowage%20decisions%20in%20a%20semi-automated%20fulfillment%20system/</url>
-    <content><![CDATA[<h2 id="Chapter2-Velocity-based-storage-decisions"><a href="#Chapter2-Velocity-based-storage-decisions" class="headerlink" title="Chapter2 Velocity-based storage decisions"></a>Chapter2 Velocity-based storage decisions</h2><blockquote>
-<p>we consider three types of storage policies in this paper:</p>
-<ul>
-<li>random storage policy:随机存储策略</li>
-<li>full-velocity storage policy:基于周转率的存储策略，货架的周转率等于其上物品的需求率之和</li>
-<li>class-based storage policy:分级存储，将存储区域分区，将物品分级，对应存放</li>
-</ul>
-</blockquote>
-<h2 id="2-1-literature-Review"><a href="#2-1-literature-Review" class="headerlink" title="2.1 literature Review"></a>2.1 literature Review</h2><p>疑问：</p>
-<blockquote>
-<p>they set expected duration of stay of the $i^{th}$ storage unit of an item to be i/V for i = 1,2,. . . ,Q, where V is the demand rate of the item and Q is the number of storage units of the item in the system. With the duration of stay policy, the storage units across all the different items can be ordered according to this measure and then assigned in order to the closest locations. <strong>Hence, the storage units of a single item may not be stored together in the warehouse.</strong></p>
-</blockquote>
-<h2 id="2-2-Model-Assumptions"><a href="#2-2-Model-Assumptions" class="headerlink" title="2.2 Model Assumptions"></a>2.2 Model Assumptions</h2><blockquote>
-<p>We establish a <strong>fluid</strong> model that evaluates the expected travel distance of the pods for their pick tours.</p>
-</blockquote>
-<p>对于某个可移动货架而言，其预计行驶距离=其存储位置到工作站的距离乘以其周转率</p>
-<h3 id="Assumptions"><a href="#Assumptions" class="headerlink" title="Assumptions"></a>Assumptions</h3><ul>
-<li>A1: Fluidity of inventory items<br>对物品进行连续性处理<br>fluidity:流动性，流畅<blockquote>
-<p><strong>we index the items (i.e., the stock keeping units) on the continuum from 0 to 1</strong>.We assume that the items are indexed in descending order of <em>demand</em>.</p>
-</blockquote>
-</li>
-</ul>
-<p>按照物品的需求量对仓库内的物品在0到1内进行降序排列。<br>(Q:是否是需求量占比？)</p>
-<ul>
-<li>A2: Fluidity of inventory units, exponential demand for each item<br>假设物品的需求量符合指数分布<blockquote>
-<p>We model the demand of each item as being the number of units required for picking in a specified period of time,e.g.,the next twelve hours.For each item we model the demand as a continuous random variable with an exponential distribution.</p>
-</blockquote>
-</li>
-</ul>
-<p>定义每个物品的需求量为未来一段时间内该物品的单位拣选量。假设每个物品的需求是服从指数分布的连续型随机变量。指数分布能够反映需求的长尾效应和需求的多变性。</p>
-<blockquote>
-<p>we model the inventory as being continuous, as like a fluid.</p>
-<ul>
-<li>A3: Ranked inventory<br>对每个物品库存数量进行排序<br>Thus, if the demand for item  i  equals  x   units, then the x -highest ranked units of inventory will be picked to meet the demand.</li>
-</ul>
-</blockquote>
-<p>由于物品分散存储，不同的储位存放的数量可能不一样，对同一商品的不同货位进行排序，当订单到达时，选取库存数量最多的储位满足订单。</p>
-<ul>
-<li><p>A4： Universal stock out rate for all items<br>所有物品在下一段时间的缺货率相等均为$\alpha$   </p>
-</li>
-<li><p>A5: Same unit size for all items, fixed pod size<br>假设每个货架的储位数量相等，每个物品大小尺寸相等</p>
-</li>
-<li><p>A6: Number of picks independent of the pod’s velocity measure<br>货架在工作站拣选的物品数量不依赖其周转率，主要关注货架到达工作站的频次</p>
-</li>
-<li><p>A7: Linear travel distance<br>货架移动距离随着仓库存储空间增多呈线性增长</p>
-</li>
-<li>A8: High space utilization<br>假设货架数量与仓库存储位置数量相等</li>
-<li>A9: Ignore stow operations<br>忽略上货操作</li>
-<li><p>A10: Ignore pick-up trip of the robotic drives<br>忽略AGV取货架的路程</p>
-<h2 id="2-3-Model-Preliminaries"><a href="#2-3-Model-Preliminaries" class="headerlink" title="2.3 Model Preliminaries"></a>2.3 Model Preliminaries</h2></li>
-<li><script type="math/tex; mode=display">v_i(x)=e^{-x/V_i}</script><p>$v_i(x)$表示物品$i$的需求超过$x$的概率（1减去需求指数分布的分布函数CDF），$V_i$表示物品$i$在一段时间内的需求率，不失一般性，令：</p>
-<script type="math/tex; mode=display">\int_o^1V_idi=1$$"CDF”（Cumulative Distribution Function）：分布函数
-指数分布概率密度函数:</script><p>f(x)=<br>\begin{align}<br>&amp; \lambda e^{-\lambda x},  x\geq 0 \\<br>&amp; 0,  x\lt 0 \\<br>\end{align}<br>$$<br>在这里$\lambda=\frac{1}{V_i}$<br>指数分布分布函数:$P(X\leq x)=F(x)=1-e^{-\lambda x}$</p>
-</li>
-<li>定义物品$i$的库存数量为$Q_i$<script type="math/tex; mode=display">Q_i=\int_0^{\infty}1(v_i(x)\geq\alpha)dx=-V_i\ln\alpha</script></li>
-</ul>
-<p>所有物品在下一时间段的缺货概率为$\alpha$，因此整个仓库的库存数量为：</p>
-<script type="math/tex; mode=display">Q_{inv}=\int_0^1Q_idi=-\ln\alpha\int_0^1V_idi=-\ln\alpha</script><p>这里发现假设所有物品有同样的缺货率等同于假设所有物品的库存数量相同。<br>Hence we can express the days of cover as:</p>
-<script type="math/tex; mode=display">DOC=\frac{Q_i}{V_i}=\frac{-V_i\ln\alpha}{V_i}=-\ln \alpha</script><p>For instance, if the stockout probability were 0.05, then we hold inventory to cover 3.0($\approx\ln0.05$) periods of demand.</p>
-<ul>
-<li>$C$表示货架的货位数，$J$表示货架的数量<script type="math/tex; mode=display">J=\frac{Q_{inv}}{C}=-\frac{\ln\alpha}{C}</script><center>![](http://static.zybuluo.com/betterbert/kvg7t5x07as24vktpvf0ogei/image_1c157vkju1fkn11f21jfp1eui17qk9.png)</center><br>[i轴表示物品，v轴表示物品被订购的可能性，Q轴表示物品的库存数量]<h2 id="2-4Evaluation-of-Storage-Policies-under-Random-Stowage"><a href="#2-4Evaluation-of-Storage-Policies-under-Random-Stowage" class="headerlink" title="2.4Evaluation of Storage Policies under Random Stowage"></a>2.4Evaluation of Storage Policies under Random Stowage</h2>随机存储策略下的货架布局策略评估<blockquote>
-<p>Our objective is to evaluate the expected total travel distance under the different storage policies</p>
-</blockquote>
-</li>
-</ul>
-<p>设定目标函数为预计的总移动距离<br>根据A3的假设，设$D_i$为下一段时间物品$i$的需求量(被拣选的数量)，则:</p>
-<script type="math/tex; mode=display">Pr[D_i> x]=v_i(x)=e^{\frac{-x}{V_i}},for\quad 0 \leq x \lt Q_i</script><script type="math/tex; mode=display">Pr[D_i > x]=0,for\quad x\geq Q_i</script><p>则其期望与方差$E[D_i],Var(D_i)$:</p>
-<script type="math/tex; mode=display">E[D_i]=V_i(1-\alpha)</script><script type="math/tex; mode=display">Var[D_i]=V_i^2(1+2\alpha \ln\alpha -\alpha^2)</script><p>$U_j^R$表示货架$j$ 的周转率，因为本节讨论的为随机存储策略，所以假设该随机变量对于所有货架($j=1,2,\cdots,J$)是独立同分布的。所以$U_j^R$的期望，对每个货架而言都是$\frac{1}{J}$，因此:</p>
-<script type="math/tex; mode=display">E[U_j^R]=\frac{\int_0^1E[D_i]di}{J}=\frac{1-\alpha}{-\ln\alpha}C</script><script type="math/tex; mode=display">Var(U_j^R)=\frac{\int_0^1Var[D_i]di}{J}=\frac{v(1+2\alpha \ln \alpha -\alpha ^2)}{-\ln \alpha}C</script><p>$define:\quad v=\int_0^1V_i^2di$<br>根据假设A6，我们认为货架去工作站的次数与其周转率$U_j^R$成比例</p>
-<script type="math/tex; mode=display">L=4</script><script type="math/tex; mode=display">l \in \\{1,2,...,L\\}</script>]]></content>
-      <categories>
-        <category>论文</category>
-      </categories>
-      <tags>
-        <tag>论文</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Jupyter 修改主题、字体、宽度、字号</title>
-    <url>/2017/12/14/jupyter%20theme/</url>
-    <content><![CDATA[<p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt=""><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt=""><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt=""><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt=""></p>
-<p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt=""><br>更多设置：<br><figure class="highlight inform7"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs inform7">C:\Users\Administrator&gt;jt -t<br>usage: jt <span class="hljs-comment">[-h]</span> <span class="hljs-comment">[-l]</span> <span class="hljs-comment">[-t THEME]</span> <span class="hljs-comment">[-f MONOFONT]</span> <span class="hljs-comment">[-fs MONOSIZE]</span> <span class="hljs-comment">[-nf NBFONT]</span><br>          <span class="hljs-comment">[-nfs NBFONTSIZE]</span> <span class="hljs-comment">[-tf TCFONT]</span> <span class="hljs-comment">[-tfs TCFONTSIZE]</span> <span class="hljs-comment">[-dfs DFFONTSIZE]</span><br>          <span class="hljs-comment">[-ofs OUTFONTSIZE]</span> <span class="hljs-comment">[-mathfs MATHFONTSIZE]</span> <span class="hljs-comment">[-m MARGINS]</span><br>          <span class="hljs-comment">[-cursw CURSORWIDTH]</span> <span class="hljs-comment">[-cursc CURSORCOLOR]</span> <span class="hljs-comment">[-cellw CELLWIDTH]</span><br>          <span class="hljs-comment">[-lineh LINEHEIGHT]</span> <span class="hljs-comment">[-altp]</span> <span class="hljs-comment">[-altmd]</span> <span class="hljs-comment">[-altout]</span> <span class="hljs-comment">[-P]</span> <span class="hljs-comment">[-T]</span> <span class="hljs-comment">[-N]</span> <span class="hljs-comment">[-vim]</span><br>          <span class="hljs-comment">[-r]</span> <span class="hljs-comment">[-dfonts]</span><br></code></pre></div></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>jupyter notebook</tag>
       </tags>
   </entry>
   <entry>
@@ -1625,25 +1565,63 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
-    <title>学习计划</title>
-    <url>/2019/08/05/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="444ccec27a2c9c0c18b3d8a0f2ef5b75417ab9a0942f05a8d61ed7e6f60091d2">120b185a11a8d2a31df3379a03631b4708c94278111704cbe2fe0effc71e0dd58771f3e8e2bb1835ede63a945b530a3acceaca065e05f5488ff282ceddfdab8c3851c9a215d4ad7bbf3b8d9504d73d339f8d44b2166daef2779c56a816264464cf6e6dd2a47784a080ddb359e97d6908602ec4f848ecb3a54774e046cb8b72e0b5d6b597cdbfa4b217dc61a836273eac8cdbf929beb879ad83ea3dfd4c24598be34aac750f1744fbfac217f0ae55006eabf2a7b893fccb8259a7f0891a4123176064d47d0f8d518e5a4e885934a367804e60ed142ebd80d0794d7eda08d72d46c2cdf7f981329d6f1569c921e4f17fe303caeaac43c6a2653f921decd3c2cfe35edaa54d86f8c2ea66f7e70a865d11630a99d0d26ed15af40b095447ca9bdbbbfffa1419490f373c127844c3c6e7d4c0d073cca34d5fbf3e7b6877ca4a0348b56835f3c00b5ae7a0ec45baac8667427623e5d7f1d517390ef81e431d992d754a55fa1ea60962955f328d4d44b352481c375b1b1f0b644d57d75156107e62dd28cac692f2025bf04f30f646887688679ff03f0cb9fa04bf04659c1ce96e999b5c43a1a4dafd1f0dae36e24ab4a4725f39e037fad34b65aa254322bf8159b71a1f95fe50956e293a24e6e0d563a30a75877d55ef1ee506332ad221b93356740ca9453a6d26a8229b44b29deaad1a68d97411ccf0bbf657d0c491597f9b626bb877393fbf59d414d4259ea5cf4525f65f3d727eb6ba1aaae44d02dc8d56c0432ad6f802081d0a3c2e51682082b6cdc337aa365ccab37da2dc1d19fbe15e67f53e984f7b204cb11d5f8608e8191953d6527b720825602ac18353656c6be8b6a743bfca3b81324680ce97ed9806cdef24ceacc795d837924fdd5b422e26468eab7d8bee3d2da1bd13a167bcdf2d1ca8cc87a4d877771103553f847aaff8e639699a74e8ded169689b896f459a43dbb5a59a9044e4122995f3bd51d5232ec3b60ab4f675e8980977280ea5df00e7a3a2bf5240</script>
-  <div class="hbe hbe-content">
-    <div class="hbe hbe-input hbe-input-default">
-      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
-      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
-        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码，查看文章</span>
-      </label>
-    </div>
-  </div>
-</div>
-<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    <title>Jupyter 修改主题、字体、宽度、字号</title>
+    <url>/2017/12/14/jupyter%20theme/</url>
+    <content><![CDATA[<p>安装jupyter-themes参见博客：<a href="http://www.jianshu.com/p/7d00959e8798">jupyter notebook使用帮助</a><br><a href="https://blog.csdn.net/August1226/article/details/80762632#%E4%B8%89%E3%80%81%C2%A0%E8%A7%A3%E5%86%B3%E6%9B%B4%E6%94%B9%E4%B8%BB%E9%A2%98%E5%90%8E%E5%B7%A5%E5%85%B7%E6%A0%8FToolBar%E9%9A%90%E8%97%8F%E9%97%AE%E9%A2%98">Jupyter Notebook 添加目录索引、更换主题、解决工具栏隐藏问题</a><br>主要的几个主题：<br>[oceans16 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162547.png" alt=""><br>[grade3 ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162938.png" alt=""><br>[onedork ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162924.png" alt=""><br>[chesterish ↓]<br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190110162953.png" alt=""></p>
+<p>白天用设置：<code>jt -t grade3 -f roboto -fs 12 -ofs 12 -cellw 1200</code><br>表示grade3主题，roboto字体，代码字体大小12，Cell输出字体大小12，Cell宽度1200<br>晚上用设置：<code>jt -t oceans16 -f roboto -fs 12 -ofs 12 -cellw 1200 -N -T</code><br>目前设置为:<code>jt -t monokai -f roboto -nf robotosans -tf robotosans -N -T -cellw 1800 -dfs 10 -ofs 10</code><br><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190113170432.png" alt=""><br>更多设置：<br><figure class="highlight inform7"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs inform7">C:\Users\Administrator&gt;jt -t<br>usage: jt <span class="hljs-comment">[-h]</span> <span class="hljs-comment">[-l]</span> <span class="hljs-comment">[-t THEME]</span> <span class="hljs-comment">[-f MONOFONT]</span> <span class="hljs-comment">[-fs MONOSIZE]</span> <span class="hljs-comment">[-nf NBFONT]</span><br>          <span class="hljs-comment">[-nfs NBFONTSIZE]</span> <span class="hljs-comment">[-tf TCFONT]</span> <span class="hljs-comment">[-tfs TCFONTSIZE]</span> <span class="hljs-comment">[-dfs DFFONTSIZE]</span><br>          <span class="hljs-comment">[-ofs OUTFONTSIZE]</span> <span class="hljs-comment">[-mathfs MATHFONTSIZE]</span> <span class="hljs-comment">[-m MARGINS]</span><br>          <span class="hljs-comment">[-cursw CURSORWIDTH]</span> <span class="hljs-comment">[-cursc CURSORCOLOR]</span> <span class="hljs-comment">[-cellw CELLWIDTH]</span><br>          <span class="hljs-comment">[-lineh LINEHEIGHT]</span> <span class="hljs-comment">[-altp]</span> <span class="hljs-comment">[-altmd]</span> <span class="hljs-comment">[-altout]</span> <span class="hljs-comment">[-P]</span> <span class="hljs-comment">[-T]</span> <span class="hljs-comment">[-N]</span> <span class="hljs-comment">[-vim]</span><br>          <span class="hljs-comment">[-r]</span> <span class="hljs-comment">[-dfonts]</span><br></code></pre></div></td></tr></table></figure></p>
+]]></content>
       <categories>
-        <category>计划</category>
+        <category>python</category>
       </categories>
       <tags>
-        <tag>计划</tag>
+        <tag>jupyter notebook</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Order batching</title>
+    <url>/2018/04/30/order%20batching/</url>
+    <content><![CDATA[<h2 id="考虑无效移动次数的订单分批问题研究"><a href="#考虑无效移动次数的订单分批问题研究" class="headerlink" title="[考虑无效移动次数的订单分批问题研究]"></a>[考虑无效移动次数的订单分批问题研究]</h2><p>管梦城<br>想法来源于之前看过的一篇文章<a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU4NzcwMw==&amp;mid=2650459983&amp;idx=1&amp;sn=02d696afefef36f1699a55e7f0380c75&amp;chksm=be8b1a1789fc930118190b000e8a21d6ec522097f5a0f18e214358d43654d36ed6ff6d629bff&amp;scene=21#wechat_redirect">面向供应链挖掘 “商品关系链”价值｜大数据与智慧物流（二）</a>。</p>
+<h2 id="1-问题描述"><a href="#1-问题描述" class="headerlink" title="1.问题描述"></a>1.问题描述</h2><p>kiva system中有$M$ 个货架，$N$ 种商品，共有$O$ 个订单需要拣选，现有仓库物品储位数据，历史订单数据。根据实际情况，需对订单进行分批拣选，每个批次包含的订单总数不得超过$L$，问如何分批才能使得货架无效移动次数最少？</p>
+<blockquote>
+<p>无效移动:搬运一个货架至工作站进行拣选，货架上没有被拣选的商品种类总数分别记录一次无效移动。例:一个货架上有10种商品，搬运该货架至工作站拣选了一种商品，其余9种商品分别记录一次无效移动。</p>
+</blockquote>
+<h2 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h2><figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">Indices   |   <br>$i$   |   商品索引，$i&#x3D;1,...,N$<br>$m$   |   货架索引，$m&#x3D;1,...,M$<br>$b$   |   批次索引，$b&#x3D;1,...,B$<br>**Parameters**   |   <br>$M$   |   货架总数<br>$N$   |   商品总数<br>$B$   |   批次总数<br>$L$   |   单个批次最大订单数限制<br>$O$   |   订单总数<br>$t_m$   |   货架$m$ 上的商品种类总数<br>$d_&#123;io&#125;$   |   &#x3D;1如果订单$o$ 包含商品$i$ ;否则为0<br>$c_&#123;im&#125;$   |   &#x3D;1如果货架$m$ 上有商品$i$ ;否则为0<br></code></pre></div></td></tr></table></figure>
+<p><strong>Decision variables</strong>  </p>
+<script type="math/tex; mode=display">
+x_{bm} =
+\begin{cases}
+1, &  \text{如果拣选批次$b$ 需要搬运货架$m$} \\\
+0, & \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+h_{im} =
+\begin{cases}
+1, &  \text{如果需要从货架$m$ 上拣选商品$i$} \\\
+0,&  \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+y_{ob} =
+\begin{cases}
+1, &  \text{如果订单 $o$被分配到批次$b$} \\\
+0,&  \text{否则}
+\end{cases}</script><script type="math/tex; mode=display">
+z_{ib} =
+\begin{cases}
+1,  & \text{如果批次$b$ 中包含商品$i$} \\\
+0,&  \text{否则}
+\end{cases}</script><p>[$p_{bm}$ :拣选批次$b$ 时，货架$m$ 的无效移动次数]<br>模型:</p>
+<script type="math/tex; mode=display">min \quad \sum_{b=1}^B\sum_{m=1}^M (x_{bm}\sum_{i=1}^N (c_{im}-h_{im}))\tag{1}</script><script type="math/tex; mode=display">\sum_{b=1}^B y_{ob} =1,\qquad \forall \quad o \tag{2}</script><script type="math/tex; mode=display">\sum_{o=1}^{O} y_{ob} \leq L, \qquad \forall \quad b \tag{3}</script><script type="math/tex; mode=display">Oz_{ib}\leq \sum_{o=1}^O d_{io}y_{ob},\qquad \forall \quad i,b \tag{4}</script><script type="math/tex; mode=display">h_{im}\leq c_{im},\qquad \forall \quad i,m\tag{5}</script><script type="math/tex; mode=display">\sum_{m=1}^{M}x_{bm}c_{im}\geq z_{ib},\qquad \forall \quad b,i\tag{6}</script><script type="math/tex; mode=display">x_{bm}\geq h_{im},\qquad \forall \quad b,i,m \tag{7}</script><script type="math/tex; mode=display">x_{bm},h_{im},y_{ob},z_{ib}\in \lbrace0,1\rbrace,\qquad \forall \quad b,i,m,o \tag{8}</script><p>目标函数为(1)，表示最小化无效移动次数。<br>约束(2)确保每个订单仅被分配到一个批次；<br>约束(3)保证每个批次中的订单总数小于阈值$L$;<br>约束(4)为批次中包含的商品与该批次中所有订单包含的商品之间的关系；<br>约束(5)表示只有当货架上有商品$i$ 时，才能搬运货架$m$ 并拣选其上的商品$i$；<br>约束(6)表示拣选批次$b$ 所需搬运的所有货架上包含的商品种类能满足该批次中包含的商品种类；<br>约束(7)表示只有当货架$m$ 被选中进行拣选时，才能拣选其上的物品；<br>约束(8)为基本变量约束。</p>
+<h2 id="3-算法"><a href="#3-算法" class="headerlink" title="3.算法"></a>3.算法</h2><p>初步实现了用模拟退火算法求解，有待优化。</p>
+<h3 id="3-1-生成初始解"><a href="#3-1-生成初始解" class="headerlink" title="3.1.生成初始解:"></a>3.1.生成初始解:</h3><p>(1) 根据余弦相似度计算订单之间的相似度，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。<br>(2) 或考虑货架上的商品信息，设计新的相似度度量方法，与之前清华论文类似，得到订单-订单相似度矩阵，根据该矩阵成成订单分批初始解。</p>
+<h3 id="3-2-优化"><a href="#3-2-优化" class="headerlink" title="3.2.优化"></a>3.2.优化</h3><p>采用模拟退火算法进行优化，每个温度下做多次邻域搜索，邻域算子为:交换两个批次中的任意两个订单。</p>
+<h3 id="3-3-数值实验"><a href="#3-3-数值实验" class="headerlink" title="3.3.数值实验"></a>3.3.数值实验</h3><p>实验数据:50种SKU,21个货架,300个订单</p>
+<figure class="highlight plain"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs table">  分批方法    |   订单关联分批   |   随机分批 |    降低百分比<br>无效移动次数   |   406   |   809   | 49.815%<br></code></pre></div></td></tr></table></figure>
+<p>目标函数迭代情况:</p>
+<h2 id="4-可以改进的地方"><a href="#4-可以改进的地方" class="headerlink" title="4.可以改进的地方"></a>4.可以改进的地方</h2><p>1.更改订单间相似度度量。<br>2.加禁忌列表，邻域搜索时避免重复搜索。<br>2.与CPLEX求解对比，能否用CPLEX求解该模型有待研究。</p>
+]]></content>
+      <categories>
+        <category>论文</category>
+      </categories>
+      <tags>
+        <tag>论文</tag>
       </tags>
   </entry>
   <entry>
@@ -1664,6 +1642,28 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </categories>
       <tags>
         <tag>实用技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习计划</title>
+    <url>/2019/08/05/%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="444ccec27a2c9c0c18b3d8a0f2ef5b75417ab9a0942f05a8d61ed7e6f60091d2">120b185a11a8d2a31df3379a03631b4708c94278111704cbe2fe0effc71e0dd58771f3e8e2bb1835ede63a945b530a3acceaca065e05f5488ff282ceddfdab8c3851c9a215d4ad7bbf3b8d9504d73d339f8d44b2166daef2779c56a816264464cf6e6dd2a47784a080ddb359e97d6908602ec4f848ecb3a54774e046cb8b72e0b5d6b597cdbfa4b217dc61a836273eac8cdbf929beb879ad83ea3dfd4c24598be34aac750f1744fbfac217f0ae55006eabf2a7b893fccb8259a7f0891a4123176064d47d0f8d518e5a4e885934a367804e60ed142ebd80d0794d7eda08d72d46c2cdf7f981329d6f1569c921e4f17fe303caeaac43c6a2653f921decd3c2cfe35edaa54d86f8c2ea66f7e70a865d11630a99d0d26ed15af40b095447ca9bdbbbfffa1419490f373c127844c3c6e7d4c0d073cca34d5fbf3e7b6877ca4a0348b56835f3c00b5ae7a0ec45baac8667427623e5d7f1d517390ef81e431d992d754a55fa1ea60962955f328d4d44b352481c375b1b1f0b644d57d75156107e62dd28cac692f2025bf04f30f646887688679ff03f0cb9fa04bf04659c1ce96e999b5c43a1a4dafd1f0dae36e24ab4a4725f39e037fad34b65aa254322bf8159b71a1f95fe50956e293a24e6e0d563a30a75877d55ef1ee506332ad221b93356740ca9453a6d26a8229b44b29deaad1a68d97411ccf0bbf657d0c491597f9b626bb877393fbf59d414d4259ea5cf4525f65f3d727eb6ba1aaae44d02dc8d56c0432ad6f802081d0a3c2e51682082b6cdc337aa365ccab37da2dc1d19fbe15e67f53e984f7b204cb11d5f8608e8191953d6527b720825602ac18353656c6be8b6a743bfca3b81324680ce97ed9806cdef24ceacc795d837924fdd5b422e26468eab7d8bee3d2da1bd13a167bcdf2d1ca8cc87a4d877771103553f847aaff8e639699a74e8ded169689b896f459a43dbb5a59a9044e4122995f3bd51d5232ec3b60ab4f675e8980977280ea5df00e7a3a2bf5240</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码，查看文章</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>计划</category>
+      </categories>
+      <tags>
+        <tag>计划</tag>
       </tags>
   </entry>
   <entry>
@@ -1770,31 +1770,6 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
-    <title>李宏毅机器学习笔记（三）</title>
-    <url>/2019/08/07/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
-    <content><![CDATA[<p> 课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
-<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
-<p>笔记导航：</p>
-<h1 id="Where-does-the-error-come-from"><a href="#Where-does-the-error-come-from" class="headerlink" title="Where does the error come from?"></a>Where does the error come from?</h1><p>bias、variance的区别：</p>
-<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png" alt=""></p>
-<blockquote>
-<ul>
-<li><strong>准：</strong>bias描述的是根据样本拟合出的模型的输出预测结果的期望<strong>与样本真实结果的差距</strong>，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得复杂化模型，增加模型的参数，但这样容易过拟合（overfitting），过拟合对应上图是high variance，点很分散。low bias对应就是点都打在靶心附近，所以瞄的是准的，但手不一定稳。</li>
-<li><strong>确：</strong>varience描述的是样本上训练出来的模型<strong>在测试集上的表现</strong>，要想在variance上表现好，low varience，就要简化模型，减少模型的参数，但这样容易欠拟合（unfitting），欠拟合对应上图是high bias，点偏离中心。low variance对应就是点都打的很集中，但不一定是靶心附近，手很稳，但是瞄的不准。</li>
-</ul>
-<p><a href="https://www.zhihu.com/question/27068705">参考知乎回答</a></p>
-</blockquote>
-<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png" alt=""></p>
-<h2 id="N-fold-Cross-Validation"><a href="#N-fold-Cross-Validation" class="headerlink" title="N-fold Cross Validation"></a>N-fold Cross Validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png" alt=""></p>
-]]></content>
-      <categories>
-        <category>机器学习</category>
-      </categories>
-      <tags>
-        <tag>机器学习</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>李宏毅机器学习笔记（一）</title>
     <url>/2019/08/05/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
@@ -1857,6 +1832,87 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
+    <title>李宏毅机器学习笔记（三）</title>
+    <url>/2019/08/07/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
+    <content><![CDATA[<p> 课程信息：李宏毅Machine Learning 2017 fall <a href="https://www.bilibili.com/video/av43020359">B站链接</a>，<a href="http://speech.ee.ntu.edu.tw/~tlkagk/courses_ML17_2.html">李宏毅老师课程主页</a></p>
+<p><a href="https://blueschang.github.io/2018/10/29/%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%AC%94%E8%AE%B0%E4%BC%A0%E9%80%81%E9%97%A8/">参考博客</a>，<a href="https://datawhalechina.github.io/leeml-notes/#/">参考笔记</a></p>
+<p>笔记导航：</p>
+<h1 id="Where-does-the-error-come-from"><a href="#Where-does-the-error-come-from" class="headerlink" title="Where does the error come from?"></a>Where does the error come from?</h1><p>bias、variance的区别：</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807170719.png" alt=""></p>
+<blockquote>
+<ul>
+<li><strong>准：</strong>bias描述的是根据样本拟合出的模型的输出预测结果的期望<strong>与样本真实结果的差距</strong>，简单讲，就是在样本上拟合的好不好。要想在bias上表现好，low bias，就得复杂化模型，增加模型的参数，但这样容易过拟合（overfitting），过拟合对应上图是high variance，点很分散。low bias对应就是点都打在靶心附近，所以瞄的是准的，但手不一定稳。</li>
+<li><strong>确：</strong>varience描述的是样本上训练出来的模型<strong>在测试集上的表现</strong>，要想在variance上表现好，low varience，就要简化模型，减少模型的参数，但这样容易欠拟合（unfitting），欠拟合对应上图是high bias，点偏离中心。low variance对应就是点都打的很集中，但不一定是靶心附近，手很稳，但是瞄的不准。</li>
+</ul>
+<p><a href="https://www.zhihu.com/question/27068705">参考知乎回答</a></p>
+</blockquote>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205104.png" alt=""></p>
+<h2 id="N-fold-Cross-Validation"><a href="#N-fold-Cross-Validation" class="headerlink" title="N-fold Cross Validation"></a>N-fold Cross Validation</h2><p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/20190807205318.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>机器学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>运筹学复习</title>
+    <url>/2018/04/29/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p>复习书目:&lt;运筹学导论-初级篇&gt;-Hamdy A. Taha</p>
+<h2 id="1-什么是运筹学"><a href="#1-什么是运筹学" class="headerlink" title="1.什么是运筹学"></a>1.什么是运筹学</h2><h3 id="1-1-运筹学模型"><a href="#1-1-运筹学模型" class="headerlink" title="1.1 运筹学模型"></a>1.1 运筹学模型</h3><p>运筹学模型的3个主要构成部分:备选方案、目标评判标准和约束条件。<br>一般的运筹学模型可以组织成下面的通用格式:<br>$max\quad or\quad min\quad  Objective$<br>$s.t.\qquad  constraints$<br>一个模型的解如果满足所有的约束条件，则称它是<strong>可行的(feasible)</strong>，如果既是可行的，且又取得了目标函数的最佳(最大或最小)值，则称它是<strong>最优(optimal)</strong>的。一个模型的“最优”解只是对这个模型是最好的，只有当这个模型恰当地表达了实际问题时，它的解对于实际问题才是最优的。</p>
+<h3 id="1-2-运筹学模型的求解"><a href="#1-2-运筹学模型的求解" class="headerlink" title="1.2 运筹学模型的求解"></a>1.2 运筹学模型的求解</h3><p>数学模型类型的多样性和复杂程度的各异性决定了求解方法迥异的特性。<br>线性规划(Linear Programming)是最常用的OR技术，专门用于带有线性目标函数和约束函数的模型，其他方法还有整数规划(Integer Programming)、动态规划(Dynamic Programming)(初始模型可分解成多个较小的子问题)、网络规划(Network Programming)，以及非线性规划(Nonlinear Programming)等。<br>大多数运筹学技术的一个特性是，问题的解常常不是通过某种闭形式得到的，而是利用某些算法求出来的。</p>
+<h3 id="1-3-排队模型和模拟模型"><a href="#1-3-排队模型和模拟模型" class="headerlink" title="1.3 排队模型和模拟模型"></a>1.3 排队模型和模拟模型</h3><p>排队和模拟用于研究等待队列，它们不属于最优化技术，而是用来度量等待队列的性能。</p>
+<h3 id="1-4-建模的艺术"><a href="#1-4-建模的艺术" class="headerlink" title="1.4 建模的艺术"></a>1.4 建模的艺术</h3><p>本质上，从现实世界到假定现实世界的简化，是通过把多个现实世界变量“简化“成某个单一的假定现实世界变量来实现的。</p>
+<h3 id="1-5-仅有数学是不够的"><a href="#1-5-仅有数学是不够的" class="headerlink" title="1.5 仅有数学是不够的"></a>1.5 仅有数学是不够的</h3><p>由于大多数决策问题总是会受到人的因素的影响，对人类心理的研究可能就成为解决问题的关键。解决问题要考虑的关键是人而不是技术。</p>
+<h3 id="1-6-运用运筹学的几个步骤"><a href="#1-6-运用运筹学的几个步骤" class="headerlink" title="1.6 运用运筹学的几个步骤"></a>1.6 运用运筹学的几个步骤</h3><p>在实际中运用运筹学的主要步骤包括:<br>(1) 问题定义；<br>(2) 模型构造；<br>(3) 模型求解；<br>(4) 模型验证；<br>(5) 解决方案实施。</p>
+<h2 id="2-线性规划建模"><a href="#2-线性规划建模" class="headerlink" title="2. 线性规划建模"></a>2. 线性规划建模</h2><h3 id="2-1-二维变量的线性规划模型"><a href="#2-1-二维变量的线性规划模型" class="headerlink" title="2.1 二维变量的线性规划模型"></a>2.1 二维变量的线性规划模型</h3><p>LP必须满足3条基本性质:<br>(1) 比例性；<br>(2) 可加性；<br>(3) 确定性。</p>
+<h3 id="2-2-线性规划的图解法"><a href="#2-2-线性规划的图解法" class="headerlink" title="2.2 线性规划的图解法"></a>2.2 线性规划的图解法</h3><p>图解法的过程包括以下两步:<br>(1) 可行解空间的确定；<br>(2) 从可行解空间所有可行点中确定最优解。</p>
+<h2 id="3-单纯形方法和灵敏度分析"><a href="#3-单纯形方法和灵敏度分析" class="headerlink" title="3.单纯形方法和灵敏度分析"></a>3.单纯形方法和灵敏度分析</h2><h3 id="3-1-等式形式的线性规划模型"><a href="#3-1-等式形式的线性规划模型" class="headerlink" title="3.1 等式形式的线性规划模型"></a>3.1 等式形式的线性规划模型</h3><p>可以通过对问题约束施加下面两个要求来方便单纯形法的计算:<br>(1) 所有的约束都是等式(变量的非负限制除外)，并且具有非负的右端项。<br>(2) 所有变量是非负的。</p>
+<h4 id="3-1-1-将不等式转化为带有非负右端项的等式约束"><a href="#3-1-1-将不等式转化为带有非负右端项的等式约束" class="headerlink" title="3.1.1 将不等式转化为带有非负右端项的等式约束"></a>3.1.1 将不等式转化为带有非负右端项的等式约束</h4><ul>
+<li>($\leq$)约束:在约束的左端，增加非负的<strong>松弛变量</strong>(slack variable)。</li>
+<li>($\geq$)约束:在约束的左端减去非负的<strong>剩余变量</strong>(surplus variable)。<h3 id="3-2-从图形解到代数解的转换"><a href="#3-2-从图形解到代数解的转换" class="headerlink" title="3.2 从图形解到代数解的转换"></a>3.2 从图形解到代数解的转换</h3>在单纯形法中，解空间由$m$ 个同时成立的线性方程和$n$ 个非负变量表示。</li>
+</ul>
+<blockquote>
+<p><strong>角点的代数定义:</strong><br>在$m \times n(m&lt;n)$ 阶的方程组中，如果令$(n-m)$ 个变量等于0，然后求解其余的含$m$ 个变量的$m$ 个方程，如果有唯一解，则称相应的解为<strong>基本解</strong>(basic solution)，它是对应解空间的一个(可行或不可行)角点。这意味着角点的最大数目是$C_n^m$。</p>
+</blockquote>
+<p>为概括从图形解到代数解的转换，我们称$(n-m)$个零变量为<strong>非基变量</strong>(nonbasic variable)；称余下的$m$ 个变量为<strong>基变量</strong>(basic variable),它的解(由解$m$ 个方程得到)称为基本解。<br>单纯形法通过借助于考察解空间中所有可能的基本可行解(角点)的一小部分，极大地减轻了计算负担。本质上，单纯形法利用一个智能的搜索过程，用有效的方法查找最优角点的位置。</p>
+<h3 id="3-3-单纯形法"><a href="#3-3-单纯形法" class="headerlink" title="3.3 单纯形法"></a>3.3 单纯形法</h3><h4 id="3-3-1-单纯形法的迭代本质"><a href="#3-3-1-单纯形法的迭代本质" class="headerlink" title="3.3.1 单纯形法的迭代本质"></a>3.3.1 单纯形法的迭代本质</h4><p>正常情况下，单纯形法从原点开始，在这个初始点，目标函数值是零，因此合乎逻辑的问题是，能否在当前零值得基础上，通过增加非基变量的值来改进目标函数值。<br>单纯形法的设计要求每次增加一个变量，并且选择使目标函数值有最大改善率的那个变量。</p>
+<p><strong>初级单纯形法步骤</strong></p>
+<blockquote>
+<p>参考书目：Optimization in Operations Research, 2nd Edition, Ronald L.Rardin</p>
+<p>中文翻译：《运筹学》，肖勇波等译</p>
+</blockquote>
+<ol>
+<li><strong>初始化</strong>。任选一个初始的可行基，即非基变量为0，计算相应的基本解$\textbf{x}^{(0)}$，并令该基本解序号$t=0$。</li>
+<li><strong>单纯形方向。</strong>在当前基本可行解处，找出每个非基变量$x_j$对应的单纯形方向$\Delta \textbf{x}$，并计算对应的成本减少$\overline{c}_j=c*\Delta \textbf{x}$。</li>
+</ol>
+<blockquote>
+<p>与非基变量$x_j$相关的成本减少为：（）</p>
+<script type="math/tex; mode=display">
+\overline{c}_j=c*\Delta \textbf{x}</script><p>其中，$\Delta \textbf{x}$是增加$x_j$得到的单纯形方向。</p>
+<p>在其他非基变量不变的情况下，增加一个非基变量的值，并计算为了满足约束，基需要进行什么变化，就可以获得单纯形方向。也就是说，需要增加的非基变量出的$\Delta x_j=1$，其他非基变量处$\Delta x_j=0$，而基中的元素要通过解方程组$A \Delta \textbf{x}=0$来获得。</p>
+</blockquote>
+<ol>
+<li><p><strong>最优性</strong>。如果没有单纯形方向可以优化目标函数（求最大化的问题中没有$\overline{c}_j&gt;0$，求最小化的问题中没有$\overline{c}_j&lt;0$），则计算结束，当前解$\textbf{x}^{(t)}$为最优。否则，任选一个优化性的单纯形方向作为$\Delta \textbf{x}^{(t+1)}$，相应变量$x_p$入基。</p>
+</li>
+<li><p><strong>确定步长</strong>。如果单纯形方向所有元素均为非负，则计算结束，该模型可行域无界。否则，找出满足：</p>
+<script type="math/tex; mode=display">
+\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r} = \text{min}\{\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}\Delta x^{(t+1)}_j<0\}</script><p>的基变量$x_r$，并令：</p>
+<script type="math/tex; mode=display">
+\lambda=\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}</script></li>
+<li><p><strong>新顶点和基</strong>。计算出新解：$\textbf{x}^{(t+1)}=\textbf{x}^{(t)}+\lambda \Delta\textbf{x}^{(t+1)}$，并且用$x_p$替换基中的$x_r$。然后令$t=t+1$，再回到第一步。</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>运筹学</category>
+      </categories>
+      <tags>
+        <tag>运筹学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>训练计划</title>
     <url>/2019/09/02/%E8%AE%AD%E7%BB%83%E8%AE%A1%E5%88%92/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
@@ -1876,41 +1932,6 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </categories>
       <tags>
         <tag>计划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高级计量经济学（一）</title>
-    <url>/2019/08/05/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>课程信息： 康奈尔大学&amp;厦门大学 洪永淼教授 《高级计量经济学》，<a href="https://www.bilibili.com/video/av33456715">B站链接</a></p>
-<p><a href="https://www.dropbox.com/s/wr8tltot2nurrmg/Lecture%20Notes%20on%20ADVANCED%20ECONOMETRICS.pdf?dl=0">讲义</a></p>
-<h1 id="Chapter-1-Introduction-to-Econometrics"><a href="#Chapter-1-Introduction-to-Econometrics" class="headerlink" title="Chapter 1 : Introduction to Econometrics"></a>Chapter 1 : Introduction to Econometrics</h1><h2 id="1-1-Introduction"><a href="#1-1-Introduction" class="headerlink" title="1.1 Introduction"></a>1.1 Introduction</h2><p>计量经济学是经济学研究最主要的<strong><em>方法论</em></strong>。</p>
-<h2 id="1-2-Quantitative-Features-of-Modern-Economics"><a href="#1-2-Quantitative-Features-of-Modern-Economics" class="headerlink" title="1.2 Quantitative Features of Modern Economics"></a>1.2 Quantitative Features of Modern Economics</h2><p>现代经济研究的一般方法论可以大致概括如下：</p>
-<p><strong>Step 1</strong>: Data collection and summary of empirical stylized facts（经验典型特征）. The so-called stylized facts are often summarized from observed economic data.  eg: the Engel’s curve, Phillips Curve</p>
-<p><strong>Step 2</strong>: Development of economic theories/models.</p>
-<p><strong>Step 3</strong>: Empirical verification of economic models.</p>
-<p><strong>Step 4</strong>: Applications.</p>
-<h2 id="1-3-Mathematical-Modeling"><a href="#1-3-Mathematical-Modeling" class="headerlink" title="1.3 Mathematical Modeling"></a>1.3 Mathematical Modeling</h2><p>数学模型只是计量经济学的一种方法，其他方法包括： graphical methods, verbal discussions, mathematical models。</p>
-<h2 id="1-4-Empirical-Validation"><a href="#1-4-Empirical-Validation" class="headerlink" title="1.4 Empirical Validation"></a>1.4 Empirical Validation</h2><p>现代计量经济学的两个假设（fundamental axioms）:</p>
-<ul>
-<li>Any economy can be viewed as a stochastic process governed by some probability law.</li>
-<li>Economic phenomenon, as often summarized in form of data, can be reviewed as a realization of this stochastic data generating process.</li>
-</ul>
-<h2 id="1-5-Illustrative-Examples"><a href="#1-5-Illustrative-Examples" class="headerlink" title="1.5 Illustrative Examples"></a>1.5 Illustrative Examples</h2><p><strong>Example 1: The Keynes Model, the Multiplier and Policy Recommendation</strong><br>The simplest Keynes model can be described by the system of equations</p>
-<script type="math/tex; mode=display">
-\left\{\begin{array}{l}{Y_{t}=C_{t}+I_{t}+G_{t}} \\ {C_{t}=\alpha+\beta Y_{t}+\varepsilon_{t}}\end{array}\right.</script><p>$\varepsilon$为微扰项。$\beta$为边际消费倾向</p>
-<p><strong>Example 2: Rational Expectations and Dynamic Asset Pricing Models</strong></p>
-<p>Suppose a representative agent has a constant relative risk aversion utility</p>
-<script type="math/tex; mode=display">U=\sum_{t=0}^{n} \beta^{t} u\left(C_{t}\right)=\sum_{t=0}^{n} \beta^{t} \frac{C_{t}^{\gamma}-1}{\gamma}</script><p><strong>1.6 Limitatons of Econometric Analysis</strong></p>
-<p>First, as a simplification of reality, economic theory or model can only capture the main or most important factors, but the observed data is the joint outcome of many factors together, and some of them are unknown and unaccounted for.</p>
-<p>Second, an economy is an irreversible or non-repeatable system.</p>
-<p>Third, economic relationships are often changing over time for an economy.</p>
-<p>Fourth, data quality. The success of any econometric study hinges on the quantity as well as the quality of data.</p>
-]]></content>
-      <categories>
-        <category>计量经济学</category>
-      </categories>
-      <tags>
-        <tag>计量经济学</tag>
       </tags>
   </entry>
   <entry>
@@ -2007,62 +2028,6 @@ B^{-1}B\textbf{x}_{BV}+B^{-1}N\textbf{x}_{NBV}=B^{-1}\textbf{b}
       </tags>
   </entry>
   <entry>
-    <title>运筹学复习</title>
-    <url>/2018/04/29/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<p>复习书目:&lt;运筹学导论-初级篇&gt;-Hamdy A. Taha</p>
-<h2 id="1-什么是运筹学"><a href="#1-什么是运筹学" class="headerlink" title="1.什么是运筹学"></a>1.什么是运筹学</h2><h3 id="1-1-运筹学模型"><a href="#1-1-运筹学模型" class="headerlink" title="1.1 运筹学模型"></a>1.1 运筹学模型</h3><p>运筹学模型的3个主要构成部分:备选方案、目标评判标准和约束条件。<br>一般的运筹学模型可以组织成下面的通用格式:<br>$max\quad or\quad min\quad  Objective$<br>$s.t.\qquad  constraints$<br>一个模型的解如果满足所有的约束条件，则称它是<strong>可行的(feasible)</strong>，如果既是可行的，且又取得了目标函数的最佳(最大或最小)值，则称它是<strong>最优(optimal)</strong>的。一个模型的“最优”解只是对这个模型是最好的，只有当这个模型恰当地表达了实际问题时，它的解对于实际问题才是最优的。</p>
-<h3 id="1-2-运筹学模型的求解"><a href="#1-2-运筹学模型的求解" class="headerlink" title="1.2 运筹学模型的求解"></a>1.2 运筹学模型的求解</h3><p>数学模型类型的多样性和复杂程度的各异性决定了求解方法迥异的特性。<br>线性规划(Linear Programming)是最常用的OR技术，专门用于带有线性目标函数和约束函数的模型，其他方法还有整数规划(Integer Programming)、动态规划(Dynamic Programming)(初始模型可分解成多个较小的子问题)、网络规划(Network Programming)，以及非线性规划(Nonlinear Programming)等。<br>大多数运筹学技术的一个特性是，问题的解常常不是通过某种闭形式得到的，而是利用某些算法求出来的。</p>
-<h3 id="1-3-排队模型和模拟模型"><a href="#1-3-排队模型和模拟模型" class="headerlink" title="1.3 排队模型和模拟模型"></a>1.3 排队模型和模拟模型</h3><p>排队和模拟用于研究等待队列，它们不属于最优化技术，而是用来度量等待队列的性能。</p>
-<h3 id="1-4-建模的艺术"><a href="#1-4-建模的艺术" class="headerlink" title="1.4 建模的艺术"></a>1.4 建模的艺术</h3><p>本质上，从现实世界到假定现实世界的简化，是通过把多个现实世界变量“简化“成某个单一的假定现实世界变量来实现的。</p>
-<h3 id="1-5-仅有数学是不够的"><a href="#1-5-仅有数学是不够的" class="headerlink" title="1.5 仅有数学是不够的"></a>1.5 仅有数学是不够的</h3><p>由于大多数决策问题总是会受到人的因素的影响，对人类心理的研究可能就成为解决问题的关键。解决问题要考虑的关键是人而不是技术。</p>
-<h3 id="1-6-运用运筹学的几个步骤"><a href="#1-6-运用运筹学的几个步骤" class="headerlink" title="1.6 运用运筹学的几个步骤"></a>1.6 运用运筹学的几个步骤</h3><p>在实际中运用运筹学的主要步骤包括:<br>(1) 问题定义；<br>(2) 模型构造；<br>(3) 模型求解；<br>(4) 模型验证；<br>(5) 解决方案实施。</p>
-<h2 id="2-线性规划建模"><a href="#2-线性规划建模" class="headerlink" title="2. 线性规划建模"></a>2. 线性规划建模</h2><h3 id="2-1-二维变量的线性规划模型"><a href="#2-1-二维变量的线性规划模型" class="headerlink" title="2.1 二维变量的线性规划模型"></a>2.1 二维变量的线性规划模型</h3><p>LP必须满足3条基本性质:<br>(1) 比例性；<br>(2) 可加性；<br>(3) 确定性。</p>
-<h3 id="2-2-线性规划的图解法"><a href="#2-2-线性规划的图解法" class="headerlink" title="2.2 线性规划的图解法"></a>2.2 线性规划的图解法</h3><p>图解法的过程包括以下两步:<br>(1) 可行解空间的确定；<br>(2) 从可行解空间所有可行点中确定最优解。</p>
-<h2 id="3-单纯形方法和灵敏度分析"><a href="#3-单纯形方法和灵敏度分析" class="headerlink" title="3.单纯形方法和灵敏度分析"></a>3.单纯形方法和灵敏度分析</h2><h3 id="3-1-等式形式的线性规划模型"><a href="#3-1-等式形式的线性规划模型" class="headerlink" title="3.1 等式形式的线性规划模型"></a>3.1 等式形式的线性规划模型</h3><p>可以通过对问题约束施加下面两个要求来方便单纯形法的计算:<br>(1) 所有的约束都是等式(变量的非负限制除外)，并且具有非负的右端项。<br>(2) 所有变量是非负的。</p>
-<h4 id="3-1-1-将不等式转化为带有非负右端项的等式约束"><a href="#3-1-1-将不等式转化为带有非负右端项的等式约束" class="headerlink" title="3.1.1 将不等式转化为带有非负右端项的等式约束"></a>3.1.1 将不等式转化为带有非负右端项的等式约束</h4><ul>
-<li>($\leq$)约束:在约束的左端，增加非负的<strong>松弛变量</strong>(slack variable)。</li>
-<li>($\geq$)约束:在约束的左端减去非负的<strong>剩余变量</strong>(surplus variable)。<h3 id="3-2-从图形解到代数解的转换"><a href="#3-2-从图形解到代数解的转换" class="headerlink" title="3.2 从图形解到代数解的转换"></a>3.2 从图形解到代数解的转换</h3>在单纯形法中，解空间由$m$ 个同时成立的线性方程和$n$ 个非负变量表示。</li>
-</ul>
-<blockquote>
-<p><strong>角点的代数定义:</strong><br>在$m \times n(m&lt;n)$ 阶的方程组中，如果令$(n-m)$ 个变量等于0，然后求解其余的含$m$ 个变量的$m$ 个方程，如果有唯一解，则称相应的解为<strong>基本解</strong>(basic solution)，它是对应解空间的一个(可行或不可行)角点。这意味着角点的最大数目是$C_n^m$。</p>
-</blockquote>
-<p>为概括从图形解到代数解的转换，我们称$(n-m)$个零变量为<strong>非基变量</strong>(nonbasic variable)；称余下的$m$ 个变量为<strong>基变量</strong>(basic variable),它的解(由解$m$ 个方程得到)称为基本解。<br>单纯形法通过借助于考察解空间中所有可能的基本可行解(角点)的一小部分，极大地减轻了计算负担。本质上，单纯形法利用一个智能的搜索过程，用有效的方法查找最优角点的位置。</p>
-<h3 id="3-3-单纯形法"><a href="#3-3-单纯形法" class="headerlink" title="3.3 单纯形法"></a>3.3 单纯形法</h3><h4 id="3-3-1-单纯形法的迭代本质"><a href="#3-3-1-单纯形法的迭代本质" class="headerlink" title="3.3.1 单纯形法的迭代本质"></a>3.3.1 单纯形法的迭代本质</h4><p>正常情况下，单纯形法从原点开始，在这个初始点，目标函数值是零，因此合乎逻辑的问题是，能否在当前零值得基础上，通过增加非基变量的值来改进目标函数值。<br>单纯形法的设计要求每次增加一个变量，并且选择使目标函数值有最大改善率的那个变量。</p>
-<p><strong>初级单纯形法步骤</strong></p>
-<blockquote>
-<p>参考书目：Optimization in Operations Research, 2nd Edition, Ronald L.Rardin</p>
-<p>中文翻译：《运筹学》，肖勇波等译</p>
-</blockquote>
-<ol>
-<li><strong>初始化</strong>。任选一个初始的可行基，即非基变量为0，计算相应的基本解$\textbf{x}^{(0)}$，并令该基本解序号$t=0$。</li>
-<li><strong>单纯形方向。</strong>在当前基本可行解处，找出每个非基变量$x_j$对应的单纯形方向$\Delta \textbf{x}$，并计算对应的成本减少$\overline{c}_j=c*\Delta \textbf{x}$。</li>
-</ol>
-<blockquote>
-<p>与非基变量$x_j$相关的成本减少为：（）</p>
-<script type="math/tex; mode=display">
-\overline{c}_j=c*\Delta \textbf{x}</script><p>其中，$\Delta \textbf{x}$是增加$x_j$得到的单纯形方向。</p>
-<p>在其他非基变量不变的情况下，增加一个非基变量的值，并计算为了满足约束，基需要进行什么变化，就可以获得单纯形方向。也就是说，需要增加的非基变量出的$\Delta x_j=1$，其他非基变量处$\Delta x_j=0$，而基中的元素要通过解方程组$A \Delta \textbf{x}=0$来获得。</p>
-</blockquote>
-<ol>
-<li><p><strong>最优性</strong>。如果没有单纯形方向可以优化目标函数（求最大化的问题中没有$\overline{c}_j&gt;0$，求最小化的问题中没有$\overline{c}_j&lt;0$），则计算结束，当前解$\textbf{x}^{(t)}$为最优。否则，任选一个优化性的单纯形方向作为$\Delta \textbf{x}^{(t+1)}$，相应变量$x_p$入基。</p>
-</li>
-<li><p><strong>确定步长</strong>。如果单纯形方向所有元素均为非负，则计算结束，该模型可行域无界。否则，找出满足：</p>
-<script type="math/tex; mode=display">
-\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r} = \text{min}\{\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}\Delta x^{(t+1)}_j<0\}</script><p>的基变量$x_r$，并令：</p>
-<script type="math/tex; mode=display">
-\lambda=\frac{x^{(t)}_r}{-\Delta x^{(t+1)}_r}</script></li>
-<li><p><strong>新顶点和基</strong>。计算出新解：$\textbf{x}^{(t+1)}=\textbf{x}^{(t)}+\lambda \Delta\textbf{x}^{(t+1)}$，并且用$x_p$替换基中的$x_r$。然后令$t=t+1$，再回到第一步。</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>运筹学</category>
-      </categories>
-      <tags>
-        <tag>运筹学</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>高级计量经济学（三）</title>
     <url>/2019/08/07/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[]]></content>
@@ -2110,6 +2075,41 @@ E(y|X=x) = \int_{- \infty}^{\infty}yf_{Y|X}(y|x)dy = g(x)\text{(只是关于$x$�
 <p><strong>Definition 2.2[MSE]:</strong> Suppose function $g(X)$ is used to predict $Y$. Then the mean squared error of function $g(X)$ is defined as:</p>
 <script type="math/tex; mode=display">
 MSE(g)=E[Y-g(X)]^2</script>]]></content>
+      <categories>
+        <category>计量经济学</category>
+      </categories>
+      <tags>
+        <tag>计量经济学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高级计量经济学（一）</title>
+    <url>/2019/08/05/%E9%AB%98%E7%BA%A7%E8%AE%A1%E9%87%8F%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>课程信息： 康奈尔大学&amp;厦门大学 洪永淼教授 《高级计量经济学》，<a href="https://www.bilibili.com/video/av33456715">B站链接</a></p>
+<p><a href="https://www.dropbox.com/s/wr8tltot2nurrmg/Lecture%20Notes%20on%20ADVANCED%20ECONOMETRICS.pdf?dl=0">讲义</a></p>
+<h1 id="Chapter-1-Introduction-to-Econometrics"><a href="#Chapter-1-Introduction-to-Econometrics" class="headerlink" title="Chapter 1 : Introduction to Econometrics"></a>Chapter 1 : Introduction to Econometrics</h1><h2 id="1-1-Introduction"><a href="#1-1-Introduction" class="headerlink" title="1.1 Introduction"></a>1.1 Introduction</h2><p>计量经济学是经济学研究最主要的<strong><em>方法论</em></strong>。</p>
+<h2 id="1-2-Quantitative-Features-of-Modern-Economics"><a href="#1-2-Quantitative-Features-of-Modern-Economics" class="headerlink" title="1.2 Quantitative Features of Modern Economics"></a>1.2 Quantitative Features of Modern Economics</h2><p>现代经济研究的一般方法论可以大致概括如下：</p>
+<p><strong>Step 1</strong>: Data collection and summary of empirical stylized facts（经验典型特征）. The so-called stylized facts are often summarized from observed economic data.  eg: the Engel’s curve, Phillips Curve</p>
+<p><strong>Step 2</strong>: Development of economic theories/models.</p>
+<p><strong>Step 3</strong>: Empirical verification of economic models.</p>
+<p><strong>Step 4</strong>: Applications.</p>
+<h2 id="1-3-Mathematical-Modeling"><a href="#1-3-Mathematical-Modeling" class="headerlink" title="1.3 Mathematical Modeling"></a>1.3 Mathematical Modeling</h2><p>数学模型只是计量经济学的一种方法，其他方法包括： graphical methods, verbal discussions, mathematical models。</p>
+<h2 id="1-4-Empirical-Validation"><a href="#1-4-Empirical-Validation" class="headerlink" title="1.4 Empirical Validation"></a>1.4 Empirical Validation</h2><p>现代计量经济学的两个假设（fundamental axioms）:</p>
+<ul>
+<li>Any economy can be viewed as a stochastic process governed by some probability law.</li>
+<li>Economic phenomenon, as often summarized in form of data, can be reviewed as a realization of this stochastic data generating process.</li>
+</ul>
+<h2 id="1-5-Illustrative-Examples"><a href="#1-5-Illustrative-Examples" class="headerlink" title="1.5 Illustrative Examples"></a>1.5 Illustrative Examples</h2><p><strong>Example 1: The Keynes Model, the Multiplier and Policy Recommendation</strong><br>The simplest Keynes model can be described by the system of equations</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}{Y_{t}=C_{t}+I_{t}+G_{t}} \\ {C_{t}=\alpha+\beta Y_{t}+\varepsilon_{t}}\end{array}\right.</script><p>$\varepsilon$为微扰项。$\beta$为边际消费倾向</p>
+<p><strong>Example 2: Rational Expectations and Dynamic Asset Pricing Models</strong></p>
+<p>Suppose a representative agent has a constant relative risk aversion utility</p>
+<script type="math/tex; mode=display">U=\sum_{t=0}^{n} \beta^{t} u\left(C_{t}\right)=\sum_{t=0}^{n} \beta^{t} \frac{C_{t}^{\gamma}-1}{\gamma}</script><p><strong>1.6 Limitatons of Econometric Analysis</strong></p>
+<p>First, as a simplification of reality, economic theory or model can only capture the main or most important factors, but the observed data is the joint outcome of many factors together, and some of them are unknown and unaccounted for.</p>
+<p>Second, an economy is an irreversible or non-repeatable system.</p>
+<p>Third, economic relationships are often changing over time for an economy.</p>
+<p>Fourth, data quality. The success of any econometric study hinges on the quantity as well as the quality of data.</p>
+]]></content>
       <categories>
         <category>计量经济学</category>
       </categories>
