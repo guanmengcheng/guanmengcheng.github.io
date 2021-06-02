@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.5k 字
+      4.8k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      65
+      71
        分钟
     </span>
   
@@ -239,7 +239,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年4月6日 晚上
+                  本文最后更新于：2021年6月2日 下午
                 
               </p>
             
@@ -430,6 +430,15 @@
 <h2 id="14剔除NA数据"><a href="#14剔除NA数据" class="headerlink" title="14剔除NA数据"></a>14剔除NA数据</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">na.rm=<span class="hljs-built_in">T</span> 表示剔除<span class="hljs-literal">NA</span>数据<br></code></pre></div></td></tr></table></figure>
 <h2 id="15-分组绘制直方图"><a href="#15-分组绘制直方图" class="headerlink" title="15 分组绘制直方图"></a>15 分组绘制直方图</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">ggplot(sub_users,aes(year,fill=group))+ geom_histogram()+ facet_wrap(~group)<br></code></pre></div></td></tr></table></figure>
 <p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210406225410966.png" srcset="/img/loading.gif" alt="image-20210406225410966"></p>
+<h2 id="16-fillna"><a href="#16-fillna" class="headerlink" title="16 fillna"></a>16 fillna</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R"><span class="hljs-comment"># impute missing values for behavioral data</span><br>cols = setdiff(cols, <span class="hljs-built_in">c</span>(<span class="hljs-string">&#x27;user_id&#x27;</span>, <span class="hljs-string">&#x27;price&#x27;</span>))<br><span class="hljs-keyword">for</span>(col <span class="hljs-keyword">in</span> cols) user_stats[<span class="hljs-built_in">is.na</span>(get(col)), eval(col) := <span class="hljs-number">0</span>]<br></code></pre></div></td></tr></table></figure>
+<h2 id="17-字符转换为时间"><a href="#17-字符转换为时间" class="headerlink" title="17 字符转换为时间"></a>17 字符转换为时间</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">gb_orders_clean$ordr_canl_time = as.POSIXct(gb_orders_clean$ordr_canl_time, format=<span class="hljs-string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tz=<span class="hljs-string">&#x27;UTC&#x27;</span>)<span class="hljs-comment">#一定要加时区 </span><br></code></pre></div></td></tr></table></figure>
+<p>在进行时间转换的时候，使用POSIXct时间必须要加时区！否则默认为CST时区。</p>
+<h2 id="18-计算滚动差值"><a href="#18-计算滚动差值" class="headerlink" title="18 计算滚动差值"></a>18 计算滚动差值</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">library(plyr)<br>df1 &lt;- aggregate(ab~year+lg+team, FUN=<span class="hljs-built_in">sum</span>, data=baseball)<br>library(data.table)<br>DT &lt;- data.table(df1)<br>DT<br><span class="hljs-comment">#       year lg team   ab</span><br><span class="hljs-comment">#    1: 1884 UA  ALT  108</span><br><span class="hljs-comment">#    2: 1997 AL  ANA 1703</span><br><span class="hljs-comment">#    3: 1998 AL  ANA 1502</span><br><span class="hljs-comment">#    4: 1999 AL  ANA  660</span><br><span class="hljs-comment">#    5: 2000 AL  ANA   85</span><br><span class="hljs-comment">#   ---                  </span><br><span class="hljs-comment"># 2523: 1895 NL  WSN  839</span><br><span class="hljs-comment"># 2524: 1896 NL  WSN  982</span><br><span class="hljs-comment"># 2525: 1897 NL  WSN 1426</span><br><span class="hljs-comment"># 2526: 1898 NL  WSN 1736</span><br><span class="hljs-comment"># 2527: 1899 NL  WSN  787</span><br>Now, look at this concise solution:<br><br>DT[, yoy := <span class="hljs-built_in">c</span>(<span class="hljs-literal">NA</span>, diff(ab)), by = <span class="hljs-string">&quot;team,lg&quot;</span>]<br>DT<br><span class="hljs-comment">#       year lg team   ab  yoy</span><br><span class="hljs-comment">#    1: 1884 UA  ALT  108   NA</span><br><span class="hljs-comment">#    2: 1997 AL  ANA 1703   NA</span><br><span class="hljs-comment">#    3: 1998 AL  ANA 1502 -201</span><br><span class="hljs-comment">#    4: 1999 AL  ANA  660 -842</span><br><span class="hljs-comment">#    5: 2000 AL  ANA   85 -575</span><br><span class="hljs-comment">#   ---                       </span><br><span class="hljs-comment"># 2523: 1895 NL  WSN  839  290</span><br><span class="hljs-comment"># 2524: 1896 NL  WSN  982  143</span><br><span class="hljs-comment"># 2525: 1897 NL  WSN 1426  444</span><br><span class="hljs-comment"># 2526: 1898 NL  WSN 1736  310</span><br><span class="hljs-comment"># 2527: 1899 NL  WSN  787 -949</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="19-按分组计算每个固定时间间隔内的统计量"><a href="#19-按分组计算每个固定时间间隔内的统计量" class="headerlink" title="19 按分组计算每个固定时间间隔内的统计量"></a>19 按分组计算每个固定时间间隔内的统计量</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/39917890/r-how-to-resample-intraday-data-at-the-group-level">参考解答</a></p>
+<p>现有如下的数据，需要统计每个user_id，在send_date之前7天至send_date之间有多少条记录，如统计user6404566在其send_date7天内即（2019-8-31,2019-09-07]之间有多少条记录，每行如此。</p>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210602163910950.png" srcset="/img/loading.gif" alt="image-20210602163910950" style="zoom:50%;" /></p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">dat1[,send_date.7D:=send_date-<span class="hljs-number">7</span>]<br>dat1[,newval:= dat1[dat1,on=.(user_id,send_date&gt;send_date.7D,send_date&lt;=send_date),.(N=.N),by=.EACHI]$N]<br></code></pre></div></td></tr></table></figure>
+<p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210602164319703.png" srcset="/img/loading.gif" alt="image-20210602164319703"></p>
 
             </div>
             <hr>
