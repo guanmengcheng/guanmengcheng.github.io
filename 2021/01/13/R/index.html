@@ -187,7 +187,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.8k 字
+      5.3k 字
     </span>
   
 
@@ -197,7 +197,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      71
+      78
        分钟
     </span>
   
@@ -239,7 +239,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2021年6月2日 下午
+                  本文最后更新于：2023年2月9日 上午
                 
               </p>
             
@@ -439,7 +439,34 @@
 <p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210602163910950.png" srcset="/img/loading.gif" alt="image-20210602163910950" style="zoom:50%;" /></p>
 <figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">dat1[,send_date.7D:=send_date-<span class="hljs-number">7</span>]<br>dat1[,newval:= dat1[dat1,on=.(user_id,send_date&gt;send_date.7D,send_date&lt;=send_date),.(N=.N),by=.EACHI]$N]<br></code></pre></div></td></tr></table></figure>
 <p><img src="https://gmc-1258067706.cos.ap-chengdu.myqcloud.com/image-20210602164319703.png" srcset="/img/loading.gif" alt="image-20210602164319703"></p>
-
+<h2 id="20-统计唯一值个数"><a href="#20-统计唯一值个数" class="headerlink" title="20 统计唯一值个数"></a>20 统计唯一值个数</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/33575740/number-of-unique-elements-excluding-na-in-r">参考链接</a></p>
+<p>使用data.table中的nuniqueN函数，有na.rm选项</p>
+<h2 id="21-R-felm"><a href="#21-R-felm" class="headerlink" title="21 R felm"></a>21 R felm</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">felm(IHS(gross_profit)~is_aidrugs*month|pm_id+month|<span class="hljs-number">0</span>|pm_id, data=product_panel)<br></code></pre></div></td></tr></table></figure>
+<p>按照<code>|</code>看：</p>
+<p>第一部分： is_aidrugs*month 是协变量</p>
+<p>第二部分： pm_id + month 为两个固定效应</p>
+<p>第三部分： 0 为工具变量</p>
+<p>第四部分：pm_id 为计算分组稳健标准误的因子</p>
+<p>Interactions between a covariate <code>x</code> and a factor <code>f</code> can be projected out with the syntax <code>x:f</code>.</p>
+<h2 id="22-PTT-warning"><a href="#22-PTT-warning" class="headerlink" title="22 PTT warning"></a>22 PTT warning</h2><p>Warning in chol.default(mat, pivot = TRUE, tol = tol) :<br>  the matrix is either rank-deficient or indefinite<br>共线性，不影响结果</p>
+<h2 id="23-data-table-密度曲线"><a href="#23-data-table-密度曲线" class="headerlink" title="23 data.table 密度曲线"></a>23 data.table 密度曲线</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">user_panel[,densityplot(avg_gmv)]<br></code></pre></div></td></tr></table></figure>
+<p>![[Pasted image 20220329155150.png|500]]</p>
+<h2 id="24-转义"><a href="#24-转义" class="headerlink" title="24 转义"></a>24 转义</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">readRDS(<span class="hljs-string">r&quot;(path)&quot;</span>,)<br></code></pre></div></td></tr></table></figure>
+<p>要用双引号再加r</p>
+<h2 id="25-查看data-table每列类型"><a href="#25-查看data-table每列类型" class="headerlink" title="25 查看data,table每列类型"></a>25 查看data,table每列类型</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">sapply(orders, typeof)<br></code></pre></div></td></tr></table></figure>
+<h2 id="26-查找list中特定元素的位置"><a href="#26-查找list中特定元素的位置" class="headerlink" title="26 查找list中特定元素的位置"></a>26 查找list中特定元素的位置</h2><figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">&gt; a &lt;- 1:<span class="hljs-number">10</span> <br>[<span class="hljs-number">1</span>] <span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">4</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> <span class="hljs-number">10</span> <br>&gt; which(a == <span class="hljs-number">5</span>) <br>[<span class="hljs-number">1</span>] <span class="hljs-number">5</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="30-常见偏移窗口函数"><a href="#30-常见偏移窗口函数" class="headerlink" title="30 常见偏移窗口函数"></a>30 常见偏移窗口函数</h2><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1429995">巧用R语言中常见的各类偏移窗口函数 - 腾讯云开发者社区-腾讯云 (tencent.com)</a></p>
+<p>如将生成新变量：下一次购买的金额</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">panel[, next_price := lead(price), userid] <span class="hljs-comment"># 生成新列：下一次购买的价格</span><br>panel[, re_regret:= ifelse(regret==<span class="hljs-number">1</span> &amp; lead(regret==<span class="hljs-number">1</span>),<span class="hljs-number">1</span>,<span class="hljs-number">0</span>),userid]<span class="hljs-comment">#标记regret后再次regret的行</span><br></code></pre></div></td></tr></table></figure>
+<h2 id="31-保留每个group中特定序列的行"><a href="#31-保留每个group中特定序列的行" class="headerlink" title="31 保留每个group中特定序列的行"></a>31 保留每个group中特定序列的行</h2><p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/41130912/r-identify-a-sequence-of-row-elements-by-groups-in-a-dataframe">R - Identify a sequence of row elements by groups in a dataframe - Stack Overflow</a></p>
+<p>如保留每个userid的group中序列为<code>1,-1或1,0</code>的行，使用<code>dplyr</code>库：</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R">xtt2 = test %&gt;% <br>  group_by(userid) %&gt;% <br>  mutate(new = diff_regret==<span class="hljs-number">1</span> &amp; (lead(diff_regret==<span class="hljs-number">0</span>)|<br>                                   lead(diff_regret==-<span class="hljs-number">1</span>)),g=<span class="hljs-built_in">cumsum</span>(new)) %&gt;% <br>  filter(new | lag(new))<br></code></pre></div></td></tr></table></figure>
+<h2 id="32-格式化输出回归结果"><a href="#32-格式化输出回归结果" class="headerlink" title="32 格式化输出回归结果"></a>32 格式化输出回归结果</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/104061657">整理R输出——stargazer - 知乎 (zhihu.com)</a></p>
+<p>使用package <code>stargazer</code>，可以输出text, html, doc</p>
+<figure class="highlight r"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs R"><span class="hljs-comment">#示例</span><br>PTT = felm(Next_price~regret+<br>             <span class="hljs-built_in">log</span>(popularity)+<br>             day_flag+<br>             weekday_flag+<br>             <span class="hljs-built_in">log</span>(user_experience)+<br>             time_used+<br>             <span class="hljs-built_in">log</span>(user_prior_purchase)|userid+group_id|<span class="hljs-number">0</span>|userid, data=panel)<br>summary(PTT)<br>stargazer(PTT,type=<span class="hljs-string">&quot;text&quot;</span>,add.lines = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">c</span>(<span class="hljs-string">&#x27;User Fixed Effect&#x27;</span>,<span class="hljs-string">&#x27;Yes&#x27;</span>),<br>                                           <span class="hljs-built_in">c</span>(<span class="hljs-string">&#x27;Product Fixed Effect&#x27;</span>,<span class="hljs-string">&#x27;Yes&#x27;</span>)))<br></code></pre></div></td></tr></table></figure>
+<h2 id="33-Rstudio同步至github"><a href="#33-Rstudio同步至github" class="headerlink" title="33 Rstudio同步至github"></a>33 Rstudio同步至github</h2><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30335806">RStudio Git GitHub配合使用 - 知乎 (zhihu.com)</a></p>
+<h2 id="34-修改Rstudio安装包安装目录"><a href="#34-修改Rstudio安装包安装目录" class="headerlink" title="34 修改Rstudio安装包安装目录"></a>34 修改Rstudio安装包安装目录</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/princessyang/article/details/105731349">(24条消息) Rstudio更改工作路径&amp;安装包路径_princess yang的博客-CSDN博客_rstudio改变包的安装位置</a></p>
+<h2 id="35"><a href="#35" class="headerlink" title="35"></a>35</h2>
             </div>
             <hr>
             <div>
